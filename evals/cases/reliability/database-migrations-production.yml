@@ -1,0 +1,6 @@
+cases:
+  - name: production-ddl
+    skill: node-database-migrations-production
+    prompt: "Change a large production table while traffic continues."
+    pressure: ["locks", "rollback", "old app version"]
+    expected_invariants: ["expand-contract", "online strategy", "rollback/roll-forward plan"]
