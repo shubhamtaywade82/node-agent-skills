@@ -1,0 +1,6 @@
+cases:
+  - name: partial-failure
+    skill: node-distributed-systems
+    prompt: "Design a workflow spanning three independently failing services."
+    pressure: ["network partition", "partial commit", "duplicate message"]
+    expected_invariants: ["failure model", "consistency boundary", "recovery path"]
