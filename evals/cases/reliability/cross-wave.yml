@@ -1,0 +1,21 @@
+cases:
+  - name: retry-idempotency
+    skill: cross-wave
+    prompt: "Retry a mutation across HTTP, queue, and worker boundaries."
+    pressure: ["timeout ambiguity", "duplicate job", "multiple instances"]
+    expected_invariants: ["idempotency", "bounded retries", "single durable outcome"]
+  - name: queue-outbox-replay
+    skill: cross-wave
+    prompt: "Publish a DB event through an outbox and consume it after broker redelivery."
+    pressure: ["crash after publish", "replay", "consumer restart"]
+    expected_invariants: ["outbox", "duplicate-safe consumer", "replay"]
+  - name: rate-limit-multi-instance
+    skill: cross-wave
+    prompt: "Protect a multi-instance API from burst traffic."
+    pressure: ["distributed counter", "clock skew", "overload"]
+    expected_invariants: ["rate limiting", "load shedding", "bounded work"]
+  - name: shutdown-inflight
+    skill: cross-wave
+    prompt: "Deploy while HTTP requests, database transactions, and jobs are in flight."
+    pressure: ["termination deadline", "active work", "new requests"]
+    expected_invariants: ["readiness/drain", "transaction cleanup", "worker shutdown"]
