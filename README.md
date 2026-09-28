@@ -35,15 +35,27 @@ npm run validate
 - WebSockets/realtime
 - Webhooks
 
-### Framework adapters
-| Framework | Guide | Supported major |
+### Infrastructure wave
+- Database integrity and transaction boundaries
+- Production migrations and connection-pool budgeting
+- Redis and cache consistency
+- Queues and worker reliability
+- Durable message-broker consumption
+- Outbox and transactional outbox patterns
+
+### Framework and infrastructure adapters
+| Adapter | Guide | Supported scope |
 |---|---|---|
 | Express | adapters/express/SKILL.md | 5.x |
 | Fastify | adapters/fastify/SKILL.md | 5.x |
 | NestJS | adapters/nestjs/SKILL.md | 12.x |
 | Hono | adapters/hono/SKILL.md | 4.x |
+| Prisma | adapters/prisma/SKILL.md | 7.x/8.x |
+| Drizzle | adapters/drizzle/SKILL.md | current/v1 transition; verify exact versions |
+| BullMQ | adapters/bullmq/SKILL.md | 5.x/6.x |
+| node-redis | adapters/redis/SKILL.md | 5.x |
 
-Adapters are conditional. Agents must detect the framework and installed version from the target repository before applying adapter-specific guidance.
+Adapters are conditional. Agents must detect the framework/library and installed version from the target repository before applying adapter-specific guidance.
 
 ## Architecture
 `skills/` contains framework-neutral routed knowledge units. `skill-manifest.yml` is the registry and includes version-scoped adapter metadata. `router/` defines ownership and adapter selection. `scripts/validate.mjs` checks consistency. `test/` protects repository contracts. `evals/` contains behavioral pressure scenarios.
@@ -55,6 +67,16 @@ Adapters are conditional. Agents must detect the framework and installed version
 4. Load only the secondary skills required by actual dependencies.
 5. Detect framework/version and load the adapter only when applicable.
 6. Verify with tests, contract checks, and the repository validator.
+
+## Infrastructure quality principles
+
+- Database constraints own critical relational invariants.
+- Transactions are short and have explicit ownership.
+- Migrations are designed for mixed-version deployments.
+- Connection pools are sized across the whole deployment, not one process.
+- Redis/cache failure semantics are explicit.
+- Queue and broker consumers assume replay/duplicate delivery unless the contract proves otherwise.
+- Outbox publication is asynchronous and duplicate-safe.
 
 ## Quality principles
 - Runtime truth is separate from TypeScript compile-time types.
