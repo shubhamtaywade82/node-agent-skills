@@ -2,7 +2,7 @@
 
 Production-grade **Node.js + TypeScript backend engineering skills for AI coding agents**.
 
-The core is framework-neutral. The pack teaches agents to inspect first, identify the owning boundary, reason about runtime and type contracts, handle untrusted input, bound concurrency, enforce persistence integrity, secure APIs, test behavior, observe production systems, and verify performance.
+The core is framework-neutral. The pack teaches agents to inspect first, identify the owning boundary, reason about runtime and type contracts, validate untrusted input, bound concurrency, enforce persistence integrity, secure APIs, test behavior, observe production systems, and operate services safely.
 
 ## Verify
 ```bash
@@ -10,31 +10,69 @@ npm test
 npm run validate
 ```
 
-## Initial inventory
-- `node-architecture`
-- `node-runtime-foundations`
-- `node-async-concurrency`
-- `node-typescript-contracts`
-- `node-runtime-validation`
-- `node-api-engineering`
-- `node-auth-security`
-- `node-postgresql-persistence`
-- `node-background-jobs-reliability`
-- `node-observability`
-- `node-testing`
-- `node-performance`
-- `node-production-runtime`
-- `node-external-integrations`
+## Capability inventory
+
+### Core
+- Architecture and runtime foundations
+- Async concurrency and TypeScript contracts
+- Runtime validation and HTTP/API engineering
+- Authentication/security
+- PostgreSQL persistence
+- Background jobs
+- Observability
+- Testing and performance
+- Production runtime
+- External integrations
+
+### API wave
+- HTTP lifecycle and transport errors
+- REST resource design
+- API versioning/deprecation
+- Pagination/filtering
+- Idempotent mutations
+- OpenAPI contracts
+- GraphQL
+- WebSockets/realtime
+- Webhooks
+
+### Framework adapters
+| Framework | Guide | Supported major |
+|---|---|---|
+| Express | adapters/express/SKILL.md | 5.x |
+| Fastify | adapters/fastify/SKILL.md | 5.x |
+| NestJS | adapters/nestjs/SKILL.md | 12.x |
+| Hono | adapters/hono/SKILL.md | 4.x |
+
+Adapters are conditional. Agents must detect the framework and installed version from the target repository before applying adapter-specific guidance.
 
 ## Architecture
-`skills/` contains routed knowledge units. `skill-manifest.yml` is the registry. `router/` defines ownership. `scripts/validate.mjs` checks consistency. `test/` protects repository contracts. `evals/` starts the behavioral corpus.
+`skills/` contains framework-neutral routed knowledge units. `skill-manifest.yml` is the registry and includes version-scoped adapter metadata. `router/` defines ownership and adapter selection. `scripts/validate.mjs` checks consistency. `test/` protects repository contracts. `evals/` contains behavioral pressure scenarios.
 
-Framework and vendor adapters are intentionally deferred until the core contracts stabilize.
+## Agent routing model
+1. Inspect the repository and dependency manifests.
+2. Select the dominant backend boundary.
+3. Load the owning core skill.
+4. Load only the secondary skills required by actual dependencies.
+5. Detect framework/version and load the adapter only when applicable.
+6. Verify with tests, contract checks, and the repository validator.
 
-Node 24+ is used for repository tooling. Node.js currently lists v24 as LTS; production applications should use Active or Maintenance LTS releases.
+## Quality principles
+- Runtime truth is separate from TypeScript compile-time types.
+- Untrusted input is validated at the boundary.
+- Authentication is not authorization.
+- Retries require an explicit idempotency decision.
+- At-least-once delivery is assumed for queues/webhooks unless the infrastructure contract proves otherwise.
+- Critical integrity belongs in database constraints/transactions.
+- Resilience mechanisms need explicit budgets and observability.
+- Evaluations are measurement infrastructure and must not be weakened to obtain green CI.
 
 ## Sources
 - https://nodejs.org/en/about/previous-releases
-- https://www.typescriptlang.org/tsconfig/module
-- https://opentelemetry.io/docs/languages/js/
-- https://owasp.org/API-Security/
+- https://spec.openapis.org/oas/v3.1.0
+- https://graphql.org/learn/
+- https://graphql.github.io/graphql-over-http/
+- https://expressjs.com/en/guide/migrating-5/
+- https://fastify.dev/docs/latest/Reference/Lifecycle/
+- https://docs.nestjs.com/migration-guide
+- https://hono.dev/docs/guides/middleware
+- https://developer.mozilla.org/en-US/docs/Web/API/WebSocket
