@@ -24,13 +24,20 @@ console.log(`validated ${names.length} skills`);
 
 const adapterScopes = { express: "5.x", fastify: "5.x", nestjs: "12.x", hono: "4.x" };
 for (const [name, scope] of Object.entries(adapterScopes)) {
-  const block = new RegExp(`^  ${name}:\\n    path: adapters/${name}/SKILL\\.md\\n    version_scope: ${scope.replace(".", "\\\\.")}$`, "m");
-  if (!block.test(manifest)) throw new Error(`adapter registry mismatch: ${name}`);
-  for (const relative of [`adapters/${name}/SKILL.md`, `adapters/${name}/README.md`]) {
+  const lines = manifest.split("\n");
+  const index = lines.indexOf("  " + name + ":");
+  if (index < 0) throw new Error("adapter registry mismatch: " + name);
+  if (lines[index + 1] !== "    path: adapters/" + name + "/SKILL.md") {
+    throw new Error("adapter path mismatch: " + name);
+  }
+  if (lines[index + 2] !== "    version_scope: " + scope) {
+    throw new Error("adapter version_scope mismatch: " + name);
+  }
+  for (const relative of ["adapters/" + name + "/SKILL.md", "adapters/" + name + "/README.md"]) {
     const file = path.join(root, relative);
     await access(file);
     const adapterText = await readFile(file, "utf8");
-    if (adapterText.split("\n").length > 500) throw new Error(`${relative}: exceeds 500 lines`);
+    if (adapterText.split("\n").length > 500) throw new Error(relative + ": exceeds 500 lines");
   }
 }
-console.log(`validated ${names.length} skills and ${Object.keys(adapterScopes).length} adapters`);
+console.log("validated " + names.length + " skills and " + Object.keys(adapterScopes).length + " adapters");
