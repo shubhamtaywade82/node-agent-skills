@@ -1,0 +1,6 @@
+cases:
+  - name: atomic-write-and-event
+    skill: node-transactional-outbox
+    prompt: "Persist a domain change and its outgoing event atomically."
+    pressure: ["dual-write temptation", "network failure"]
+    expected_invariants: ["same DB transaction", "relay after commit", "duplicate-safe consumer"]

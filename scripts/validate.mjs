@@ -22,7 +22,7 @@ const dirs = (await readdir(path.join(root, "skills"), {withFileTypes:true})).fi
 if (JSON.stringify(dirs) !== JSON.stringify([...names].sort())) throw new Error("manifest/skills mismatch");
 console.log(`validated ${names.length} skills`);
 
-const adapterScopes = { express: "5.x", fastify: "5.x", nestjs: "12.x", hono: "4.x" };
+const adapterScopes = { express: "5.x", fastify: "5.x", nestjs: "12.x", hono: "4.x", prisma: "7.x/8.x", drizzle: "current/v1", bullmq: "5.x/6.x", redis: "node-redis-5.x" };
 for (const [name, scope] of Object.entries(adapterScopes)) {
   const lines = manifest.split("\n");
   const index = lines.indexOf("  " + name + ":");
@@ -32,6 +32,9 @@ for (const [name, scope] of Object.entries(adapterScopes)) {
   }
   if (lines[index + 2] !== "    version_scope: " + scope) {
     throw new Error("adapter version_scope mismatch: " + name);
+  }
+  if (!/^    source: https:\/\//.test(lines[index + 3] ?? "")) {
+    throw new Error("adapter source missing: " + name);
   }
   for (const relative of ["adapters/" + name + "/SKILL.md", "adapters/" + name + "/README.md"]) {
     const file = path.join(root, relative);

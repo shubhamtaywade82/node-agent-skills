@@ -1,0 +1,6 @@
+cases:
+  - name: bounded-pool
+    skill: node-connection-pooling
+    prompt: "Configure PostgreSQL pooling for several application instances."
+    pressure: ["default pool size", "traffic spike"]
+    expected_invariants: ["pool budget", "timeout/release behavior", "instance-aware capacity"]

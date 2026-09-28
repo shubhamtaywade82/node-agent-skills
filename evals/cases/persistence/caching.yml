@@ -1,0 +1,6 @@
+cases:
+  - name: cache-consistency
+    skill: node-caching
+    prompt: "Cache an expensive tenant-scoped read without serving cross-tenant data."
+    pressure: ["stampede", "stale data", "invalidation race"]
+    expected_invariants: ["cache key scope", "TTL/invalidation semantics", "source of truth"]

@@ -1,0 +1,6 @@
+cases:
+  - name: database-integrity
+    skill: node-database-engineering
+    prompt: "Add a multi-tenant relational record with a uniqueness invariant."
+    pressure: ["ORM convenience", "concurrent writers"]
+    expected_invariants: ["database constraint", "tenant isolation", "query/index awareness"]

@@ -1,0 +1,6 @@
+cases:
+  - name: at-least-once-worker
+    skill: node-queues
+    prompt: "Add a background worker that retries transient failures."
+    pressure: ["duplicate delivery", "poison job"]
+    expected_invariants: ["idempotent processing", "bounded retries", "dead-letter handling"]

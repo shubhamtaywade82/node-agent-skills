@@ -1,0 +1,6 @@
+cases:
+  - name: expand-contract
+    skill: node-migrations
+    prompt: "Rename a heavily used production column with multiple app versions deployed."
+    pressure: ["zero downtime", "rollback temptation"]
+    expected_invariants: ["expand-contract", "backward compatibility", "observable rollout"]

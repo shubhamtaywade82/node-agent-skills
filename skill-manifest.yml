@@ -74,6 +74,37 @@ skills:
     category: integrations
     triggers: [webhook, signature, raw body, replay, duplicate delivery]
 
+  - name: node-database-engineering
+    category: persistence
+    triggers: [database schema, SQL, constraints, indexes, tenant isolation, ORM]
+  - name: node-transactions
+    category: persistence
+    triggers: [transaction, isolation, locking, rollback, deadlock]
+  - name: node-migrations
+    category: persistence
+    triggers: [migration, schema change, expand contract, backfill, DDL]
+  - name: node-connection-pooling
+    category: persistence
+    triggers: [connection pool, pool exhaustion, database connections, max connections]
+  - name: node-redis
+    category: infrastructure
+    triggers: [Redis, node-redis, pipeline, transaction, Pub/Sub, client cache]
+  - name: node-caching
+    category: infrastructure
+    triggers: [cache, cache-aside, TTL, invalidation, stampede, stale data]
+  - name: node-queues
+    category: reliability
+    triggers: [queue, worker, background job, retry, dead letter, scheduling]
+  - name: node-message-brokers
+    category: distributed
+    triggers: [Kafka, broker, topic, partition, consumer group, offset, replay]
+  - name: node-outbox
+    category: distributed
+    triggers: [outbox, relay, event publication, durable event, replay]
+  - name: node-transactional-outbox
+    category: distributed
+    triggers: [transactional outbox, dual write, atomic event, event relay]
+
 adapters:
   express:
     path: adapters/express/SKILL.md
@@ -91,3 +122,19 @@ adapters:
     path: adapters/hono/SKILL.md
     version_scope: 4.x
     source: https://hono.dev/docs/guides/middleware
+  prisma:
+    path: adapters/prisma/SKILL.md
+    version_scope: 7.x/8.x
+    source: https://www.prisma.io/docs/orm/release-status
+  drizzle:
+    path: adapters/drizzle/SKILL.md
+    version_scope: current/v1
+    source: https://orm.drizzle.team/docs/migrations
+  bullmq:
+    path: adapters/bullmq/SKILL.md
+    version_scope: 5.x/6.x
+    source: https://docs.bullmq.io/guide/queues/
+  redis:
+    path: adapters/redis/SKILL.md
+    version_scope: node-redis-5.x
+    source: https://redis.io/docs/latest/develop/clients/nodejs/

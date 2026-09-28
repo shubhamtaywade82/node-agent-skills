@@ -19,7 +19,16 @@ Route by the dominant backend boundary first. Framework adapters are a translati
 | WebSocket/realtime | node-websockets | node-async-concurrency, node-observability |
 | webhooks | node-webhooks | node-idempotency, node-external-integrations |
 | security | node-auth-security | node-runtime-validation, node-testing |
-| PostgreSQL | node-postgresql-persistence | node-testing |
+| PostgreSQL | node-postgresql-persistence | node-database-engineering, node-transactions, node-testing |
+| database transactions | node-transactions | node-database-engineering, node-testing |
+| schema migration | node-migrations | node-database-engineering, node-production-runtime |
+| connection pooling | node-connection-pooling | node-postgresql-persistence, node-performance |
+| Redis | node-redis | node-caching, node-async-concurrency |
+| caching | node-caching | node-redis, node-performance |
+| background jobs | node-queues | node-background-jobs-reliability, node-async-concurrency |
+| message broker | node-message-brokers | node-background-jobs-reliability, node-observability |
+| outbox | node-outbox | node-transactional-outbox, node-transactions |
+| transactional outbox | node-transactional-outbox | node-transactions, node-message-brokers |
 | jobs/queues | node-background-jobs-reliability | node-async-concurrency, node-observability |
 | telemetry | node-observability | node-production-runtime |
 | tests | node-testing | domain-owning skill |
@@ -37,6 +46,10 @@ After selecting the core owner, detect the actual framework from dependency mani
 | Fastify | adapters/fastify/SKILL.md | Fastify 5.x |
 | NestJS | adapters/nestjs/SKILL.md | NestJS 12.x; verify exact package versions |
 | Hono | adapters/hono/SKILL.md | Hono 4.x; verify exact package version |
+| Prisma | adapters/prisma/SKILL.md | Prisma 7.x/8.x; verify exact major |
+| Drizzle | adapters/drizzle/SKILL.md | Current/v1; verify exact package versions |
+| BullMQ | adapters/bullmq/SKILL.md | BullMQ 5.x/6.x; verify exact major |
+| node-redis | adapters/redis/SKILL.md | node-redis 5.x; verify exact version |
 
 Do not select an adapter merely because the user says "Node API". Core skills are always applicable; adapters are conditional.
 
