@@ -1,0 +1,16 @@
+cases:
+  - name: rest-endpoint
+    primary: node-api-engineering
+    secondary: [node-runtime-validation, node-auth-security, node-testing]
+  - name: postgres-transaction
+    primary: node-postgresql-persistence
+    secondary: [node-testing]
+  - name: queue-retry
+    primary: node-background-jobs-reliability
+    secondary: [node-async-concurrency, node-observability]
+  - name: production-memory
+    primary: node-performance
+    secondary: [node-observability, node-production-runtime]
+  - name: tenant-authorization
+    primary: node-auth-security
+    secondary: [node-runtime-validation, node-testing]

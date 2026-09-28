@@ -1,0 +1,20 @@
+version: 1
+pack:
+  name: node-agent-skills
+  language: TypeScript
+  runtime: Node.js
+skills:
+  - name: node-architecture
+  - name: node-runtime-foundations
+  - name: node-async-concurrency
+  - name: node-typescript-contracts
+  - name: node-runtime-validation
+  - name: node-api-engineering
+  - name: node-auth-security
+  - name: node-postgresql-persistence
+  - name: node-background-jobs-reliability
+  - name: node-observability
+  - name: node-testing
+  - name: node-performance
+  - name: node-production-runtime
+  - name: node-external-integrations

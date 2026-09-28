@@ -1,0 +1,16 @@
+cases:
+  - id: runtime-module-contract
+    expected: inspect-first-and-verify-runtime
+    skills: [node-runtime-foundations]
+  - id: unsafe-json-cast
+    expected: validate-before-domain-use
+    skills: [node-runtime-validation, node-typescript-contracts]
+  - id: unbounded-fanout
+    expected: bounded-concurrency-and-cancellation
+    skills: [node-async-concurrency]
+  - id: authz-gap
+    expected: authorization-at-execution-boundary
+    skills: [node-auth-security]
+  - id: retry-side-effect
+    expected: idempotent-before-retry
+    skills: [node-background-jobs-reliability]

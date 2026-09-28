@@ -1,28 +1,40 @@
 # node-agent-skills
 
-Production-grade Node.js + TypeScript backend engineering skills for AI coding agents.
+Production-grade **Node.js + TypeScript backend engineering skills for AI coding agents**.
 
-This repository is intentionally framework-neutral at the core. Framework, ORM, queue, cloud, and infrastructure integrations are layered as adapters.
+The core is framework-neutral. The pack teaches agents to inspect first, identify the owning boundary, reason about runtime and type contracts, handle untrusted input, bound concurrency, enforce persistence integrity, secure APIs, test behavior, observe production systems, and verify performance.
 
-## Current scope
+## Verify
+```bash
+npm test
+npm run validate
+```
 
-- Node.js runtime and asynchronous execution
-- TypeScript contracts and runtime validation
-- Backend architecture and module boundaries
-- HTTP/API engineering
-- PostgreSQL and persistence fundamentals
-- Reliability, idempotency, retries, and concurrency
-- Security and untrusted-input handling
-- Testing and verification
-- Observability and production runtime concerns
-- Agent-oriented routing, evaluation, and validation
+## Initial inventory
+- `node-architecture`
+- `node-runtime-foundations`
+- `node-async-concurrency`
+- `node-typescript-contracts`
+- `node-runtime-validation`
+- `node-api-engineering`
+- `node-auth-security`
+- `node-postgresql-persistence`
+- `node-background-jobs-reliability`
+- `node-observability`
+- `node-testing`
+- `node-performance`
+- `node-production-runtime`
+- `node-external-integrations`
 
-## Quality bar
+## Architecture
+`skills/` contains routed knowledge units. `skill-manifest.yml` is the registry. `router/` defines ownership. `scripts/validate.mjs` checks consistency. `test/` protects repository contracts. `evals/` starts the behavioral corpus.
 
-Skills are executable agent guidance. Each skill must have a precise trigger, repository-inspection procedure, decision rules, verification expectations, and regression coverage in the skill-pack test suite.
+Framework and vendor adapters are intentionally deferred until the core contracts stabilize.
 
-See AGENTS.md for the repository engineering contract.
+Node 24+ is used for repository tooling. Node.js currently lists v24 as LTS; production applications should use Active or Maintenance LTS releases.
 
-## Status
-
-The pack is being built incrementally. The manifest and validator define what is currently shipped; planned capabilities must not be represented as implemented.
+## Sources
+- https://nodejs.org/en/about/previous-releases
+- https://www.typescriptlang.org/tsconfig/module
+- https://opentelemetry.io/docs/languages/js/
+- https://owasp.org/API-Security/
