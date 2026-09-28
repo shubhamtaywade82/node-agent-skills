@@ -76,3 +76,5 @@ Adapters are conditional. Agents must detect the framework and installed version
 - https://docs.nestjs.com/migration-guide
 - https://hono.dev/docs/guides/middleware
 - https://developer.mozilla.org/en-US/docs/Web/API/WebSocket
+
+CI workflow is validated on GitHub Actions for the Wave 2A branch.
