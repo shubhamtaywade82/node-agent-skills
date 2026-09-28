@@ -7,6 +7,9 @@ skills:
   - name: node-architecture
     category: architecture
     triggers: [architecture, module boundary, dependency injection, modular monolith, ports and adapters]
+  - name: node-design-patterns
+    category: architecture
+    triggers: [design pattern, Strategy, Adapter, Facade, Factory, Command, Chain of Responsibility, Observer, State, Decorator, Builder, refactoring, coupling, composition]
   - name: node-runtime-foundations
     category: runtime
     triggers: [event loop, ESM, CommonJS, package exports, process lifecycle, signals, startup, shutdown]
