@@ -33,6 +33,9 @@ for (const [name, scope] of Object.entries(adapterScopes)) {
   if (lines[index + 2] !== "    version_scope: " + scope) {
     throw new Error("adapter version_scope mismatch: " + name);
   }
+  if (!/^    source: https:\/\//.test(lines[index + 3] ?? "")) {
+    throw new Error("adapter source missing: " + name);
+  }
   for (const relative of ["adapters/" + name + "/SKILL.md", "adapters/" + name + "/README.md"]) {
     const file = path.join(root, relative);
     await access(file);
