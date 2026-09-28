@@ -1,0 +1,6 @@
+cases:
+  - name: stream-pressure
+    skill: node-backpressure
+    prompt: "Process a faster producer than the downstream consumer can handle."
+    pressure: ["memory growth", "slow consumer"]
+    expected_invariants: ["bounded buffering", "flow control", "drop/block policy"]
