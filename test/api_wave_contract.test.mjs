@@ -15,24 +15,27 @@ const skillCases = [
 ];
 
 for (const [skill, corpus] of skillCases) {
-  test(`api skill ${skill} has a registered owner and evaluation corpus`, async () => {
+  test("api skill " + skill + " has a registered owner and evaluation corpus", async () => {
     const manifest = await readFile("skill-manifest.yml", "utf8");
-    assert.match(manifest, new RegExp(`^  - name: ${skill}$`, "m"));
-    await access(`skills/${skill}/SKILL.md`);
-    await access(`evals/cases/api/${corpus}.yml`);
+    assert.match(manifest, new RegExp("^  - name: " + skill + "$", "m"));
+    await access("skills/" + skill + "/SKILL.md");
+    await access("evals/cases/api/" + corpus + ".yml");
   });
 }
 
-test("framework adapter corpus has four version-scoped guides", async () => {
-  for (const framework of ["express", "fastify", "nestjs", "hono"]) {
-    await access(`adapters/${framework}/SKILL.md`);
-    await access(`adapters/${framework}/README.md`);
+test("framework adapters are registered with version scope", async () => {
+  const manifest = await readFile("skill-manifest.yml", "utf8");
+  for (const [framework, scope] of [["express", "5.x"], ["fastify", "5.x"], ["nestjs", "12.x"], ["hono", "4.x"]]) {
+    assert.match(manifest, new RegExp("^  " + framework + ":$", "m"));
+    assert.match(manifest, new RegExp("^    version_scope: " + scope.replace(".", "\\.") + "$", "m"));
+    await access("adapters/" + framework + "/SKILL.md");
+    await access("adapters/" + framework + "/README.md");
   }
 });
 
 test("API evaluation cases declare observable invariants", async () => {
   for (const corpus of ["http", "api-versioning", "rest", "pagination", "idempotency", "openapi", "graphql", "websockets", "webhooks", "frameworks"]) {
-    const content = await readFile(`evals/cases/api/${corpus}.yml`, "utf8");
+    const content = await readFile("evals/cases/api/" + corpus + ".yml", "utf8");
     assert.match(content, /expected_invariants:/);
   }
 });
