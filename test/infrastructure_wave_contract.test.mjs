@@ -26,13 +26,22 @@ for (const [skill, corpus] of skills) {
 
 test("persistence adapters are registered with version scope", async () => {
   const manifest = await readFile("skill-manifest.yml", "utf8");
-  for (const name of ["prisma", "drizzle", "bullmq", "redis"]) {
+  const adapters = [
+    ["prisma", "7.x/8.x"],
+    ["drizzle", "current/v1"],
+    ["bullmq", "5.x/6.x"],
+    ["redis", "node-redis-5.x"],
+  ];
+  for (const [name, scope] of adapters) {
     assert.match(manifest, new RegExp("^  " + name + ":$", "m"));
     await access("adapters/" + name + "/SKILL.md");
     await access("adapters/" + name + "/README.md");
-    const index = manifest.split("\n").indexOf("  " + name + ":");
+    const lines = manifest.split("\n");
+    const index = lines.indexOf("  " + name + ":");
     assert.ok(index >= 0);
-    assert.ok(manifest.split("\n")[index + 1].startsWith("    path: adapters/" + name + "/SKILL.md"));
+    assert.equal(lines[index + 1], "    path: adapters/" + name + "/SKILL.md");
+    assert.equal(lines[index + 2], "    version_scope: " + scope);
+    assert.match(lines[index + 3] ?? "", /^    source: https:\/\//);
   }
 });
 
