@@ -83,3 +83,55 @@ cases:
     primary: node-database-engineering
     secondary: [node-transactions, node-migrations]
     adapter: adapters/drizzle/SKILL.md
+
+  - name: dependency-retries
+    primary: node-retry-timeouts
+    secondary: [node-idempotency, node-resilience]
+  - name: resilient-dependency
+    primary: node-resilience
+    secondary: [node-retry-timeouts, node-observability]
+  - name: circuit-protected-provider
+    primary: node-circuit-breakers
+    secondary: [node-retry-timeouts, node-resilience]
+  - name: isolated-capacity
+    primary: node-bulkheads
+    secondary: [node-load-shedding, node-backpressure]
+  - name: overload-protection
+    primary: node-load-shedding
+    secondary: [node-rate-limiting, node-backpressure]
+  - name: stream-backpressure
+    primary: node-backpressure
+    secondary: [node-async-concurrency, node-load-shedding]
+  - name: distributed-tenant-limit
+    primary: node-rate-limiting
+    secondary: [node-auth-security, node-redis]
+  - name: cross-service-workflow
+    primary: node-distributed-systems
+    secondary: [node-idempotency, node-observability]
+  - name: leased-resource-lock
+    primary: node-distributed-locks
+    secondary: [node-database-engineering, node-redis]
+  - name: domain-events
+    primary: node-event-driven-architecture
+    secondary: [node-message-brokers, node-transactional-outbox]
+  - name: rolling-deploy
+    primary: node-zero-downtime
+    secondary: [node-production-runtime, node-database-migrations-production]
+  - name: large-production-ddl
+    primary: node-database-migrations-production
+    secondary: [node-migrations, node-zero-downtime]
+  - name: production-incident
+    primary: node-incident-engineering
+    secondary: [node-observability, node-runtime-diagnostics]
+  - name: runtime-memory-latency
+    primary: node-runtime-diagnostics
+    secondary: [node-performance, node-observability]
+  - name: staged-backend-release
+    primary: node-release-engineering
+    secondary: [node-zero-downtime, node-database-migrations-production]
+  - name: retry-through-queue
+    primary: node-retry-timeouts
+    secondary: [node-idempotency, node-queues, node-outbox]
+  - name: shutdown-with-inflight-work
+    primary: node-zero-downtime
+    secondary: [node-production-runtime, node-transactions, node-queues]
