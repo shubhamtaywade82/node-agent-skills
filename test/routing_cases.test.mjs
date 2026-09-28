@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { readFile } from "node:fs/promises";
+import { access, readFile } from "node:fs/promises";
 
 test("routing cases reference registered skills", async () => {
   const manifest = await readFile("skill-manifest.yml", "utf8");
@@ -8,5 +8,15 @@ test("routing cases reference registered skills", async () => {
   const routing = await readFile("router/ROUTING_CASES.yml", "utf8");
   for (const match of routing.matchAll(/(?:primary|secondary): \[?([^\]\n]+)\]?/g)) {
     for (const ref of match[1].split(",").map(x => x.trim()).filter(Boolean)) assert.ok(registered.has(ref), ref);
+  }
+});
+
+test("routing cases reference registered framework adapters", async () => {
+  const manifest = await readFile("skill-manifest.yml", "utf8");
+  const routing = await readFile("router/ROUTING_CASES.yml", "utf8");
+  for (const match of routing.matchAll(/^    adapter: (.+)$/gm)) {
+    const adapterPath = match[1].trim();
+    assert.ok(manifest.includes("path: " + adapterPath), adapterPath);
+    await access(adapterPath);
   }
 });
