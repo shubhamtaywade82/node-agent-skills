@@ -87,6 +87,7 @@ Adapters are conditional. Agents must detect the framework/library and installed
 - Critical integrity belongs in database constraints/transactions.
 - Resilience mechanisms need explicit budgets and observability.
 - Evaluations are measurement infrastructure and must not be weakened to obtain green CI.
+- Resilience controls are policy budgets, not generic middleware decorations.
 
 ## Sources
 - https://nodejs.org/en/about/previous-releases
