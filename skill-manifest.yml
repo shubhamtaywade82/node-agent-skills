@@ -73,3 +73,17 @@ skills:
   - name: node-webhooks
     category: integrations
     triggers: [webhook, signature, raw body, replay, duplicate delivery]
+
+adapters:
+  express:
+    path: adapters/express/SKILL.md
+    version_scope: 5.x
+  fastify:
+    path: adapters/fastify/SKILL.md
+    version_scope: 5.x
+  nestjs:
+    path: adapters/nestjs/SKILL.md
+    version_scope: 12.x
+  hono:
+    path: adapters/hono/SKILL.md
+    version_scope: 4.x
