@@ -51,3 +51,35 @@ cases:
   - name: tenant-authorization
     primary: node-auth-security
     secondary: [node-runtime-validation, node-testing]
+
+  - name: database-constraints
+    primary: node-database-engineering
+    secondary: [node-transactions, node-testing]
+  - name: schema-migration
+    primary: node-migrations
+    secondary: [node-database-engineering, node-production-runtime]
+  - name: pool-exhaustion
+    primary: node-connection-pooling
+    secondary: [node-postgresql-persistence, node-performance]
+  - name: redis-cache
+    primary: node-caching
+    secondary: [node-redis, node-performance]
+    adapter: adapters/redis/SKILL.md
+  - name: queued-worker
+    primary: node-queues
+    secondary: [node-background-jobs-reliability, node-async-concurrency]
+    adapter: adapters/bullmq/SKILL.md
+  - name: broker-consumer
+    primary: node-message-brokers
+    secondary: [node-background-jobs-reliability, node-observability]
+  - name: durable-outbox
+    primary: node-transactional-outbox
+    secondary: [node-transactions, node-message-brokers]
+  - name: prisma-persistence
+    primary: node-database-engineering
+    secondary: [node-transactions, node-migrations]
+    adapter: adapters/prisma/SKILL.md
+  - name: drizzle-persistence
+    primary: node-database-engineering
+    secondary: [node-transactions, node-migrations]
+    adapter: adapters/drizzle/SKILL.md
