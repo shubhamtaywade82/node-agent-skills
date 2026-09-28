@@ -1,0 +1,6 @@
+cases:
+  - name: leased-lock
+    skill: node-distributed-locks
+    prompt: "Prevent concurrent workers from mutating one protected resource."
+    pressure: ["lease expiry", "stale owner", "worker pause"]
+    expected_invariants: ["ownership", "lease", "fencing/epoch when required"]
