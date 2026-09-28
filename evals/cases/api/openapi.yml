@@ -1,0 +1,6 @@
+cases:
+  - name: schema-contract-alignment
+    skill: node-openapi
+    prompt: "Publish an OpenAPI contract for an existing HTTP service."
+    pressure: ["schema drift", "manual docs"]
+    expected_invariants: ["runtime/contract alignment", "operation IDs", "error schemas"]
