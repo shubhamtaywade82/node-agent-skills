@@ -14,3 +14,6 @@ cases:
   - name: tenant-authorization
     primary: node-auth-security
     secondary: [node-runtime-validation, node-testing]
+  - name: design-pattern-refactor
+    primary: node-design-patterns
+    secondary: [node-architecture, node-typescript-contracts, node-testing]

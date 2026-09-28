@@ -1,0 +1,16 @@
+cases:
+  - id: strategy-for-policy-branches
+    expected: isolate-interchangeable-behavior-with-the-smallest-strategy-form
+    skills: [node-design-patterns]
+  - id: adapter-for-provider-sdk
+    expected: isolate-external-provider-shapes-behind-an-application-owned-port
+    skills: [node-design-patterns, node-external-integrations]
+  - id: state-union-before-state-classes
+    expected: prefer-discriminated-union-before-state-hierarchy
+    skills: [node-design-patterns, node-typescript-contracts]
+  - id: singleton-resistance
+    expected: keep-lifecycle-explicit-in-composition-root
+    skills: [node-design-patterns, node-architecture]
+  - id: pattern-overengineering
+    expected: reject-pattern-without-concrete-design-pressure
+    skills: [node-design-patterns, node-testing]

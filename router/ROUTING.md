@@ -5,6 +5,7 @@ Route by the dominant backend boundary, not by framework name.
 | Boundary | Primary | Secondary |
 |---|---|---|
 | architecture | node-architecture | node-typescript-contracts |
+| design pattern/refactoring | node-design-patterns | node-architecture, node-typescript-contracts, node-testing |
 | runtime/lifecycle | node-runtime-foundations | node-production-runtime |
 | async/concurrency | node-async-concurrency | node-error-contracts |
 | TypeScript contracts | node-typescript-contracts | node-runtime-validation |
@@ -20,8 +21,11 @@ Route by the dominant backend boundary, not by framework name.
 | external service | node-external-integrations | node-runtime-validation, node-error-contracts |
 
 ## Selection rules
+
 1. Inspect the repository first.
 2. Pick one primary owner for the dominant boundary.
 3. Add secondary skills only for real dependent constraints.
 4. Authentication and authorization remain distinct.
 5. Prefer core skills before vendor/framework adapters.
+6. For design patterns, require a concrete code smell or change vector before introducing an abstraction.
+7. Prefer TypeScript-native composition (functions, maps, discriminated unions) over pattern-shaped class hierarchies.
