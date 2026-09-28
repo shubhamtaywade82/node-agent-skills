@@ -1,0 +1,6 @@
+cases:
+  - name: breaker-state
+    skill: node-circuit-breakers
+    prompt: "Protect an API dependency from repeated failures."
+    pressure: ["slow failures", "recovery", "half-open stampede"]
+    expected_invariants: ["timeout first", "state model", "bounded probes"]
