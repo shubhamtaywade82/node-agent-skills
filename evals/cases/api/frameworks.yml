@@ -1,0 +1,13 @@
+cases:
+  - name: express-five
+    adapter: express
+    expected_invariants: ["Express 5 promise error forwarding", "four-argument error middleware"]
+  - name: fastify-five
+    adapter: fastify
+    expected_invariants: ["lifecycle hooks", "schema validation", "encapsulation"]
+  - name: nestjs-current
+    adapter: nestjs
+    expected_invariants: ["guards", "pipes", "exception filters"]
+  - name: hono-current
+    adapter: hono
+    expected_invariants: ["context lifecycle", "await next", "onError"]
