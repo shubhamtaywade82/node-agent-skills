@@ -5,16 +5,44 @@ pack:
   runtime: Node.js
 skills:
   - name: node-architecture
+    category: architecture
+    triggers: [architecture, module boundary, dependency injection, modular monolith, ports and adapters]
   - name: node-runtime-foundations
+    category: runtime
+    triggers: [event loop, ESM, CommonJS, package exports, process lifecycle, signals, startup, shutdown]
   - name: node-async-concurrency
+    category: runtime
+    triggers: [Promise, concurrency, cancellation, AbortController, timeout, race condition, bounded concurrency]
   - name: node-typescript-contracts
+    category: typescript
+    triggers: [TypeScript, strict, generics, discriminated union, tsconfig, public type]
   - name: node-runtime-validation
+    category: boundary
+    triggers: [JSON, runtime validation, schema, external input, environment variables, queue payload]
   - name: node-api-engineering
+    category: api
+    triggers: [HTTP, REST, OpenAPI, pagination, idempotency, API versioning]
   - name: node-auth-security
+    category: security
+    triggers: [authentication, authorization, JWT, OAuth, OIDC, tenant isolation, rate limiting, SSRF]
   - name: node-postgresql-persistence
+    category: persistence
+    triggers: [PostgreSQL, SQL, transaction, migration, index, locking, connection pool]
   - name: node-background-jobs-reliability
+    category: reliability
+    triggers: [queue, worker, job, retry, backoff, dead letter, outbox, idempotency]
   - name: node-observability
+    category: operations
+    triggers: [logging, metrics, tracing, OpenTelemetry, health check, audit]
   - name: node-testing
+    category: testing
+    triggers: [unit test, integration test, API test, contract test, Testcontainers, fuzzing]
   - name: node-performance
+    category: performance
+    triggers: [performance, profiling, memory, heap, event loop lag, backpressure, load]
   - name: node-production-runtime
+    category: operations
+    triggers: [production, graceful shutdown, readiness, liveness, Docker, Kubernetes]
   - name: node-external-integrations
+    category: integrations
+    triggers: [third-party API, HTTP client, webhook, timeout, retry, secret, external service]
