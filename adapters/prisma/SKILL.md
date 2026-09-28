@@ -16,6 +16,7 @@ Inspect prisma, @prisma/client, generated client location, Prisma configuration,
 
 ## Decision rules
 - Keep Prisma generated types inside persistence boundaries; do not use them as public API contracts by default.
+- Prisma 8 currently requires Node.js 22.18+ or Node.js 24.11+ and TypeScript 5.9+; verify the target repository meets that floor before applying Prisma 8 guidance.
 - Use the transaction mechanism appropriate to the workload: nested writes, batch operations, or interactive transactions.
 - Keep interactive transactions short and avoid network calls or slow work inside them.
 - Treat Prisma 7 and Prisma 8 guidance separately. Prisma 8 is currently a release candidate and still subject to API changes; Prisma 7 remains supported. 
