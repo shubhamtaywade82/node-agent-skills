@@ -105,6 +105,52 @@ skills:
     category: distributed
     triggers: [transactional outbox, dual write, atomic event, event relay]
 
+  - name: node-retry-timeouts
+    category: reliability
+    triggers: [retry, timeout, deadline, backoff, jitter, cancellation]
+  - name: node-resilience
+    category: reliability
+    triggers: [resilience, degraded mode, fallback, dependency failure, capacity]
+  - name: node-circuit-breakers
+    category: reliability
+    triggers: [circuit breaker, open half-open closed, dependency protection]
+  - name: node-bulkheads
+    category: reliability
+    triggers: [bulkhead, concurrency isolation, capacity isolation, noisy neighbor]
+  - name: node-load-shedding
+    category: reliability
+    triggers: [load shedding, overload, admission control, priority traffic]
+  - name: node-backpressure
+    category: performance
+    triggers: [backpressure, stream pressure, slow consumer, bounded buffer]
+  - name: node-rate-limiting
+    category: security
+    triggers: [rate limit, quota, token bucket, tenant limit, abuse control]
+  - name: node-distributed-systems
+    category: distributed
+    triggers: [distributed system, partial failure, consistency, reconciliation]
+  - name: node-distributed-locks
+    category: distributed
+    triggers: [distributed lock, lease, fencing, leader, coordination]
+  - name: node-event-driven-architecture
+    category: distributed
+    triggers: [event-driven, domain event, integration event, event contract]
+  - name: node-zero-downtime
+    category: production
+    triggers: [zero downtime, readiness, drain, rolling deploy, graceful shutdown]
+  - name: node-database-migrations-production
+    category: production
+    triggers: [production migration, online DDL, expand contract, backfill, schema rollout]
+  - name: node-incident-engineering
+    category: operations
+    triggers: [incident, outage, mitigation, root cause, blast radius, runbook]
+  - name: node-runtime-diagnostics
+    category: operations
+    triggers: [event loop delay, heap, GC, CPU, memory leak, runtime diagnostics]
+  - name: node-release-engineering
+    category: release
+    triggers: [release, deployment, canary, artifact promotion, rollback, feature flag]
+
 adapters:
   express:
     path: adapters/express/SKILL.md
