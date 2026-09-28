@@ -1,43 +1,30 @@
 ---
 name: node-runtime-validation
-description: boundary
+description: Use when external JSON, HTTP responses, environment values, files, queues, or dynamic JavaScript enter typed Node.js code.
 ---
 
 # Node Runtime Validation
 
 ## Purpose
-Use when external JSON, HTTP responses, environment values, files, queues, or dynamic JavaScript enter typed Node.js code.
-
-## Activate when
 Validate untrusted data once at the trust boundary, then pass narrowed values inward.
 
-## Repository inspection
-- Third-party JSON.
-- Runtime configuration.
-- Queue or file payloads.
+## Activate when
+Consume third-party JSON, runtime configuration, queue messages, file payloads, or dynamic values.
 
-## Decision rules
+## Repository inspection
 Locate the trust boundary, validation library, generated types, transport client, error normalization, and redaction policy.
 
+## Decision rules
+unknown is the default external type. Validate before business logic. Keep transport and schema failures distinct. Centralize schemas at the owning boundary. Never log unredacted invalid payloads.
+
 ## Implementation procedure
-- unknown is the default external type.
-- Validate before business logic consumes data.
-- Keep transport errors distinct from schema errors.
-- Centralize schemas at the owning boundary.
-- Never log unredacted invalid payloads.
+1. Define accepted runtime shape. 2. Parse and validate. 3. Normalize transport values. 4. Return typed value or safe failure. 5. Test malformed and drifted input.
 
 ## Failure modes
-1. Define the accepted runtime shape.
-2. Parse and validate.
-3. Normalize transport values.
-4. Return a typed value or safe failure.
-5. Test missing, malformed, extra, and drifted input.
+Direct JSON.parse followed by assertion; generated types treated as runtime proof; duplicated validation; secrets in logs.
 
 ## Verification
-- Direct JSON.parse followed by assertion.
-- Generated types treated as runtime proof.
-- Validation duplicated across consumers.
-- Secrets in validation logs.
+Exercise valid, malformed, missing, extra, and version-drift payloads and verify deterministic caller behavior.
 
 ## Source foundation
-Exercise valid, malformed, missing, and version-drift payloads and verify deterministic caller behavior.
+https://www.typescriptlang.org/docs/handbook/2/narrowing.html

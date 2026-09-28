@@ -1,46 +1,30 @@
 ---
 name: node-external-integrations
-description: integrations
+description: Use when implementing Node.js clients for third-party APIs, outbound webhooks, external callbacks, secrets, timeouts, retries, or dependency isolation.
 ---
 
 # Node External Integrations
 
 ## Purpose
-Use when implementing Node.js clients for third-party APIs, outbound webhooks, external callbacks, secrets, timeouts, retries, or dependency isolation.
-
-## Activate when
 Treat external services as unreliable dependencies with explicit contracts and failure policy.
 
+## Activate when
+Add third-party clients, webhook consumers, provider authentication, rate limits, or retries.
+
 ## Repository inspection
-- Third-party clients.
-- Webhook consumers.
-- Provider authentication or rate limits.
+Inspect HTTP client abstraction, timeout policy, retry policy, secret management, signing, response validation, and telemetry.
 
 ## Decision rules
-Inspect HTTP client abstraction, timeouts, retry policy, secret management, signing, response validation, and telemetry.
+Apply timeouts and cancellation. Validate provider responses. Retry only safe transient failures. Isolate provider DTOs from domain models. Verify webhook signatures. Make webhook processing idempotent.
 
 ## Implementation procedure
-- Apply timeouts and cancellation to outbound calls.
-- Validate provider responses at the boundary.
-- Retry only safe transient failures.
-- Keep provider DTOs isolated from domain models.
-- Verify webhook signatures before processing.
-- Make webhook handlers idempotent.
+1. Define provider contract. 2. Implement narrow adapter. 3. Set timeout/retry/rate-limit policy. 4. Validate/normalize responses. 5. Map provider errors. 6. Add integration/redaction tests.
 
 ## Failure modes
-1. Define the provider contract.
-2. Implement a narrow adapter.
-3. Set deadline, retry, and rate-limit behavior.
-4. Validate and normalize responses.
-5. Map provider failures to internal categories.
-6. Add integration and redaction tests.
+Infinite retries; no outbound timeout; trusting HTTP success without payload validation; provider objects leaking into domain; unsigned webhooks.
 
 ## Verification
-- Infinite retries.
-- No outbound timeout.
-- Trusting HTTP success without validating data.
-- Provider objects leaking into the domain.
-- Unsigned webhook acceptance.
+Test success, timeout, connection failure, 429/5xx, malformed response, invalid signature, duplicate webhook, and secret redaction.
 
 ## Source foundation
-Test success, timeout, connection failure, 429/5xx, malformed response, invalid signature, duplicate webhook, and secret redaction.
+https://nodejs.org/api/globals.html#class-abortcontroller

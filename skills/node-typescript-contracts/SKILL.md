@@ -1,43 +1,30 @@
 ---
 name: node-typescript-contracts
-description: typescript
+description: Use when TypeScript public contracts, strictness, discriminated unions, generics, or compiler configuration are part of a Node.js backend change.
 ---
 
 # Node Typescript Contracts
 
 ## Purpose
-Use when TypeScript public contracts, strictness, discriminated unions, generics, or compiler configuration are part of a Node.js backend change.
-
-## Activate when
 Use TypeScript to make invalid states harder to represent while keeping runtime validation separate.
 
-## Repository inspection
-- Changing exported types.
-- Designing domain states.
-- Resolving compiler or module errors.
+## Activate when
+Change exported types, model domain states, or resolve compiler/module errors.
 
-## Decision rules
+## Repository inspection
 Inspect tsconfig, Node version, module settings, generated types, strictness flags, and public API conventions.
 
+## Decision rules
+Prefer repository strictness. Use discriminated unions for exclusive states. Use unknown at untrusted boundaries. Use generics for real relationships. Separate transport and domain types when ownership differs.
+
 ## Implementation procedure
-- Prefer existing strictness rather than repository-wide changes for one feature.
-- Use discriminated unions for mutually exclusive states.
-- Use unknown at untrusted boundaries.
-- Use generics when a real input/output relationship exists.
-- Separate transport types from domain types when ownership differs.
+1. Model valid states. 2. Separate public/internal contracts. 3. Make nullability explicit. 4. Narrow external values. 5. Add compile-time and runtime coverage.
 
 ## Failure modes
-1. Model valid states.
-2. Separate public and internal contracts.
-3. Make nullability explicit.
-4. Narrow external values before use.
-5. Add compile-time coverage and runtime tests for serialized input.
+Assertions hide uncertainty; Partial used as a domain model; persistence internals leak into public types; abstraction-heavy generics.
 
 ## Verification
-- Assertions hide uncertainty.
-- Partial is used as a domain model.
-- Persistence internals leak through public types.
-- Generics obscure rather than express a relationship.
+Run typecheck, focused tests, and verify emitted runtime behavior separately.
 
 ## Source foundation
-Run typecheck plus focused tests and verify emitted runtime behavior separately.
+https://www.typescriptlang.org/docs/handbook/2/narrowing.html

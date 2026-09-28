@@ -1,45 +1,30 @@
 ---
 name: node-testing
-description: testing
+description: Use when choosing or implementing Node.js backend tests, including unit, integration, API, contract, database, concurrency, property, fuzz, or end-to-end tests.
 ---
 
 # Node Testing
 
 ## Purpose
-Use when choosing or implementing Node.js backend tests, including unit, integration, API, contract, database, concurrency, property, fuzz, or end-to-end tests.
-
-## Activate when
 Test at the boundary that owns the contract using the smallest realistic test that proves behavior.
 
+## Activate when
+Change backend behavior, select test scope, or diagnose flaky tests.
+
 ## Repository inspection
-- Backend behavior changes.
-- Test-scope decisions.
-- Flaky test diagnosis.
+Inspect the test runner, configuration, fixtures, database setup, mocks, network controls, and CI commands.
 
 ## Decision rules
-Inspect the existing test runner, configuration, fixtures, database setup, mocks, network controls, and CI commands.
+Pure deterministic logic → unit. Module/database behavior → integration. HTTP contract → API/contract test. Full workflow → E2E. Unknown/combinatorial input → property/fuzz when justified. Use real infrastructure when mocks erase the behavior under test.
 
 ## Implementation procedure
-- Pure deterministic logic → unit.
-- Module/database behavior → integration.
-- HTTP contract → API integration or contract test.
-- Full workflow → end-to-end.
-- Unknown or combinatorial input → property/fuzz when risk justifies it.
-- Use real infrastructure when mocks would erase the behavior under test.
+1. Identify contract. 2. Write smallest failing test. 3. Implement minimal change. 4. Add negative/boundary cases. 5. Run focused then broader suite.
 
 ## Failure modes
-1. Identify the contract.
-2. Write the smallest failing test.
-3. Implement the minimal change.
-4. Add negative and boundary cases.
-5. Run focused tests then the broader suite.
+Implementation-detail assertions; mocked database behavior; sleep-based timing; shared fixtures; happy-path-only coverage.
 
 ## Verification
-- Implementation-detail assertions.
-- Mocking database behavior.
-- Sleep-based timing.
-- Shared mutable fixtures.
-- Happy-path-only coverage.
+Record exact commands and results. Keep tests deterministic and isolated.
 
 ## Source foundation
-Record exact commands and observed results. Keep tests deterministic and isolated.
+https://nodejs.org/api/test.html

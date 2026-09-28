@@ -1,45 +1,30 @@
 ---
 name: node-observability
-description: operations
+description: Use when adding or reviewing Node.js logging, metrics, distributed tracing, health checks, audit events, or production diagnostics.
 ---
 
 # Node Observability
 
 ## Purpose
-Use when adding or reviewing Node.js logging, metrics, distributed tracing, health checks, audit events, or production diagnostics.
-
-## Activate when
 Make production behavior measurable and diagnosable without leaking sensitive data.
 
-## Repository inspection
-- Production paths.
-- Telemetry changes.
-- Incident diagnosis.
-- Health or audit signals.
+## Activate when
+Ship production paths, add telemetry, diagnose incidents, or define health/audit signals.
 
-## Decision rules
+## Repository inspection
 Inspect logger, telemetry pipeline, propagation, metric naming, health endpoints, alerts, and redaction policy.
 
+## Decision rules
+Use structured logs with stable event names. Use traces for causal paths and metrics for aggregates. Bound metric cardinality. Redact secrets. Separate readiness from liveness and audits from diagnostics.
+
 ## Implementation procedure
-- Use structured logs with stable event names.
-- Use traces for causal cross-service paths and metrics for aggregate behavior.
-- Bound metric cardinality.
-- Redact secrets before emission.
-- Separate readiness from liveness.
-- Keep audit events distinct from diagnostic logs.
+1. Identify operational question. 2. Choose signal type. 3. Define stable attributes. 4. Instrument boundary/failure path. 5. Verify correlation and redaction.
 
 ## Failure modes
-1. Identify the operational question.
-2. Choose signal type.
-3. Define stable attributes.
-4. Instrument the boundary and failure path.
-5. Verify correlation and redaction.
+Full request/response logging; unbounded metric labels; broken trace propagation; readiness always healthy.
 
 ## Verification
-- Full request/response logging.
-- User IDs as unbounded metric labels.
-- Broken trace propagation.
-- Readiness always reporting healthy.
+Exercise success/failure paths and confirm correlation, telemetry, health semantics, and redaction.
 
 ## Source foundation
-Exercise success and failure paths and confirm correlation, telemetry, health semantics, and redaction.
+https://opentelemetry.io/docs/languages/js/

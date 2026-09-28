@@ -1,45 +1,30 @@
 ---
 name: node-performance
-description: performance
+description: Use when diagnosing or improving Node.js latency, event-loop blocking, memory growth, CPU saturation, backpressure, throughput, or load behavior.
 ---
 
 # Node Performance
 
 ## Purpose
-Use when diagnosing or improving Node.js latency, event-loop blocking, memory growth, CPU saturation, backpressure, throughput, or load behavior.
-
-## Activate when
 Measure bottlenecks before changing architecture or adding infrastructure.
 
+## Activate when
+Latency regresses, CPU/memory rises, event-loop lag appears, or queue/stream backlog grows.
+
 ## Repository inspection
-- Latency regression.
-- CPU or memory pressure.
-- Event-loop lag.
-- Queue or stream backlog.
+Inspect workload, latency budget, deployment resources, event-loop behavior, heap behavior, DB calls, and dependencies.
 
 ## Decision rules
-Inspect workload, latency budget, deployment resources, event-loop behavior, heap behavior, database calls, and network dependencies.
+Establish a baseline. Separate CPU, memory, I/O, DB, and contention bottlenecks. Move CPU-heavy work to workers rather than hiding it behind promises. Respect backpressure. Bound caches and queues.
 
 ## Implementation procedure
-- Establish a baseline first.
-- Separate CPU, memory, I/O, database, and contention bottlenecks.
-- Move CPU-heavy work to workers rather than wrapping it in more promises.
-- Respect stream backpressure.
-- Bound caches and queues.
+1. Capture representative workload. 2. Measure dominant resource. 3. Profile. 4. Apply targeted optimization. 5. Re-run same workload. 6. Record evidence.
 
 ## Failure modes
-1. Capture representative workload.
-2. Measure the dominant resource.
-3. Profile before changing.
-4. Apply the smallest targeted optimization.
-5. Re-run the same workload.
-6. Record evidence.
+Toy benchmarks; mismatched environments; concurrency used to hide dependency slowness; unbounded buffering.
 
 ## Verification
-- Toy benchmarks.
-- Mismatched environments.
-- Increasing concurrency to hide slow dependencies.
-- Unbounded buffering.
+Use repeatable performance tests and record environment, workload, baseline, result, and variance.
 
 ## Source foundation
-Use repeatable performance tests and record environment, workload, baseline, result, and variance.
+https://nodejs.org/en/learn/asynchronous-work/dont-block-the-event-loop

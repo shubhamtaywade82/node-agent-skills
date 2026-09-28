@@ -1,44 +1,30 @@
 ---
 name: node-api-engineering
-description: api
+description: Use when designing or changing Node.js HTTP APIs, REST resources, OpenAPI contracts, pagination, idempotency, or API versioning.
 ---
 
 # Node Api Engineering
 
 ## Purpose
-Use when designing or changing Node.js HTTP APIs, REST resources, OpenAPI contracts, pagination, idempotency, or API versioning.
-
-## Activate when
 Treat HTTP contracts as compatibility boundaries between independent clients and services.
 
-## Repository inspection
-- Adding or changing endpoints.
-- Changing request/response shapes.
-- Pagination or idempotency.
+## Activate when
+Add/change endpoints, request/response shapes, pagination, idempotency, or versioning.
 
-## Decision rules
+## Repository inspection
 Inspect routing, middleware, validation, serializers, authentication, schema files, error envelopes, and compatibility policy.
 
+## Decision rules
+Define request, response, status, and error contracts before handler code. Validate transport parts separately. Make pagination deterministic. Use durable idempotency for retryable side effects. Version explicitly.
+
 ## Implementation procedure
-- Define request, response, status, and error contracts before handler code.
-- Validate path, query, headers, and body separately.
-- Make pagination deterministic.
-- Use durable idempotency for retryable side effects.
-- Treat versioning as an explicit compatibility policy.
+1. Define contract. 2. Map auth/tenant boundary. 3. Validate transport input. 4. Invoke application interfaces. 5. Serialize public shape. 6. Add negative/compatibility tests.
 
 ## Failure modes
-1. Define the contract.
-2. Map auth and tenant boundaries.
-3. Validate transport input.
-4. Invoke application logic through explicit interfaces.
-5. Serialize only the public shape.
-6. Add negative and compatibility tests.
+Persistence models leak to clients; ambiguous statuses; unstable pagination; idempotency without durable deduplication.
 
 ## Verification
-- Persistence models leak to clients.
-- Ambiguous error status.
-- Unstable pagination.
-- Idempotency without durable deduplication.
+Run schema validation, API integration tests, negative cases, and backwards-compatibility checks.
 
 ## Source foundation
-Run schema validation, API integration tests, negative cases, and backwards-compatibility checks.
+https://spec.openapis.org/oas/latest.html

@@ -1,45 +1,30 @@
 ---
 name: node-postgresql-persistence
-description: persistence
+description: Use when Node.js backend work changes PostgreSQL schemas, SQL queries, transactions, locks, indexes, connection pools, or persistence integrity.
 ---
 
 # Node Postgresql Persistence
 
 ## Purpose
-Use when Node.js backend work changes PostgreSQL schemas, SQL queries, transactions, locks, indexes, connection pools, or persistence integrity.
-
-## Activate when
 Use database-enforced integrity, explicit transaction ownership, and measured query behavior.
 
+## Activate when
+Change schemas/migrations, transaction behavior, query performance, locks, or pooling.
+
 ## Repository inspection
-- Schema or migration changes.
-- Transaction changes.
-- Database performance work.
+Inspect migrations, constraints, indexes, SQL/query code, transaction helpers, ORM/query builder, pool settings, and DB limits.
 
 ## Decision rules
-Inspect migrations, constraints, indexes, query code, transaction helpers, ORM/query builder, pool settings, and database limits.
+Put critical invariants in constraints. Keep transactions short. Never hold transactions across network calls. Inspect query plans before performance-driven indexes. Match pool concurrency to database capacity. Prefer atomic DB operations for races.
 
 ## Implementation procedure
-- Put critical invariants in database constraints.
-- Keep transactions short.
-- Never hold a transaction across an external network call.
-- Inspect query plans before performance-driven indexes.
-- Match pool concurrency to database capacity.
-- Prefer atomic database operations for race-sensitive state.
+1. State invariant. 2. Choose constraints/transaction boundary. 3. Write safe migration. 4. Implement persistence seam. 5. Add real DB integration tests. 6. Inspect plans for hot paths.
 
 ## Failure modes
-1. State the invariant.
-2. Choose constraints and transaction boundary.
-3. Write the migration safely.
-4. Implement the smallest persistence seam.
-5. Add real database integration tests for database-specific behavior.
-6. Inspect query plans for measured hot paths.
+Application-only uniqueness; long transactions with network calls; oversized pools; ORM-hidden N+1 or locking behavior.
 
 ## Verification
-- Application-only uniqueness.
-- Long transactions containing network calls.
-- Oversized pools.
-- ORM-hidden N+1 or locking behavior.
+Run migration checks, integration tests, constraint failures, rollback tests, and query-plan verification where applicable.
 
 ## Source foundation
-Run migration checks, integration tests, constraint failures, rollback tests, and query-plan verification where applicable.
+https://www.postgresql.org/docs/current/ddl-constraints.html

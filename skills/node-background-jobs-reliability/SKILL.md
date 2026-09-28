@@ -1,43 +1,30 @@
 ---
 name: node-background-jobs-reliability
-description: reliability
+description: Use when implementing Node.js queues, workers, scheduled jobs, retries, dead-letter handling, idempotency, outbox patterns, or at-least-once delivery.
 ---
 
 # Node Background Jobs Reliability
 
 ## Purpose
-Use when implementing Node.js queues, workers, scheduled jobs, retries, dead-letter handling, idempotency, outbox patterns, or at-least-once delivery.
-
-## Activate when
 Assume jobs can fail after partial work and can execute more than once.
 
-## Repository inspection
-- Workers or queues.
-- Retry/backoff.
-- Events after database writes.
+## Activate when
+Create workers/queues, add retry/backoff, or publish events after database writes.
 
-## Decision rules
+## Repository inspection
 Inspect delivery/ack semantics, retries, job payloads, idempotency, dead-letter behavior, and persistence state transitions.
 
+## Decision rules
+Make handlers idempotent when delivery can repeat. Persist deduplication keys when needed. Use bounded retries with backoff/jitter. Use an outbox when atomic publication is required. Make poison-message recovery explicit.
+
 ## Implementation procedure
-- Make handlers idempotent when delivery can repeat.
-- Persist deduplication keys when duplicates matter.
-- Use bounded retries with backoff and jitter where supported.
-- Use an outbox when atomic cross-system publication is required.
-- Make poison-message recovery explicit.
+1. Define delivery semantics. 2. Identify durable idempotency key. 3. Define retryable/terminal failures. 4. Implement recovery. 5. Test duplicates and crash windows.
 
 ## Failure modes
-1. Define delivery semantics.
-2. Identify a durable idempotency key.
-3. Define retryable and terminal failures.
-4. Implement recovery/dead-letter behavior.
-5. Test duplicates and crash windows.
+Retrying non-idempotent side effects; ack before durable state; infinite retries; invisible dead letters.
 
 ## Verification
-- Retrying non-idempotent side effects.
-- Ack before durable state.
-- Infinite retries.
-- Missing dead-letter visibility.
+Test duplicate delivery, timeout, crash-after-side-effect, retry exhaustion, dead-letter handling, and replay.
 
 ## Source foundation
-Test duplicate delivery, timeout, crash-after-side-effect, retry exhaustion, dead-letter handling, and replay.
+https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/transactional-outbox.html
