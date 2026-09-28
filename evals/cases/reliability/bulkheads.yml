@@ -1,0 +1,6 @@
+cases:
+  - name: isolated-capacity
+    skill: node-bulkheads
+    prompt: "Prevent one dependency from exhausting all request capacity."
+    pressure: ["shared pools", "burst traffic"]
+    expected_invariants: ["isolated budget", "bounded concurrency", "priority policy"]
