@@ -1,0 +1,6 @@
+cases:
+  - name: incident-response
+    skill: node-incident-engineering
+    prompt: "Respond to a production incident with rising 5xx and latency."
+    pressure: ["missing context", "multiple hypotheses", "rushed rollback"]
+    expected_invariants: ["evidence", "blast-radius control", "timeline", "follow-up"]
