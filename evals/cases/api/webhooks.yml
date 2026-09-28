@@ -1,0 +1,6 @@
+cases:
+  - name: verified-replay-safe-webhook
+    skill: node-webhooks
+    prompt: "Process provider webhooks that may be duplicated or replayed."
+    pressure: ["provider retries", "invalid signature", "side effects"]
+    expected_invariants: ["raw-body verification", "replay protection", "idempotent effects"]
