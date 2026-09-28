@@ -35,6 +35,21 @@ Route by the dominant backend boundary first. Framework adapters are a translati
 | performance | node-performance | node-observability |
 | production | node-production-runtime | node-observability |
 | external service | node-external-integrations | node-runtime-validation, node-idempotency |
+| retries/deadlines | node-retry-timeouts | node-idempotency, node-resilience |
+| resilience policy | node-resilience | node-retry-timeouts, node-observability |
+| circuit breaker | node-circuit-breakers | node-retry-timeouts, node-resilience |
+| capacity isolation | node-bulkheads | node-load-shedding, node-backpressure |
+| overload | node-load-shedding | node-rate-limiting, node-backpressure |
+| backpressure | node-backpressure | node-async-concurrency, node-load-shedding |
+| rate limiting | node-rate-limiting | node-auth-security, node-redis |
+| distributed system | node-distributed-systems | node-idempotency, node-observability |
+| distributed lock | node-distributed-locks | node-database-engineering, node-redis |
+| event-driven architecture | node-event-driven-architecture | node-message-brokers, node-transactional-outbox |
+| zero downtime | node-zero-downtime | node-production-runtime, node-database-migrations-production |
+| production DB migration | node-database-migrations-production | node-migrations, node-zero-downtime |
+| incident response | node-incident-engineering | node-observability, node-runtime-diagnostics |
+| runtime diagnosis | node-runtime-diagnostics | node-performance, node-observability |
+| release engineering | node-release-engineering | node-zero-downtime, node-database-migrations-production |
 
 ## Framework adapter selection
 
