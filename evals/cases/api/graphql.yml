@@ -1,0 +1,6 @@
+cases:
+  - name: resolver-boundary-security
+    skill: node-graphql
+    prompt: "Add a GraphQL field that returns tenant-scoped billing data."
+    pressure: ["resolver convenience", "authenticated request"]
+    expected_invariants: ["field-level authorization", "bounded query cost", "runtime validation"]
