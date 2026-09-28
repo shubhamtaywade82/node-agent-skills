@@ -46,3 +46,30 @@ skills:
   - name: node-external-integrations
     category: integrations
     triggers: [third-party API, HTTP client, webhook, timeout, retry, secret, external service]
+  - name: node-http-engineering
+    category: api
+    triggers: [HTTP lifecycle, middleware, request context, response lifecycle, error handling]
+  - name: node-api-versioning
+    category: api
+    triggers: [API versioning, compatibility, deprecation, migration, v1, v2]
+  - name: node-rest-api-design
+    category: api
+    triggers: [REST, resource modeling, status code, error envelope, endpoint design]
+  - name: node-pagination-filtering
+    category: api
+    triggers: [pagination, cursor, offset, filtering, sorting, list endpoint]
+  - name: node-idempotency
+    category: reliability
+    triggers: [idempotency key, duplicate request, retry-safe mutation, replay]
+  - name: node-openapi
+    category: api
+    triggers: [OpenAPI, Swagger, API schema, contract-first, schema drift]
+  - name: node-graphql
+    category: api
+    triggers: [GraphQL, resolver, schema, query cost, DataLoader, subscriptions]
+  - name: node-websockets
+    category: api
+    triggers: [WebSocket, WS, realtime, connection lifecycle, backpressure, reconnect]
+  - name: node-webhooks
+    category: integrations
+    triggers: [webhook, signature, raw body, replay, duplicate delivery]
