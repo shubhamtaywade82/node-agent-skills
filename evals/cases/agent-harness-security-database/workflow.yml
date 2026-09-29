@@ -1,0 +1,144 @@
+cases:
+  - name: agent-task-intent
+    skill: node-agent-task-intent
+    prompt: "Implement or review a production Node.js change involving agent task intent."
+    pressure: ["existing repository conventions", "failure path", "security boundary", "resource budget"]
+    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+
+  - name: agent-tool-selection
+    skill: node-agent-tool-selection
+    prompt: "Implement or review a production Node.js change involving agent tool selection."
+    pressure: ["existing repository conventions", "failure path", "security boundary", "resource budget"]
+    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+
+  - name: agent-tool-contract
+    skill: node-agent-tool-contract
+    prompt: "Implement or review a production Node.js change involving agent tool contract."
+    pressure: ["existing repository conventions", "failure path", "security boundary", "resource budget"]
+    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+
+  - name: agent-state-machine
+    skill: node-agent-state-machine
+    prompt: "Implement or review a production Node.js change involving agent state machine."
+    pressure: ["existing repository conventions", "failure path", "security boundary", "resource budget"]
+    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+
+  - name: agent-context-budgeting
+    skill: node-agent-context-budgeting
+    prompt: "Implement or review a production Node.js change involving agent context budgeting."
+    pressure: ["existing repository conventions", "failure path", "security boundary", "resource budget"]
+    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+
+  - name: agent-replayability
+    skill: node-agent-replayability
+    prompt: "Implement or review a production Node.js change involving agent replayability."
+    pressure: ["existing repository conventions", "failure path", "security boundary", "resource budget"]
+    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+
+  - name: agent-deterministic-execution
+    skill: node-agent-deterministic-execution
+    prompt: "Implement or review a production Node.js change involving agent deterministic execution."
+    pressure: ["existing repository conventions", "failure path", "security boundary", "resource budget"]
+    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+
+  - name: agent-safety-gates
+    skill: node-agent-safety-gates
+    prompt: "Implement or review a production Node.js change involving agent safety gates."
+    pressure: ["existing repository conventions", "failure path", "security boundary", "resource budget"]
+    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+
+  - name: agent-human-escalation
+    skill: node-agent-human-escalation
+    prompt: "Implement or review a production Node.js change involving agent human escalation."
+    pressure: ["existing repository conventions", "failure path", "security boundary", "resource budget"]
+    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+
+  - name: agent-tool-audit
+    skill: node-agent-tool-audit
+    prompt: "Implement or review a production Node.js change involving agent tool audit."
+    pressure: ["existing repository conventions", "failure path", "security boundary", "resource budget"]
+    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+
+  - name: agent-observation-normalization
+    skill: node-agent-observation-normalization
+    prompt: "Implement or review a production Node.js change involving agent observation normalization."
+    pressure: ["existing repository conventions", "failure path", "security boundary", "resource budget"]
+    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+
+  - name: agent-action-approval
+    skill: node-agent-action-approval
+    prompt: "Implement or review a production Node.js change involving agent action approval."
+    pressure: ["existing repository conventions", "failure path", "security boundary", "resource budget"]
+    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+
+  - name: agent-loop-control
+    skill: node-agent-loop-control
+    prompt: "Implement or review a production Node.js change involving agent loop control."
+    pressure: ["existing repository conventions", "failure path", "security boundary", "resource budget"]
+    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+
+  - name: prototype-pollution-defense
+    skill: node-prototype-pollution-defense
+    prompt: "Implement or review a production Node.js change involving prototype pollution defense."
+    pressure: ["existing repository conventions", "failure path", "security boundary", "resource budget"]
+    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+
+  - name: regex-dos-defense
+    skill: node-regex-dos-defense
+    prompt: "Implement or review a production Node.js change involving regex dos defense."
+    pressure: ["existing repository conventions", "failure path", "security boundary", "resource budget"]
+    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+
+  - name: json-parse-safety
+    skill: node-json-parse-safety
+    prompt: "Implement or review a production Node.js change involving json parse safety."
+    pressure: ["existing repository conventions", "failure path", "security boundary", "resource budget"]
+    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+
+  - name: serialization-boundaries
+    skill: node-serialization-boundaries
+    prompt: "Implement or review a production Node.js change involving serialization boundaries."
+    pressure: ["existing repository conventions", "failure path", "security boundary", "resource budget"]
+    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+
+  - name: vm-isolation-limitations
+    skill: node-vm-isolation-limitations
+    prompt: "Implement or review a production Node.js change involving vm isolation limitations."
+    pressure: ["existing repository conventions", "failure path", "security boundary", "resource budget"]
+    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+
+  - name: database-statement-timeouts
+    skill: node-database-statement-timeouts
+    prompt: "Implement or review a production Node.js change involving database statement timeouts."
+    pressure: ["existing repository conventions", "failure path", "security boundary", "resource budget"]
+    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+
+  - name: query-cancellation
+    skill: node-query-cancellation
+    prompt: "Implement or review a production Node.js change involving query cancellation."
+    pressure: ["existing repository conventions", "failure path", "security boundary", "resource budget"]
+    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+
+  - name: prepared-statement-safety
+    skill: node-prepared-statement-safety
+    prompt: "Implement or review a production Node.js change involving prepared statement safety."
+    pressure: ["existing repository conventions", "failure path", "security boundary", "resource budget"]
+    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+
+  - name: pooler-compatibility
+    skill: node-pooler-compatibility
+    prompt: "Implement or review a production Node.js change involving pooler compatibility."
+    pressure: ["existing repository conventions", "failure path", "security boundary", "resource budget"]
+    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+
+  - name: transaction-state-monitoring
+    skill: node-transaction-state-monitoring
+    prompt: "Implement or review a production Node.js change involving transaction state monitoring."
+    pressure: ["existing repository conventions", "failure path", "security boundary", "resource budget"]
+    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+
+  - name: connection-pooler-engineering
+    skill: node-connection-pooler-engineering
+    prompt: "Implement or review a production Node.js change involving connection pooler engineering."
+    pressure: ["existing repository conventions", "failure path", "security boundary", "resource budget"]
+    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
