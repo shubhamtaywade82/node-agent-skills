@@ -23,15 +23,18 @@ designing code generators that remain deterministic, reviewable, and safe for No
 
 ## Decision rules
 
-generator inputs are authoritative; generator versions are pinned; output is reproducible and never hand-edited
-
-- Source contracts remain authoritative over generated artifacts.
-- Generated output must be reproducible and reviewable.
-- Runtime validation remains distinct from compile-time typing.
+- Generator inputs and generator versions are authoritative build inputs.
+- Generated output must be reproducible from a clean checkout without hidden environment state.
+- Generated files are not hand-edited unless the ownership model explicitly permits post-generation patches.
+- Generator upgrades require regeneration diffs plus API/contract regression tests.
 
 ## Implementation procedure
 
-1. Identify source.\n2. Select generator.\n3. Pin versions.\n4. Define output ownership.\n5. Add generation command.\n6. Run clean regeneration.\n7. Test generated API behavior.
+1. Identify source schemas and generator entrypoints.
+2. Pin generator and runtime versions.
+3. Generate from a clean working tree.
+4. Compare output and contract diffs.
+5. Run generated-client/API regression tests and record provenance.
 
 ## Failure modes
 
