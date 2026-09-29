@@ -51,6 +51,13 @@ npm run validate
 - Durable message-broker consumption
 - Outbox and transactional outbox patterns
 
+### Ecosystem and agent-workflow wave
+- Repository forensics, debugging, code review, refactoring, and dependency lifecycle
+- Monorepo/workspace engineering, operational CLIs, streams, and Server-Sent Events
+- Object storage, email delivery, search, and application cryptography
+- Agent evaluation, backend documentation, and developer experience
+- CloudEvents and saga orchestration
+
 ### Framework and infrastructure adapters
 | Adapter | Guide | Supported scope |
 |---|---|---|
@@ -62,6 +69,18 @@ npm run validate
 | Drizzle | adapters/drizzle/SKILL.md | current/v1 transition; verify exact versions |
 | BullMQ | adapters/bullmq/SKILL.md | 5.x/6.x |
 | node-redis | adapters/redis/SKILL.md | 5.x |
+| pg | adapters/pg/SKILL.md | current node-postgres |
+| undici | adapters/undici/SKILL.md | current undici |
+| zod | adapters/zod/SKILL.md | 4.x |
+| valibot | adapters/valibot/SKILL.md | current |
+| typebox | adapters/typebox/SKILL.md | current |
+| kafkajs | adapters/kafkajs/SKILL.md | 2.x |
+| aws-sdk-v3 | adapters/aws-sdk-v3/SKILL.md | v3 |
+| pino | adapters/pino/SKILL.md | current |
+| prometheus | adapters/prometheus/SKILL.md | current @prometheus-io/client |
+| pnpm | adapters/pnpm/SKILL.md | current |
+| turborepo | adapters/turborepo/SKILL.md | current |
+| nx | adapters/nx/SKILL.md | current |
 | npm | adapters/npm/SKILL.md | current CLI |
 | Docker | adapters/docker/SKILL.md | current Docker/BuildKit |
 | Kubernetes | adapters/kubernetes/SKILL.md | current API conventions |
@@ -118,5 +137,13 @@ Adapters are conditional. Agents must detect the framework/library and installed
 - https://jestjs.io/docs/getting-started
 - https://testcontainers.com/guides/getting-started-with-testcontainers-for-nodejs/
 - https://playwright.dev/docs/api-testing
+- https://node-postgres.com/features/pooling
+- https://undici.nodejs.org/
+- https://zod.dev/packages/zod
+- https://valibot.dev/guides/quick-start/
+- https://kafka.js.org/docs/getting-started
+- https://docs.aws.amazon.com/sdk-for-javascript/
+- https://pnpm.io/workspaces
+- https://nx.dev/docs/features
 
 CI workflow is validated on GitHub Actions for the current capability branch.
