@@ -284,3 +284,27 @@ Do not select an adapter merely because the user says "Node API". Core skills ar
 
 | graphql-yoga | adapters/graphql-yoga/SKILL.md | 5.x |
 | apollo-server | adapters/apollo-server/SKILL.md | 5.x |
+
+
+## Wave 13 routing
+
+| file-system-safety | node-file-system-safety | node-testing, node-observability |
+| temp-file-safety | node-temp-file-safety | node-testing, node-observability |
+| path-traversal-defense | node-path-traversal-defense | node-testing, node-observability |
+| runtime-feature-detection | node-runtime-feature-detection | node-testing, node-observability |
+| process-supervision | node-process-supervision | node-testing, node-observability |
+| memory-leak-diagnostics | node-memory-leak-diagnostics | node-testing, node-observability |
+| heap-diagnostics | node-heap-diagnostics | node-testing, node-observability |
+| event-loop-diagnostics | node-event-loop-diagnostics | node-testing, node-observability |
+| log-redaction | node-log-redaction | node-testing, node-observability |
+| telemetry-sampling | node-telemetry-sampling | node-testing, node-observability |
+| cardinality-control | node-cardinality-control | node-testing, node-observability |
+| trace-context-propagation | node-trace-context-propagation | node-testing, node-observability |
+| read-replica-routing | node-read-replica-routing | node-testing, node-observability |
+| query-plan-engineering | node-query-plan-engineering | node-testing, node-observability |
+| index-engineering | node-index-engineering | node-testing, node-observability |
+| postgres-locking | node-postgres-locking | node-testing, node-observability |
+| advisory-locks | node-advisory-locks | node-testing, node-observability |
+| api-content-negotiation | node-api-content-negotiation | node-testing, node-observability |
+| http-cache-semantics | node-http-cache-semantics | node-testing, node-observability |
+| api-conditional-requests | node-api-conditional-requests | node-testing, node-observability |
