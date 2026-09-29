@@ -23,15 +23,18 @@ using PostgreSQL row/table locks safely from Node.js.
 
 ## Decision rules
 
-lock mode and ordering are intentional; transactions remain short; deadlock/retry semantics are bounded
-
-- Correctness and operational safety take precedence over convenience.
-- Optimize from measured workload evidence.
-- Keep rollback/roll-forward paths explicit and bounded.
+- Choose the narrowest PostgreSQL lock mode that preserves the invariant.
+- Acquire locks in a consistent order to reduce deadlock risk.
+- Keep transactions short and avoid remote calls while holding locks.
+- Lock timeouts and failure responses must be explicit.
 
 ## Implementation procedure
 
-1. Identify rows/resources.\n2. Choose lock mode.\n3. Lock in stable order.\n4. Keep transaction short.\n5. Classify retryable errors.\n6. Test contention/deadlock cases.
+1. Identify rows/resources that must be protected.
+2. Select lock mode and acquisition order.
+3. Bound transaction duration and lock waits.
+4. Add contention and timeout tests.
+5. Verify concurrent readers and writers preserve invariants.
 
 ## Failure modes
 
