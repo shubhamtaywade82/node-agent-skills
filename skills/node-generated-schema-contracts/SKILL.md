@@ -23,15 +23,18 @@ keeping generated TypeScript/runtime schemas aligned with authoritative API or d
 
 ## Decision rules
 
-schema is authoritative; generated types cannot be mistaken for runtime validation; breaking schema changes require compatibility checks
-
-- Source contracts remain authoritative over generated artifacts.
-- Generated output must be reproducible and reviewable.
-- Runtime validation remains distinct from compile-time typing.
+- The canonical schema contract must have one authoritative source and explicit compatibility policy.
+- Generated types must reflect the schema without silently widening or narrowing externally visible fields.
+- Additive versus breaking schema changes require different rollout plans.
+- Schema drift is detected by deterministic generation and contract comparison.
 
 ## Implementation procedure
 
-1. Identify schema source.\n2. Validate schema.\n3. Generate artifacts.\n4. Compare contract diff.\n5. Pair compile-time types with runtime validation.\n6. Test consumers.
+1. Locate the canonical schema source.
+2. Generate the derived types/artifacts.
+3. Compare schema and generated contract diffs.
+4. Classify compatibility impact.
+5. Test consumers and the mixed-version boundary.
 
 ## Failure modes
 
