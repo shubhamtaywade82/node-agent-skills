@@ -27,6 +27,7 @@ operating TLS trust, certificate rotation, and secure connections in Node.js.
 - SNI and ALPN are protocol choices that must match the deployed topology.
 - Private keys require narrow access and must never appear in logs, source, or test fixtures.
 - Certificate rotation requires overlap, expiry monitoring, and a proven reload path.
+- Validate the full certificate chain and hostname; SNI is part of peer identity selection.
 ## Implementation procedure
 
 1. Identify TLS termination.
