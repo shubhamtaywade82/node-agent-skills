@@ -833,6 +833,78 @@ skills:
     category: operations
     triggers: [runtime health, process health, event loop health, pool health]
 
+  - name: node-typescript-config-engineering
+    category: typescript
+    triggers: [tsconfig, TypeScript compiler options, strict mode, target]
+  - name: node-tsconfig-project-references
+    category: typescript
+    triggers: [project references, composite TypeScript projects, incremental build]
+  - name: node-typescript-module-resolution
+    category: typescript
+    triggers: [module resolution, moduleResolution, NodeNext, bundler resolution]
+  - name: node-esm-cjs-interoperability
+    category: runtime
+    triggers: [ESM CJS interop, import require, module interoperability]
+  - name: node-package-exports
+    category: build
+    triggers: [package exports, conditional exports, subpath exports]
+  - name: node-package-imports
+    category: build
+    triggers: [package imports, hash imports, internal aliases]
+  - name: node-package-self-reference
+    category: build
+    triggers: [package self reference, package-name import, exports]
+  - name: node-subpath-patterns
+    category: build
+    triggers: [package subpath patterns, wildcard exports]
+  - name: node-dual-package-hazards
+    category: build
+    triggers: [dual package hazard, ESM CJS dual package]
+  - name: node-npm-publishing
+    category: release
+    triggers: [npm publish, package tarball, release package]
+  - name: node-package-provenance
+    category: security
+    triggers: [npm provenance, trusted publishing, OIDC publish]
+  - name: node-typescript-declaration-publishing
+    category: typescript
+    triggers: [declaration files, d.ts publishing, types exports]
+  - name: node-lockfile-integrity
+    category: security
+    triggers: [lockfile integrity, frozen install, dependency lock]
+  - name: node-dependency-confusion-defense
+    category: security
+    triggers: [dependency confusion, registry scope, private package]
+  - name: node-install-script-safety
+    category: security
+    triggers: [install scripts, lifecycle scripts, dependency install]
+  - name: node-postinstall-safety
+    category: security
+    triggers: [postinstall, native dependency install, remote binary]
+  - name: node-build-cache-integrity
+    category: build
+    triggers: [build cache, cache key, remote build cache]
+  - name: node-source-map-governance
+    category: security
+    triggers: [source maps, hidden source maps, source content]
+  - name: node-runtime-inspector-security
+    category: security
+    triggers: [Node inspector, debugger port, remote debugging]
+  - name: node-diagnostic-reports
+    category: runtime
+    triggers: [diagnostic report, Node report, crash diagnostics]
+  - name: node-startup-profiling
+    category: performance
+    triggers: [startup profiling, cold start, module loading]
+  - name: node-http2-engineering
+    category: network
+    triggers: [HTTP/2, http2, ALPN, stream concurrency]
+  - name: node-structured-cloning
+    category: runtime
+    triggers: [structured clone, worker message, transferable]
+  - name: node-package-manager-policy
+    category: build
+    triggers: [package manager policy, npm, pnpm, yarn, Corepack]
 adapters:
   express:
     path: adapters/express/SKILL.md
