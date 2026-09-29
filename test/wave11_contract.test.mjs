@@ -44,7 +44,7 @@ test("Wave 11 skills have files and evaluation coverage", async () => {
 });
 
 test("Wave 11 adapter inventory is complete", () => {
-  assert.equal([...manifest.matchAll(/^    path: adapters\//gm)].length, 69);
+  assert.equal([...manifest.matchAll(/^    path: adapters\//gm)].length, 73);
 });
 
 test("Wave 11 adapters have registry, skill, README, and source metadata", async () => {
