@@ -139,6 +139,6 @@ cases:
 
   - name: repository-health
     skill: node-repository-health
-    prompt: "Diagnose a repository-health failure where scripts, lockfile, runtime metadata, and CI disagree about the supported Node.js baseline."
+    prompt: "Diagnose a repository health-check failure where scripts, lockfile, runtime metadata, and CI disagree about the supported Node.js baseline."
     pressure: ["health check", "lockfile drift", "runtime metadata", "CI parity"]
     expected_invariants: ["single runtime contract", "dependency consistency", "CI parity", "health report"]
