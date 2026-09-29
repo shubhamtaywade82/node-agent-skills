@@ -23,15 +23,18 @@ maintaining generated API clients without hiding transport, auth, retry, or comp
 
 ## Decision rules
 
-generated transport stays replaceable; auth/timeout/retry policy remains explicit; regeneration is reproducible
-
-- Source contracts remain authoritative over generated artifacts.
-- Generated output must be reproducible and reviewable.
-- Runtime validation remains distinct from compile-time typing.
+- Generated clients are downstream artifacts of a versioned contract; the contract owns endpoint and type truth.
+- Handwritten customization must live outside generated regions and survive regeneration.
+- Generated auth, transport, and retry behavior must be reviewed explicitly.
+- Regeneration must include client smoke tests against representative success and failure cases.
 
 ## Implementation procedure
 
-1. Define generator/source.\n2. Isolate generated output.\n3. Wrap with small domain client.\n4. Document retry/auth behavior.\n5. Regenerate in CI.\n6. Test contract failures.
+1. Identify the source API/schema contract.
+2. Determine generated versus handwritten ownership.
+3. Regenerate with pinned tooling.
+4. Review auth, transport, and retry behavior.
+5. Run client smoke and compatibility tests.
 
 ## Failure modes
 
