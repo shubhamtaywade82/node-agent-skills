@@ -458,6 +458,60 @@ skills:
   - name: node-runbook-engineering
     category: operations
     triggers: [runbook, operational procedure, incident runbook, maintenance procedure]
+  - name: node-sli-slo-engineering
+    category: operations
+    triggers: [SLI, SLO, reliability objective, good event, service level indicator]
+  - name: node-error-budget-engineering
+    category: operations
+    triggers: [error budget, burn rate, release policy, reliability budget]
+  - name: node-service-ownership
+    category: operations
+    triggers: [service ownership, dependency owner, escalation, accountable team]
+  - name: node-oncall-readiness
+    category: operations
+    triggers: [on-call, alert, runbook, paging, incident readiness]
+  - name: node-operational-readiness
+    category: operations
+    triggers: [operational readiness, production readiness, launch checklist]
+  - name: node-security-incident-response
+    category: security
+    triggers: [security incident, credential leak, containment, evidence]
+  - name: node-vulnerability-management
+    category: security
+    triggers: [vulnerability, security advisory, dependency CVE, remediation]
+  - name: node-auth-session-revocation
+    category: security
+    triggers: [session revocation, logout all, token revocation, password reset]
+  - name: node-oauth-client-security
+    category: security
+    triggers: [OAuth client, PKCE, state, redirect URI, token security]
+  - name: node-oidc-integration
+    category: security
+    triggers: [OIDC, OpenID Connect, issuer, nonce, ID token]
+  - name: node-mfa-engineering
+    category: security
+    triggers: [MFA, TOTP, WebAuthn, passkey, recovery codes]
+  - name: node-password-storage
+    category: security
+    triggers: [password hashing, password KDF, salt, rehash]
+  - name: node-user-enumeration-defense
+    category: security
+    triggers: [user enumeration, account discovery, password reset]
+  - name: node-native-test-runner
+    category: testing
+    triggers: [node:test, Node test runner, built-in tests]
+  - name: node-http-testing
+    category: testing
+    triggers: [HTTP testing, API integration test, real HTTP server]
+  - name: node-benchmark-engineering
+    category: testing
+    triggers: [benchmark, latency benchmark, throughput benchmark, performance regression]
+  - name: node-failure-injection-testing
+    category: testing
+    triggers: [failure injection, fault injection, timeout test, dependency failure]
+  - name: node-test-isolation-engineering
+    category: testing
+    triggers: [test isolation, parallel tests, shared state, test resources]
 
 adapters:
   express:
@@ -688,3 +742,19 @@ adapters:
     path: adapters/newrelic/SKILL.md
     version_scope: current newrelic
     source: https://docs.newrelic.com/docs/apm/agents/nodejs-agent/installation-configuration/install-nodejs-agent/
+  node-test-runner:
+    path: adapters/node-test-runner/SKILL.md
+    version_scope: Node 24.x `node:test`
+    source: https://nodejs.org/docs/latest-v24.x/api/test.html
+  supertest:
+    path: adapters/supertest/SKILL.md
+    version_scope: current
+    source: https://github.com/forwardemail/supertest
+  oauth4webapi:
+    path: adapters/oauth4webapi/SKILL.md
+    version_scope: 3.x
+    source: https://github.com/panva/oauth4webapi
+  openid-client:
+    path: adapters/openid-client/SKILL.md
+    version_scope: current
+    source: https://github.com/panva/openid-client

@@ -129,6 +129,25 @@ Route by the dominant backend boundary first. Framework adapters are a translati
 | observability validation | node-observability-validation | node-observability, node-incident-engineering |
 | runbook engineering | node-runbook-engineering | node-incident-engineering, node-documentation-engineering |
 
+| SLI/SLO engineering | node-sli-slo-engineering | node-observability, node-performance |
+| error budgets | node-error-budget-engineering | node-sli-slo-engineering, node-release-engineering |
+| service ownership | node-service-ownership | node-documentation-engineering, node-incident-engineering |
+| on-call readiness | node-oncall-readiness | node-observability, node-runbook-engineering |
+| operational readiness | node-operational-readiness | node-release-engineering, node-disaster-recovery |
+| security incident response | node-security-incident-response | node-secrets, node-incident-engineering |
+| vulnerability management | node-vulnerability-management | node-supply-chain, node-dependency-upgrades |
+| session revocation | node-auth-session-revocation | node-auth-security, node-session-management |
+| OAuth client security | node-oauth-client-security | node-auth-security, node-secrets |
+| OIDC integration | node-oidc-integration | node-oauth-client-security, node-auth-security |
+| MFA | node-mfa-engineering | node-auth-security, node-session-management |
+| password storage | node-password-storage | node-auth-security, node-cryptography |
+| user enumeration defense | node-user-enumeration-defense | node-auth-security, node-rate-limiting |
+| Node native test runner | node-native-test-runner | node-testing, node-test-isolation-engineering |
+| HTTP integration testing | node-http-testing | node-integration-testing, node-testing |
+| benchmarking | node-benchmark-engineering | node-performance, node-observability |
+| failure injection testing | node-failure-injection-testing | node-resilience, node-chaos-engineering |
+| test isolation | node-test-isolation-engineering | node-testing, node-test-environment-engineering |
+
 ## Framework adapter selection
 
 After selecting the core owner, detect the actual framework from dependency manifests/imports before loading an adapter:
