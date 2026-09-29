@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 
 const manifest = await readFile(new URL("../skill-manifest.yml", import.meta.url), "utf8");
+const validator = await readFile(new URL("../scripts/validate.mjs", import.meta.url), "utf8");
 
 const skills = [
   "node-agent-preflight",
@@ -41,6 +42,11 @@ test("Wave 12 skills have files and evaluation coverage", async () => {
     assert.match(evals, new RegExp("skill: " + skill, "m"));
   }
   assert.equal([...manifest.matchAll(/^  - name: ([a-z0-9-]+)$/gm)].length, 226);
+});
+
+test("validator derives adapter inventory from the manifest", () => {
+  assert.match(validator, /const adapterEntries = .*manifest\.matchAll/);
+  assert.match(validator, /for \(const \{ name, path, versionScope, source \} of adapterEntries\)/);
 });
 
 test("Wave 12 adapters have registry, skill, README, and source metadata", async () => {
