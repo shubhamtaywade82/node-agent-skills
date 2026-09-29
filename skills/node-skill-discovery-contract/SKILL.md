@@ -23,15 +23,18 @@ designing predictable skill discovery and activation metadata.
 
 ## Decision rules
 
-discovery metadata is concise and deterministic; descriptions encode activation triggers; routing does not imply unsupported dependencies
-
-- Source metadata remains authoritative.
-- Keep discovery and routing deterministic and concise.
-- Test behavioral contracts, not prose wording.
+- Discovery descriptions must express activation triggers and remain specific enough to reject unrelated tasks.
+- A discovery hit is not sufficient for activation; repository evidence still decides applicability.
+- Conflicting triggers require deterministic precedence or explicit ambiguity handling.
+- Version-sensitive behavior belongs in adapters, not generic discovery metadata.
 
 ## Implementation procedure
 
-1. Define discovery fields.\n2. Map skill to triggers.\n3. Validate frontmatter.\n4. Test positive/negative discovery cases.\n5. Inspect collisions.
+1. Extract searchable trigger terms from each skill description.
+2. Define positive and negative discovery examples.
+3. Test collisions between similar skills.
+4. Verify version-specific triggers remain adapter-scoped.
+5. Record orphan, ambiguous, and over-broad descriptions.
 
 ## Failure modes
 
