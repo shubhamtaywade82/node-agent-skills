@@ -26,7 +26,7 @@ evolving a skill pack without silently changing agent behavior.
 - Adapter activation requires detected installed versions to match explicit version_scope.
 - Lockfiles and package manifests are stronger evidence than README version claims.
 - Unsupported or ambiguous versions produce a safe no-adapter result rather than a guessed compatibility mode.
-- Version scope changes require fixture coverage for lower, target, and upper supported ranges.
+- Version-scope changes require fixtures for lower, target, and upper supported ranges.
 
 ## Implementation procedure
 
