@@ -76,3 +76,18 @@ Do not select an adapter merely because the user says "Node API". Core skills ar
 4. Load a framework adapter only after detecting the framework/version from repository dependencies.
 5. Authentication and authorization remain distinct.
 6. Prefer framework-neutral skills before vendor/framework adapters.
+
+| domain modeling | node-domain-modeling | node-architecture, node-transactions |
+| hexagonal architecture | node-hexagonal-architecture | node-domain-modeling, node-dependency-injection |
+| dependency injection | node-dependency-injection | node-module-boundaries, node-architecture |
+| module boundaries | node-module-boundaries | node-architecture, node-design-patterns |
+| integration testing | node-integration-testing | node-testing, node-testcontainers |
+| end-to-end testing | node-e2e-testing | node-integration-testing, node-testing |
+| testcontainers | node-testcontainers | node-integration-testing, node-database-engineering |
+| load testing | node-load-testing | node-performance, node-observability |
+| API clients | node-api-client-engineering | node-external-integrations, node-retry-timeouts |
+| file uploads | node-file-uploads | node-runtime-validation, node-security-hardening |
+| scheduling | node-scheduling | node-queues, node-idempotency |
+| multi-tenancy | node-multi-tenancy | node-auth-security, node-database-engineering |
+| audit logging | node-audit-logging | node-observability, node-auth-security |
+| data privacy | node-data-privacy | node-secrets, node-observability, node-audit-logging |

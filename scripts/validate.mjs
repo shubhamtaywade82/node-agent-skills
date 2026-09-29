@@ -22,7 +22,7 @@ const dirs = (await readdir(path.join(root, "skills"), {withFileTypes:true})).fi
 if (JSON.stringify(dirs) !== JSON.stringify([...names].sort())) throw new Error("manifest/skills mismatch");
 console.log(`validated ${names.length} skills`);
 
-const adapterScopes = { express: "5.x", fastify: "5.x", nestjs: "12.x", hono: "4.x", prisma: "7.x/8.x", drizzle: "current/v1", bullmq: "5.x/6.x", redis: "node-redis-5.x", npm: "current npm CLI", docker: "current Docker/BuildKit", kubernetes: "current Kubernetes API conventions", opentelemetry: "current OpenTelemetry JavaScript SDK" };
+const adapterScopes = { express: "5.x", fastify: "5.x", nestjs: "12.x", hono: "4.x", prisma: "7.x/8.x", drizzle: "current/v1", bullmq: "5.x/6.x", redis: "node-redis-5.x", npm: "current npm CLI", docker: "current Docker/BuildKit", kubernetes: "current Kubernetes API conventions", opentelemetry: "current OpenTelemetry JavaScript SDK", vitest: "current Vitest 5.x", jest: "30.x", testcontainers: "current Node.js Testcontainers", playwright: "current Playwright Test" };
 for (const [name, scope] of Object.entries(adapterScopes)) {
   const lines = manifest.split("\n");
   const index = lines.indexOf("  " + name + ":");
