@@ -45,7 +45,8 @@ test("Wave 12 skills have files and evaluation coverage", async () => {
 });
 
 test("validator derives adapter inventory from the manifest", () => {
-  assert.match(validator, /const adapterEntries = .*manifest\.matchAll/);
+  assert.match(validator, /const adapterEntries = \[\];/);
+  assert.match(validator, /const manifestLines = manifest\.split/);
   assert.match(validator, /for \(const \{ name, path(?:: adapterPath)?, versionScope, source \} of adapterEntries\)/);
 });
 
