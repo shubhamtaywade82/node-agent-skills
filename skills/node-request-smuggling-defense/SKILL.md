@@ -27,6 +27,7 @@ reducing request desynchronization risk across Node.js servers, proxies, and par
 - Conflicting or repeated Content-Length values must not be normalized casually.
 - Transfer-Encoding handling must match the actual intermediary and origin protocol behavior.
 - Parser errors must not leave a reusable connection in an uncertain message boundary state.
+- Transfer-Encoding and Content-Length combinations must have an explicit accept/reject policy at every parsing hop.
 ## Implementation procedure
 
 1. Inventory proxy/server/parser versions.
