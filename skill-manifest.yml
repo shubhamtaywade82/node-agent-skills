@@ -196,6 +196,49 @@ skills:
   - name: node-serverless
     category: production
     triggers: [serverless, function handler, cold start, invocation retry, stateless function]
+  - name: node-domain-modeling
+    category: architecture
+    triggers: [domain modeling, aggregates, value objects, business invariants]
+  - name: node-hexagonal-architecture
+    category: architecture
+    triggers: [hexagonal architecture, ports, adapters, dependency direction]
+  - name: node-dependency-injection
+    category: architecture
+    triggers: [dependency injection, composition root, lifecycle, test doubles]
+  - name: node-module-boundaries
+    category: architecture
+    triggers: [module boundaries, public API, dependency graph, circular dependency]
+  - name: node-integration-testing
+    category: testing
+    triggers: [integration testing, database integration, HTTP integration, real dependency]
+  - name: node-e2e-testing
+    category: testing
+    triggers: [end to end, workflow test, system test, backend E2E]
+  - name: node-testcontainers
+    category: testing
+    triggers: [Testcontainers, real service, disposable dependency, containerized test]
+  - name: node-load-testing
+    category: testing
+    triggers: [load test, throughput, latency, concurrency, capacity]
+  - name: node-api-client-engineering
+    category: integrations
+    triggers: [HTTP client, API client, deadline, retry, pagination]
+  - name: node-file-uploads
+    category: api
+    triggers: [file upload, multipart, streaming, content type, object storage]
+  - name: node-scheduling
+    category: reliability
+    triggers: [cron, scheduled job, timezone, recurrence, missed run]
+  - name: node-multi-tenancy
+    category: security
+    triggers: [tenant isolation, tenant id, row ownership, cross-tenant leakage]
+  - name: node-audit-logging
+    category: security
+    triggers: [audit log, actor, target, security event, compliance evidence]
+  - name: node-data-privacy
+    category: security
+    triggers: [personal data, PII, retention, deletion, minimization, redaction]
+
 
 adapters:
   express:
