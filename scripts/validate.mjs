@@ -22,25 +22,30 @@ const dirs = (await readdir(path.join(root, "skills"), {withFileTypes:true})).fi
 if (JSON.stringify(dirs) !== JSON.stringify([...names].sort())) throw new Error("manifest/skills mismatch");
 console.log(`validated ${names.length} skills`);
 
-const adapterScopes = { express: "5.x", fastify: "5.x", nestjs: "12.x", hono: "4.x", prisma: "7.x/8.x", drizzle: "current/v1", bullmq: "5.x/6.x", redis: "node-redis-5.x", npm: "current npm CLI", docker: "current Docker/BuildKit", kubernetes: "current Kubernetes API conventions", opentelemetry: "current OpenTelemetry JavaScript SDK", vitest: "current Vitest 5.x", jest: "30.x", testcontainers: "current Node.js Testcontainers", playwright: "current Playwright Test", pg: "current node-postgres", undici: "current undici", zod: "4.x", valibot: "current", typebox: "current", kafkajs: "2.x", "aws-sdk-v3": "v3", pino: "current", prometheus: "current @prometheus-io/client", pnpm: "current", turborepo: "current", nx: "current", "github-actions": "current GitHub Actions / Node.js workflow", terraform: "current Terraform", helm: "current Helm", argocd: "current Argo CD", "aws-cloudwatch": "AWS SDK JavaScript v3", sentry: "current Sentry Node.js SDK", datadog: "current dd-trace", newrelic: "current newrelic", "node-test-runner": "Node 24.x node:test", supertest: "current", oauth4webapi: "3.x", "openid-client": "current", "graphql-yoga": "5.x", "apollo-server": "5.x", ajv: "8.x", jose: "6.x", kysely: "0.28.x", "mongodb-memory-server": "10.x" };
-for (const [name, scope] of Object.entries(adapterScopes)) {
-  const lines = manifest.split("\n");
+const adapterEntries = [...manifest.matchAll(/^  ([a-z0-9-]+):\\n    path: (adapters\\/[^\\n]+)\\n    version_scope: ([^\\n]+)\\n    source: (https:\\/\\/\\S+)$/gm)].map((m) => ({
+  name: m[1],
+  path: m[2],
+  versionScope: m[3],
+  source: m[4],
+}));
+if (!adapterEntries.length) throw new Error("manifest contains no adapters");
+
+for (const { name, path: adapterPath, versionScope, source } of adapterEntries) {
+  if (!adapterPath.endsWith("/SKILL.md")) throw new Error("adapter path mismatch: " + name);
+  if (!versionScope.trim()) throw new Error("adapter version_scope missing: " + name);
+  if (!source.startsWith("https://")) throw new Error("adapter source missing: " + name);
+  const lines = manifest.split("\\n");
   const index = lines.indexOf("  " + name + ":");
-  if (index < 0) throw new Error("adapter registry mismatch: " + name);
-  if (lines[index + 1] !== "    path: adapters/" + name + "/SKILL.md") {
-    throw new Error("adapter path mismatch: " + name);
+  if (index < 0 || lines[index + 1] !== "    path: " + adapterPath) {
+    throw new Error("adapter registry mismatch: " + name);
   }
-  if (lines[index + 2] !== "    version_scope: " + scope) {
-    throw new Error("adapter version_scope mismatch: " + name);
-  }
-  if (!/^    source: https:\/\//.test(lines[index + 3] ?? "")) {
-    throw new Error("adapter source missing: " + name);
-  }
-  for (const relative of ["adapters/" + name + "/SKILL.md", "adapters/" + name + "/README.md"]) {
-    const file = path.join(root, relative);
-    await access(file);
-    const adapterText = await readFile(file, "utf8");
-    if (adapterText.split("\n").length > 500) throw new Error(relative + ": exceeds 500 lines");
-  }
+  const expectedPath = path.join(root, adapterPath);
+  const readmePath = path.join(root, "adapters", name, "README.md");
+  await access(expectedPath);
+  await access(readmePath);
+  const adapterText = await readFile(expectedPath, "utf8");
+  const readmeText = await readFile(readmePath, "utf8");
+  if (adapterText.split("\\n").length > 500) throw new Error(adapterPath + ": exceeds 500 lines");
+  if (readmeText.split("\\n").length > 500) throw new Error(readmePath + ": exceeds 500 lines");
 }
-console.log("validated " + names.length + " skills and " + Object.keys(adapterScopes).length + " adapters");
+console.log("validated " + names.length + " skills and " + adapterEntries.length + " adapters");
