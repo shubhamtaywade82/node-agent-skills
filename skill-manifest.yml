@@ -687,6 +687,79 @@ skills:
   - name: node-header-normalization
     category: network
     triggers: [HTTP headers, duplicate headers, header normalization]
+  - name: node-filesystem-safety
+    category: security
+    triggers: [filesystem safety, file access, symlink, path containment]
+  - name: node-temp-file-safety
+    category: security
+    triggers: [temporary files, temp directory, cleanup, secure temp]
+  - name: node-path-traversal-defense
+    category: security
+    triggers: [path traversal, dot dot, path containment, encoded path]
+  - name: node-archive-extraction-safety
+    category: security
+    triggers: [archive extraction, zip slip, tar traversal, archive bomb]
+  - name: node-file-descriptor-lifecycle
+    category: runtime
+    triggers: [file descriptor leaks, handle cleanup, stream lifecycle]
+  - name: node-process-supervision
+    category: runtime
+    triggers: [process supervision, SIGTERM, graceful shutdown, supervisor]
+  - name: node-worker-crash-recovery
+    category: runtime
+    triggers: [worker crash, worker thread failure, background worker recovery]
+  - name: node-event-loop-diagnostics
+    category: performance
+    triggers: [event loop lag, event loop utilization, blocking work]
+  - name: node-memory-leak-diagnostics
+    category: performance
+    triggers: [memory leak, RSS growth, heap retention, GC]
+  - name: node-heap-diagnostics
+    category: runtime
+    triggers: [heap snapshot, heap statistics, memory diagnostics]
+  - name: node-log-redaction
+    category: security
+    triggers: [log redaction, secrets in logs, sensitive headers]
+  - name: node-telemetry-sampling
+    category: observability
+    triggers: [telemetry sampling, trace sampling, log sampling]
+  - name: node-metric-cardinality-control
+    category: observability
+    triggers: [metric cardinality, label budget, high cardinality]
+  - name: node-trace-context-propagation
+    category: observability
+    triggers: [trace context, traceparent, distributed tracing]
+  - name: node-api-content-negotiation
+    category: api
+    triggers: [Accept header, Content-Type, content negotiation, Vary]
+  - name: node-http-cache-semantics
+    category: api
+    triggers: [Cache-Control, shared cache, private response, freshness]
+  - name: node-etag-cache-validation
+    category: api
+    triggers: [ETag, If-None-Match, conditional GET, 304]
+  - name: node-api-conditional-requests
+    category: api
+    triggers: [If-Match, If-None-Match, conditional request, precondition]
+  - name: node-rate-limit-headers
+    category: api
+    triggers: [rate limit headers, Retry-After, remaining, reset]
+  - name: node-authz-policy-testing
+    category: security
+    triggers: [authorization policy testing, RBAC, ABAC, default deny]
+  - name: node-access-control-auditing
+    category: security
+    triggers: [access control audit, privileged action audit, authorization audit]
+  - name: node-security-regression-testing
+    category: security
+    triggers: [security regression test, vulnerability regression, exploit test]
+  - name: node-runtime-feature-detection
+    category: runtime
+    triggers: [runtime feature detection, capability detection, Node version]
+  - name: node-repository-health
+    category: build
+    triggers: [repository health, dependency drift, CI health, maintainability]
+
 adapters:
   express:
     path: adapters/express/SKILL.md
