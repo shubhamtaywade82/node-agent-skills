@@ -39,7 +39,7 @@ test("Wave 13 skills have files and evaluation coverage", async () => {
     assert.match(text, new RegExp("^name: " + skill + "$", "m"));
     assert.match(evals, new RegExp("skill: " + skill, "m"));
   }
-  assert.equal([...manifest.matchAll(/^  - name: ([a-z0-9-]+)$/gm)].length, 246);
+  assert.equal([...manifest.matchAll(/^  - name: ([a-z0-9-]+)$/gm)].length, 266);
 });
 
 test("pack exporter produces a self-contained deterministic distribution", async () => {
