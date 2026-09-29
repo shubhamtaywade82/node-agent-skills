@@ -1,0 +1,108 @@
+cases:
+  - name: disaster-recovery
+    skill: node-disaster-recovery
+    prompt: "Implement or review a production Node.js backend change involving  disaster recovery."
+    pressure: ["existing conventions", "failure path", "security", "operational compatibility"]
+    expected_invariants: ["explicit ownership", "bounded failure", "observable behavior", "tests prove the contract"]
+
+  - name: backup-restore
+    skill: node-backup-restore
+    prompt: "Implement or review a production Node.js backend change involving  backup restore."
+    pressure: ["existing conventions", "failure path", "security", "operational compatibility"]
+    expected_invariants: ["explicit ownership", "bounded failure", "observable behavior", "tests prove the contract"]
+
+  - name: chaos-engineering
+    skill: node-chaos-engineering
+    prompt: "Implement or review a production Node.js backend change involving  chaos engineering."
+    pressure: ["existing conventions", "failure path", "security", "operational compatibility"]
+    expected_invariants: ["explicit ownership", "bounded failure", "observable behavior", "tests prove the contract"]
+
+  - name: capacity-planning
+    skill: node-capacity-planning
+    prompt: "Implement or review a production Node.js backend change involving  capacity planning."
+    pressure: ["existing conventions", "failure path", "security", "operational compatibility"]
+    expected_invariants: ["explicit ownership", "bounded failure", "observable behavior", "tests prove the contract"]
+
+  - name: cost-aware-engineering
+    skill: node-cost-aware-engineering
+    prompt: "Implement or review a production Node.js backend change involving  cost aware engineering."
+    pressure: ["existing conventions", "failure path", "security", "operational compatibility"]
+    expected_invariants: ["explicit ownership", "bounded failure", "observable behavior", "tests prove the contract"]
+
+  - name: multi-region
+    skill: node-multi-region
+    prompt: "Implement or review a production Node.js backend change involving  multi region."
+    pressure: ["existing conventions", "failure path", "security", "operational compatibility"]
+    expected_invariants: ["explicit ownership", "bounded failure", "observable behavior", "tests prove the contract"]
+
+  - name: failover-engineering
+    skill: node-failover-engineering
+    prompt: "Implement or review a production Node.js backend change involving  failover engineering."
+    pressure: ["existing conventions", "failure path", "security", "operational compatibility"]
+    expected_invariants: ["explicit ownership", "bounded failure", "observable behavior", "tests prove the contract"]
+
+  - name: graceful-degradation
+    skill: node-graceful-degradation
+    prompt: "Implement or review a production Node.js backend change involving  graceful degradation."
+    pressure: ["existing conventions", "failure path", "security", "operational compatibility"]
+    expected_invariants: ["explicit ownership", "bounded failure", "observable behavior", "tests prove the contract"]
+
+  - name: time-engineering
+    skill: node-time-engineering
+    prompt: "Implement or review a production Node.js backend change involving  time engineering."
+    pressure: ["existing conventions", "failure path", "security", "operational compatibility"]
+    expected_invariants: ["explicit ownership", "bounded failure", "observable behavior", "tests prove the contract"]
+
+  - name: session-management
+    skill: node-session-management
+    prompt: "Implement or review a production Node.js backend change involving  session management."
+    pressure: ["existing conventions", "failure path", "security", "operational compatibility"]
+    expected_invariants: ["explicit ownership", "bounded failure", "observable behavior", "tests prove the contract"]
+
+  - name: cookie-security
+    skill: node-cookie-security
+    prompt: "Implement or review a production Node.js backend change involving  cookie security."
+    pressure: ["existing conventions", "failure path", "security", "operational compatibility"]
+    expected_invariants: ["explicit ownership", "bounded failure", "observable behavior", "tests prove the contract"]
+
+  - name: cors-security
+    skill: node-cors-security
+    prompt: "Implement or review a production Node.js backend change involving  cors security."
+    pressure: ["existing conventions", "failure path", "security", "operational compatibility"]
+    expected_invariants: ["explicit ownership", "bounded failure", "observable behavior", "tests prove the contract"]
+
+  - name: security-headers
+    skill: node-security-headers
+    prompt: "Implement or review a production Node.js backend change involving  security headers."
+    pressure: ["existing conventions", "failure path", "security", "operational compatibility"]
+    expected_invariants: ["explicit ownership", "bounded failure", "observable behavior", "tests prove the contract"]
+
+  - name: ci-pipeline-engineering
+    skill: node-ci-pipeline-engineering
+    prompt: "Implement or review a production Node.js backend change involving  ci pipeline engineering."
+    pressure: ["existing conventions", "failure path", "security", "operational compatibility"]
+    expected_invariants: ["explicit ownership", "bounded failure", "observable behavior", "tests prove the contract"]
+
+  - name: progressive-delivery
+    skill: node-progressive-delivery
+    prompt: "Implement or review a production Node.js backend change involving  progressive delivery."
+    pressure: ["existing conventions", "failure path", "security", "operational compatibility"]
+    expected_invariants: ["explicit ownership", "bounded failure", "observable behavior", "tests prove the contract"]
+
+  - name: infrastructure-as-code
+    skill: node-infrastructure-as-code
+    prompt: "Implement or review a production Node.js backend change involving  infrastructure as code."
+    pressure: ["existing conventions", "failure path", "security", "operational compatibility"]
+    expected_invariants: ["explicit ownership", "bounded failure", "observable behavior", "tests prove the contract"]
+
+  - name: observability-validation
+    skill: node-observability-validation
+    prompt: "Implement or review a production Node.js backend change involving  observability validation."
+    pressure: ["existing conventions", "failure path", "security", "operational compatibility"]
+    expected_invariants: ["explicit ownership", "bounded failure", "observable behavior", "tests prove the contract"]
+
+  - name: runbook-engineering
+    skill: node-runbook-engineering
+    prompt: "Implement or review a production Node.js backend change involving  runbook engineering."
+    pressure: ["existing conventions", "failure path", "security", "operational compatibility"]
+    expected_invariants: ["explicit ownership", "bounded failure", "observable behavior", "tests prove the contract"]
