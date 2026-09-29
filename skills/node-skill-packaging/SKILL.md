@@ -23,15 +23,18 @@ packaging a collection of coding-agent skills for release and redistribution.
 
 ## Decision rules
 
-the source tree is authoritative; packaged output is reproducible, complete, and free of transient files
-
-- Source metadata remains authoritative.
-- Keep discovery and routing deterministic and concise.
-- Test behavioral contracts, not prose wording.
+- The source tree plus manifest is authoritative; package contents must be a complete, reproducible closure.
+- Exclude credentials, .git state, caches, local machine metadata, and unrelated build artifacts.
+- Package bytes should be stable across repeated builds from the same revision.
+- Package verification must include unpacked discovery, manifest validation, and content integrity.
 
 ## Implementation procedure
 
-1. Define included paths.\n2. Exclude secrets/cache/build artifacts.\n3. Generate package.\n4. Hash/verify contents.\n5. Test unpacked discovery.\n6. Record version.
+1. Define the package inclusion closure from the manifest.
+2. Exclude secrets and transient artifacts.
+3. Build the package from the pinned revision.
+4. Rebuild and compare content hashes.
+5. Unpack and verify skill discovery and validation.
 
 ## Failure modes
 
