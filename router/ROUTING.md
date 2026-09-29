@@ -259,6 +259,31 @@ Route by the dominant backend boundary first. Framework adapters are a translati
 | signal-handling | node-signal-handling | node-testing, node-observability |
 | runtime-health-monitoring | node-runtime-health-monitoring | node-testing, node-observability |
 
+| typescript-config-engineering | node-typescript-config-engineering | node-testing, node-build-engineering |
+| tsconfig-project-references | node-tsconfig-project-references | node-testing, node-build-engineering |
+| typescript-module-resolution | node-typescript-module-resolution | node-testing, node-build-engineering |
+| esm-cjs-interoperability | node-esm-cjs-interoperability | node-testing, node-build-engineering |
+| package-exports | node-package-exports | node-testing, node-build-engineering |
+| package-imports | node-package-imports | node-testing, node-build-engineering |
+| package-self-reference | node-package-self-reference | node-testing, node-build-engineering |
+| subpath-patterns | node-subpath-patterns | node-testing, node-build-engineering |
+| dual-package-hazards | node-dual-package-hazards | node-testing, node-build-engineering |
+| npm-publishing | node-npm-publishing | node-testing, node-build-engineering |
+| package-provenance | node-package-provenance | node-testing, node-build-engineering |
+| typescript-declaration-publishing | node-typescript-declaration-publishing | node-testing, node-build-engineering |
+| lockfile-integrity | node-lockfile-integrity | node-testing, node-build-engineering |
+| dependency-confusion-defense | node-dependency-confusion-defense | node-testing, node-build-engineering |
+| install-script-safety | node-install-script-safety | node-testing, node-build-engineering |
+| postinstall-safety | node-postinstall-safety | node-testing, node-build-engineering |
+| build-cache-integrity | node-build-cache-integrity | node-testing, node-build-engineering |
+| source-map-governance | node-source-map-governance | node-testing, node-build-engineering |
+| runtime-inspector-security | node-runtime-inspector-security | node-testing, node-build-engineering |
+| diagnostic-reports | node-diagnostic-reports | node-testing, node-build-engineering |
+| startup-profiling | node-startup-profiling | node-testing, node-build-engineering |
+| http2-engineering | node-http2-engineering | node-testing, node-build-engineering |
+| structured-cloning | node-structured-cloning | node-testing, node-build-engineering |
+| package-manager-policy | node-package-manager-policy | node-testing, node-build-engineering |
+
 ## Framework adapter selection
 
 After selecting the core owner, detect the actual framework from dependency manifests/imports before loading an adapter:
