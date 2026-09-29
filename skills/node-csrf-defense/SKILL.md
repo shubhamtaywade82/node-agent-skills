@@ -23,13 +23,10 @@ preventing cross-site request forgery against browser-authenticated backend sess
 
 ## Decision rules
 
-CSRF protection is based on the authentication model; same-site policy is defense-in-depth; state-changing endpoints require appropriate origin/token controls
-
-- Exact wire bytes and protocol semantics matter for cryptographic verification.
-- Security controls must survive proxies, retries, and duplicate delivery.
-- Timeouts and resource limits are end-to-end budgets, not isolated middleware settings.
-- Prefer explicit allowlists over string heuristics.
-
+- SameSite cookies reduce CSRF risk but are not a complete server-side authorization proof.
+- Validate Origin against a strict trusted-origin policy where it is part of the deployment contract.
+- Cookie-authenticated state changes need an explicit anti-CSRF proof appropriate to the application.
+- CORS controls browser read access; it is not a substitute for CSRF protection.
 ## Implementation procedure
 
 1. Classify browser auth.
