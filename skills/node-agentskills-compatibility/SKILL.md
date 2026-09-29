@@ -23,15 +23,18 @@ checking whether a repository follows the expected agent-skill file and metadata
 
 ## Decision rules
 
-compatibility is checked from documented filesystem/metadata contracts, not assumptions about a specific vendor
-
-- Source metadata remains authoritative.
-- Keep discovery and routing deterministic and concise.
-- Test behavioral contracts, not prose wording.
+- Compatibility is defined by the documented Agent Skills filesystem/frontmatter contract, not vendor folklore.
+- Required metadata must remain portable; vendor-specific extensions belong in adapters or explicit compatibility layers.
+- Unsupported metadata is rejected or ignored deterministically rather than changing routing semantics.
+- Compatibility fixtures must include malformed, duplicate, and minimally valid skills.
 
 ## Implementation procedure
 
-1. Inspect skill directories and frontmatter.\n2. Validate names/descriptions.\n3. Verify discovery files.\n4. Check line limits.\n5. Test a minimal consumer.
+1. Identify the supported skill-file and metadata contract.
+2. Compare the repository tree and frontmatter with that contract.
+3. Exercise valid, invalid, duplicate, and unknown-metadata fixtures.
+4. Verify discovery from a minimal consumer.
+5. Record unsupported features as explicit compatibility risks.
 
 ## Failure modes
 
