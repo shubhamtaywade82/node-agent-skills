@@ -789,3 +789,76 @@ cases:
   - name: runtime-health-monitoring
     primary: node-runtime-health-monitoring
     secondary: [node-testing, node-observability]
+
+  - name: typescript-config-engineering
+    primary: node-typescript-config-engineering
+    secondary: [node-testing, node-build-engineering]
+  - name: tsconfig-project-references
+    primary: node-tsconfig-project-references
+    secondary: [node-testing, node-build-engineering]
+  - name: typescript-module-resolution
+    primary: node-typescript-module-resolution
+    secondary: [node-testing, node-build-engineering]
+  - name: esm-cjs-interoperability
+    primary: node-esm-cjs-interoperability
+    secondary: [node-testing, node-build-engineering]
+  - name: package-exports
+    primary: node-package-exports
+    secondary: [node-testing, node-build-engineering]
+  - name: package-imports
+    primary: node-package-imports
+    secondary: [node-testing, node-build-engineering]
+  - name: package-self-reference
+    primary: node-package-self-reference
+    secondary: [node-testing, node-build-engineering]
+  - name: subpath-patterns
+    primary: node-subpath-patterns
+    secondary: [node-testing, node-build-engineering]
+  - name: dual-package-hazards
+    primary: node-dual-package-hazards
+    secondary: [node-testing, node-build-engineering]
+  - name: npm-publishing
+    primary: node-npm-publishing
+    secondary: [node-testing, node-build-engineering]
+  - name: package-provenance
+    primary: node-package-provenance
+    secondary: [node-testing, node-build-engineering]
+  - name: typescript-declaration-publishing
+    primary: node-typescript-declaration-publishing
+    secondary: [node-testing, node-build-engineering]
+  - name: lockfile-integrity
+    primary: node-lockfile-integrity
+    secondary: [node-testing, node-build-engineering]
+  - name: dependency-confusion-defense
+    primary: node-dependency-confusion-defense
+    secondary: [node-testing, node-build-engineering]
+  - name: install-script-safety
+    primary: node-install-script-safety
+    secondary: [node-testing, node-build-engineering]
+  - name: postinstall-safety
+    primary: node-postinstall-safety
+    secondary: [node-testing, node-build-engineering]
+  - name: build-cache-integrity
+    primary: node-build-cache-integrity
+    secondary: [node-testing, node-build-engineering]
+  - name: source-map-governance
+    primary: node-source-map-governance
+    secondary: [node-testing, node-build-engineering]
+  - name: runtime-inspector-security
+    primary: node-runtime-inspector-security
+    secondary: [node-testing, node-build-engineering]
+  - name: diagnostic-reports
+    primary: node-diagnostic-reports
+    secondary: [node-testing, node-build-engineering]
+  - name: startup-profiling
+    primary: node-startup-profiling
+    secondary: [node-testing, node-build-engineering]
+  - name: http2-engineering
+    primary: node-http2-engineering
+    secondary: [node-testing, node-build-engineering]
+  - name: structured-cloning
+    primary: node-structured-cloning
+    secondary: [node-testing, node-build-engineering]
+  - name: package-manager-policy
+    primary: node-package-manager-policy
+    secondary: [node-testing, node-build-engineering]
