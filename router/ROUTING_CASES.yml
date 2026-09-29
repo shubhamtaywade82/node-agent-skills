@@ -185,3 +185,6 @@ cases:
     primary: node-observability
     secondary: [node-runtime-diagnostics]
     adapter: adapters/opentelemetry/SKILL.md
+  - name: design-pattern-refactor
+    primary: node-design-patterns
+    secondary: [node-architecture, node-typescript-contracts, node-testing]

@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import { access, readFile } from "node:fs/promises";
 
 const skills = [
+  ["node-design-patterns", "design-patterns"],
   ["node-retry-timeouts", "retry-timeouts"],
   ["node-resilience", "resilience"],
   ["node-circuit-breakers", "circuit-breakers"],
@@ -38,5 +39,5 @@ test("Wave 2C cross-wave adversarial evaluation exists", async () => {
 
 test("repository contract expects all approved skills", async () => {
   const manifest = await readFile("skill-manifest.yml", "utf8");
-  assert.equal([...manifest.matchAll(/^  - name: /gm)].length, 62);
+  assert.equal([...manifest.matchAll(/^  - name: /gm)].length, 63);
 });
