@@ -1,0 +1,6 @@
+cases:
+  - name: e2e-testing-boundary
+    skill: node-e2e-testing
+    prompt: "Implement or review a production Node.js backend change involving e2e-testing."
+    pressure: ["existing conventions", "failure path", "compatibility", "security"]
+    expected_invariants: ["explicit ownership", "observable behavior", "bounded failure", "tests prove the contract"]

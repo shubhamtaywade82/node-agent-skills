@@ -1,0 +1,6 @@
+cases:
+  - name: api-client-engineering-boundary
+    skill: node-api-client-engineering
+    prompt: "Implement or review a production Node.js backend change involving api-client-engineering."
+    pressure: ["existing conventions", "failure path", "compatibility", "security"]
+    expected_invariants: ["explicit ownership", "observable behavior", "bounded failure", "tests prove the contract"]

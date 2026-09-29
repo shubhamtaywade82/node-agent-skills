@@ -1,0 +1,6 @@
+cases:
+  - name: dependency-injection-boundary
+    skill: node-dependency-injection
+    prompt: "Implement or review a production Node.js backend change involving dependency-injection."
+    pressure: ["existing conventions", "failure path", "compatibility", "security"]
+    expected_invariants: ["explicit ownership", "observable behavior", "bounded failure", "tests prove the contract"]

@@ -1,0 +1,6 @@
+cases:
+  - name: audit-logging-boundary
+    skill: node-audit-logging
+    prompt: "Implement or review a production Node.js backend change involving audit-logging."
+    pressure: ["existing conventions", "failure path", "compatibility", "security"]
+    expected_invariants: ["explicit ownership", "observable behavior", "bounded failure", "tests prove the contract"]

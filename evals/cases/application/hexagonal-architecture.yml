@@ -1,0 +1,6 @@
+cases:
+  - name: hexagonal-architecture-boundary
+    skill: node-hexagonal-architecture
+    prompt: "Implement or review a production Node.js backend change involving hexagonal-architecture."
+    pressure: ["existing conventions", "failure path", "compatibility", "security"]
+    expected_invariants: ["explicit ownership", "observable behavior", "bounded failure", "tests prove the contract"]

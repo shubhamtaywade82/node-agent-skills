@@ -1,0 +1,6 @@
+cases:
+  - name: domain-modeling-boundary
+    skill: node-domain-modeling
+    prompt: "Implement or review a production Node.js backend change involving domain-modeling."
+    pressure: ["existing conventions", "failure path", "compatibility", "security"]
+    expected_invariants: ["explicit ownership", "observable behavior", "bounded failure", "tests prove the contract"]
