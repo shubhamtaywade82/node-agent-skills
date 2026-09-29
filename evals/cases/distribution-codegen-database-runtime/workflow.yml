@@ -1,0 +1,144 @@
+cases:
+  - name: agent-installation
+    skill: node-agent-installation
+    prompt: "Implement or review a production Node.js change involving agent installation."
+    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "resource limits"]
+    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+
+  - name: agentskills-compatibility
+    skill: node-agentskills-compatibility
+    prompt: "Implement or review a production Node.js change involving agentskills compatibility."
+    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "resource limits"]
+    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+
+  - name: skill-packaging
+    skill: node-skill-packaging
+    prompt: "Implement or review a production Node.js change involving skill packaging."
+    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "resource limits"]
+    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+
+  - name: skill-discovery-contract
+    skill: node-skill-discovery-contract
+    prompt: "Implement or review a production Node.js change involving skill discovery contract."
+    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "resource limits"]
+    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+
+  - name: skill-routing-contract
+    skill: node-skill-routing-contract
+    prompt: "Implement or review a production Node.js change involving skill routing contract."
+    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "resource limits"]
+    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+
+  - name: skill-evaluation-discipline
+    skill: node-skill-evaluation-discipline
+    prompt: "Implement or review a production Node.js change involving skill evaluation discipline."
+    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "resource limits"]
+    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+
+  - name: skill-version-governance
+    skill: node-skill-version-governance
+    prompt: "Implement or review a production Node.js change involving skill version governance."
+    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "resource limits"]
+    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+
+  - name: skill-reference-governance
+    skill: node-skill-reference-governance
+    prompt: "Implement or review a production Node.js change involving skill reference governance."
+    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "resource limits"]
+    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+
+  - name: codegen-engineering
+    skill: node-codegen-engineering
+    prompt: "Implement or review a production Node.js change involving codegen engineering."
+    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "resource limits"]
+    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+
+  - name: generated-schema-contracts
+    skill: node-generated-schema-contracts
+    prompt: "Implement or review a production Node.js change involving generated schema contracts."
+    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "resource limits"]
+    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+
+  - name: generated-client-governance
+    skill: node-generated-client-governance
+    prompt: "Implement or review a production Node.js change involving generated client governance."
+    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "resource limits"]
+    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+
+  - name: generated-artifact-determinism
+    skill: node-generated-artifact-determinism
+    prompt: "Implement or review a production Node.js change involving generated artifact determinism."
+    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "resource limits"]
+    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+
+  - name: release-notes-engineering
+    skill: node-release-notes-engineering
+    prompt: "Implement or review a production Node.js change involving release notes engineering."
+    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "resource limits"]
+    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+
+  - name: maintenance-engineering
+    skill: node-maintenance-engineering
+    prompt: "Implement or review a production Node.js change involving maintenance engineering."
+    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "resource limits"]
+    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+
+  - name: deprecation-planning
+    skill: node-deprecation-planning
+    prompt: "Implement or review a production Node.js change involving deprecation planning."
+    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "resource limits"]
+    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+
+  - name: change-log-integrity
+    skill: node-change-log-integrity
+    prompt: "Implement or review a production Node.js change involving change log integrity."
+    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "resource limits"]
+    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+
+  - name: database-advisory-locks
+    skill: node-database-advisory-locks
+    prompt: "Implement or review a production Node.js change involving database advisory locks."
+    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "resource limits"]
+    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+
+  - name: database-read-replica-routing
+    skill: node-database-read-replica-routing
+    prompt: "Implement or review a production Node.js change involving database read replica routing."
+    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "resource limits"]
+    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+
+  - name: query-plan-engineering
+    skill: node-query-plan-engineering
+    prompt: "Implement or review a production Node.js change involving query plan engineering."
+    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "resource limits"]
+    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+
+  - name: postgres-locking
+    skill: node-postgres-locking
+    prompt: "Implement or review a production Node.js change involving postgres locking."
+    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "resource limits"]
+    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+
+  - name: deadlock-diagnostics
+    skill: node-deadlock-diagnostics
+    prompt: "Implement or review a production Node.js change involving deadlock diagnostics."
+    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "resource limits"]
+    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+
+  - name: isolation-level-selection
+    skill: node-isolation-level-selection
+    prompt: "Implement or review a production Node.js change involving isolation level selection."
+    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "resource limits"]
+    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+
+  - name: signal-handling
+    skill: node-signal-handling
+    prompt: "Implement or review a production Node.js change involving signal handling."
+    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "resource limits"]
+    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+
+  - name: runtime-health-monitoring
+    skill: node-runtime-health-monitoring
+    prompt: "Implement or review a production Node.js change involving runtime health monitoring."
+    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "resource limits"]
+    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
