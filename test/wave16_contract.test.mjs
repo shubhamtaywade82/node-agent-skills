@@ -17,6 +17,7 @@ const skills = [
   "node-agent-tool-audit",
   "node-agent-observation-normalization",
   "node-agent-action-approval",
+  "node-agent-loop-control",
   "node-prototype-pollution-defense",
   "node-regex-dos-defense",
   "node-json-parse-safety",
