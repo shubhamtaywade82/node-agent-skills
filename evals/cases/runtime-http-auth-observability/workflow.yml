@@ -121,7 +121,7 @@ cases:
 
   - name: access-control-auditing
     skill: node-access-control-auditing
-    prompt: "Add auditable evidence for privileged allow and deny decisions without logging tokens or full sensitive request payloads."
+    prompt: "Add an auditable audit event for privileged allow and deny decisions without logging tokens or full sensitive request payloads."
     pressure: ["audit event", "privileged action", "sensitive payload", "retention"]
     expected_invariants: ["actor/action/target evidence", "secret redaction", "append semantics", "audit retention"]
 
