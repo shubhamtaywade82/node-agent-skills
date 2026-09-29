@@ -23,15 +23,18 @@ handling OS signals deterministically in Node.js services and workers.
 
 ## Decision rules
 
-signal handlers are minimal and idempotent; shutdown ownership is explicit; process exits after bounded cleanup
-
-- Correctness and operational safety take precedence over convenience.
-- Optimize from measured workload evidence.
-- Keep rollback/roll-forward paths explicit and bounded.
+- SIGTERM and SIGINT should initiate one controlled shutdown path rather than competing listeners.
+- Stop accepting new work before draining in-flight requests and durable workers.
+- Shutdown must have a bounded deadline and an explicit exit outcome.
+- Signal handling must not swallow fatal errors or leave orphaned child processes.
 
 ## Implementation procedure
 
-1. Define supported signals.\n2. Trigger shared shutdown controller.\n3. Stop admission.\n4. Drain resources.\n5. Enforce deadline.\n6. Exit with correct status.\n7. Test repeated signals.
+1. Inventory process signal handlers and owners.
+2. Define the shutdown state machine and drain deadline.
+3. Stop new work and propagate cancellation.
+4. Flush required state and terminate dependents.
+5. Test repeated signals, slow work, and forced termination.
 
 ## Failure modes
 
