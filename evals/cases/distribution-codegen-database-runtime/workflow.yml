@@ -103,7 +103,7 @@ cases:
 
   - name: database-read-replica-routing
     skill: node-database-read-replica-routing
-    prompt: "Route read-only queries to replicas while ensuring a read-after-write path uses the primary when replica lag would return stale data."
+    prompt: "Route read-only queries to a read replica while ensuring a read-after-write path uses the primary when replica lag would return stale data."
     pressure: ["read replica", "read-after-write", "replica lag", "primary pinning"]
     expected_invariants: ["consistency classification", "safe routing", "lag handling", "observable topology"]
 
@@ -139,6 +139,6 @@ cases:
 
   - name: runtime-health-monitoring
     skill: node-runtime-health-monitoring
-    prompt: "Design startup, liveness, and readiness probes so a dependency outage marks the service unready without causing unnecessary process restarts."
+    prompt: "Design a health check system with startup, liveness, and readiness probes so a dependency outage marks the service unready without causing unnecessary process restarts."
     pressure: ["health check", "readiness", "liveness", "dependency outage"]
     expected_invariants: ["probe separation", "bounded checks", "deployment integration", "degraded-state test"]
