@@ -234,6 +234,31 @@ Route by the dominant backend boundary first. Framework adapters are a translati
 | runtime-feature-detection | node-runtime-feature-detection | node-testing, node-observability |
 | repository-health | node-repository-health | node-testing, node-observability |
 
+| agent-installation | node-agent-installation | node-testing, node-observability |
+| agentskills-compatibility | node-agentskills-compatibility | node-testing, node-observability |
+| skill-packaging | node-skill-packaging | node-testing, node-observability |
+| skill-discovery-contract | node-skill-discovery-contract | node-testing, node-observability |
+| skill-routing-contract | node-skill-routing-contract | node-testing, node-observability |
+| skill-evaluation-discipline | node-skill-evaluation-discipline | node-testing, node-observability |
+| skill-version-governance | node-skill-version-governance | node-testing, node-observability |
+| skill-reference-governance | node-skill-reference-governance | node-testing, node-observability |
+| codegen-engineering | node-codegen-engineering | node-testing, node-observability |
+| generated-schema-contracts | node-generated-schema-contracts | node-testing, node-observability |
+| generated-client-governance | node-generated-client-governance | node-testing, node-observability |
+| generated-artifact-determinism | node-generated-artifact-determinism | node-testing, node-observability |
+| release-notes-engineering | node-release-notes-engineering | node-testing, node-observability |
+| maintenance-engineering | node-maintenance-engineering | node-testing, node-observability |
+| deprecation-planning | node-deprecation-planning | node-testing, node-observability |
+| change-log-integrity | node-change-log-integrity | node-testing, node-observability |
+| database-advisory-locks | node-database-advisory-locks | node-testing, node-observability |
+| database-read-replica-routing | node-database-read-replica-routing | node-testing, node-observability |
+| query-plan-engineering | node-query-plan-engineering | node-testing, node-observability |
+| postgres-locking | node-postgres-locking | node-testing, node-observability |
+| deadlock-diagnostics | node-deadlock-diagnostics | node-testing, node-observability |
+| isolation-level-selection | node-isolation-level-selection | node-testing, node-observability |
+| signal-handling | node-signal-handling | node-testing, node-observability |
+| runtime-health-monitoring | node-runtime-health-monitoring | node-testing, node-observability |
+
 ## Framework adapter selection
 
 After selecting the core owner, detect the actual framework from dependency manifests/imports before loading an adapter:
@@ -313,3 +338,7 @@ Do not select an adapter merely because the user says "Node API". Core skills ar
 | fastify-multipart | adapters/fastify-multipart/SKILL.md | current; verify Fastify major |
 | nestjs-swagger | adapters/nestjs-swagger/SKILL.md | current; verify NestJS major |
 | opentelemetry-sdk-node | adapters/opentelemetry-sdk-node/SKILL.md | current |
+| tsx | adapters/tsx/SKILL.md | current |
+| tsup | adapters/tsup/SKILL.md | 8.5.1 |
+| esbuild | adapters/esbuild/SKILL.md | 0.28.2 |
+| graphql-request | adapters/graphql-request/SKILL.md | 7.4.0 |

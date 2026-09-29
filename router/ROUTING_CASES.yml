@@ -716,3 +716,76 @@ cases:
   - name: repository-health
     primary: node-repository-health
     secondary: [node-testing, node-observability]
+
+  - name: agent-installation
+    primary: node-agent-installation
+    secondary: [node-testing, node-observability]
+  - name: agentskills-compatibility
+    primary: node-agentskills-compatibility
+    secondary: [node-testing, node-observability]
+  - name: skill-packaging
+    primary: node-skill-packaging
+    secondary: [node-testing, node-observability]
+  - name: skill-discovery-contract
+    primary: node-skill-discovery-contract
+    secondary: [node-testing, node-observability]
+  - name: skill-routing-contract
+    primary: node-skill-routing-contract
+    secondary: [node-testing, node-observability]
+  - name: skill-evaluation-discipline
+    primary: node-skill-evaluation-discipline
+    secondary: [node-testing, node-observability]
+  - name: skill-version-governance
+    primary: node-skill-version-governance
+    secondary: [node-testing, node-observability]
+  - name: skill-reference-governance
+    primary: node-skill-reference-governance
+    secondary: [node-testing, node-observability]
+  - name: codegen-engineering
+    primary: node-codegen-engineering
+    secondary: [node-testing, node-observability]
+  - name: generated-schema-contracts
+    primary: node-generated-schema-contracts
+    secondary: [node-testing, node-observability]
+  - name: generated-client-governance
+    primary: node-generated-client-governance
+    secondary: [node-testing, node-observability]
+  - name: generated-artifact-determinism
+    primary: node-generated-artifact-determinism
+    secondary: [node-testing, node-observability]
+  - name: release-notes-engineering
+    primary: node-release-notes-engineering
+    secondary: [node-testing, node-observability]
+  - name: maintenance-engineering
+    primary: node-maintenance-engineering
+    secondary: [node-testing, node-observability]
+  - name: deprecation-planning
+    primary: node-deprecation-planning
+    secondary: [node-testing, node-observability]
+  - name: change-log-integrity
+    primary: node-change-log-integrity
+    secondary: [node-testing, node-observability]
+  - name: database-advisory-locks
+    primary: node-database-advisory-locks
+    secondary: [node-testing, node-observability]
+  - name: database-read-replica-routing
+    primary: node-database-read-replica-routing
+    secondary: [node-testing, node-observability]
+  - name: query-plan-engineering
+    primary: node-query-plan-engineering
+    secondary: [node-testing, node-observability]
+  - name: postgres-locking
+    primary: node-postgres-locking
+    secondary: [node-testing, node-observability]
+  - name: deadlock-diagnostics
+    primary: node-deadlock-diagnostics
+    secondary: [node-testing, node-observability]
+  - name: isolation-level-selection
+    primary: node-isolation-level-selection
+    secondary: [node-testing, node-observability]
+  - name: signal-handling
+    primary: node-signal-handling
+    secondary: [node-testing, node-observability]
+  - name: runtime-health-monitoring
+    primary: node-runtime-health-monitoring
+    secondary: [node-testing, node-observability]
