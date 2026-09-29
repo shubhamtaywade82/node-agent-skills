@@ -23,15 +23,18 @@ planning dependency, runtime, framework, and repository maintenance without dest
 
 ## Decision rules
 
-maintenance is scoped, reversible, and tested against compatibility matrices; stale components are removed deliberately
-
-- Correctness and operational safety take precedence over convenience.
-- Optimize from measured workload evidence.
-- Keep rollback/roll-forward paths explicit and bounded.
+- Maintenance work starts from supported-version and ownership evidence, not arbitrary dependency churn.
+- Prefer small, reversible upkeep changes with explicit end-of-life or security rationale.
+- A dependency refresh must preserve runtime and API compatibility or declare the required migration.
+- Unmaintained tooling is a risk signal that belongs in the maintenance backlog, not hidden behind a version bump.
 
 ## Implementation procedure
 
-1. Inventory aging dependencies.\n2. Classify support status.\n3. Schedule upgrades.\n4. Test representative workloads.\n5. Update docs/config.\n6. Define rollback.\n7. Verify CI and runtime health.
+1. Inventory supported runtime, framework, and critical dependency lifecycles.
+2. Identify stale or unmaintained components with direct repository impact.
+3. Separate security, compatibility, and housekeeping work.
+4. Apply the smallest justified maintenance change.
+5. Run regression, package, and release validation.
 
 ## Failure modes
 
