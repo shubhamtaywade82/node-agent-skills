@@ -109,7 +109,7 @@ cases:
 
   - name: rate-limit-headers
     skill: node-rate-limit-headers
-    prompt: "Expose rate-limit response headers for an API quota while keeping reset timing accurate and avoiding header spoofing."
+    prompt: "Expose rate-limit response headers including Retry-After for an API quota while keeping reset timing accurate and avoiding header spoofing."
     pressure: ["Retry-After", "quota state", "clock skew", "proxy behavior"]
     expected_invariants: ["authoritative limit state", "accurate retry timing", "bounded headers", "header contract"]
 
