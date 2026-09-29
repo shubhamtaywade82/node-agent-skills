@@ -23,15 +23,18 @@ managing cross-skill references so agents can reliably resolve related guidance.
 
 ## Decision rules
 
-references are repository-relative or canonical; broken links are detected; references do not become hidden dependencies
-
-- Source contracts remain authoritative over generated artifacts.
-- Generated output must be reproducible and reviewable.
-- Runtime validation remains distinct from compile-time typing.
+- References must point to authoritative HTTPS sources whenever an external contract is required.
+- Reference URLs should be stable enough to support later verification; avoid blogs when standards or vendor docs exist.
+- A reference must explain which decision it supports; unused links are documentation noise.
+- Broken or moved references are maintenance defects, not harmless prose drift.
 
 ## Implementation procedure
 
-1. Inventory references.\n2. Normalize paths.\n3. Validate target existence.\n4. Detect cycles/obsolete targets.\n5. Test representative navigation.\n6. Document external sources.
+1. Identify external claims made by the skill.
+2. Map each claim to an authoritative HTTPS reference.
+3. Check reference reachability and scope.
+4. Remove unsupported or redundant links.
+5. Report reference gaps when external verification is required.
 
 ## Failure modes
 
