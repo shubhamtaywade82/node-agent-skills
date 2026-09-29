@@ -1,144 +1,144 @@
 cases:
   - name: filesystem-safety
     skill: node-filesystem-safety
-    prompt: "Implement or review a production Node.js backend change involving filesystem safety."
-    pressure: ["existing repository conventions", "failure path", "security boundary", "resource limits"]
-    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+    prompt: "Review a file-serving change where user input may name a symlinked path; preserve containment while allowing the configured storage root."
+    pressure: ["symlink escape", "untrusted path", "existing storage API", "failure cleanup"]
+    expected_invariants: ["canonical path containment", "symlink policy", "bounded file access", "regression proof"]
 
   - name: temp-file-safety
     skill: node-temp-file-safety
-    prompt: "Implement or review a production Node.js backend change involving temp file safety."
-    pressure: ["existing repository conventions", "failure path", "security boundary", "resource limits"]
-    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+    prompt: "Implement a temp-file workflow for uploaded data; prove cleanup on error, abort, and process shutdown."
+    pressure: ["temp directory permissions", "cleanup on abort", "disk pressure", "existing upload lifecycle"]
+    expected_invariants: ["unique temp names", "owner cleanup", "restrictive permissions", "failure-path test"]
 
   - name: path-traversal-defense
     skill: node-path-traversal-defense
-    prompt: "Implement or review a production Node.js backend change involving path traversal defense."
-    pressure: ["existing repository conventions", "failure path", "security boundary", "resource limits"]
-    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+    prompt: "Harden a download endpoint where percent-encoded ../ and platform-specific separators can reach filesystem paths."
+    pressure: ["percent decoding", "platform separators", "canonicalization", "malicious input"]
+    expected_invariants: ["canonical containment", "decode-before-check policy", "safe fallback", "bypass regression"]
 
   - name: archive-extraction-safety
     skill: node-archive-extraction-safety
-    prompt: "Implement or review a production Node.js backend change involving archive extraction safety."
-    pressure: ["existing repository conventions", "failure path", "security boundary", "resource limits"]
-    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+    prompt: "Review archive extraction for zip slip entries, symlinks, and oversized archives arriving from an external client."
+    pressure: ["zip slip", "symlink entry", "archive bomb", "untrusted archive"]
+    expected_invariants: ["destination containment", "quota enforcement", "link deny policy", "malicious archive test"]
 
   - name: file-descriptor-lifecycle
     skill: node-file-descriptor-lifecycle
-    prompt: "Implement or review a production Node.js backend change involving file descriptor lifecycle."
-    pressure: ["existing repository conventions", "failure path", "security boundary", "resource limits"]
-    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+    prompt: "Fix a streaming backend path that leaks file descriptors when a client disconnects midway through the response."
+    pressure: ["client abort", "descriptor leak", "stream ownership", "shutdown"]
+    expected_invariants: ["single owner", "close on abort", "bounded descriptors", "leak regression"]
 
   - name: process-supervision
     skill: node-process-supervision
-    prompt: "Implement or review a production Node.js backend change involving process supervision."
-    pressure: ["existing repository conventions", "failure path", "security boundary", "resource limits"]
-    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+    prompt: "Design shutdown and restart behavior for a Node.js service receiving SIGTERM while requests and workers are active."
+    pressure: ["SIGTERM", "in-flight work", "restart policy", "bounded drain"]
+    expected_invariants: ["signal handling", "bounded shutdown", "meaningful exit status", "supervisor ownership"]
 
   - name: worker-crash-recovery
     skill: node-worker-crash-recovery
-    prompt: "Implement or review a production Node.js backend change involving worker crash recovery."
-    pressure: ["existing repository conventions", "failure path", "security boundary", "resource limits"]
-    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+    prompt: "Harden a worker-thread or background-worker service when a worker crash can leave queued work in an uncertain state."
+    pressure: ["worker crash", "in-flight job", "restart storm", "work ownership"]
+    expected_invariants: ["crash detection", "safe restart", "job state recovery", "duplicate prevention"]
 
   - name: event-loop-diagnostics
     skill: node-event-loop-diagnostics
-    prompt: "Implement or review a production Node.js backend change involving event loop diagnostics."
-    pressure: ["existing repository conventions", "failure path", "security boundary", "resource limits"]
-    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+    prompt: "Investigate elevated event loop lag after a new synchronous transformation was added to an HTTP request path."
+    pressure: ["event loop lag", "CPU sample", "request latency", "blocking call"]
+    expected_invariants: ["lag measurement", "blocking-path attribution", "bounded diagnostic load", "regression benchmark"]
 
   - name: memory-leak-diagnostics
     skill: node-memory-leak-diagnostics
-    prompt: "Implement or review a production Node.js backend change involving memory leak diagnostics."
-    pressure: ["existing repository conventions", "failure path", "security boundary", "resource limits"]
-    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+    prompt: "Diagnose rising RSS in a long-lived Node.js API where requests allocate cached objects but heap usage is not immediately obvious."
+    pressure: ["RSS growth", "heap retention", "long-lived process", "GC behavior"]
+    expected_invariants: ["memory baseline", "retention evidence", "bounded sampling", "leak reproduction"]
 
   - name: heap-diagnostics
     skill: node-heap-diagnostics
-    prompt: "Implement or review a production Node.js backend change involving heap diagnostics."
-    pressure: ["existing repository conventions", "failure path", "security boundary", "resource limits"]
-    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+    prompt: "Use a heap snapshot and allocation evidence to isolate retained request-scoped objects after repeated test traffic."
+    pressure: ["heap snapshot", "retained object", "allocation profile", "repeatable load"]
+    expected_invariants: ["snapshot comparison", "retainer evidence", "minimal reproduction", "cleanup verification"]
 
   - name: log-redaction
     skill: node-log-redaction
-    prompt: "Implement or review a production Node.js backend change involving log redaction."
-    pressure: ["existing repository conventions", "failure path", "security boundary", "resource limits"]
-    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+    prompt: "Review HTTP logging that may emit Authorization headers and user identifiers during authentication failures."
+    pressure: ["authorization header", "PII", "error logging", "incident visibility"]
+    expected_invariants: ["credential redaction", "structured fields", "safe diagnostics", "redaction regression"]
 
   - name: telemetry-sampling
     skill: node-telemetry-sampling
-    prompt: "Implement or review a production Node.js backend change involving telemetry sampling."
-    pressure: ["existing repository conventions", "failure path", "security boundary", "resource limits"]
-    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+    prompt: "Tune trace sampling for a high-volume API so error and slow requests remain observable without flooding telemetry."
+    pressure: ["sampling", "error retention", "latency threshold", "telemetry volume"]
+    expected_invariants: ["priority sampling", "bounded volume", "error visibility", "sampling test"]
 
   - name: metric-cardinality-control
     skill: node-metric-cardinality-control
-    prompt: "Implement or review a production Node.js backend change involving metric cardinality control."
-    pressure: ["existing repository conventions", "failure path", "security boundary", "resource limits"]
-    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+    prompt: "Fix a metrics change that adds raw user IDs and request paths as labels and causes cardinality growth."
+    pressure: ["cardinality", "dynamic labels", "metrics budget", "aggregation"]
+    expected_invariants: ["bounded label set", "stable dimensions", "cardinality budget", "metric regression"]
 
   - name: trace-context-propagation
     skill: node-trace-context-propagation
-    prompt: "Implement or review a production Node.js backend change involving trace context propagation."
-    pressure: ["existing repository conventions", "failure path", "security boundary", "resource limits"]
-    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+    prompt: "Propagate distributed trace context across inbound HTTP requests and outbound dependency calls without trusting arbitrary baggage as authorization."
+    pressure: ["traceparent", "outbound propagation", "untrusted baggage", "context scope"]
+    expected_invariants: ["context continuity", "trusted fields", "request isolation", "propagation test"]
 
   - name: api-content-negotiation
     skill: node-api-content-negotiation
-    prompt: "Implement or review a production Node.js backend change involving api content negotiation."
-    pressure: ["existing repository conventions", "failure path", "security boundary", "resource limits"]
-    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+    prompt: "Design an API response that negotiates JSON versus another representation using Accept and sets Vary correctly."
+    pressure: ["Accept", "Content-Type", "Vary", "unsupported media type"]
+    expected_invariants: ["deterministic negotiation", "correct content type", "Vary semantics", "contract tests"]
 
   - name: http-cache-semantics
     skill: node-http-cache-semantics
-    prompt: "Implement or review a production Node.js backend change involving http cache semantics."
-    pressure: ["existing repository conventions", "failure path", "security boundary", "resource limits"]
-    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+    prompt: "Review Cache-Control behavior for authenticated and public API responses so private data is not reused by shared caches."
+    pressure: ["Cache-Control", "shared cache", "private response", "stale content"]
+    expected_invariants: ["cache policy classification", "privacy boundary", "freshness semantics", "cache header test"]
 
   - name: etag-cache-validation
     skill: node-etag-cache-validation
-    prompt: "Implement or review a production Node.js backend change involving etag cache validation."
-    pressure: ["existing repository conventions", "failure path", "security boundary", "resource limits"]
-    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+    prompt: "Implement ETag validation for a resource endpoint and verify weak versus strong validators are used according to the mutation semantics."
+    pressure: ["ETag", "If-None-Match", "validator strength", "304 response"]
+    expected_invariants: ["stable validator", "correct comparison", "304 behavior", "representation test"]
 
   - name: api-conditional-requests
     skill: node-api-conditional-requests
-    prompt: "Implement or review a production Node.js backend change involving api conditional requests."
-    pressure: ["existing repository conventions", "failure path", "security boundary", "resource limits"]
-    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+    prompt: "Protect concurrent updates to a resource using If-Match and return the correct precondition result when the version is stale."
+    pressure: ["If-Match", "concurrent update", "stale version", "lost update"]
+    expected_invariants: ["precondition before mutation", "authorization preserved", "conflict response", "race test"]
 
   - name: rate-limit-headers
     skill: node-rate-limit-headers
-    prompt: "Implement or review a production Node.js backend change involving rate limit headers."
-    pressure: ["existing repository conventions", "failure path", "security boundary", "resource limits"]
-    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+    prompt: "Expose rate-limit response headers for an API quota while keeping reset timing accurate and avoiding header spoofing."
+    pressure: ["Retry-After", "quota state", "clock skew", "proxy behavior"]
+    expected_invariants: ["authoritative limit state", "accurate retry timing", "bounded headers", "header contract"]
 
   - name: authz-policy-testing
     skill: node-authz-policy-testing
-    prompt: "Implement or review a production Node.js backend change involving authz policy testing."
-    pressure: ["existing repository conventions", "failure path", "security boundary", "resource limits"]
-    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+    prompt: "Build an authorization matrix test for tenant-scoped actions where admin, member, and outsider roles have different permissions."
+    pressure: ["authorization matrix", "tenant boundary", "role combinations", "deny by default"]
+    expected_invariants: ["policy matrix", "tenant isolation", "explicit denies", "regression suite"]
 
   - name: access-control-auditing
     skill: node-access-control-auditing
-    prompt: "Implement or review a production Node.js backend change involving access control auditing."
-    pressure: ["existing repository conventions", "failure path", "security boundary", "resource limits"]
-    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+    prompt: "Add auditable evidence for privileged allow and deny decisions without logging tokens or full sensitive request payloads."
+    pressure: ["audit event", "privileged action", "sensitive payload", "retention"]
+    expected_invariants: ["actor/action/target evidence", "secret redaction", "append semantics", "audit retention"]
 
   - name: security-regression-testing
     skill: node-security-regression-testing
-    prompt: "Implement or review a production Node.js backend change involving security regression testing."
-    pressure: ["existing repository conventions", "failure path", "security boundary", "resource limits"]
-    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+    prompt: "Create a security regression test for a previously fixed authentication bypass and prove the vulnerable request remains rejected."
+    pressure: ["regression test", "known bypass", "negative case", "security gate"]
+    expected_invariants: ["exploit reproduction", "fixed invariant", "negative assertion", "CI enforcement"]
 
   - name: runtime-feature-detection
     skill: node-runtime-feature-detection
-    prompt: "Implement or review a production Node.js backend change involving runtime feature detection."
-    pressure: ["existing repository conventions", "failure path", "security boundary", "resource limits"]
-    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+    prompt: "Add runtime feature detection before using a Node.js capability whose availability differs across supported runtime versions."
+    pressure: ["feature detection", "Node version", "fallback path", "supported range"]
+    expected_invariants: ["capability probe", "version-independent fallback", "explicit support policy", "compatibility test"]
 
   - name: repository-health
     skill: node-repository-health
-    prompt: "Implement or review a production Node.js backend change involving repository health."
-    pressure: ["existing repository conventions", "failure path", "security boundary", "resource limits"]
-    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+    prompt: "Diagnose a repository-health failure where scripts, lockfile, runtime metadata, and CI disagree about the supported Node.js baseline."
+    pressure: ["health check", "lockfile drift", "runtime metadata", "CI parity"]
+    expected_invariants: ["single runtime contract", "dependency consistency", "CI parity", "health report"]
