@@ -23,15 +23,18 @@ maintaining deterministic primary/secondary skill routing.
 
 ## Decision rules
 
-one primary owner is preferred; secondary skills represent real dependencies; routing stays framework-neutral
-
-- Source metadata remains authoritative.
-- Keep discovery and routing deterministic and concise.
-- Test behavioral contracts, not prose wording.
+- Every routed task should have one primary owner unless ambiguity is intentional and explicitly represented.
+- Secondary skills must correspond to actual dependencies or boundary effects, not broad topic similarity.
+- Framework adapters load only after framework and version detection.
+- When two primary candidates remain plausible, route to evidence gathering or escalate rather than guessing.
 
 ## Implementation procedure
 
-1. Define routing cases.\n2. Choose primary owner.\n3. Add bounded secondary set.\n4. Test ambiguous prompts.\n5. Detect orphan skills.
+1. Identify candidate skills from task evidence.
+2. Select one primary owner using the routing matrix.
+3. Add only evidence-backed secondary skills.
+4. Detect framework/version before selecting adapters.
+5. Test ambiguous and cross-boundary routing cases.
 
 ## Failure modes
 
