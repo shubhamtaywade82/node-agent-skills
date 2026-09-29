@@ -687,6 +687,67 @@ skills:
     category: security
     triggers: [HTTP header normalization, duplicate headers, forwarded headers]
 
+  - name: node-agent-preflight
+    category: agent-governance
+    triggers: [agent preflight, repository inspection, task planning, coding agent]
+  - name: node-agent-evidence-gathering
+    category: agent-governance
+    triggers: [evidence gathering, source of truth, repository evidence, coding agent]
+  - name: node-agent-change-safety
+    category: agent-governance
+    triggers: [change safety, blast radius, scoped change, coding agent]
+  - name: node-agent-verification-reporting
+    category: agent-governance
+    triggers: [verification report, tests run, residual risk, coding agent]
+  - name: node-agent-risk-escalation
+    category: agent-governance
+    triggers: [risk escalation, human approval, uncertainty, irreversible change]
+  - name: node-agent-rollback-planning
+    category: agent-governance
+    triggers: [rollback planning, migration rollback, recovery plan]
+  - name: node-agent-commit-hygiene
+    category: agent-governance
+    triggers: [commit hygiene, focused commits, staged diff, coding agent]
+  - name: node-agent-pr-preparation
+    category: agent-governance
+    triggers: [pull request preparation, PR readiness, base branch, CI]
+  - name: node-dns-engineering
+    category: network
+    triggers: [DNS, hostname resolution, resolver, TTL, IPv4, IPv6]
+  - name: node-tls-certificate-management
+    category: security
+    triggers: [TLS, certificates, trust store, certificate rotation]
+  - name: node-http-proxy-forwarding
+    category: network
+    triggers: [proxy, Forwarded, X-Forwarded-For, trusted proxy]
+  - name: node-http-timeouts
+    category: network
+    triggers: [HTTP timeout, connection timeout, header timeout, request deadline]
+  - name: node-http-keepalive
+    category: network
+    triggers: [HTTP keep alive, connection pooling, socket pool]
+  - name: node-webhook-ingress-security
+    category: security
+    triggers: [webhook security, signed webhook, replay, idempotency]
+  - name: node-request-signature-validation
+    category: security
+    triggers: [request signature, HMAC, signed request, raw body]
+  - name: node-replay-protection
+    category: security
+    triggers: [replay protection, nonce, timestamp, duplicate request]
+  - name: node-csrf-defense
+    category: security
+    triggers: [CSRF, cross site request forgery, browser session]
+  - name: node-open-redirect-defense
+    category: security
+    triggers: [open redirect, next parameter, redirect URL]
+  - name: node-request-smuggling-defense
+    category: security
+    triggers: [HTTP request smuggling, CL TE, message framing]
+  - name: node-header-normalization
+    category: network
+    triggers: [HTTP headers, duplicate headers, header normalization]
+
 adapters:
   express:
     path: adapters/express/SKILL.md
@@ -956,6 +1017,14 @@ adapters:
     path: adapters/mercurius/SKILL.md
     version_scope: current
     source: https://mercurius.dev/
+  graphql-yoga:
+    path: adapters/graphql-yoga/SKILL.md
+    version_scope: 5.x
+    source: https://the-guild.dev/graphql/yoga-server/docs
+  apollo-server:
+    path: adapters/apollo-server/SKILL.md
+    version_scope: 5.x
+    source: https://www.apollographql.com/docs/apollo-server
   graphql-yoga:
     path: adapters/graphql-yoga/SKILL.md
     version_scope: 5.x
