@@ -1,144 +1,144 @@
 cases:
   - name: agent-installation
     skill: node-agent-installation
-    prompt: "Implement or review a production Node.js change involving agent installation."
-    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "resource limits"]
-    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+    prompt: "Install the skill pack from a pinned git revision into a coding-agent workspace while preserving repository-local instructions and validating discovery."
+    pressure: ["pinned revision", "agent permissions", "package closure", "post-install validation"]
+    expected_invariants: ["manifest closure", "pinned source", "portable layout", "validation evidence"]
 
   - name: agentskills-compatibility
     skill: node-agentskills-compatibility
-    prompt: "Implement or review a production Node.js change involving agentskills compatibility."
-    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "resource limits"]
-    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+    prompt: "Verify a repository follows the documented Agent Skills filesystem and metadata contract across two hypothetical consumers without adding vendor-specific assumptions."
+    pressure: ["Agent Skills format", "malformed frontmatter", "duplicate name", "unknown metadata"]
+    expected_invariants: ["required layout", "portable metadata", "deterministic discovery", "negative compatibility tests"]
 
   - name: skill-packaging
     skill: node-skill-packaging
-    prompt: "Implement or review a production Node.js change involving skill packaging."
-    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "resource limits"]
-    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+    prompt: "Build a reproducible release archive of the skill pack and prove that repeated packaging from the same revision produces identical contents."
+    pressure: ["reproducible archive", "secret exclusion", "volatile files", "unpacked validation"]
+    expected_invariants: ["source closure", "stable bytes", "no credentials", "discovery after unpack"]
 
   - name: skill-discovery-contract
     skill: node-skill-discovery-contract
-    prompt: "Implement or review a production Node.js change involving skill discovery contract."
-    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "resource limits"]
-    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+    prompt: "Improve skill descriptions so an AI agent can discover the right skill from a task trigger while rejecting nearby but unrelated tasks."
+    pressure: ["trigger precision", "negative match", "ambiguous wording", "discovery collision"]
+    expected_invariants: ["searchable activation", "negative coverage", "deterministic discovery", "low false positives"]
 
   - name: skill-routing-contract
     skill: node-skill-routing-contract
-    prompt: "Implement or review a production Node.js change involving skill routing contract."
-    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "resource limits"]
-    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+    prompt: "Route a task that matches several backend skills to one primary owner and only the secondary dependencies supported by repository evidence."
+    pressure: ["primary owner", "secondary dependency", "ambiguous task", "adapter detection"]
+    expected_invariants: ["single owner", "bounded secondary set", "framework detection first", "ambiguity escalation"]
 
   - name: skill-evaluation-discipline
     skill: node-skill-evaluation-discipline
-    prompt: "Implement or review a production Node.js change involving skill evaluation discipline."
-    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "resource limits"]
-    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+    prompt: "Design an agent evaluation where a seemingly plausible implementation must fail a negative security case and where green CI cannot be achieved by weakening the expected invariant."
+    pressure: ["negative case", "false positive", "time pressure", "unmodified invariant"]
+    expected_invariants: ["behavioral proof", "negative coverage", "stable oracle", "evidence report"]
 
   - name: skill-version-governance
     skill: node-skill-version-governance
-    prompt: "Implement or review a production Node.js change involving skill version governance."
-    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "resource limits"]
-    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+    prompt: "Audit adapter selection when package.json and the lockfile report a supported version, then test an unsupported version and an ambiguous range."
+    pressure: ["version evidence", "lockfile", "unsupported version", "version scope"]
+    expected_invariants: ["detected version", "scope match", "safe no-adapter", "range coverage"]
 
   - name: skill-reference-governance
     skill: node-skill-reference-governance
-    prompt: "Implement or review a production Node.js change involving skill reference governance."
-    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "resource limits"]
-    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+    prompt: "Audit a skill's external claims and replace weak references with authoritative HTTPS documentation that another engineer can verify."
+    pressure: ["HTTPS source", "standards document", "broken URL", "claim mapping"]
+    expected_invariants: ["authoritative reference", "traceable claim", "reachable URL", "no unsupported source"]
 
   - name: codegen-engineering
     skill: node-codegen-engineering
-    prompt: "Implement or review a production Node.js change involving codegen engineering."
-    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "resource limits"]
-    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+    prompt: "Harden a generated-client pipeline so a pinned generator and schema produce the same output from a clean checkout."
+    pressure: ["generator", "pinned tooling", "clean checkout", "generated diff"]
+    expected_invariants: ["input provenance", "deterministic generation", "owned output", "contract regression"]
 
   - name: generated-schema-contracts
     skill: node-generated-schema-contracts
-    prompt: "Implement or review a production Node.js change involving generated schema contracts."
-    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "resource limits"]
-    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+    prompt: "Change a versioned API schema while proving generated TypeScript types remain compatible for existing consumers."
+    pressure: ["schema", "breaking field", "generated type", "mixed-version consumer"]
+    expected_invariants: ["canonical schema", "compatibility classification", "generated contract", "consumer test"]
 
   - name: generated-client-governance
     skill: node-generated-client-governance
-    prompt: "Implement or review a production Node.js change involving generated client governance."
-    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "resource limits"]
-    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+    prompt: "Regenerate a GraphQL or OpenAPI client while keeping handwritten extensions safe across regeneration and reviewing generated authentication behavior."
+    pressure: ["generated client", "handwritten extension", "regeneration", "auth transport"]
+    expected_invariants: ["ownership boundary", "stable customization", "reviewed auth", "smoke test"]
 
   - name: generated-artifact-determinism
     skill: node-generated-artifact-determinism
-    prompt: "Implement or review a production Node.js change involving generated artifact determinism."
-    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "resource limits"]
-    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+    prompt: "Diagnose a generator that produces different files because timestamps and machine paths leak into generated artifacts."
+    pressure: ["deterministic output", "timestamp", "machine path", "repeat generation"]
+    expected_invariants: ["byte stability", "normalized environment", "no volatile metadata", "hash comparison"]
 
   - name: release-notes-engineering
     skill: node-release-notes-engineering
-    prompt: "Implement or review a production Node.js change involving release notes engineering."
-    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "resource limits"]
-    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+    prompt: "Prepare release notes from the verified change set and explicitly document a breaking API change and its migration action."
+    pressure: ["breaking change", "migration action", "release version", "verified diff"]
+    expected_invariants: ["accurate classification", "user impact", "migration guidance", "version alignment"]
 
   - name: maintenance-engineering
     skill: node-maintenance-engineering
-    prompt: "Implement or review a production Node.js change involving maintenance engineering."
-    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "resource limits"]
-    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+    prompt: "Plan dependency maintenance for an unmaintained tool without turning a security or compatibility issue into undisciplined dependency churn."
+    pressure: ["unmaintained dependency", "support lifecycle", "security rationale", "compatibility"]
+    expected_invariants: ["ownership decision", "smallest justified change", "support evidence", "regression coverage"]
 
   - name: deprecation-planning
     skill: node-deprecation-planning
-    prompt: "Implement or review a production Node.js change involving deprecation planning."
-    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "resource limits"]
-    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+    prompt: "Deprecate an old API while keeping a documented coexistence window, migration path, and measurable sunset condition."
+    pressure: ["sunset", "coexistence", "migration path", "deprecation warning"]
+    expected_invariants: ["replacement contract", "consumer guidance", "sunset criterion", "removal gate"]
 
   - name: change-log-integrity
     skill: node-change-log-integrity
-    prompt: "Implement or review a production Node.js change involving change log integrity."
-    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "resource limits"]
-    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+    prompt: "Repair a changelog entry whose version/date and breaking-change description disagree with the actual release record."
+    pressure: ["changelog", "release record", "version ordering", "breaking entry"]
+    expected_invariants: ["historical accuracy", "version consistency", "breaking visibility", "auditable correction"]
 
   - name: database-advisory-locks
     skill: node-database-advisory-locks
-    prompt: "Implement or review a production Node.js change involving database advisory locks."
-    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "resource limits"]
-    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+    prompt: "Coordinate two Node.js workers with a PostgreSQL advisory lock while keeping lock ownership bounded during retries and crashes."
+    pressure: ["advisory lock", "worker contention", "session lifetime", "bounded wait"]
+    expected_invariants: ["stable lock key", "safe lifetime", "timeout policy", "crash cleanup"]
 
   - name: database-read-replica-routing
     skill: node-database-read-replica-routing
-    prompt: "Implement or review a production Node.js change involving database read replica routing."
-    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "resource limits"]
-    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+    prompt: "Route read-only queries to replicas while ensuring a read-after-write path uses the primary when replica lag would return stale data."
+    pressure: ["read replica", "read-after-write", "replica lag", "primary pinning"]
+    expected_invariants: ["consistency classification", "safe routing", "lag handling", "observable topology"]
 
   - name: query-plan-engineering
     skill: node-query-plan-engineering
-    prompt: "Implement or review a production Node.js change involving query plan engineering."
-    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "resource limits"]
-    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+    prompt: "Investigate a slow PostgreSQL query with EXPLAIN evidence and reject an index change that improves one synthetic parameter but harms the representative workload."
+    pressure: ["EXPLAIN", "selectivity", "representative workload", "plan regression"]
+    expected_invariants: ["baseline plan", "evidence-driven index", "parameter coverage", "measured regression"]
 
   - name: postgres-locking
     skill: node-postgres-locking
-    prompt: "Implement or review a production Node.js change involving postgres locking."
-    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "resource limits"]
-    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+    prompt: "Choose PostgreSQL row lock modes and lock ordering for a concurrent inventory update without holding the lock across remote calls."
+    pressure: ["lock ordering", "row lock", "transaction scope", "remote call"]
+    expected_invariants: ["narrow lock", "consistent order", "short transaction", "contention test"]
 
   - name: deadlock-diagnostics
     skill: node-deadlock-diagnostics
-    prompt: "Implement or review a production Node.js change involving deadlock diagnostics."
-    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "resource limits"]
-    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+    prompt: "Diagnose a PostgreSQL deadlock by reconstructing the wait graph and deciding whether a retry is safe for the affected operation."
+    pressure: ["deadlock", "wait graph", "retry safety", "lock ordering"]
+    expected_invariants: ["root-cause evidence", "safe retry condition", "ordering fix", "reproduction test"]
 
   - name: isolation-level-selection
     skill: node-isolation-level-selection
-    prompt: "Implement or review a production Node.js change involving isolation level selection."
-    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "resource limits"]
-    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+    prompt: "Choose the minimum PostgreSQL isolation level needed to prevent a documented lost-update anomaly and verify serialization failures are handled safely."
+    pressure: ["isolation", "lost update", "serialization failure", "concurrency schedule"]
+    expected_invariants: ["anomaly model", "minimum sufficient level", "safe retry", "concurrency test"]
 
   - name: signal-handling
     skill: node-signal-handling
-    prompt: "Implement or review a production Node.js change involving signal handling."
-    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "resource limits"]
-    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+    prompt: "Implement controlled SIGTERM shutdown for a Node.js service with in-flight requests and background workers, including repeated-signal behavior."
+    pressure: ["SIGTERM", "drain deadline", "in-flight work", "repeated signal"]
+    expected_invariants: ["single shutdown path", "bounded drain", "cancellation propagation", "explicit exit outcome"]
 
   - name: runtime-health-monitoring
     skill: node-runtime-health-monitoring
-    prompt: "Implement or review a production Node.js change involving runtime health monitoring."
-    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "resource limits"]
-    expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
+    prompt: "Design startup, liveness, and readiness probes so a dependency outage marks the service unready without causing unnecessary process restarts."
+    pressure: ["health check", "readiness", "liveness", "dependency outage"]
+    expected_invariants: ["probe separation", "bounded checks", "deployment integration", "degraded-state test"]
