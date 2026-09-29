@@ -5,35 +5,35 @@ import { readFile } from "node:fs/promises";
 const manifest = await readFile(new URL("../skill-manifest.yml", import.meta.url), "utf8");
 
 const skills = [
-  "node-api-compatibility",
-  "node-api-contract-migration",
-  "node-batch-api-design",
-  "node-bulk-operations",
-  "node-resource-lifecycle",
-  "node-data-retention",
-  "node-data-lineage",
-  "node-data-quality",
-  "node-data-masking",
-  "node-encryption-at-rest",
-  "node-key-management",
-  "node-message-ordering",
-  "node-message-deduplication",
-  "node-consumer-poison-message",
-  "node-dead-letter-queues",
-  "node-schema-validation-at-boundary",
-  "node-runtime-type-safety",
-  "node-package-resolution",
+  "node-permission-model",
+  "node-async-context-propagation",
+  "node-request-context",
+  "node-abort-cancellation",
+  "node-worker-threads",
+  "node-child-process-safety",
+  "node-http-body-limits",
+  "node-upload-security",
+  "node-ssrf-defense",
+  "node-cache-key-security",
+  "node-tenant-cache-isolation",
+  "node-database-index-engineering",
+  "node-query-performance",
+  "node-lock-contention",
+  "node-connection-leak-detection",
+  "node-transaction-retry",
+  "node-health-check-engineering",
+  "node-startup-readiness",
+  "node-config-drift-detection",
+  "node-generated-code-governance",
 ];
 
 const adapters = [
-  "ajv",
-  "jose",
-  "kysely",
-  "mongodb-memory-server",
+  "hapi",
+  "mercurius",
 ];
 
-test("Wave 10 skills have files and evaluation coverage", async () => {
-  const evals = await readFile(new URL("../evals/cases/data-api-platform/workflow.yml", import.meta.url), "utf8").catch(() => "");
+test("Wave 11 skills have files and evaluation coverage", async () => {
+  const evals = await readFile(new URL("../evals/cases/runtime-data-security/workflow.yml", import.meta.url), "utf8").catch(() => "");
   for (const skill of skills) {
     assert.match(manifest, new RegExp("^  - name: " + skill + "$", "m"));
     const text = await readFile(new URL("../skills/" + skill + "/SKILL.md", import.meta.url), "utf8");
@@ -43,7 +43,11 @@ test("Wave 10 skills have files and evaluation coverage", async () => {
   assert.equal([...manifest.matchAll(/^  - name: ([a-z0-9-]+)$/gm)].length, 206);
 });
 
-test("Wave 10 adapters have registry, skill, README, and source metadata", async () => {
+test("Wave 11 adapter inventory is complete", () => {
+  assert.equal([...manifest.matchAll(/^    path: adapters\//gm)].length, 67);
+});
+
+test("Wave 11 adapters have registry, skill, README, and source metadata", async () => {
   for (const name of adapters) {
     assert.match(manifest, new RegExp("^  " + name + ":\n    path: adapters/" + name + "/SKILL\.md\n    version_scope: .+\n    source: https://", "m"));
     const skill = await readFile(new URL("../adapters/" + name + "/SKILL.md", import.meta.url), "utf8");
