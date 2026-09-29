@@ -905,6 +905,78 @@ skills:
   - name: node-package-manager-policy
     category: build
     triggers: [package manager policy, npm, pnpm, yarn, Corepack]
+  - name: node-agent-task-intent
+    category: agent
+    triggers: [task intent, coding request, acceptance criteria, task scope]
+  - name: node-agent-tool-selection
+    category: agent
+    triggers: [tool selection, repository evidence, coding agent tool]
+  - name: node-agent-tool-contract
+    category: agent
+    triggers: [tool contract, tool schema, tool side effect, tool timeout]
+  - name: node-agent-state-machine
+    category: agent
+    triggers: [agent state machine, execution state, transition guard]
+  - name: node-agent-context-budgeting
+    category: agent
+    triggers: [context budget, context window, tool output budget]
+  - name: node-agent-replayability
+    category: agent
+    triggers: [agent replay, tool call replay, execution audit]
+  - name: node-agent-deterministic-execution
+    category: agent
+    triggers: [deterministic agent, nondeterminism, stable execution]
+  - name: node-agent-safety-gates
+    category: agent
+    triggers: [agent safety gate, precondition, destructive action gate]
+  - name: node-agent-human-escalation
+    category: agent
+    triggers: [human escalation, agent approval, unresolved uncertainty]
+  - name: node-agent-tool-audit
+    category: agent
+    triggers: [agent tool audit, tool call log, action audit]
+  - name: node-agent-observation-normalization
+    category: agent
+    triggers: [observation normalization, tool output, evidence normalization]
+  - name: node-agent-action-approval
+    category: agent
+    triggers: [action approval, approval scope, destructive agent action]
+  - name: node-prototype-pollution-defense
+    category: security
+    triggers: [prototype pollution, __proto__, constructor prototype, object merge]
+  - name: node-regex-dos-defense
+    category: security
+    triggers: [regex denial of service, catastrophic backtracking, ReDoS]
+  - name: node-json-parse-safety
+    category: security
+    triggers: [JSON parse, JSON payload, deep JSON, JSON size]
+  - name: node-serialization-boundaries
+    category: runtime
+    triggers: [serialization boundary, wire format, deserialization, schema]
+  - name: node-vm-isolation-limitations
+    category: security
+    triggers: [node vm, vm isolation, sandbox limitations, dynamic code]
+  - name: node-database-statement-timeouts
+    category: persistence
+    triggers: [database statement timeout, query timeout, statement deadline]
+  - name: node-query-cancellation
+    category: persistence
+    triggers: [database query cancellation, AbortSignal query, cancel query]
+  - name: node-prepared-statement-safety
+    category: persistence
+    triggers: [prepared statement, parameterized query, statement name]
+  - name: node-pooler-compatibility
+    category: persistence
+    triggers: [database pooler, PgBouncer, transaction pooling, prepared statements]
+  - name: node-transaction-state-monitoring
+    category: persistence
+    triggers: [transaction state, open transaction, aborted transaction]
+  - name: node-connection-pooler-engineering
+    category: persistence
+    triggers: [connection pool sizing, pool saturation, max connections]
+  - name: node-query-budgeting
+    category: persistence
+    triggers: [query budget, query count budget, database query limit]
 adapters:
   express:
     path: adapters/express/SKILL.md
@@ -1230,3 +1302,19 @@ adapters:
     path: adapters/swc-core/SKILL.md
     version_scope: 1.16.2
     source: https://swc.rs/
+  typescript-eslint:
+    path: adapters/typescript-eslint/SKILL.md
+    version_scope: 8.70.0
+    source: https://typescript-eslint.io/
+  nodemon:
+    path: adapters/nodemon/SKILL.md
+    version_scope: 3.1.14
+    source: https://github.com/remy/nodemon
+  graphql-codegen-client-preset:
+    path: adapters/graphql-codegen-client-preset/SKILL.md
+    version_scope: 6.2.0
+    source: https://the-guild.dev/graphql/codegen/plugins/presets/preset-client
+  ts-node:
+    path: adapters/ts-node/SKILL.md
+    version_scope: 10.9.2
+    source: https://github.com/TypeStrong/ts-node
