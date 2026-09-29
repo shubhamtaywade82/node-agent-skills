@@ -28,15 +28,20 @@ for (let index = 0; index < manifestLines.length; index += 1) {
   const match = manifestLines[index].match(/^  ([a-z0-9-]+):$/);
   if (!match) continue;
   const name = match[1];
-  const pathMatch = manifestLines[index + 1]?.match(/^    path: (adapters\\/[^\\n]+)$/);
-  const scopeMatch = manifestLines[index + 2]?.match(/^    version_scope: (.+)$/);
-  const sourceMatch = manifestLines[index + 3]?.match(/^    source: (https:\\/\\/\\S+)$/);
-  if (!pathMatch || !scopeMatch || !sourceMatch) continue;
+  const pathLine = manifestLines[index + 1] ?? "";
+  const scopeLine = manifestLines[index + 2] ?? "";
+  const sourceLine = manifestLines[index + 3] ?? "";
+  const pathPrefix = "    path: ";
+  const scopePrefix = "    version_scope: ";
+  const sourcePrefix = "    source: ";
+  if (!pathLine.startsWith(pathPrefix) || !pathLine.slice(pathPrefix.length).startsWith("adapters/")) continue;
+  if (!scopeLine.startsWith(scopePrefix) || !scopeLine.slice(scopePrefix.length).trim()) continue;
+  if (!sourceLine.startsWith(sourcePrefix) || !sourceLine.slice(sourcePrefix.length).startsWith("https://")) continue;
   adapterEntries.push({
     name,
-    path: pathMatch[1],
-    versionScope: scopeMatch[1],
-    source: sourceMatch[1],
+    path: pathLine.slice(pathPrefix.length),
+    versionScope: scopeLine.slice(scopePrefix.length),
+    source: sourceLine.slice(sourcePrefix.length),
   });
 }
 if (!adapterEntries.length) throw new Error("manifest contains no adapters");
