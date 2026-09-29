@@ -21,3 +21,26 @@ for (const name of names) {
 const dirs = (await readdir(path.join(root, "skills"), {withFileTypes:true})).filter(x=>x.isDirectory()).map(x=>x.name).sort();
 if (JSON.stringify(dirs) !== JSON.stringify([...names].sort())) throw new Error("manifest/skills mismatch");
 console.log(`validated ${names.length} skills`);
+
+const adapterScopes = { express: "5.x", fastify: "5.x", nestjs: "12.x", hono: "4.x", prisma: "7.x/8.x", drizzle: "current/v1", bullmq: "5.x/6.x", redis: "node-redis-5.x" };
+for (const [name, scope] of Object.entries(adapterScopes)) {
+  const lines = manifest.split("\n");
+  const index = lines.indexOf("  " + name + ":");
+  if (index < 0) throw new Error("adapter registry mismatch: " + name);
+  if (lines[index + 1] !== "    path: adapters/" + name + "/SKILL.md") {
+    throw new Error("adapter path mismatch: " + name);
+  }
+  if (lines[index + 2] !== "    version_scope: " + scope) {
+    throw new Error("adapter version_scope mismatch: " + name);
+  }
+  if (!/^    source: https:\/\//.test(lines[index + 3] ?? "")) {
+    throw new Error("adapter source missing: " + name);
+  }
+  for (const relative of ["adapters/" + name + "/SKILL.md", "adapters/" + name + "/README.md"]) {
+    const file = path.join(root, relative);
+    await access(file);
+    const adapterText = await readFile(file, "utf8");
+    if (adapterText.split("\n").length > 500) throw new Error(relative + ": exceeds 500 lines");
+  }
+}
+console.log("validated " + names.length + " skills and " + Object.keys(adapterScopes).length + " adapters");

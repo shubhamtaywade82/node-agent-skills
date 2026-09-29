@@ -1,0 +1,6 @@
+cases:
+  - name: deterministic-cursor-pagination
+    skill: node-pagination-filtering
+    prompt: "Add pagination and filtering to a high-volume list endpoint."
+    pressure: ["large dataset", "concurrent inserts"]
+    expected_invariants: ["stable ordering", "bounded page size", "cursor semantics"]

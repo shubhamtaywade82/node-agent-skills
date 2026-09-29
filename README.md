@@ -2,43 +2,102 @@
 
 Production-grade **Node.js + TypeScript backend engineering skills for AI coding agents**.
 
-The core is framework-neutral. The pack teaches agents to inspect first, identify the owning boundary, reason about runtime and type contracts, handle untrusted input, bound concurrency, enforce persistence integrity, secure APIs, test behavior, observe production systems, and verify performance.
+The core is framework-neutral. The pack teaches agents to inspect first, identify the owning boundary, reason about runtime and type contracts, validate untrusted input, bound concurrency, enforce persistence integrity, secure APIs, test behavior, observe production systems, and operate services safely.
 
 ## Verify
-~~~bash
+```bash
 npm test
 npm run validate
-~~~
+```
 
-## Initial inventory
-- node-architecture
-- node-design-patterns
-- node-runtime-foundations
-- node-async-concurrency
-- node-typescript-contracts
-- node-runtime-validation
-- node-api-engineering
-- node-auth-security
-- node-postgresql-persistence
-- node-background-jobs-reliability
-- node-observability
-- node-testing
-- node-performance
-- node-production-runtime
-- node-external-integrations
+## Capability inventory
+
+### Core
+- Pragmatic TypeScript design patterns and refactoring
+- Architecture and runtime foundations
+- Async concurrency and TypeScript contracts
+- Runtime validation and HTTP/API engineering
+- Authentication/security
+- PostgreSQL persistence
+- Background jobs
+- Observability
+- Testing and performance
+- Production runtime
+- External integrations
+
+### API wave
+- HTTP lifecycle and transport errors
+- REST resource design
+- API versioning/deprecation
+- Pagination/filtering
+- Idempotent mutations
+- OpenAPI contracts
+- GraphQL
+- WebSockets/realtime
+- Webhooks
+
+### Infrastructure wave
+- Database integrity and transaction boundaries
+- Production migrations and connection-pool budgeting
+- Redis and cache consistency
+- Queues and worker reliability
+- Durable message-broker consumption
+- Outbox and transactional outbox patterns
+
+### Framework and infrastructure adapters
+| Adapter | Guide | Supported scope |
+|---|---|---|
+| Express | adapters/express/SKILL.md | 5.x |
+| Fastify | adapters/fastify/SKILL.md | 5.x |
+| NestJS | adapters/nestjs/SKILL.md | 12.x |
+| Hono | adapters/hono/SKILL.md | 4.x |
+| Prisma | adapters/prisma/SKILL.md | 7.x/8.x |
+| Drizzle | adapters/drizzle/SKILL.md | current/v1 transition; verify exact versions |
+| BullMQ | adapters/bullmq/SKILL.md | 5.x/6.x |
+| node-redis | adapters/redis/SKILL.md | 5.x |
+
+Adapters are conditional. Agents must detect the framework/library and installed version from the target repository before applying adapter-specific guidance.
 
 ## Architecture
-skills/ contains routed knowledge units. skill-manifest.yml is the registry. router/ defines ownership. scripts/validate.mjs checks consistency. test/ protects repository contracts. evals/ contains behavioral cases.
+`skills/` contains framework-neutral routed knowledge units. `skill-manifest.yml` is the registry and includes version-scoped adapter metadata. `router/` defines ownership and adapter selection. `scripts/validate.mjs` checks consistency. `test/` protects repository contracts. `evals/` contains behavioral pressure scenarios.
 
-Design patterns are taught as a **conditional refactoring toolkit**. The pack covers the classic TypeScript catalog, but defaults to functions, objects, maps, discriminated unions, composition, and existing runtime/framework primitives before introducing class-heavy pattern structures.
+## Agent routing model
+1. Inspect the repository and dependency manifests.
+2. Select the dominant backend boundary.
+3. Load the owning core skill.
+4. Load only the secondary skills required by actual dependencies.
+5. Detect framework/version and load the adapter only when applicable.
+6. Verify with tests, contract checks, and the repository validator.
 
-Framework and vendor adapters are intentionally deferred until the core contracts stabilize.
+## Infrastructure quality principles
 
-Node 24+ is used for repository tooling. Node.js currently lists v24 as LTS; production applications should use Active or Maintenance LTS releases.
+- Database constraints own critical relational invariants.
+- Transactions are short and have explicit ownership.
+- Migrations are designed for mixed-version deployments.
+- Connection pools are sized across the whole deployment, not one process.
+- Redis/cache failure semantics are explicit.
+- Queue and broker consumers assume replay/duplicate delivery unless the contract proves otherwise.
+- Outbox publication is asynchronous and duplicate-safe.
+
+## Quality principles
+- Runtime truth is separate from TypeScript compile-time types.
+- Untrusted input is validated at the boundary.
+- Authentication is not authorization.
+- Retries require an explicit idempotency decision.
+- At-least-once delivery is assumed for queues/webhooks unless the infrastructure contract proves otherwise.
+- Critical integrity belongs in database constraints/transactions.
+- Resilience mechanisms need explicit budgets and observability.
+- Evaluations are measurement infrastructure and must not be weakened to obtain green CI.
 
 ## Sources
 - https://nodejs.org/en/about/previous-releases
-- https://www.typescriptlang.org/tsconfig/module
-- https://opentelemetry.io/docs/languages/js/
-- https://owasp.org/API-Security/
-- https://refactoring.guru/design-patterns/typescript
+- https://spec.openapis.org/oas/v3.1.0
+- https://graphql.org/learn/
+- https://graphql.github.io/graphql-over-http/
+- https://expressjs.com/en/guide/migrating-5/
+- https://fastify.dev/docs/latest/Reference/Lifecycle/
+- https://docs.nestjs.com/migration-guide
+- https://hono.dev/docs/guides/middleware
+- https://developer.mozilla.org/en-US/docs/Web/API/WebSocket
+
+CI workflow is validated on GitHub Actions for the Wave 2A branch.

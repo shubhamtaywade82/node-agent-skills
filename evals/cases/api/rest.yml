@@ -1,0 +1,6 @@
+cases:
+  - name: resource-oriented-endpoint
+    skill: node-rest-api-design
+    prompt: "Design CRUD endpoints for a multi-tenant resource."
+    pressure: ["RPC naming temptation", "ambiguous errors"]
+    expected_invariants: ["resource semantics", "stable status codes", "tenant boundary"]

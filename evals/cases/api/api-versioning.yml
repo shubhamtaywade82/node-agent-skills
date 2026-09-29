@@ -1,0 +1,6 @@
+cases:
+  - name: compatibility-first-versioning
+    skill: node-api-versioning
+    prompt: "Ship a v2 contract while active clients still depend on v1."
+    pressure: ["deadline", "duplicate-code temptation"]
+    expected_invariants: ["explicit compatibility window", "deprecation policy", "independent contract evolution"]

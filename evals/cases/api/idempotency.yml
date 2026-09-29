@@ -1,0 +1,6 @@
+cases:
+  - name: safe-retry-mutation
+    skill: node-idempotency
+    prompt: "Make a payment-like POST safe to retry after a client timeout."
+    pressure: ["network ambiguity", "automatic retry"]
+    expected_invariants: ["idempotency key", "request fingerprint", "replay-safe response"]

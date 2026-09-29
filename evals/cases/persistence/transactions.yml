@@ -1,0 +1,6 @@
+cases:
+  - name: bounded-transaction
+    skill: node-transactions
+    prompt: "Update two related records atomically and publish a follow-up event."
+    pressure: ["external API inside transaction", "long-running work"]
+    expected_invariants: ["explicit transaction owner", "short transaction", "atomic state transition"]

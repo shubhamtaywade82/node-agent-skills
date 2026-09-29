@@ -1,7 +1,44 @@
 cases:
   - name: rest-endpoint
-    primary: node-api-engineering
-    secondary: [node-runtime-validation, node-auth-security, node-testing]
+    primary: node-rest-api-design
+    secondary: [node-http-engineering, node-runtime-validation, node-auth-security, node-testing]
+  - name: versioned-api
+    primary: node-api-versioning
+    secondary: [node-openapi, node-rest-api-design]
+  - name: paginated-search
+    primary: node-pagination-filtering
+    secondary: [node-postgresql-persistence, node-api-engineering]
+  - name: safe-mutation-retry
+    primary: node-idempotency
+    secondary: [node-external-integrations, node-background-jobs-reliability]
+  - name: openapi-contract
+    primary: node-openapi
+    secondary: [node-runtime-validation, node-api-versioning]
+  - name: graphql-tenant-data
+    primary: node-graphql
+    secondary: [node-auth-security, node-runtime-validation]
+  - name: websocket-stream
+    primary: node-websockets
+    secondary: [node-async-concurrency, node-observability]
+  - name: provider-webhook
+    primary: node-webhooks
+    secondary: [node-idempotency, node-external-integrations]
+  - name: express-api
+    primary: node-http-engineering
+    secondary: [node-runtime-validation]
+    adapter: adapters/express/SKILL.md
+  - name: fastify-api
+    primary: node-http-engineering
+    secondary: [node-runtime-validation]
+    adapter: adapters/fastify/SKILL.md
+  - name: nestjs-api
+    primary: node-http-engineering
+    secondary: [node-runtime-validation, node-auth-security]
+    adapter: adapters/nestjs/SKILL.md
+  - name: hono-api
+    primary: node-http-engineering
+    secondary: [node-runtime-validation]
+    adapter: adapters/hono/SKILL.md
   - name: postgres-transaction
     primary: node-postgresql-persistence
     secondary: [node-testing]
@@ -14,6 +51,39 @@ cases:
   - name: tenant-authorization
     primary: node-auth-security
     secondary: [node-runtime-validation, node-testing]
+
+  - name: database-constraints
+    primary: node-database-engineering
+    secondary: [node-transactions, node-testing]
+  - name: schema-migration
+    primary: node-migrations
+    secondary: [node-database-engineering, node-production-runtime]
+  - name: pool-exhaustion
+    primary: node-connection-pooling
+    secondary: [node-postgresql-persistence, node-performance]
+  - name: redis-cache
+    primary: node-caching
+    secondary: [node-redis, node-performance]
+    adapter: adapters/redis/SKILL.md
+  - name: queued-worker
+    primary: node-queues
+    secondary: [node-background-jobs-reliability, node-async-concurrency]
+    adapter: adapters/bullmq/SKILL.md
+  - name: broker-consumer
+    primary: node-message-brokers
+    secondary: [node-background-jobs-reliability, node-observability]
+  - name: durable-outbox
+    primary: node-transactional-outbox
+    secondary: [node-transactions, node-message-brokers]
+  - name: prisma-persistence
+    primary: node-database-engineering
+    secondary: [node-transactions, node-migrations]
+    adapter: adapters/prisma/SKILL.md
+  - name: drizzle-persistence
+    primary: node-database-engineering
+    secondary: [node-transactions, node-migrations]
+    adapter: adapters/drizzle/SKILL.md
+
   - name: design-pattern-refactor
     primary: node-design-patterns
     secondary: [node-architecture, node-typescript-contracts, node-testing]

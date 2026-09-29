@@ -1,0 +1,6 @@
+cases:
+  - name: bounded-socket-lifecycle
+    skill: node-websockets
+    prompt: "Stream live events to many clients over WebSockets."
+    pressure: ["bursty producers", "slow consumers"]
+    expected_invariants: ["connection lifecycle", "backpressure strategy", "bounded resources"]

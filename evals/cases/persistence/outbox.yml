@@ -1,0 +1,6 @@
+cases:
+  - name: outbox-relay
+    skill: node-outbox
+    prompt: "Guarantee application events are eventually delivered without losing them during process failure."
+    pressure: ["crash after DB commit", "relay duplication"]
+    expected_invariants: ["durable event record", "relay retry", "idempotent publish"]

@@ -1,0 +1,6 @@
+cases:
+  - name: redis-failure-semantics
+    skill: node-redis
+    prompt: "Use Redis for ephemeral coordination and caching."
+    pressure: ["Redis outage", "reconnect storm"]
+    expected_invariants: ["connection lifecycle", "failure mode", "bounded retry"]

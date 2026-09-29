@@ -1,0 +1,13 @@
+cases:
+  - name: prisma
+    adapter: prisma
+    expected_invariants: ["Prisma 7 and 8 scope separated", "transaction semantics documented", "migration strategy documented"]
+  - name: drizzle
+    adapter: drizzle
+    expected_invariants: ["transaction API", "migration command semantics", "schema source-of-truth decision"]
+  - name: bullmq
+    adapter: bullmq
+    expected_invariants: ["idempotent jobs", "worker connection behavior", "graceful shutdown"]
+  - name: redis
+    adapter: redis
+    expected_invariants: ["node-redis client", "reconnect behavior", "transaction/pipeline distinction"]

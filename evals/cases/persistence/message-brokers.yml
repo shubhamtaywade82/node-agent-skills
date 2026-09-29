@@ -1,0 +1,6 @@
+cases:
+  - name: replayable-consumer
+    skill: node-message-brokers
+    prompt: "Consume events from a durable broker with multiple consumers."
+    pressure: ["replay", "ordering assumption", "consumer lag"]
+    expected_invariants: ["delivery semantics", "offset ownership", "replay-safe handler"]

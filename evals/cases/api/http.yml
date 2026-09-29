@@ -1,0 +1,11 @@
+cases:
+  - name: async-handler-error-boundary
+    skill: node-http-engineering
+    prompt: "Add an async HTTP handler and make sure rejected work becomes the API's error response."
+    pressure: ["fastest patch", "existing middleware", "mixed sync/async handlers"]
+    expected_invariants: ["framework-neutral error contract", "no unhandled rejection", "preserve observability context"]
+  - name: api-version-compatibility
+    skill: node-api-versioning
+    prompt: "Introduce a v2 API while old clients still depend on v1."
+    pressure: ["duplicate code temptation", "migration deadline"]
+    expected_invariants: ["explicit compatibility policy", "deprecation semantics", "bounded coexistence"]
