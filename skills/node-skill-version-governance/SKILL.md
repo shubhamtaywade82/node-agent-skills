@@ -23,15 +23,18 @@ evolving a skill pack without silently changing agent behavior.
 
 ## Decision rules
 
-breaking behavioral changes are identified and versioned; compatibility notes are explicit; old paths are removed only deliberately
-
-- Source contracts remain authoritative over generated artifacts.
-- Generated output must be reproducible and reviewable.
-- Runtime validation remains distinct from compile-time typing.
+- Adapter activation requires detected installed versions to match explicit version_scope.
+- Lockfiles and package manifests are stronger evidence than README version claims.
+- Unsupported or ambiguous versions produce a safe no-adapter result rather than a guessed compatibility mode.
+- Version scope changes require fixture coverage for lower, target, and upper supported ranges.
 
 ## Implementation procedure
 
-1. Classify change impact.\n2. Update version metadata.\n3. Add migration notes.\n4. Preserve aliases where justified.\n5. Add regression evals.\n6. Verify release artifact.
+1. Detect installed package versions from manifests and lockfiles.
+2. Resolve the adapter version_scope.
+3. Test supported, unsupported, and ambiguous versions.
+4. Update scope and compatibility fixtures together.
+5. Record the source evidence for each supported range.
 
 ## Failure modes
 
