@@ -13,7 +13,7 @@ const skills = [
   "node-http-cache-semantics","node-api-conditional-requests"
 ];
 test("Wave 13 skills have files and evaluation coverage", async () => {
- const evals=await readFile(new URL("../evals/cases/runtime-db-diagnostics/workflow.yml",import.meta.url)).catch(()=> "");
+ const evals=await readFile(new URL("../evals/cases/runtime-db-diagnostics/workflow.yml",import.meta.url),"utf8");
  for(const skill of skills){
   assert.match(manifest,new RegExp("^  - name: "+skill+"$","m"));
   const text=await readFile(new URL("../skills/"+skill+"/SKILL.md",import.meta.url),"utf8");
