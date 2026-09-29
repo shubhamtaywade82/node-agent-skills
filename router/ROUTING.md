@@ -5,6 +5,7 @@ Route by the dominant backend boundary first. Framework adapters are a translati
 | Boundary | Primary | Secondary |
 |---|---|---|
 | architecture | node-architecture | node-typescript-contracts |
+| design pattern/refactoring | node-design-patterns | node-architecture, node-typescript-contracts, node-testing |
 | runtime/lifecycle | node-runtime-foundations | node-production-runtime |
 | async/concurrency | node-async-concurrency | node-observability |
 | TypeScript contracts | node-typescript-contracts | node-runtime-validation |

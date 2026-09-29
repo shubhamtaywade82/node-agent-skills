@@ -83,3 +83,7 @@ cases:
     primary: node-database-engineering
     secondary: [node-transactions, node-migrations]
     adapter: adapters/drizzle/SKILL.md
+
+  - name: design-pattern-refactor
+    primary: node-design-patterns
+    secondary: [node-architecture, node-typescript-contracts, node-testing]

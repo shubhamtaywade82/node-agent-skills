@@ -13,6 +13,7 @@ npm run validate
 ## Capability inventory
 
 ### Core
+- Pragmatic TypeScript design patterns and refactoring
 - Architecture and runtime foundations
 - Async concurrency and TypeScript contracts
 - Runtime validation and HTTP/API engineering
