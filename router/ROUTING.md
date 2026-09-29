@@ -209,6 +209,31 @@ Route by the dominant backend boundary first. Framework adapters are a translati
 | request-smuggling-defense | node-request-smuggling-defense | node-testing, node-observability |
 | header-normalization | node-header-normalization | node-testing, node-observability |
 
+| filesystem-safety | node-filesystem-safety | node-testing, node-observability |
+| temp-file-safety | node-temp-file-safety | node-testing, node-observability |
+| path-traversal-defense | node-path-traversal-defense | node-testing, node-observability |
+| archive-extraction-safety | node-archive-extraction-safety | node-testing, node-observability |
+| file-descriptor-lifecycle | node-file-descriptor-lifecycle | node-testing, node-observability |
+| process-supervision | node-process-supervision | node-testing, node-observability |
+| worker-crash-recovery | node-worker-crash-recovery | node-testing, node-observability |
+| event-loop-diagnostics | node-event-loop-diagnostics | node-testing, node-observability |
+| memory-leak-diagnostics | node-memory-leak-diagnostics | node-testing, node-observability |
+| heap-diagnostics | node-heap-diagnostics | node-testing, node-observability |
+| log-redaction | node-log-redaction | node-testing, node-observability |
+| telemetry-sampling | node-telemetry-sampling | node-testing, node-observability |
+| metric-cardinality-control | node-metric-cardinality-control | node-testing, node-observability |
+| trace-context-propagation | node-trace-context-propagation | node-testing, node-observability |
+| api-content-negotiation | node-api-content-negotiation | node-testing, node-observability |
+| http-cache-semantics | node-http-cache-semantics | node-testing, node-observability |
+| etag-cache-validation | node-etag-cache-validation | node-testing, node-observability |
+| api-conditional-requests | node-api-conditional-requests | node-testing, node-observability |
+| rate-limit-headers | node-rate-limit-headers | node-testing, node-observability |
+| authz-policy-testing | node-authz-policy-testing | node-testing, node-observability |
+| access-control-auditing | node-access-control-auditing | node-testing, node-observability |
+| security-regression-testing | node-security-regression-testing | node-testing, node-observability |
+| runtime-feature-detection | node-runtime-feature-detection | node-testing, node-observability |
+| repository-health | node-repository-health | node-testing, node-observability |
+
 ## Framework adapter selection
 
 After selecting the core owner, detect the actual framework from dependency manifests/imports before loading an adapter:
@@ -284,3 +309,7 @@ Do not select an adapter merely because the user says "Node API". Core skills ar
 
 | graphql-yoga | adapters/graphql-yoga/SKILL.md | 5.x |
 | apollo-server | adapters/apollo-server/SKILL.md | 5.x |
+| fastify-swagger | adapters/fastify-swagger/SKILL.md | >=9.x (Fastify 5.x) |
+| fastify-multipart | adapters/fastify-multipart/SKILL.md | current; verify Fastify major |
+| nestjs-swagger | adapters/nestjs-swagger/SKILL.md | current; verify NestJS major |
+| opentelemetry-sdk-node | adapters/opentelemetry-sdk-node/SKILL.md | current |
