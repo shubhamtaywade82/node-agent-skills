@@ -51,8 +51,8 @@ test("Wave 12 decision rules are not duplicated boilerplate", async () => {
 
 test("node-agent-evaluation uses real procedure lines", async () => {
   const content = await readFile("skills/node-agent-evaluation/SKILL.md", "utf8");
-  const procedure = content.match(/## Implementation procedure\n\n([\\s\\S]*?)(?=\n## |\n?$)/);
+  const procedure = content.match(/## Implementation procedure\n\n([\s\S]*?)(?=\n## |\n?$)/);
   assert.ok(procedure, "node-agent-evaluation has an implementation procedure");
-  assert.ok(!procedure[1].includes("\\\\n"), "implementation procedure must not contain literal newline escapes");
-  assert.match(procedure[1], /^1\. Define target behavior\.\\n2\./m, "procedure is numbered as separate lines");
+  assert.ok(!procedure[1].includes("\\n"), "implementation procedure must not contain literal newline escapes");
+  assert.match(procedure[1], /^1\. Define target behavior\.\n2\./m, "procedure is numbered as separate lines");
 });
