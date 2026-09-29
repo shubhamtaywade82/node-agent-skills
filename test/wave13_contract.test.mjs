@@ -73,12 +73,12 @@ test("Wave 13 evaluation cases apply domain-specific pressure", async () => {
   const prompts = cases.map(m => m[3].toLowerCase());
   assert.equal(new Set(prompts).size, 24, "Wave 13 prompts must be distinct");
   for (const [, name, skill, prompt] of cases) {
-    assert.equal(skill, expected[name] ? skill : skill, name);
+    assert.equal(skill, "node-" + name, name + " must route to its corresponding skill");
     assert.ok(expected[name], "missing evaluation marker definition for " + name);
     assert.ok(prompt.toLowerCase().includes(expected[name].toLowerCase()), name + " lacks domain-specific prompt pressure");
   }
-  const pressures = [...evals.matchAll(/^    pressure: \\[([^\\n]+)\\]$/gm)].map(m => m[1]);
-  const invariants = [...evals.matchAll(/^    expected_invariants: \\[([^\\n]+)\\]$/gm)].map(m => m[1]);
+  const pressures = [...evals.matchAll(/^    pressure: \[([^\n]+)\]$/gm)].map(m => m[1]);
+  const invariants = [...evals.matchAll(/^    expected_invariants: \[([^\n]+)\]$/gm)].map(m => m[1]);
   assert.equal(pressures.length, 24);
   assert.equal(invariants.length, 24);
   assert.ok(new Set(pressures).size >= 20, "pressure sets are too repetitive");
