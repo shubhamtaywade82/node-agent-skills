@@ -135,3 +135,53 @@ cases:
   - name: shutdown-with-inflight-work
     primary: node-zero-downtime
     secondary: [node-production-runtime, node-transactions, node-queues]
+
+  - name: configuration-boundary
+    primary: node-configuration
+    secondary: [node-secrets, node-runtime-validation]
+  - name: secret-rotation
+    primary: node-secrets
+    secondary: [node-configuration, node-security-hardening]
+  - name: unsafe-outbound-url
+    primary: node-security-hardening
+    secondary: [node-auth-security, node-external-integrations]
+  - name: reproducible-install
+    primary: node-supply-chain
+    secondary: [node-package-tooling, node-release-engineering]
+    adapter: adapters/npm/SKILL.md
+  - name: public-package-exports
+    primary: node-package-tooling
+    secondary: [node-typescript-contracts, node-build-engineering]
+  - name: multi-project-typescript-build
+    primary: node-build-engineering
+    secondary: [node-typescript-contracts, node-package-tooling]
+  - name: provider-consumer-contract
+    primary: node-contract-testing
+    secondary: [node-openapi, node-event-driven-architecture]
+  - name: parser-invariant
+    primary: node-property-testing
+    secondary: [node-testing, node-runtime-validation]
+  - name: parser-fuzzing
+    primary: node-fuzz-testing
+    secondary: [node-testing, node-runtime-validation]
+  - name: mixed-schema-rollout
+    primary: node-schema-evolution
+    secondary: [node-migrations, node-event-driven-architecture]
+  - name: progressive-feature-rollout
+    primary: node-feature-flags
+    secondary: [node-release-engineering, node-zero-downtime]
+  - name: production-image
+    primary: node-containerization
+    secondary: [node-production-runtime, node-build-engineering]
+    adapter: adapters/docker/SKILL.md
+  - name: kubernetes-rollout
+    primary: node-kubernetes
+    secondary: [node-containerization, node-zero-downtime]
+    adapter: adapters/kubernetes/SKILL.md
+  - name: serverless-event-handler
+    primary: node-serverless
+    secondary: [node-idempotency, node-external-integrations]
+  - name: opentelemetry-instrumentation
+    primary: node-observability
+    secondary: [node-runtime-diagnostics]
+    adapter: adapters/opentelemetry/SKILL.md

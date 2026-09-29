@@ -1,0 +1,6 @@
+cases:
+  - name: rolling-kubernetes
+    skill: node-kubernetes
+    prompt: "Deploy a Node service with safe probes, resource budgets, and rolling replacement."
+    pressure: ["readiness", "liveness", "termination"]
+    expected_invariants: ["drain", "resource contract", "mixed-version compatibility"]

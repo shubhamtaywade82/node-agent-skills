@@ -1,0 +1,6 @@
+cases:
+  - name: retrying-function
+    skill: node-serverless
+    prompt: "Process an at-least-once event through a Node serverless handler."
+    pressure: ["duplicate event", "cold start", "timeout"]
+    expected_invariants: ["idempotency", "bounded dependency work", "stateless design"]

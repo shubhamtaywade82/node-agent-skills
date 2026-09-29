@@ -1,0 +1,6 @@
+cases:
+  - name: reproducible-install
+    skill: node-supply-chain
+    prompt: "Harden dependency installation and publishing for a production package."
+    pressure: ["lockfile", "lifecycle scripts", "provenance"]
+    expected_invariants: ["immutable install", "least privilege", "artifact identity"]

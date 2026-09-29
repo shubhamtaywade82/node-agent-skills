@@ -1,0 +1,6 @@
+cases:
+  - name: parser-fuzz
+    skill: node-fuzz-testing
+    prompt: "Exercise a parser with malformed, oversized, and adversarial payloads."
+    pressure: ["hang", "crash", "resource exhaustion"]
+    expected_invariants: ["bounded execution", "failure corpus", "regression test"]

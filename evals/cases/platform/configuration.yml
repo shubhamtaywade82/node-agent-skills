@@ -1,0 +1,6 @@
+cases:
+  - name: configuration-boundary
+    skill: node-configuration
+    prompt: "Load runtime configuration with missing required values and conflicting overrides."
+    pressure: ["invalid env", "missing value", "precedence"]
+    expected_invariants: ["runtime validation", "deterministic precedence", "fail before serving"]

@@ -1,0 +1,6 @@
+cases:
+  - name: multi-project-build
+    skill: node-build-engineering
+    prompt: "Split a TypeScript workspace into genuine buildable projects."
+    pressure: ["project references", "incremental build", "artifact graph"]
+    expected_invariants: ["explicit boundaries", "deterministic build", "correct declarations"]

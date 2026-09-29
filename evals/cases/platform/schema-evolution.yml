@@ -1,0 +1,6 @@
+cases:
+  - name: mixed-schema-rollout
+    skill: node-schema-evolution
+    prompt: "Add an event field while old consumers remain deployed and replayable."
+    pressure: ["old consumer", "replay", "field removal"]
+    expected_invariants: ["additive change", "mixed-version compatibility", "retirement gate"]

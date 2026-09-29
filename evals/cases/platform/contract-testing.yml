@@ -1,0 +1,6 @@
+cases:
+  - name: provider-consumer-contract
+    skill: node-contract-testing
+    prompt: "Evolve an API used by independently deployed clients."
+    pressure: ["schema drift", "mixed versions", "breaking field"]
+    expected_invariants: ["authoritative contract", "compatibility test", "release gate"]

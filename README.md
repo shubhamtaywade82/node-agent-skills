@@ -35,6 +35,14 @@ npm run validate
 - WebSockets/realtime
 - Webhooks
 
+### Security, quality, and platform wave
+- Configuration and secret boundaries
+- Security hardening and supply-chain controls
+- Package/build engineering
+- Contract, property-based, and fuzz testing
+- Schema evolution and feature flags
+- Containers, Kubernetes, and serverless runtime patterns
+
 ### Infrastructure wave
 - Database integrity and transaction boundaries
 - Production migrations and connection-pool budgeting
@@ -54,6 +62,10 @@ npm run validate
 | Drizzle | adapters/drizzle/SKILL.md | current/v1 transition; verify exact versions |
 | BullMQ | adapters/bullmq/SKILL.md | 5.x/6.x |
 | node-redis | adapters/redis/SKILL.md | 5.x |
+| npm | adapters/npm/SKILL.md | current CLI |
+| Docker | adapters/docker/SKILL.md | current Docker/BuildKit |
+| Kubernetes | adapters/kubernetes/SKILL.md | current API conventions |
+| OpenTelemetry | adapters/opentelemetry/SKILL.md | current JS SDK |
 
 Adapters are conditional. Agents must detect the framework/library and installed version from the target repository before applying adapter-specific guidance.
 
@@ -88,6 +100,9 @@ Adapters are conditional. Agents must detect the framework/library and installed
 - Resilience mechanisms need explicit budgets and observability.
 - Evaluations are measurement infrastructure and must not be weakened to obtain green CI.
 - Resilience controls are policy budgets, not generic middleware decorations.
+- Configuration and secrets are explicit runtime boundaries.
+- Dependency and artifact supply chains are treated as production inputs.
+- Platform adapters are selected from detected runtime/tool versions, not assumed defaults.
 
 ## Sources
 - https://nodejs.org/en/about/previous-releases
@@ -100,4 +115,4 @@ Adapters are conditional. Agents must detect the framework/library and installed
 - https://hono.dev/docs/guides/middleware
 - https://developer.mozilla.org/en-US/docs/Web/API/WebSocket
 
-CI workflow is validated on GitHub Actions for the Wave 2A branch.
+CI workflow is validated on GitHub Actions for the current capability branch.

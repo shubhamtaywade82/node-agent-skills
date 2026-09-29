@@ -75,3 +75,18 @@ Do not select an adapter merely because the user says "Node API". Core skills ar
 4. Load a framework adapter only after detecting the framework/version from repository dependencies.
 5. Authentication and authorization remain distinct.
 6. Prefer framework-neutral skills before vendor/framework adapters.
+
+| configuration | node-configuration | node-secrets, node-runtime-validation |
+| secrets | node-secrets | node-security-hardening, node-configuration |
+| security hardening | node-security-hardening | node-auth-security, node-runtime-validation |
+| supply chain | node-supply-chain | node-package-tooling, node-release-engineering |
+| package tooling | node-package-tooling | node-typescript-contracts, node-build-engineering |
+| build engineering | node-build-engineering | node-typescript-contracts, node-package-tooling |
+| contract testing | node-contract-testing | node-openapi, node-event-driven-architecture |
+| property testing | node-property-testing | node-testing, node-runtime-validation |
+| fuzz testing | node-fuzz-testing | node-testing, node-runtime-validation |
+| schema evolution | node-schema-evolution | node-migrations, node-event-driven-architecture |
+| feature flags | node-feature-flags | node-release-engineering, node-zero-downtime |
+| containerization | node-containerization | node-production-runtime, node-build-engineering |
+| Kubernetes | node-kubernetes | node-containerization, node-zero-downtime |
+| serverless | node-serverless | node-idempotency, node-external-integrations |
