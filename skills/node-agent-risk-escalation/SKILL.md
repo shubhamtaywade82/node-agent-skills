@@ -23,10 +23,10 @@ deciding when a coding-agent task should stop and request human input.
 
 ## Decision rules
 
-- Escalate irreversible actions when authority, policy, or desired outcome is not evidenced.
+- State the exact human decision required before any irreversible operation.
 - Escalate when two authoritative constraints cannot both be satisfied.
 - Never use production secrets or sensitive data as substitute evidence.
-- Prefer a safe no-op or reversible diagnostic over inventing a security or data policy.
+- Prefer a safe no-op or reversible diagnostic over inventing a security or data policy. - Record the human decision required before proceeding.
 ## Implementation procedure
 
 1. Identify blocking uncertainty.
