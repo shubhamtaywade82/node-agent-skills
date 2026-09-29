@@ -281,3 +281,6 @@ Do not select an adapter merely because the user says "Node API". Core skills ar
 | multi-tenancy | node-multi-tenancy | node-auth-security, node-database-engineering |
 | audit logging | node-audit-logging | node-observability, node-auth-security |
 | data privacy | node-data-privacy | node-secrets, node-observability, node-audit-logging |
+
+| graphql-yoga | adapters/graphql-yoga/SKILL.md | 5.x |
+| apollo-server | adapters/apollo-server/SKILL.md | 5.x |
