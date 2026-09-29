@@ -54,3 +54,33 @@ test("Wave 13 adapters have registry, skill, README, and source metadata", async
     assert.ok(readme.length > 50);
   }
 });
+
+
+test("Wave 13 evaluation cases apply domain-specific pressure", async () => {
+  const evals = await readFile(new URL("../evals/cases/runtime-http-auth-observability/workflow.yml", import.meta.url), "utf8");
+  const expected = {
+    "filesystem-safety": "symlink", "temp-file-safety": "cleanup", "path-traversal-defense": "canonical",
+    "archive-extraction-safety": "zip slip", "file-descriptor-lifecycle": "descriptor", "process-supervision": "SIGTERM",
+    "worker-crash-recovery": "worker crash", "event-loop-diagnostics": "event loop lag", "memory-leak-diagnostics": "RSS",
+    "heap-diagnostics": "heap snapshot", "log-redaction": "authorization header", "telemetry-sampling": "sampling",
+    "metric-cardinality-control": "cardinality", "trace-context-propagation": "traceparent", "api-content-negotiation": "Accept",
+    "http-cache-semantics": "Cache-Control", "etag-cache-validation": "ETag", "api-conditional-requests": "If-Match",
+    "rate-limit-headers": "Retry-After", "authz-policy-testing": "authorization matrix", "access-control-auditing": "audit event",
+    "security-regression-testing": "regression test", "runtime-feature-detection": "feature detection", "repository-health": "health check"
+  };
+  const cases = [...evals.matchAll(/^  - name: ([a-z0-9-]+)\\n    skill: ([a-z0-9-]+)\\n    prompt: "([^"]+)"/gm)];
+  assert.equal(cases.length, 24);
+  const prompts = cases.map(m => m[3].toLowerCase());
+  assert.equal(new Set(prompts).size, 24, "Wave 13 prompts must be distinct");
+  for (const [, name, skill, prompt] of cases) {
+    assert.equal(skill, expected[name] ? skill : skill, name);
+    assert.ok(expected[name], "missing evaluation marker definition for " + name);
+    assert.ok(prompt.toLowerCase().includes(expected[name].toLowerCase()), name + " lacks domain-specific prompt pressure");
+  }
+  const pressures = [...evals.matchAll(/^    pressure: \\[([^\\n]+)\\]$/gm)].map(m => m[1]);
+  const invariants = [...evals.matchAll(/^    expected_invariants: \\[([^\\n]+)\\]$/gm)].map(m => m[1]);
+  assert.equal(pressures.length, 24);
+  assert.equal(invariants.length, 24);
+  assert.ok(new Set(pressures).size >= 20, "pressure sets are too repetitive");
+  assert.ok(new Set(invariants).size >= 20, "invariant sets are too repetitive");
+});
