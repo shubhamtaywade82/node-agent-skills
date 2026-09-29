@@ -26,7 +26,7 @@ controlling scope and blast radius of AI-generated backend changes.
 - Declare blast radius before editing; unrelated cleanup is out of scope.
 - Use a file or boundary allowlist for risky changes and expand it only when evidence requires it.
 - Prefer additive and reversible changes when compatibility is uncertain.
-- Cross-boundary changes require boundary-level regression coverage, not only internal unit tests.
+- Cross-boundary changes require boundary-level regression coverage, not only internal unit tests. - Verify the file allowlist before expanding scope.
 ## Implementation procedure
 
 1. Classify impact.
