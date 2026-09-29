@@ -1,0 +1,6 @@
+cases:
+  - name: invariant-driven-tests
+    skill: node-property-testing
+    prompt: "Test a normalizer across generated malformed and valid inputs."
+    pressure: ["edge cases", "shrink", "determinism"]
+    expected_invariants: ["invariant first", "reproducible counterexample", "domain coverage"]

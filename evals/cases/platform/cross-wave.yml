@@ -1,0 +1,6 @@
+cases:
+  - name: secure-resilient-release
+    skill: cross-wave
+    prompt: "Roll out a Node backend change through containers with secrets, schema evolution, retries, and graceful draining."
+    pressure: ["mixed versions", "credential rotation", "dependency outage", "SIGTERM"]
+    expected_invariants: ["bounded retries", "safe secret handling", "compatible schema", "drain before termination"]

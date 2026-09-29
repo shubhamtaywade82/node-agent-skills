@@ -1,0 +1,6 @@
+cases:
+  - name: event-loop-saturation
+    skill: node-runtime-diagnostics
+    prompt: "Diagnose rising event-loop delay and memory under load."
+    pressure: ["CPU spike", "GC", "async backlog"]
+    expected_invariants: ["measurement first", "runtime signals", "safe diagnostics"]

@@ -1,0 +1,6 @@
+cases:
+  - name: public-exports
+    skill: node-package-tooling
+    prompt: "Change package exports while preserving supported consumer imports and declarations."
+    pressure: ["ESM", "exports", "declarations"]
+    expected_invariants: ["public boundary", "runtime compatibility", "type resolution"]

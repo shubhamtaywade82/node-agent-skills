@@ -1,0 +1,6 @@
+cases:
+  - name: overload-admission
+    skill: node-load-shedding
+    prompt: "Protect a service during overload."
+    pressure: ["queue growth", "high-priority requests"]
+    expected_invariants: ["admission control", "bounded queues", "priority preservation"]

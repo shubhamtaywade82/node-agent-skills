@@ -1,0 +1,6 @@
+cases:
+  - name: production-image
+    skill: node-containerization
+    prompt: "Containerize a TypeScript Node API with reproducible runtime behavior."
+    pressure: ["multi-stage build", "non-root", "SIGTERM"]
+    expected_invariants: ["reproducible image", "signal handling", "minimal runtime"]

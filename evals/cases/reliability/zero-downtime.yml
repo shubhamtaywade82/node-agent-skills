@@ -1,0 +1,6 @@
+cases:
+  - name: mixed-version-rollout
+    skill: node-zero-downtime
+    prompt: "Deploy a Node.js service without interrupting active traffic."
+    pressure: ["long requests", "mixed versions", "shutdown deadline"]
+    expected_invariants: ["readiness/drain", "compatibility", "bounded termination"]

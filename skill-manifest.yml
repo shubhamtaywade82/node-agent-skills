@@ -108,6 +108,95 @@ skills:
     category: distributed
     triggers: [transactional outbox, dual write, atomic event, event relay]
 
+  - name: node-retry-timeouts
+    category: reliability
+    triggers: [retry, timeout, deadline, backoff, jitter, cancellation]
+  - name: node-resilience
+    category: reliability
+    triggers: [resilience, degraded mode, fallback, dependency failure, capacity]
+  - name: node-circuit-breakers
+    category: reliability
+    triggers: [circuit breaker, open half-open closed, dependency protection]
+  - name: node-bulkheads
+    category: reliability
+    triggers: [bulkhead, concurrency isolation, capacity isolation, noisy neighbor]
+  - name: node-load-shedding
+    category: reliability
+    triggers: [load shedding, overload, admission control, priority traffic]
+  - name: node-backpressure
+    category: performance
+    triggers: [backpressure, stream pressure, slow consumer, bounded buffer]
+  - name: node-rate-limiting
+    category: security
+    triggers: [rate limit, quota, token bucket, tenant limit, abuse control]
+  - name: node-distributed-systems
+    category: distributed
+    triggers: [distributed system, partial failure, consistency, reconciliation]
+  - name: node-distributed-locks
+    category: distributed
+    triggers: [distributed lock, lease, fencing, leader, coordination]
+  - name: node-event-driven-architecture
+    category: distributed
+    triggers: [event-driven, domain event, integration event, event contract]
+  - name: node-zero-downtime
+    category: production
+    triggers: [zero downtime, readiness, drain, rolling deploy, graceful shutdown]
+  - name: node-database-migrations-production
+    category: production
+    triggers: [production migration, online DDL, expand contract, backfill, schema rollout]
+  - name: node-incident-engineering
+    category: operations
+    triggers: [incident, outage, mitigation, root cause, blast radius, runbook]
+  - name: node-runtime-diagnostics
+    category: operations
+    triggers: [event loop delay, heap, GC, CPU, memory leak, runtime diagnostics]
+  - name: node-release-engineering
+    category: release
+    triggers: [release, deployment, canary, artifact promotion, rollback, feature flag]
+
+  - name: node-configuration
+    category: runtime
+    triggers: [configuration, environment variables, config validation, startup settings, precedence]
+  - name: node-secrets
+    category: security
+    triggers: [secrets, credentials, token rotation, secret manager, redaction]
+  - name: node-security-hardening
+    category: security
+    triggers: [SSRF, prototype pollution, unsafe deserialization, child process, runtime hardening]
+  - name: node-supply-chain
+    category: security
+    triggers: [npm dependency, lockfile, provenance, install scripts, package audit, supply chain]
+  - name: node-package-tooling
+    category: tooling
+    triggers: [package.json, exports, engines, workspaces, npm scripts, publishing]
+  - name: node-build-engineering
+    category: build
+    triggers: [TypeScript build, project references, bundler, source maps, build cache, artifacts]
+  - name: node-contract-testing
+    category: testing
+    triggers: [contract testing, provider consumer, API compatibility, schema contract, integration contract]
+  - name: node-property-testing
+    category: testing
+    triggers: [property based testing, invariants, generated inputs, shrinking, counterexample]
+  - name: node-fuzz-testing
+    category: testing
+    triggers: [fuzzing, malformed input, parser fuzzing, crash detection, hang detection]
+  - name: node-schema-evolution
+    category: distributed
+    triggers: [schema evolution, backward compatibility, mixed versions, event schema, field removal]
+  - name: node-feature-flags
+    category: release
+    triggers: [feature flag, rollout, kill switch, tenant targeting, progressive delivery]
+  - name: node-containerization
+    category: production
+    triggers: [Docker, container image, multi-stage, non-root, container signals]
+  - name: node-kubernetes
+    category: production
+    triggers: [Kubernetes, probes, Deployment, resource limits, rolling update, termination]
+  - name: node-serverless
+    category: production
+    triggers: [serverless, function handler, cold start, invocation retry, stateless function]
+
 adapters:
   express:
     path: adapters/express/SKILL.md
@@ -141,3 +230,20 @@ adapters:
     path: adapters/redis/SKILL.md
     version_scope: node-redis-5.x
     source: https://redis.io/docs/latest/develop/clients/nodejs/
+
+  npm:
+    path: adapters/npm/SKILL.md
+    version_scope: current npm CLI
+    source: https://docs.npmjs.com/cli/
+  docker:
+    path: adapters/docker/SKILL.md
+    version_scope: current Docker/BuildKit
+    source: https://docs.docker.com/guides/nodejs/
+  kubernetes:
+    path: adapters/kubernetes/SKILL.md
+    version_scope: current Kubernetes API conventions
+    source: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/
+  opentelemetry:
+    path: adapters/opentelemetry/SKILL.md
+    version_scope: current OpenTelemetry JavaScript SDK
+    source: https://opentelemetry.io/docs/languages/js/

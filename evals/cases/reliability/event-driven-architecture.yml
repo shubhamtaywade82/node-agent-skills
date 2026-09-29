@@ -1,0 +1,6 @@
+cases:
+  - name: event-contract
+    skill: node-event-driven-architecture
+    prompt: "Introduce domain events between independently deployed services."
+    pressure: ["schema evolution", "duplicate delivery", "ordering"]
+    expected_invariants: ["event ownership", "compatibility", "replay safety"]

@@ -1,0 +1,6 @@
+cases:
+  - name: safe-release
+    skill: node-release-engineering
+    prompt: "Release a backend change using staged rollout and rollback."
+    pressure: ["migration coupling", "partial deployment", "bad health signal"]
+    expected_invariants: ["artifact integrity", "compatibility", "promotion/rollback criteria"]

@@ -1,0 +1,6 @@
+cases:
+  - name: dependency-resilience
+    skill: node-resilience
+    prompt: "Make a service degrade safely when a critical dependency is slow."
+    pressure: ["partial outage", "high latency", "fallback temptation"]
+    expected_invariants: ["failure budget", "bounded work", "observable degradation"]

@@ -1,0 +1,6 @@
+cases:
+  - name: distributed-rate-limit
+    skill: node-rate-limiting
+    prompt: "Rate-limit an API across many application instances and tenants."
+    pressure: ["clock skew", "distributed counters", "fail-open choice"]
+    expected_invariants: ["identity/scope", "distributed semantics", "bounded cost"]

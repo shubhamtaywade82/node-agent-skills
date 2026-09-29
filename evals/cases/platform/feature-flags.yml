@@ -1,0 +1,6 @@
+cases:
+  - name: progressive-flag
+    skill: node-feature-flags
+    prompt: "Roll a backend behavior from one tenant cohort to all tenants with a kill switch."
+    pressure: ["flag-store outage", "targeting", "cleanup"]
+    expected_invariants: ["safe default", "stable identity", "removal condition"]

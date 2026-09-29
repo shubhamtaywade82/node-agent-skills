@@ -1,0 +1,6 @@
+cases:
+  - name: unsafe-outbound-url
+    skill: node-security-hardening
+    prompt: "Fetch a user-supplied URL while defending the service from SSRF and redirect abuse."
+    pressure: ["SSRF", "redirects", "network policy"]
+    expected_invariants: ["allowlist policy", "validated target", "safe failure"]

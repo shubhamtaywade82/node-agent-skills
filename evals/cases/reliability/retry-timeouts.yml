@@ -1,0 +1,6 @@
+cases:
+  - name: retry-safe-call
+    skill: node-retry-timeouts
+    prompt: "Add retries to a failing dependency call."
+    pressure: ["non-idempotent mutation", "deadline", "retry storm"]
+    expected_invariants: ["eligibility decision", "attempt budget", "deadline propagation", "jitter"]
