@@ -643,3 +643,107 @@ cases:
   - name: header-normalization
     primary: node-header-normalization
     secondary: [node-testing, node-observability]
+  - name: architecture-boundary
+    primary: node-architecture
+    secondary: [node-typescript-contracts,node-module-boundaries]
+
+  - name: runtime-foundations
+    primary: node-runtime-foundations
+    secondary: [node-production-runtime,node-async-concurrency]
+
+  - name: async-concurrency
+    primary: node-async-concurrency
+    secondary: [node-backpressure,node-abort-cancellation]
+
+  - name: typescript-contracts
+    primary: node-typescript-contracts
+    secondary: [node-runtime-validation,node-testing]
+
+  - name: runtime-validation
+    primary: node-runtime-validation
+    secondary: [node-typescript-contracts,node-testing]
+
+  - name: api-engineering
+    primary: node-api-engineering
+    secondary: [node-http-engineering,node-rest-api-design]
+
+  - name: testing-strategy
+    primary: node-testing
+    secondary: [node-integration-testing,node-test-environment-engineering]
+
+  - name: production-runtime
+    primary: node-production-runtime
+    secondary: [node-zero-downtime,node-observability]
+
+  - name: external-integrations
+    primary: node-external-integrations
+    secondary: [node-api-client-engineering,node-retry-timeouts]
+
+  - name: database-transactions
+    primary: node-transactions
+    secondary: [node-postgresql-persistence,node-optimistic-concurrency]
+
+  - name: redis-engineering
+    primary: node-redis
+    secondary: [node-caching,node-connection-pooling]
+
+  - name: outbox-pattern
+    primary: node-outbox
+    secondary: [node-transactional-outbox,node-event-driven-architecture]
+
+  - name: domain-modeling
+    primary: node-domain-modeling
+    secondary: [node-architecture,node-cqrs]
+
+  - name: hexagonal-architecture
+    primary: node-hexagonal-architecture
+    secondary: [node-domain-modeling,node-dependency-injection]
+
+  - name: dependency-injection
+    primary: node-dependency-injection
+    secondary: [node-module-boundaries,node-architecture]
+
+  - name: module-boundaries
+    primary: node-module-boundaries
+    secondary: [node-architecture,node-change-impact-analysis]
+
+  - name: integration-testing
+    primary: node-integration-testing
+    secondary: [node-testing,node-testcontainers]
+
+  - name: e2e-testing
+    primary: node-e2e-testing
+    secondary: [node-integration-testing,node-testing]
+
+  - name: testcontainers
+    primary: node-testcontainers
+    secondary: [node-integration-testing,node-test-environment-engineering]
+
+  - name: load-testing
+    primary: node-load-testing
+    secondary: [node-performance,node-capacity-planning]
+
+  - name: api-client-engineering
+    primary: node-api-client-engineering
+    secondary: [node-external-integrations,node-retry-timeouts]
+
+  - name: file-uploads
+    primary: node-file-uploads
+    secondary: [node-http-body-limits,node-upload-security]
+
+  - name: scheduling
+    primary: node-scheduling
+    secondary: [node-queues,node-time-engineering]
+
+  - name: multi-tenancy
+    primary: node-multi-tenancy
+    secondary: [node-authorization-models,node-database-engineering]
+
+  - name: audit-logging
+    primary: node-audit-logging
+    secondary: [node-observability,node-security-incident-response]
+
+  - name: data-privacy
+    primary: node-data-privacy
+    secondary: [node-data-retention,node-data-masking]
+
