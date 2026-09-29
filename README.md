@@ -255,3 +255,7 @@ CI workflow is validated on GitHub Actions for the current capability branch.
 - DNS, TLS/certificate management, proxy forwarding, HTTP timeouts/keep-alive
 - Webhook ingress, request signatures, replay protection, CSRF, open redirects, request smuggling, header normalization
 - GraphQL Yoga 5.x and Apollo Server 5.x adapters
+
+## Current capability line
+
+Wave 13 brings the repository to **250 core skills** and **73 adapters**. This wave adds filesystem/process diagnostics, HTTP cache semantics, authorization testing/auditing, security regression testing, and telemetry hygiene.
