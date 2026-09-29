@@ -23,15 +23,18 @@ keeping changelog/release metadata aligned with shipped repository changes.
 
 ## Decision rules
 
-change logs describe actual shipped behavior and remain traceable to commits or releases
-
-- Correctness and operational safety take precedence over convenience.
-- Optimize from measured workload evidence.
-- Keep rollback/roll-forward paths explicit and bounded.
+- The changelog must reflect the released artifact, not a guessed or hand-curated summary disconnected from history.
+- Version headings and dates must match the release record.
+- Breaking and security-relevant changes must remain discoverable after future edits.
+- Published historical entries should not be silently rewritten to hide earlier behavior.
 
 ## Implementation procedure
 
-1. Compare changelog with diff.\n2. Verify version/date.\n3. Include migrations and security fixes.\n4. Remove speculative language.\n5. Check links.\n6. Validate release artifact.
+1. Compare changelog entries with release tags or repository release metadata.
+2. Check version ordering and date consistency.
+3. Verify breaking and security changes are represented.
+4. Generate or update the entry using repository conventions.
+5. Preserve an auditable history of corrections.
 
 ## Failure modes
 
