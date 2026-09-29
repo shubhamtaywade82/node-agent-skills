@@ -31,10 +31,10 @@ keeping generated TypeScript/runtime schemas aligned with authoritative API or d
 ## Implementation procedure
 
 1. Locate the canonical schema source.
-2. Generate the derived types/artifacts.
+2. Generate the derived types and artifacts.
 3. Compare schema and generated contract diffs.
 4. Classify compatibility impact.
-5. Test consumers and the mixed-version boundary.
+5. Test consumers at the mixed-version boundary.
 
 ## Failure modes
 
