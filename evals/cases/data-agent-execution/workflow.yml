@@ -1,0 +1,114 @@
+cases:
+  - name: cqrs
+    skill: node-cqrs
+    prompt: "Implement or review a production Node.js backend change involving  cqrs."
+    pressure: ["existing conventions", "failure path", "compatibility", "security"]
+    expected_invariants: ["explicit ownership", "bounded failure", "observable behavior", "tests prove the contract"]
+
+  - name: read-models
+    skill: node-read-models
+    prompt: "Implement or review a production Node.js backend change involving  read models."
+    pressure: ["existing conventions", "failure path", "compatibility", "security"]
+    expected_invariants: ["explicit ownership", "bounded failure", "observable behavior", "tests prove the contract"]
+
+  - name: event-sourcing
+    skill: node-event-sourcing
+    prompt: "Implement or review a production Node.js backend change involving  event sourcing."
+    pressure: ["existing conventions", "failure path", "compatibility", "security"]
+    expected_invariants: ["explicit ownership", "bounded failure", "observable behavior", "tests prove the contract"]
+
+  - name: optimistic-concurrency
+    skill: node-optimistic-concurrency
+    prompt: "Implement or review a production Node.js backend change involving  optimistic concurrency."
+    pressure: ["existing conventions", "failure path", "compatibility", "security"]
+    expected_invariants: ["explicit ownership", "bounded failure", "observable behavior", "tests prove the contract"]
+
+  - name: data-reconciliation
+    skill: node-data-reconciliation
+    prompt: "Implement or review a production Node.js backend change involving  data reconciliation."
+    pressure: ["existing conventions", "failure path", "compatibility", "security"]
+    expected_invariants: ["explicit ownership", "bounded failure", "observable behavior", "tests prove the contract"]
+
+  - name: batch-processing
+    skill: node-batch-processing
+    prompt: "Implement or review a production Node.js backend change involving  batch processing."
+    pressure: ["existing conventions", "failure path", "compatibility", "security"]
+    expected_invariants: ["explicit ownership", "bounded failure", "observable behavior", "tests prove the contract"]
+
+  - name: data-import-export
+    skill: node-data-import-export
+    prompt: "Implement or review a production Node.js backend change involving  data import export."
+    pressure: ["existing conventions", "failure path", "compatibility", "security"]
+    expected_invariants: ["explicit ownership", "bounded failure", "observable behavior", "tests prove the contract"]
+
+  - name: database-read-replicas
+    skill: node-database-read-replicas
+    prompt: "Implement or review a production Node.js backend change involving  database read replicas."
+    pressure: ["existing conventions", "failure path", "compatibility", "security"]
+    expected_invariants: ["explicit ownership", "bounded failure", "observable behavior", "tests prove the contract"]
+
+  - name: database-sharding
+    skill: node-database-sharding
+    prompt: "Implement or review a production Node.js backend change involving  database sharding."
+    pressure: ["existing conventions", "failure path", "compatibility", "security"]
+    expected_invariants: ["explicit ownership", "bounded failure", "observable behavior", "tests prove the contract"]
+
+  - name: data-archival
+    skill: node-data-archival
+    prompt: "Implement or review a production Node.js backend change involving  data archival."
+    pressure: ["existing conventions", "failure path", "compatibility", "security"]
+    expected_invariants: ["explicit ownership", "bounded failure", "observable behavior", "tests prove the contract"]
+
+  - name: durable-workflows
+    skill: node-durable-workflows
+    prompt: "Implement or review a production Node.js backend change involving  durable workflows."
+    pressure: ["existing conventions", "failure path", "compatibility", "security"]
+    expected_invariants: ["explicit ownership", "bounded failure", "observable behavior", "tests prove the contract"]
+
+  - name: outbound-webhooks
+    skill: node-outbound-webhooks
+    prompt: "Implement or review a production Node.js backend change involving  outbound webhooks."
+    pressure: ["existing conventions", "failure path", "compatibility", "security"]
+    expected_invariants: ["explicit ownership", "bounded failure", "observable behavior", "tests prove the contract"]
+
+  - name: task-decomposition
+    skill: node-task-decomposition
+    prompt: "Implement or review a production Node.js backend change involving  task decomposition."
+    pressure: ["existing conventions", "failure path", "compatibility", "security"]
+    expected_invariants: ["explicit ownership", "bounded failure", "observable behavior", "tests prove the contract"]
+
+  - name: context-engineering
+    skill: node-context-engineering
+    prompt: "Implement or review a production Node.js backend change involving  context engineering."
+    pressure: ["existing conventions", "failure path", "compatibility", "security"]
+    expected_invariants: ["explicit ownership", "bounded failure", "observable behavior", "tests prove the contract"]
+
+  - name: implementation-planning
+    skill: node-implementation-planning
+    prompt: "Implement or review a production Node.js backend change involving  implementation planning."
+    pressure: ["existing conventions", "failure path", "compatibility", "security"]
+    expected_invariants: ["explicit ownership", "bounded failure", "observable behavior", "tests prove the contract"]
+
+  - name: patch-validation
+    skill: node-patch-validation
+    prompt: "Implement or review a production Node.js backend change involving  patch validation."
+    pressure: ["existing conventions", "failure path", "compatibility", "security"]
+    expected_invariants: ["explicit ownership", "bounded failure", "observable behavior", "tests prove the contract"]
+
+  - name: merge-conflict-resolution
+    skill: node-merge-conflict-resolution
+    prompt: "Implement or review a production Node.js backend change involving  merge conflict resolution."
+    pressure: ["existing conventions", "failure path", "compatibility", "security"]
+    expected_invariants: ["explicit ownership", "bounded failure", "observable behavior", "tests prove the contract"]
+
+  - name: validation-triage
+    skill: node-validation-triage
+    prompt: "Implement or review a production Node.js backend change involving  validation triage."
+    pressure: ["existing conventions", "failure path", "compatibility", "security"]
+    expected_invariants: ["explicit ownership", "bounded failure", "observable behavior", "tests prove the contract"]
+
+  - name: review-feedback
+    skill: node-review-feedback
+    prompt: "Implement or review a production Node.js backend change involving  review feedback."
+    pressure: ["existing conventions", "failure path", "compatibility", "security"]
+    expected_invariants: ["explicit ownership", "bounded failure", "observable behavior", "tests prove the contract"]

@@ -347,6 +347,63 @@ skills:
   - name: node-api-deprecation
     category: api
     triggers: [API deprecation, sunset, compatibility window, consumer migration]
+  - name: node-cqrs
+    category: architecture
+    triggers: [CQRS, command side, query side, read model]
+  - name: node-read-models
+    category: persistence
+    triggers: [read model, projection, materialized view, freshness]
+  - name: node-event-sourcing
+    category: distributed
+    triggers: [event sourcing, event stream, replay, snapshot]
+  - name: node-optimistic-concurrency
+    category: persistence
+    triggers: [optimistic concurrency, version, ETag, compare and swap]
+  - name: node-data-reconciliation
+    category: persistence
+    triggers: [reconciliation, drift detection, repair, consistency]
+  - name: node-batch-processing
+    category: reliability
+    triggers: [batch processing, backfill, checkpoint, bulk job]
+  - name: node-data-import-export
+    category: integrations
+    triggers: [data import, data export, CSV, NDJSON, staging]
+  - name: node-database-read-replicas
+    category: persistence
+    triggers: [read replica, replication lag, primary, consistency]
+  - name: node-database-sharding
+    category: persistence
+    triggers: [database sharding, shard key, resharding, partition routing]
+  - name: node-data-archival
+    category: persistence
+    triggers: [data archival, cold storage, retention tier, restore]
+  - name: node-durable-workflows
+    category: reliability
+    triggers: [durable workflow, workflow state, long running job, deterministic workflow]
+  - name: node-outbound-webhooks
+    category: integrations
+    triggers: [outbound webhook, webhook delivery, signing, delivery retry]
+  - name: node-task-decomposition
+    category: tooling
+    triggers: [task decomposition, coding agent task, implementation slice]
+  - name: node-context-engineering
+    category: tooling
+    triggers: [context engineering, repository context, coding agent context]
+  - name: node-implementation-planning
+    category: tooling
+    triggers: [implementation plan, coding plan, backend plan]
+  - name: node-patch-validation
+    category: tooling
+    triggers: [patch validation, AI generated patch, diff validation]
+  - name: node-merge-conflict-resolution
+    category: tooling
+    triggers: [merge conflict, rebase conflict, conflict resolution, git]
+  - name: node-validation-triage
+    category: tooling
+    triggers: [CI failure, validation failure, test triage, failing check]
+  - name: node-review-feedback
+    category: tooling
+    triggers: [review feedback, PR feedback, requested changes, code review followup]
 
 adapters:
   express:
@@ -505,3 +562,43 @@ adapters:
     path: adapters/google-cloud/SKILL.md
     version_scope: current Google Cloud Node.js client libraries
     source: https://docs.cloud.google.com/nodejs/docs/reference
+  mongodb:
+    path: adapters/mongodb/SKILL.md
+    version_scope: 7.x
+    source: https://www.mongodb.com/docs/drivers/node/current/
+  mongoose:
+    path: adapters/mongoose/SKILL.md
+    version_scope: 8.x
+    source: https://mongoosejs.com/docs/
+  typeorm:
+    path: adapters/typeorm/SKILL.md
+    version_scope: 0.3.x/current
+    source: https://typeorm.io/docs/data-source/data-source/
+  sequelize:
+    path: adapters/sequelize/SKILL.md
+    version_scope: 6.x stable
+    source: https://sequelize.org/docs/v6/
+  mysql2:
+    path: adapters/mysql2/SKILL.md
+    version_scope: current 3.x
+    source: https://github.com/sidorares/node-mysql2
+  ioredis:
+    path: adapters/ioredis/SKILL.md
+    version_scope: 6.x
+    source: https://github.com/redis/ioredis
+  temporal:
+    path: adapters/temporal/SKILL.md
+    version_scope: 1.24.x/current
+    source: https://github.com/temporalio/sdk-typescript
+  aws-eventbridge:
+    path: adapters/aws-eventbridge/SKILL.md
+    version_scope: AWS SDK JS v3
+    source: https://docs.aws.amazon.com/sdk-for-javascript/v3/developer-guide/javascript_eventbridge_code_examples.html
+  azure-storage-blob:
+    path: adapters/azure-storage-blob/SKILL.md
+    version_scope: current @azure/storage-blob
+    source: https://learn.microsoft.com/en-us/javascript/api/overview/azure/storage-blob-readme
+  google-cloud-storage:
+    path: adapters/google-cloud-storage/SKILL.md
+    version_scope: current @google-cloud/storage
+    source: https://cloud.google.com/nodejs/docs/reference/storage/latest
