@@ -22,30 +22,49 @@ const dirs = (await readdir(path.join(root, "skills"), {withFileTypes:true})).fi
 if (JSON.stringify(dirs) !== JSON.stringify([...names].sort())) throw new Error("manifest/skills mismatch");
 console.log(`validated ${names.length} skills`);
 
-const adapterEntries = [...manifest.matchAll(/^  ([a-z0-9-]+):\\n    path: (adapters\\/[^\\n]+)\\n    version_scope: ([^\\n]+)\\n    source: (https:\\/\\/\\S+)$/gm)].map((m) => ({
-  name: m[1],
-  path: m[2],
-  versionScope: m[3],
-  source: m[4],
-}));
+const adapterEntries = [];
+const manifestLines = manifest.split("\n");
+for (let index = 0; index < manifestLines.length; index += 1) {
+  const match = manifestLines[index].match(/^  ([a-z0-9-]+):$/);
+  if (!match) continue;
+  const name = match[1];
+  const pathMatch = manifestLines[index + 1]?.match(/^    path: (adapters\\/[^\\n]+)$/);
+  const scopeMatch = manifestLines[index + 2]?.match(/^    version_scope: (.+)$/);
+  const sourceMatch = manifestLines[index + 3]?.match(/^    source: (https:\\/\\/\\S+)$/);
+  if (!pathMatch || !scopeMatch || !sourceMatch) continue;
+  adapterEntries.push({
+    name,
+    path: pathMatch[1],
+    versionScope: scopeMatch[1],
+    source: sourceMatch[1],
+  });
+}
 if (!adapterEntries.length) throw new Error("manifest contains no adapters");
+if (new Set(adapterEntries.map((adapter) => adapter.name)).size !== adapterEntries.length) {
+  throw new Error("duplicate adapter name");
+}
 
 for (const { name, path: adapterPath, versionScope, source } of adapterEntries) {
   if (!adapterPath.endsWith("/SKILL.md")) throw new Error("adapter path mismatch: " + name);
   if (!versionScope.trim()) throw new Error("adapter version_scope missing: " + name);
   if (!source.startsWith("https://")) throw new Error("adapter source missing: " + name);
-  const lines = manifest.split("\\n");
-  const index = lines.indexOf("  " + name + ":");
-  if (index < 0 || lines[index + 1] !== "    path: " + adapterPath) {
-    throw new Error("adapter registry mismatch: " + name);
-  }
   const expectedPath = path.join(root, adapterPath);
   const readmePath = path.join(root, "adapters", name, "README.md");
   await access(expectedPath);
   await access(readmePath);
   const adapterText = await readFile(expectedPath, "utf8");
   const readmeText = await readFile(readmePath, "utf8");
-  if (adapterText.split("\\n").length > 500) throw new Error(adapterPath + ": exceeds 500 lines");
-  if (readmeText.split("\\n").length > 500) throw new Error(readmePath + ": exceeds 500 lines");
+  if (adapterText.split("\n").length > 500) throw new Error(adapterPath + ": exceeds 500 lines");
+  if (readmeText.split("\n").length > 500) throw new Error(readmePath + ": exceeds 500 lines");
 }
+
+const adapterDirs = (await readdir(path.join(root, "adapters"), {withFileTypes:true}))
+  .filter((entry) => entry.isDirectory())
+  .map((entry) => entry.name)
+  .sort();
+const registeredAdapterDirs = adapterEntries.map((adapter) => adapter.name).sort();
+if (JSON.stringify(adapterDirs) !== JSON.stringify(registeredAdapterDirs)) {
+  throw new Error("manifest/adapters mismatch");
+}
+
 console.log("validated " + names.length + " skills and " + adapterEntries.length + " adapters");
