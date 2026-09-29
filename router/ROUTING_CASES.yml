@@ -298,3 +298,116 @@ cases:
   - name: api-deprecation
     primary: node-api-deprecation
     secondary: [node-api-versioning, node-openapi]
+
+  - name: cqrs
+    primary: node-cqrs
+    secondary: [node-testing, node-observability]
+  - name: read-models
+    primary: node-read-models
+    secondary: [node-testing, node-observability]
+  - name: event-sourcing
+    primary: node-event-sourcing
+    secondary: [node-testing, node-observability]
+  - name: optimistic-concurrency
+    primary: node-optimistic-concurrency
+    secondary: [node-testing, node-observability]
+  - name: data-reconciliation
+    primary: node-data-reconciliation
+    secondary: [node-testing, node-observability]
+  - name: batch-processing
+    primary: node-batch-processing
+    secondary: [node-testing, node-observability]
+  - name: data-import-export
+    primary: node-data-import-export
+    secondary: [node-testing, node-observability]
+  - name: database-read-replicas
+    primary: node-database-read-replicas
+    secondary: [node-testing, node-observability]
+  - name: database-sharding
+    primary: node-database-sharding
+    secondary: [node-testing, node-observability]
+  - name: data-archival
+    primary: node-data-archival
+    secondary: [node-testing, node-observability]
+  - name: durable-workflows
+    primary: node-durable-workflows
+    secondary: [node-testing, node-observability]
+  - name: outbound-webhooks
+    primary: node-outbound-webhooks
+    secondary: [node-testing, node-observability]
+  - name: task-decomposition
+    primary: node-task-decomposition
+    secondary: [node-testing, node-observability]
+  - name: context-engineering
+    primary: node-context-engineering
+    secondary: [node-testing, node-observability]
+  - name: implementation-planning
+    primary: node-implementation-planning
+    secondary: [node-testing, node-observability]
+  - name: patch-validation
+    primary: node-patch-validation
+    secondary: [node-testing, node-observability]
+  - name: merge-conflict-resolution
+    primary: node-merge-conflict-resolution
+    secondary: [node-testing, node-observability]
+  - name: validation-triage
+    primary: node-validation-triage
+    secondary: [node-testing, node-observability]
+  - name: review-feedback
+    primary: node-review-feedback
+    secondary: [node-testing, node-observability]
+
+  - name: disaster-recovery
+    primary: node-disaster-recovery
+    secondary: [node-testing, node-observability]
+  - name: backup-restore
+    primary: node-backup-restore
+    secondary: [node-testing, node-observability]
+  - name: chaos-engineering
+    primary: node-chaos-engineering
+    secondary: [node-testing, node-observability]
+  - name: capacity-planning
+    primary: node-capacity-planning
+    secondary: [node-testing, node-observability]
+  - name: cost-aware-engineering
+    primary: node-cost-aware-engineering
+    secondary: [node-testing, node-observability]
+  - name: multi-region
+    primary: node-multi-region
+    secondary: [node-testing, node-observability]
+  - name: failover-engineering
+    primary: node-failover-engineering
+    secondary: [node-testing, node-observability]
+  - name: graceful-degradation
+    primary: node-graceful-degradation
+    secondary: [node-testing, node-observability]
+  - name: time-engineering
+    primary: node-time-engineering
+    secondary: [node-testing, node-observability]
+  - name: session-management
+    primary: node-session-management
+    secondary: [node-testing, node-observability]
+  - name: cookie-security
+    primary: node-cookie-security
+    secondary: [node-testing, node-observability]
+  - name: cors-security
+    primary: node-cors-security
+    secondary: [node-testing, node-observability]
+  - name: security-headers
+    primary: node-security-headers
+    secondary: [node-testing, node-observability]
+  - name: ci-pipeline-engineering
+    primary: node-ci-pipeline-engineering
+    secondary: [node-testing, node-observability]
+  - name: progressive-delivery
+    primary: node-progressive-delivery
+    secondary: [node-testing, node-observability]
+  - name: infrastructure-as-code
+    primary: node-infrastructure-as-code
+    secondary: [node-testing, node-observability]
+  - name: observability-validation
+    primary: node-observability-validation
+    secondary: [node-testing, node-observability]
+  - name: runbook-engineering
+    primary: node-runbook-engineering
+    secondary: [node-testing, node-observability]

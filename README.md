@@ -66,6 +66,20 @@ npm run validate
 - Test-data, flaky-test, and test-environment engineering
 - API deprecation lifecycle
 
+### Data architecture and agent execution wave
+- CQRS, read models, event sourcing, optimistic concurrency, reconciliation
+- Batch processing, import/export, replicas, sharding, archival, durable workflows
+- Outbound webhooks
+- Task decomposition, context engineering, implementation planning, patch validation
+- Merge-conflict resolution, validation triage, review-feedback integration
+
+### Operations, delivery, and security wave
+- Disaster recovery, backup/restore, chaos experiments, capacity and cost engineering
+- Multi-region/failover design, graceful degradation, and deterministic time handling
+- Session, cookie, CORS, and browser security headers
+- CI pipeline engineering, progressive delivery, infrastructure as code
+- Observability validation and executable runbooks
+
 ### Framework and infrastructure adapters
 | Adapter | Guide | Supported scope |
 |---|---|---|
@@ -100,6 +114,16 @@ npm run validate
 | elasticsearch | adapters/elasticsearch/SKILL.md | current @elastic/elasticsearch |
 | azure-sdk | adapters/azure-sdk/SKILL.md | current Azure SDK for JavaScript |
 | google-cloud | adapters/google-cloud/SKILL.md | current Google Cloud Node.js client libraries |
+| mongodb | adapters/mongodb/SKILL.md | 7.x |
+| mongoose | adapters/mongoose/SKILL.md | 8.x |
+| typeorm | adapters/typeorm/SKILL.md | 0.3.x/current |
+| sequelize | adapters/sequelize/SKILL.md | 6.x stable |
+| mysql2 | adapters/mysql2/SKILL.md | current 3.x |
+| ioredis | adapters/ioredis/SKILL.md | 6.x |
+| temporal | adapters/temporal/SKILL.md | 1.24.x/current |
+| aws-eventbridge | adapters/aws-eventbridge/SKILL.md | AWS SDK JS v3 |
+| azure-storage-blob | adapters/azure-storage-blob/SKILL.md | current @azure/storage-blob |
+| google-cloud-storage | adapters/google-cloud-storage/SKILL.md | current @google-cloud/storage |
 | npm | adapters/npm/SKILL.md | current CLI |
 | Docker | adapters/docker/SKILL.md | current Docker/BuildKit |
 | Kubernetes | adapters/kubernetes/SKILL.md | current API conventions |
@@ -173,5 +197,13 @@ Adapters are conditional. Agents must detect the framework/library and installed
 - https://www.elastic.co/docs/reference/elasticsearch/clients/javascript
 - https://learn.microsoft.com/en-us/azure/developer/javascript/
 - https://docs.cloud.google.com/nodejs/docs/reference
+- https://docs.github.com/en/actions/tutorials/build-and-test-code/nodejs
+- https://developer.hashicorp.com/terraform/docs
+- https://helm.sh/docs/topics/charts/
+- https://argo-cd.readthedocs.io/en/latest/getting_started/
+- https://docs.aws.amazon.com/sdk-for-javascript/v3/developer-guide/javascript_cloudwatch_code_examples.html
+- https://docs.sentry.io/platforms/javascript/guides/node/
+- https://docs.datadoghq.com/tracing/trace_collection/dd_libraries/nodejs/
+- https://docs.newrelic.com/docs/apm/agents/nodejs-agent/installation-configuration/install-nodejs-agent/
 
 CI workflow is validated on GitHub Actions for the current capability branch.

@@ -90,6 +90,45 @@ Route by the dominant backend boundary first. Framework adapters are a translati
 | test environment | node-test-environment-engineering | node-testcontainers, node-integration-testing |
 | API deprecation | node-api-deprecation | node-api-versioning, node-openapi |
 
+| CQRS | node-cqrs | node-domain-modeling, node-read-models |
+| read models | node-read-models | node-event-driven-architecture, node-schema-evolution |
+| event sourcing | node-event-sourcing | node-event-driven-architecture, node-schema-evolution |
+| optimistic concurrency | node-optimistic-concurrency | node-transactions, node-idempotency |
+| data reconciliation | node-data-reconciliation | node-distributed-systems, node-database-engineering |
+| batch processing | node-batch-processing | node-backpressure, node-queues |
+| data import/export | node-data-import-export | node-runtime-validation, node-object-storage |
+| database read replicas | node-database-read-replicas | node-postgresql-persistence, node-connection-pooling |
+| database sharding | node-database-sharding | node-database-engineering, node-transactions |
+| data archival | node-data-archival | node-data-privacy, node-object-storage |
+| durable workflows | node-durable-workflows | node-saga-orchestration, node-queues |
+| outbound webhooks | node-outbound-webhooks | node-webhooks, node-idempotency |
+| agent task decomposition | node-task-decomposition | node-repository-forensics, node-implementation-planning |
+| agent context engineering | node-context-engineering | node-repository-forensics, node-runtime-validation |
+| implementation planning | node-implementation-planning | node-change-impact-analysis, node-testing |
+| patch validation | node-patch-validation | node-code-review, node-validation-triage |
+| merge conflict resolution | node-merge-conflict-resolution | node-patch-validation, node-code-review |
+| validation triage | node-validation-triage | node-debugging, node-patch-validation |
+| review feedback | node-review-feedback | node-code-review, node-patch-validation |
+
+| disaster recovery | node-disaster-recovery | node-backup-restore, node-production-runtime |
+| backup and restore | node-backup-restore | node-disaster-recovery, node-data-archival |
+| chaos engineering | node-chaos-engineering | node-resilience, node-incident-engineering |
+| capacity planning | node-capacity-planning | node-performance, node-load-testing |
+| cost-aware engineering | node-cost-aware-engineering | node-capacity-planning, node-performance |
+| multi-region | node-multi-region | node-disaster-recovery, node-failover-engineering |
+| failover engineering | node-failover-engineering | node-multi-region, node-distributed-locks |
+| graceful degradation | node-graceful-degradation | node-resilience, node-circuit-breakers |
+| time engineering | node-time-engineering | node-runtime-foundations, node-scheduling |
+| session management | node-session-management | node-auth-security, node-cookie-security |
+| cookie security | node-cookie-security | node-session-management, node-csrf if present |
+| CORS security | node-cors-security | node-auth-security, node-http-engineering |
+| security headers | node-security-headers | node-auth-security, node-http-engineering |
+| CI pipeline | node-ci-pipeline-engineering | node-build-engineering, node-testing |
+| progressive delivery | node-progressive-delivery | node-release-engineering, node-feature-flags |
+| infrastructure as code | node-infrastructure-as-code | node-kubernetes, node-release-engineering |
+| observability validation | node-observability-validation | node-observability, node-incident-engineering |
+| runbook engineering | node-runbook-engineering | node-incident-engineering, node-documentation-engineering |
+
 ## Framework adapter selection
 
 After selecting the core owner, detect the actual framework from dependency manifests/imports before loading an adapter:
@@ -127,6 +166,16 @@ After selecting the core owner, detect the actual framework from dependency mani
 | elasticsearch | adapters/elasticsearch/SKILL.md | current @elastic/elasticsearch |
 | azure-sdk | adapters/azure-sdk/SKILL.md | current Azure SDK for JavaScript |
 | google-cloud | adapters/google-cloud/SKILL.md | current Google Cloud Node.js client libraries |
+| mongodb | adapters/mongodb/SKILL.md | 7.x |
+| mongoose | adapters/mongoose/SKILL.md | 8.x |
+| typeorm | adapters/typeorm/SKILL.md | 0.3.x/current |
+| sequelize | adapters/sequelize/SKILL.md | 6.x stable |
+| mysql2 | adapters/mysql2/SKILL.md | current 3.x |
+| ioredis | adapters/ioredis/SKILL.md | 6.x |
+| temporal | adapters/temporal/SKILL.md | 1.24.x/current |
+| aws-eventbridge | adapters/aws-eventbridge/SKILL.md | AWS SDK JS v3 |
+| azure-storage-blob | adapters/azure-storage-blob/SKILL.md | current @azure/storage-blob |
+| google-cloud-storage | adapters/google-cloud-storage/SKILL.md | current @google-cloud/storage |
 
 Do not select an adapter merely because the user says "Node API". Core skills are always applicable; adapters are conditional.
 
