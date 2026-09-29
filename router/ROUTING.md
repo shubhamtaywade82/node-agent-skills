@@ -302,3 +302,27 @@ Do not select an adapter merely because the user says "Node API". Core skills ar
 | multi-tenancy | node-multi-tenancy | node-auth-security, node-database-engineering |
 | audit logging | node-audit-logging | node-observability, node-auth-security |
 | data privacy | node-data-privacy | node-secrets, node-observability, node-audit-logging |
+
+
+## Wave 14 — runtime diagnostics and compatibility
+
+| module-resolution-diagnostics | node-module-resolution-diagnostics | node-testing, node-observability |
+| lockfile-integrity | node-lockfile-integrity | node-testing, node-observability |
+| package-manager-diagnostics | node-package-manager-diagnostics | node-testing, node-observability |
+| runtime-feature-detection | node-runtime-feature-detection | node-testing, node-observability |
+| process-supervision | node-process-supervision | node-testing, node-observability |
+| memory-leak-diagnostics | node-memory-leak-diagnostics | node-testing, node-observability |
+| heap-diagnostics | node-heap-diagnostics | node-testing, node-observability |
+| event-loop-diagnostics | node-event-loop-diagnostics | node-testing, node-observability |
+| log-redaction | node-log-redaction | node-testing, node-observability |
+| telemetry-sampling | node-telemetry-sampling | node-testing, node-observability |
+| cardinality-control | node-cardinality-control | node-testing, node-observability |
+| trace-context-propagation | node-trace-context-propagation | node-testing, node-observability |
+| codegen-engineering | node-codegen-engineering | node-testing, node-observability |
+| generated-code-review | node-generated-code-review | node-testing, node-observability |
+| release-notes-engineering | node-release-notes-engineering | node-testing, node-observability |
+| maintenance-engineering | node-maintenance-engineering | node-testing, node-observability |
+| repository-health | node-repository-health | node-testing, node-observability |
+| deprecation-management | node-deprecation-management | node-testing, node-observability |
+| backward-compatibility-testing | node-backward-compatibility-testing | node-testing, node-observability |
+| runtime-upgrade-planning | node-runtime-upgrade-planning | node-testing, node-observability |
