@@ -23,15 +23,18 @@ installing this skill pack into a coding-agent environment reproducibly.
 
 ## Decision rules
 
-installation is versioned and reproducible; the agent discovers repository-local instructions before activating skills
-
-- Source metadata remains authoritative.
-- Keep discovery and routing deterministic and concise.
-- Test behavioral contracts, not prose wording.
+- Installation must use a pinned repository revision or release artifact; never an arbitrary mutable branch.
+- The manifest is the source of truth for what is installed; installation must not silently omit referenced skills.
+- Installation commands are executed only after inspecting the target agent's local instructions and permissions.
+- A successful copy is insufficient: discovery and validation must succeed in the target layout.
 
 ## Implementation procedure
 
-1. Identify supported agent format.\n2. Pin repository revision.\n3. Install/copy skills.\n4. Verify manifest and validator.\n5. Record install source.\n6. Test discovery.
+1. Inspect the target agent format and repository-local instructions.
+2. Pin the repository revision or release artifact.
+3. Install the manifest closure without secrets or transient files.
+4. Run discovery and repository validation.
+5. Record the source revision and validation evidence.
 
 ## Failure modes
 
