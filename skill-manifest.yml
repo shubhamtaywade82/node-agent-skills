@@ -687,6 +687,67 @@ skills:
   - name: node-header-normalization
     category: network
     triggers: [HTTP headers, duplicate headers, header normalization]
+  - name: node-file-system-safety
+    category: runtime-security
+    triggers: [file, system, safety]
+  - name: node-temp-file-safety
+    category: runtime-security
+    triggers: [temp, file, safety]
+  - name: node-path-traversal-defense
+    category: runtime-security
+    triggers: [path, traversal, defense]
+  - name: node-runtime-feature-detection
+    category: runtime-security
+    triggers: [runtime, feature, detection]
+  - name: node-process-supervision
+    category: runtime-security
+    triggers: [process, supervision]
+  - name: node-memory-leak-diagnostics
+    category: runtime-security
+    triggers: [memory, leak, diagnostics]
+  - name: node-heap-diagnostics
+    category: runtime-security
+    triggers: [heap, diagnostics]
+  - name: node-event-loop-diagnostics
+    category: runtime-security
+    triggers: [event, loop, diagnostics]
+  - name: node-log-redaction
+    category: observability
+    triggers: [log, redaction]
+  - name: node-telemetry-sampling
+    category: observability
+    triggers: [telemetry, sampling]
+  - name: node-cardinality-control
+    category: observability
+    triggers: [cardinality, control]
+  - name: node-trace-context-propagation
+    category: observability
+    triggers: [trace, context, propagation]
+  - name: node-read-replica-routing
+    category: persistence
+    triggers: [read, replica, routing]
+  - name: node-query-plan-engineering
+    category: persistence
+    triggers: [query, plan, engineering]
+  - name: node-index-engineering
+    category: persistence
+    triggers: [index, engineering]
+  - name: node-postgres-locking
+    category: persistence
+    triggers: [postgres, locking]
+  - name: node-advisory-locks
+    category: persistence
+    triggers: [advisory, locks]
+  - name: node-api-content-negotiation
+    category: api
+    triggers: [api, content, negotiation]
+  - name: node-http-cache-semantics
+    category: runtime-security
+    triggers: [http, cache, semantics]
+  - name: node-api-conditional-requests
+    category: api
+    triggers: [api, conditional, requests]
+
 adapters:
   express:
     path: adapters/express/SKILL.md
