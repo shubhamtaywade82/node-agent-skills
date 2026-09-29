@@ -964,3 +964,19 @@ adapters:
     path: adapters/apollo-server/SKILL.md
     version_scope: 5.x
     source: https://www.apollographql.com/docs/apollo-server
+  fastify-swagger:
+    path: adapters/fastify-swagger/SKILL.md
+    version_scope: >=9.x (Fastify 5.x)
+    source: https://github.com/fastify/fastify-swagger
+  fastify-multipart:
+    path: adapters/fastify-multipart/SKILL.md
+    version_scope: current; verify Fastify major
+    source: https://github.com/fastify/fastify-multipart
+  nestjs-swagger:
+    path: adapters/nestjs-swagger/SKILL.md
+    version_scope: current; verify NestJS major
+    source: https://docs.nestjs.com/openapi/introduction
+  opentelemetry-sdk-node:
+    path: adapters/opentelemetry-sdk-node/SKILL.md
+    version_scope: current
+    source: https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/opentelemetry-sdk-node
