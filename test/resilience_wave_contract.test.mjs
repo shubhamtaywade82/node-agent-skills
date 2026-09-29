@@ -3,7 +3,6 @@ import assert from "node:assert/strict";
 import { access, readFile } from "node:fs/promises";
 
 const skills = [
-  ["node-design-patterns", "design-patterns"],
   ["node-retry-timeouts", "retry-timeouts"],
   ["node-resilience", "resilience"],
   ["node-circuit-breakers", "circuit-breakers"],
