@@ -23,15 +23,18 @@ choosing database transaction isolation levels from correctness requirements.
 
 ## Decision rules
 
-isolation is selected for an explicit invariant and workload, not as a blanket default; stronger isolation costs are measured
-
-- Correctness and operational safety take precedence over convenience.
-- Optimize from measured workload evidence.
-- Keep rollback/roll-forward paths explicit and bounded.
+- Select the weakest PostgreSQL isolation level that prevents the application's documented anomalies.
+- Isolation choices must be tied to workload invariants, not generic claims that stronger is always better.
+- Serializable or repeatable-read failures need bounded retry semantics where the operation is safe to replay.
+- Isolation cannot replace explicit authorization or application invariants.
 
 ## Implementation procedure
 
-1. State required invariants.\n2. Map anomaly risks.\n3. Choose level.\n4. Test concurrent schedules.\n5. Measure contention.\n6. Document rationale.
+1. State the anomaly or invariant that must be prevented.
+2. Map it to transaction isolation behavior.
+3. Choose and document the minimum sufficient level.
+4. Test concurrent schedules that exercise the invariant.
+5. Verify retry and error handling for serialization failures.
 
 ## Failure modes
 
