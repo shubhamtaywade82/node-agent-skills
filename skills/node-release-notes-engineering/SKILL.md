@@ -23,15 +23,18 @@ producing release notes that accurately describe backend behavior, compatibility
 
 ## Decision rules
 
-notes are derived from actual commits/diffs and call out breaking changes, migrations, deprecations, and operator actions
-
-- Correctness and operational safety take precedence over convenience.
-- Optimize from measured workload evidence.
-- Keep rollback/roll-forward paths explicit and bounded.
+- Release notes are derived from the verified change set and must distinguish breaking, deprecated, and behavior-preserving changes.
+- User-visible impact, migration action, and version applicability must be explicit for breaking changes.
+- Do not invent release-note claims from commit titles alone when the diff contradicts them.
+- Released notes are historical records; corrections must preserve an auditable change trail.
 
 ## Implementation procedure
 
-1. Collect release changes.\n2. Classify user/operator impact.\n3. Summarize compatibility.\n4. Document migrations/rollback.\n5. Verify links and version identifiers.\n6. Keep notes free of unverified claims.
+1. Inspect commits, PR descriptions, and final diffs for user-visible changes.
+2. Classify breaking, deprecated, fixed, and operational changes.
+3. Add migration or upgrade guidance where required.
+4. Cross-check notes against the shipped artifact and version.
+5. Validate the final release record before publication.
 
 ## Failure modes
 
