@@ -80,6 +80,12 @@ npm run validate
 - CI pipeline engineering, progressive delivery, infrastructure as code
 - Observability validation and executable runbooks
 
+### Identity, SLO, and test-tooling wave
+- SLI/SLO and error-budget engineering with explicit service ownership and on-call readiness
+- Operational readiness, security incident response, vulnerability management
+- Session revocation, OAuth/OIDC, MFA, password storage, and enumeration defense
+- Native Node test runner, HTTP integration testing, benchmarking, failure injection, and test isolation
+
 ### Framework and infrastructure adapters
 | Adapter | Guide | Supported scope |
 |---|---|---|
@@ -205,5 +211,9 @@ Adapters are conditional. Agents must detect the framework/library and installed
 - https://docs.sentry.io/platforms/javascript/guides/node/
 - https://docs.datadoghq.com/tracing/trace_collection/dd_libraries/nodejs/
 - https://docs.newrelic.com/docs/apm/agents/nodejs-agent/installation-configuration/install-nodejs-agent/
+- https://nodejs.org/docs/latest-v24.x/api/test.html
+- https://github.com/forwardemail/supertest
+- https://github.com/panva/oauth4webapi
+- https://github.com/panva/openid-client
 
 CI workflow is validated on GitHub Actions for the current capability branch.

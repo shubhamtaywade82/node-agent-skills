@@ -411,3 +411,58 @@ cases:
   - name: runbook-engineering
     primary: node-runbook-engineering
     secondary: [node-testing, node-observability]
+
+  - name: sli-slo-engineering
+    primary: node-sli-slo-engineering
+    secondary: [node-testing, node-observability]
+  - name: error-budget-engineering
+    primary: node-error-budget-engineering
+    secondary: [node-testing, node-observability]
+  - name: service-ownership
+    primary: node-service-ownership
+    secondary: [node-testing, node-observability]
+  - name: oncall-readiness
+    primary: node-oncall-readiness
+    secondary: [node-testing, node-observability]
+  - name: operational-readiness
+    primary: node-operational-readiness
+    secondary: [node-testing, node-observability]
+  - name: security-incident-response
+    primary: node-security-incident-response
+    secondary: [node-testing, node-observability]
+  - name: vulnerability-management
+    primary: node-vulnerability-management
+    secondary: [node-testing, node-observability]
+  - name: auth-session-revocation
+    primary: node-auth-session-revocation
+    secondary: [node-testing, node-observability]
+  - name: oauth-client-security
+    primary: node-oauth-client-security
+    secondary: [node-testing, node-observability]
+  - name: oidc-integration
+    primary: node-oidc-integration
+    secondary: [node-testing, node-observability]
+  - name: mfa-engineering
+    primary: node-mfa-engineering
+    secondary: [node-testing, node-observability]
+  - name: password-storage
+    primary: node-password-storage
+    secondary: [node-testing, node-observability]
+  - name: user-enumeration-defense
+    primary: node-user-enumeration-defense
+    secondary: [node-testing, node-observability]
+  - name: native-test-runner
+    primary: node-native-test-runner
+    secondary: [node-testing, node-observability]
+  - name: http-testing
+    primary: node-http-testing
+    secondary: [node-testing, node-observability]
+  - name: benchmark-engineering
+    primary: node-benchmark-engineering
+    secondary: [node-testing, node-observability]
+  - name: failure-injection-testing
+    primary: node-failure-injection-testing
+    secondary: [node-testing, node-observability]
+  - name: test-isolation-engineering
+    primary: node-test-isolation-engineering
+    secondary: [node-testing, node-observability]
