@@ -27,6 +27,7 @@ handling HTTP headers consistently and safely across Node.js/proxy boundaries.
 - Hop-by-hop headers must not cross an end-to-end service boundary as application metadata.
 - Cryptographic canonicalization must follow the signature protocol rather than generic normalization.
 - Create one explicit normalized view for application consumers while preserving raw headers where protocol verification requires them.
+- Treat duplicate header instances as security-significant input until the HTTP contract says they are safely combinable.
 ## Implementation procedure
 
 1. Identify security-critical headers.
