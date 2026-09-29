@@ -61,7 +61,7 @@ cases:
 
   - name: generated-client-governance
     skill: node-generated-client-governance
-    prompt: "Regenerate a GraphQL or OpenAPI client while keeping handwritten extensions safe across regeneration and reviewing generated authentication behavior."
+    prompt: "Regenerate a generated client from a GraphQL or OpenAPI contract while keeping handwritten extensions safe across regeneration and reviewing generated authentication behavior."
     pressure: ["generated client", "handwritten extension", "regeneration", "auth transport"]
     expected_invariants: ["ownership boundary", "stable customization", "reviewed auth", "smoke test"]
 
