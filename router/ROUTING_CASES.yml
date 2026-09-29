@@ -643,3 +643,64 @@ cases:
   - name: header-normalization
     primary: node-header-normalization
     secondary: [node-testing, node-observability]
+
+  - name: file-system-safety
+    primary: node-file-system-safety
+    secondary: [node-testing, node-observability]
+  - name: temp-file-safety
+    primary: node-temp-file-safety
+    secondary: [node-testing, node-observability]
+  - name: path-traversal-defense
+    primary: node-path-traversal-defense
+    secondary: [node-testing, node-observability]
+  - name: runtime-feature-detection
+    primary: node-runtime-feature-detection
+    secondary: [node-testing, node-observability]
+  - name: process-supervision
+    primary: node-process-supervision
+    secondary: [node-testing, node-observability]
+  - name: memory-leak-diagnostics
+    primary: node-memory-leak-diagnostics
+    secondary: [node-testing, node-observability]
+  - name: heap-diagnostics
+    primary: node-heap-diagnostics
+    secondary: [node-testing, node-observability]
+  - name: event-loop-diagnostics
+    primary: node-event-loop-diagnostics
+    secondary: [node-testing, node-observability]
+  - name: log-redaction
+    primary: node-log-redaction
+    secondary: [node-testing, node-observability]
+  - name: telemetry-sampling
+    primary: node-telemetry-sampling
+    secondary: [node-testing, node-observability]
+  - name: cardinality-control
+    primary: node-cardinality-control
+    secondary: [node-testing, node-observability]
+  - name: trace-context-propagation
+    primary: node-trace-context-propagation
+    secondary: [node-testing, node-observability]
+  - name: read-replica-routing
+    primary: node-read-replica-routing
+    secondary: [node-testing, node-observability]
+  - name: query-plan-engineering
+    primary: node-query-plan-engineering
+    secondary: [node-testing, node-observability]
+  - name: index-engineering
+    primary: node-index-engineering
+    secondary: [node-testing, node-observability]
+  - name: postgres-locking
+    primary: node-postgres-locking
+    secondary: [node-testing, node-observability]
+  - name: advisory-locks
+    primary: node-advisory-locks
+    secondary: [node-testing, node-observability]
+  - name: api-content-negotiation
+    primary: node-api-content-negotiation
+    secondary: [node-testing, node-observability]
+  - name: http-cache-semantics
+    primary: node-http-cache-semantics
+    secondary: [node-testing, node-observability]
+  - name: api-conditional-requests
+    primary: node-api-conditional-requests
+    secondary: [node-testing, node-observability]
