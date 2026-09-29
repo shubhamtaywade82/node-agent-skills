@@ -284,6 +284,31 @@ Route by the dominant backend boundary first. Framework adapters are a translati
 | structured-cloning | node-structured-cloning | node-testing, node-build-engineering |
 | package-manager-policy | node-package-manager-policy | node-testing, node-build-engineering |
 
+| agent-task-intent | node-agent-task-intent | node-testing, node-observability |
+| agent-tool-selection | node-agent-tool-selection | node-testing, node-observability |
+| agent-tool-contract | node-agent-tool-contract | node-testing, node-observability |
+| agent-state-machine | node-agent-state-machine | node-testing, node-observability |
+| agent-context-budgeting | node-agent-context-budgeting | node-testing, node-observability |
+| agent-replayability | node-agent-replayability | node-testing, node-observability |
+| agent-deterministic-execution | node-agent-deterministic-execution | node-testing, node-observability |
+| agent-safety-gates | node-agent-safety-gates | node-testing, node-observability |
+| agent-human-escalation | node-agent-human-escalation | node-testing, node-observability |
+| agent-tool-audit | node-agent-tool-audit | node-testing, node-observability |
+| agent-observation-normalization | node-agent-observation-normalization | node-testing, node-observability |
+| agent-action-approval | node-agent-action-approval | node-testing, node-observability |
+| agent-loop-control | node-agent-loop-control | node-testing, node-observability |
+| prototype-pollution-defense | node-prototype-pollution-defense | node-testing, node-observability |
+| regex-dos-defense | node-regex-dos-defense | node-testing, node-observability |
+| json-parse-safety | node-json-parse-safety | node-testing, node-observability |
+| serialization-boundaries | node-serialization-boundaries | node-testing, node-observability |
+| vm-isolation-limitations | node-vm-isolation-limitations | node-testing, node-observability |
+| database-statement-timeouts | node-database-statement-timeouts | node-testing, node-observability |
+| query-cancellation | node-query-cancellation | node-testing, node-observability |
+| prepared-statement-safety | node-prepared-statement-safety | node-testing, node-observability |
+| pooler-compatibility | node-pooler-compatibility | node-testing, node-observability |
+| transaction-state-monitoring | node-transaction-state-monitoring | node-testing, node-observability |
+| connection-pooler-engineering | node-connection-pooler-engineering | node-testing, node-observability |
+
 ## Framework adapter selection
 
 After selecting the core owner, detect the actual framework from dependency manifests/imports before loading an adapter:
@@ -371,3 +396,7 @@ Do not select an adapter merely because the user says "Node API". Core skills ar
 | tsdown | adapters/tsdown/SKILL.md | 0.23.0 |
 | graphql-codegen | adapters/graphql-codegen/SKILL.md | 7.4.2 |
 | swc-core | adapters/swc-core/SKILL.md | 1.16.2 |
+| typescript-eslint | adapters/typescript-eslint/SKILL.md | 8.70.0 |
+| nodemon | adapters/nodemon/SKILL.md | 3.1.14 |
+| graphql-codegen-client-preset | adapters/graphql-codegen-client-preset/SKILL.md | 6.2.0 |
+| ts-node | adapters/ts-node/SKILL.md | 10.9.2 |
