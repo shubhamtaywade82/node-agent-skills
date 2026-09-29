@@ -13,19 +13,29 @@ test("Wave 13 routing corpus uses registered skill IDs", () => {
   for (const block of blocks) {
     const skill = block.match(/^    skill: ([a-z0-9-]+)$/m)?.[1];
     assert.ok(skill && registered.has(skill), "unregistered primary skill: " + skill);
-    const negatives = block.match(/^    must_not_select: [([^]]+)]$/m)?.[1]
+    const negatives = block.match(/^    must_not_select: \[([^\]]+)\]$/m)?.[1]
       .split(",").map(x => x.trim().replace(/^"|"$/g, ""));
     assert.ok(negatives?.length >= 2, "each case needs adjacent negative skills");
     for (const negative of negatives) assert.ok(registered.has(negative), "unregistered negative skill: " + negative);
   }
 });
 
+test("Wave 13 routing cases declare discriminative fields", () => {
+  const blocks = cases.split(/^  - name: /m).slice(1);
+  for (const block of blocks) {
+    assert.match(block, /^    routing_signals: \[[^\]]+\]$/m);
+    assert.match(block, /^    negative_signals: \[[^\]]+\]$/m);
+    assert.match(block, /^    evidence: \[[^\]]+\]$/m);
+    assert.match(block, /^    disambiguation: .+$/m);
+  }
+});
+
 test("Wave 13 positive and negative routing signals do not overlap", () => {
   const blocks = cases.split(/^  - name: /m).slice(1);
   for (const block of blocks) {
-    const positive = new Set((block.match(/^    routing_signals: [([^]]+)]$/m)?.[1] ?? "")
+    const positive = new Set((block.match(/^    routing_signals: \[([^\]]+)\]$/m)?.[1] ?? "")
       .split(",").map(x => x.trim().replace(/^"|"$/g, "")));
-    const negative = new Set((block.match(/^    negative_signals: [([^]]+)]$/m)?.[1] ?? "")
+    const negative = new Set((block.match(/^    negative_signals: \[([^\]]+)\]$/m)?.[1] ?? "")
       .split(",").map(x => x.trim().replace(/^"|"$/g, "")));
     for (const signal of positive) assert.ok(!negative.has(signal), "overlapping routing signal: " + signal);
   }
