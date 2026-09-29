@@ -79,7 +79,7 @@ cases:
 
   - name: trace-context-propagation
     skill: node-trace-context-propagation
-    prompt: "Propagate distributed trace context across inbound HTTP requests and outbound dependency calls without trusting arbitrary baggage as authorization."
+    prompt: "Propagate W3C traceparent context across inbound HTTP requests and outbound dependency calls without trusting arbitrary baggage as authorization."
     pressure: ["traceparent", "outbound propagation", "untrusted baggage", "context scope"]
     expected_invariants: ["context continuity", "trusted fields", "request isolation", "propagation test"]
 
