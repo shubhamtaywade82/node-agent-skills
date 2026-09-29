@@ -48,7 +48,7 @@ test("pack exporter produces a self-contained deterministic distribution", async
     await run(process.execPath, ["scripts/export-pack.mjs", "--output", output], { cwd: process.cwd() });
     const packageManifest = JSON.parse(await readFile(output + "/pack-manifest.json", "utf8"));
     assert.equal(packageManifest.name, "node-agent-skills");
-    assert.equal(packageManifest.skills, 246);
+    assert.equal(packageManifest.skills, 266);
     assert.equal(packageManifest.adapters, 69);
     await readFile(output + "/skill-manifest.yml", "utf8");
     await readFile(output + "/router/ROUTING.md", "utf8");
