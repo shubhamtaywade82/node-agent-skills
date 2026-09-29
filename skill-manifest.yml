@@ -1214,3 +1214,19 @@ adapters:
     path: adapters/graphql-request/SKILL.md
     version_scope: 7.4.0
     source: https://github.com/graffle-js/graffle/tree/graphql-request
+  typescript:
+    path: adapters/typescript/SKILL.md
+    version_scope: 7.0.2
+    source: https://www.typescriptlang.org/
+  tsdown:
+    path: adapters/tsdown/SKILL.md
+    version_scope: 0.23.0
+    source: https://tsdown.dev/
+  graphql-codegen:
+    path: adapters/graphql-codegen/SKILL.md
+    version_scope: 7.4.2
+    source: https://the-guild.dev/graphql/codegen
+  swc-core:
+    path: adapters/swc-core/SKILL.md
+    version_scope: 1.16.2
+    source: https://swc.rs/
