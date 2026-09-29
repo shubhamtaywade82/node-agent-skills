@@ -23,15 +23,18 @@ using advisory locks for cooperative serialization of database work.
 
 ## Decision rules
 
-lock namespace and scope are explicit; session/transaction lifetime is safe; lock acquisition has a bounded policy
-
-- Correctness and operational safety take precedence over convenience.
-- Optimize from measured workload evidence.
-- Keep rollback/roll-forward paths explicit and bounded.
+- Advisory lock keys require an explicit namespace and collision policy.
+- Lock lifetime must match the database session or transaction semantics actually used.
+- Acquisition waits need a bounded timeout and a defined failure response.
+- Never hold an advisory lock across slow remote I/O unless the contention budget explicitly allows it.
 
 ## Implementation procedure
 
-1. Identify shared resource.\n2. Choose lock key namespace.\n3. Choose transaction/session scope.\n4. Bound wait.\n5. Release deterministically.\n6. Test competing workers and crashes.
+1. Identify the resource being serialized.
+2. Define a stable advisory-lock namespace and key.
+3. Choose session or transaction ownership deliberately.
+4. Bound acquisition and release behavior.
+5. Test contention, cancellation, crash cleanup, and duplicate workers.
 
 ## Failure modes
 
