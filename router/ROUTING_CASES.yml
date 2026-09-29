@@ -521,3 +521,64 @@ cases:
   - name: package-resolution
     primary: node-package-resolution
     secondary: [node-testing, node-observability]
+
+  - name: permission-model
+    primary: node-permission-model
+    secondary: [node-testing, node-observability]
+  - name: async-context-propagation
+    primary: node-async-context-propagation
+    secondary: [node-testing, node-observability]
+  - name: request-context
+    primary: node-request-context
+    secondary: [node-testing, node-observability]
+  - name: abort-cancellation
+    primary: node-abort-cancellation
+    secondary: [node-testing, node-observability]
+  - name: worker-threads
+    primary: node-worker-threads
+    secondary: [node-testing, node-observability]
+  - name: child-process-safety
+    primary: node-child-process-safety
+    secondary: [node-testing, node-observability]
+  - name: http-body-limits
+    primary: node-http-body-limits
+    secondary: [node-testing, node-observability]
+  - name: upload-security
+    primary: node-upload-security
+    secondary: [node-testing, node-observability]
+  - name: ssrf-defense
+    primary: node-ssrf-defense
+    secondary: [node-testing, node-observability]
+  - name: cache-key-security
+    primary: node-cache-key-security
+    secondary: [node-testing, node-observability]
+  - name: tenant-cache-isolation
+    primary: node-tenant-cache-isolation
+    secondary: [node-testing, node-observability]
+  - name: database-index-engineering
+    primary: node-database-index-engineering
+    secondary: [node-testing, node-observability]
+  - name: query-performance
+    primary: node-query-performance
+    secondary: [node-testing, node-observability]
+  - name: lock-contention
+    primary: node-lock-contention
+    secondary: [node-testing, node-observability]
+  - name: connection-leak-detection
+    primary: node-connection-leak-detection
+    secondary: [node-testing, node-observability]
+  - name: transaction-retry
+    primary: node-transaction-retry
+    secondary: [node-testing, node-observability]
+  - name: health-check-engineering
+    primary: node-health-check-engineering
+    secondary: [node-testing, node-observability]
+  - name: startup-readiness
+    primary: node-startup-readiness
+    secondary: [node-testing, node-observability]
+  - name: config-drift-detection
+    primary: node-config-drift-detection
+    secondary: [node-testing, node-observability]
+  - name: generated-code-governance
+    primary: node-generated-code-governance
+    secondary: [node-testing, node-observability]

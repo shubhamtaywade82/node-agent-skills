@@ -92,6 +92,12 @@ npm run validate
 - Message ordering, deduplication, poison-message handling, and DLQs
 - Boundary schema validation, runtime type safety, and Node package-resolution diagnostics
 
+### Runtime, data, security, and lifecycle wave
+- Node permission model, async/request context, cancellation, workers, and safe child processes
+- HTTP body limits, secure uploads, SSRF defense, cache-key and tenant-cache isolation
+- Database indexes, query performance, lock contention, connection-leak detection, transaction retry
+- Health checks, startup readiness, configuration-drift detection, and generated-code governance
+
 ### Framework and infrastructure adapters
 | Adapter | Guide | Supported scope |
 |---|---|---|

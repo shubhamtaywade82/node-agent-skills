@@ -167,6 +167,27 @@ Route by the dominant backend boundary first. Framework adapters are a translati
 | runtime-type-safety | node-runtime-type-safety | node-testing, node-observability |
 | package-resolution | node-package-resolution | node-testing, node-observability |
 
+| permission-model | node-permission-model | node-testing, node-observability |
+| async-context-propagation | node-async-context-propagation | node-testing, node-observability |
+| request-context | node-request-context | node-testing, node-observability |
+| abort-cancellation | node-abort-cancellation | node-testing, node-observability |
+| worker-threads | node-worker-threads | node-testing, node-observability |
+| child-process-safety | node-child-process-safety | node-testing, node-observability |
+| http-body-limits | node-http-body-limits | node-testing, node-observability |
+| upload-security | node-upload-security | node-testing, node-observability |
+| ssrf-defense | node-ssrf-defense | node-testing, node-observability |
+| cache-key-security | node-cache-key-security | node-testing, node-observability |
+| tenant-cache-isolation | node-tenant-cache-isolation | node-testing, node-observability |
+| database-index-engineering | node-database-index-engineering | node-testing, node-observability |
+| query-performance | node-query-performance | node-testing, node-observability |
+| lock-contention | node-lock-contention | node-testing, node-observability |
+| connection-leak-detection | node-connection-leak-detection | node-testing, node-observability |
+| transaction-retry | node-transaction-retry | node-testing, node-observability |
+| health-check-engineering | node-health-check-engineering | node-testing, node-observability |
+| startup-readiness | node-startup-readiness | node-testing, node-observability |
+| config-drift-detection | node-config-drift-detection | node-testing, node-observability |
+| generated-code-governance | node-generated-code-governance | node-testing, node-observability |
+
 ## Framework adapter selection
 
 After selecting the core owner, detect the actual framework from dependency manifests/imports before loading an adapter:
