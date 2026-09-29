@@ -98,7 +98,12 @@ npm run validate
 - Database indexes, query performance, lock contention, connection-leak detection, transaction retry
 - Health checks, startup readiness, configuration-drift detection, and generated-code governance
 
-### Framework and infrastructure adapters
+### Agent governance and HTTP/network security wave
+- Agent preflight, evidence gathering, change safety, verification reporting, risk escalation, rollback planning
+- Commit/PR hygiene and merge-readiness discipline
+- DNS, TLS/certificate management, proxy forwarding, HTTP timeouts and keep-alive
+- Secure webhook ingress, request signatures, replay protection, CSRF, redirects, request smuggling, header normalization
+
 | Adapter | Guide | Supported scope |
 |---|---|---|
 | Express | adapters/express/SKILL.md | 5.x |
@@ -234,3 +239,6 @@ CI workflow is validated on GitHub Actions for the current capability branch.
 - https://github.com/panva/jose
 - https://kysely.dev/
 - https://github.com/typegoose/mongodb-memory-server
+
+- https://the-guild.dev/graphql/yoga-server/docs
+- https://www.apollographql.com/docs/apollo-server

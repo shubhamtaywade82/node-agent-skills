@@ -188,6 +188,27 @@ Route by the dominant backend boundary first. Framework adapters are a translati
 | config-drift-detection | node-config-drift-detection | node-testing, node-observability |
 | generated-code-governance | node-generated-code-governance | node-testing, node-observability |
 
+| agent-preflight | node-agent-preflight | node-testing, node-observability |
+| agent-evidence-gathering | node-agent-evidence-gathering | node-testing, node-observability |
+| agent-change-safety | node-agent-change-safety | node-testing, node-observability |
+| agent-verification-reporting | node-agent-verification-reporting | node-testing, node-observability |
+| agent-risk-escalation | node-agent-risk-escalation | node-testing, node-observability |
+| agent-rollback-planning | node-agent-rollback-planning | node-testing, node-observability |
+| agent-commit-hygiene | node-agent-commit-hygiene | node-testing, node-observability |
+| agent-pr-preparation | node-agent-pr-preparation | node-testing, node-observability |
+| dns-engineering | node-dns-engineering | node-testing, node-observability |
+| tls-certificate-management | node-tls-certificate-management | node-testing, node-observability |
+| http-proxy-forwarding | node-http-proxy-forwarding | node-testing, node-observability |
+| http-timeouts | node-http-timeouts | node-testing, node-observability |
+| http-keepalive | node-http-keepalive | node-testing, node-observability |
+| webhook-ingress-security | node-webhook-ingress-security | node-testing, node-observability |
+| request-signature-validation | node-request-signature-validation | node-testing, node-observability |
+| replay-protection | node-replay-protection | node-testing, node-observability |
+| csrf-defense | node-csrf-defense | node-testing, node-observability |
+| open-redirect-defense | node-open-redirect-defense | node-testing, node-observability |
+| request-smuggling-defense | node-request-smuggling-defense | node-testing, node-observability |
+| header-normalization | node-header-normalization | node-testing, node-observability |
+
 ## Framework adapter selection
 
 After selecting the core owner, detect the actual framework from dependency manifests/imports before loading an adapter:

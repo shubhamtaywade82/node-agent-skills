@@ -582,3 +582,64 @@ cases:
   - name: generated-code-governance
     primary: node-generated-code-governance
     secondary: [node-testing, node-observability]
+
+  - name: agent-preflight
+    primary: node-agent-preflight
+    secondary: [node-testing, node-observability]
+  - name: agent-evidence-gathering
+    primary: node-agent-evidence-gathering
+    secondary: [node-testing, node-observability]
+  - name: agent-change-safety
+    primary: node-agent-change-safety
+    secondary: [node-testing, node-observability]
+  - name: agent-verification-reporting
+    primary: node-agent-verification-reporting
+    secondary: [node-testing, node-observability]
+  - name: agent-risk-escalation
+    primary: node-agent-risk-escalation
+    secondary: [node-testing, node-observability]
+  - name: agent-rollback-planning
+    primary: node-agent-rollback-planning
+    secondary: [node-testing, node-observability]
+  - name: agent-commit-hygiene
+    primary: node-agent-commit-hygiene
+    secondary: [node-testing, node-observability]
+  - name: agent-pr-preparation
+    primary: node-agent-pr-preparation
+    secondary: [node-testing, node-observability]
+  - name: dns-engineering
+    primary: node-dns-engineering
+    secondary: [node-testing, node-observability]
+  - name: tls-certificate-management
+    primary: node-tls-certificate-management
+    secondary: [node-testing, node-observability]
+  - name: http-proxy-forwarding
+    primary: node-http-proxy-forwarding
+    secondary: [node-testing, node-observability]
+  - name: http-timeouts
+    primary: node-http-timeouts
+    secondary: [node-testing, node-observability]
+  - name: http-keepalive
+    primary: node-http-keepalive
+    secondary: [node-testing, node-observability]
+  - name: webhook-ingress-security
+    primary: node-webhook-ingress-security
+    secondary: [node-testing, node-observability]
+  - name: request-signature-validation
+    primary: node-request-signature-validation
+    secondary: [node-testing, node-observability]
+  - name: replay-protection
+    primary: node-replay-protection
+    secondary: [node-testing, node-observability]
+  - name: csrf-defense
+    primary: node-csrf-defense
+    secondary: [node-testing, node-observability]
+  - name: open-redirect-defense
+    primary: node-open-redirect-defense
+    secondary: [node-testing, node-observability]
+  - name: request-smuggling-defense
+    primary: node-request-smuggling-defense
+    secondary: [node-testing, node-observability]
+  - name: header-normalization
+    primary: node-header-normalization
+    secondary: [node-testing, node-observability]
