@@ -245,3 +245,12 @@ CI workflow is validated on GitHub Actions for the current capability branch.
 
 - https://the-guild.dev/graphql/yoga-server/docs
 - https://www.apollographql.com/docs/apollo-server
+
+
+### Wave 14 — runtime diagnostics and compatibility
+- Module/package resolution and lockfile integrity
+- Package-manager diagnostics and runtime feature detection
+- Process, memory, heap, and event-loop diagnostics
+- Log redaction, telemetry sampling, cardinality control, trace propagation
+- Reproducible code generation, generated-code review, release notes, maintenance
+- Repository health, deprecation, backward compatibility, and runtime upgrade planning
