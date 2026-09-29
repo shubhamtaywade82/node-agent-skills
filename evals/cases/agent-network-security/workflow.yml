@@ -1,120 +1,201 @@
 cases:
   - name: agent-preflight
     skill: node-agent-preflight
-    prompt: "Review or implement a production Node.js backend change involving  agent preflight."
+    prompt: "Establish a trustworthy baseline before changing a Node.js service whose branch, runtime, package manager, CI gates, and working tree state are currently unknown."
     pressure: ["existing conventions", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["working tree","branch baseline","package manager","runtime version","CI gate"]
+    negative_signals: ["node-agent-change-safety","node-agent-evidence-gathering"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Prove repository state before deciding what to edit."
+    must_not_select: ["node-agent-change-safety","node-agent-evidence-gathering"]
     expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
-
   - name: agent-evidence-gathering
     skill: node-agent-evidence-gathering
-    prompt: "Review or implement a production Node.js backend change involving  agent evidence gathering."
+    prompt: "Resolve conflicting repository evidence for a backend regression where the implementation, tests, configuration, and documentation disagree about which module owns the behavior."
     pressure: ["existing conventions", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["source of truth","contradiction","evidence map","reproduction","behavior owner"]
+    negative_signals: ["node-agent-preflight","node-debugging"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Trace the behavior owner and distinguish facts from inference."
+    must_not_select: ["node-agent-preflight","node-debugging"]
     expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
-
   - name: agent-change-safety
     skill: node-agent-change-safety
-    prompt: "Review or implement a production Node.js backend change involving  agent change safety."
+    prompt: "Modify a shared Node.js API without allowing unrelated refactors, generated-file edits, or consumer breakage to expand the patch beyond the requested boundary."
     pressure: ["existing conventions", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["blast radius","file allowlist","public contract","consumer boundary","scope control"]
+    negative_signals: ["node-refactoring","node-agent-commit-hygiene"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Keep the change bounded and prove affected consumers."
+    must_not_select: ["node-refactoring","node-agent-commit-hygiene"]
     expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
-
   - name: agent-verification-reporting
     skill: node-agent-verification-reporting
-    prompt: "Review or implement a production Node.js backend change involving  agent verification reporting."
+    prompt: "Prepare a completion report for a backend change where unit tests passed but integration, build, lint, and deployment checks have different execution states."
     pressure: ["existing conventions", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["not run","evidence","exact command","final SHA","residual risk"]
+    negative_signals: ["node-testing","node-agent-pr-preparation"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Report executed proof separately from skipped or unavailable verification."
+    must_not_select: ["node-testing","node-agent-pr-preparation"]
     expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
-
   - name: agent-risk-escalation
     skill: node-agent-risk-escalation
-    prompt: "Review or implement a production Node.js backend change involving  agent risk escalation."
+    prompt: "Investigate a production data migration request whose rollback authority and retention policy are absent from repository evidence and whose execution could be irreversible."
     pressure: ["existing conventions", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["irreversible","human decision","authority","production data","policy conflict"]
+    negative_signals: ["node-migration-assistant","node-agent-rollback-planning"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Escalate the minimum unresolved decision without performing the destructive action."
+    must_not_select: ["node-migration-assistant","node-agent-rollback-planning"]
     expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
-
   - name: agent-rollback-planning
     skill: node-agent-rollback-planning
-    prompt: "Review or implement a production Node.js backend change involving  agent rollback planning."
+    prompt: "Plan recovery for a database schema rollout that writes a new state shape while old application instances may remain live during deployment."
     pressure: ["existing conventions", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["roll-forward","state","mixed versions","expand contract","recovery trigger"]
+    negative_signals: ["node-migrations","node-database-migrations-production"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Account for durable state and mixed-version compatibility rather than only reverting Git."
+    must_not_select: ["node-migrations","node-database-migrations-production"]
     expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
-
   - name: agent-commit-hygiene
     skill: node-agent-commit-hygiene
-    prompt: "Review or implement a production Node.js backend change involving  agent commit hygiene."
+    prompt: "Split an AI-generated backend patch containing behavior, regression tests, generated artifacts, and unrelated formatting into reviewable commits that remain bisectable."
     pressure: ["existing conventions", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["staged diff","bisect","coherent commit","generated artifacts","sensitive files"]
+    negative_signals: ["node-refactoring","node-agent-change-safety"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Create independently understandable and testable commit boundaries."
+    must_not_select: ["node-refactoring","node-agent-change-safety"]
     expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
-
   - name: agent-pr-preparation
     skill: node-agent-pr-preparation
-    prompt: "Review or implement a production Node.js backend change involving  agent pr preparation."
+    prompt: "Prepare a stacked pull request after the parent branch changed, requiring verification of base and head SHAs, changed files, current CI, and GitHub mergeability."
     pressure: ["existing conventions", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["base/head","CI","mergeability","parent PR","stacked branch"]
+    negative_signals: ["node-agent-commit-hygiene","node-release-engineering"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Use GitHub's current integration state rather than stale PR metadata."
+    must_not_select: ["node-agent-commit-hygiene","node-release-engineering"]
     expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
-
   - name: dns-engineering
     skill: node-dns-engineering
-    prompt: "Review or implement a production Node.js backend change involving  dns engineering."
+    prompt: "Diagnose intermittent API failures where DNS responses include NXDOMAIN and SERVFAIL, TTLs are short, and retries can amplify resolver load across multiple Node.js replicas."
     pressure: ["existing conventions", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["NXDOMAIN","TTL","SERVFAIL","negative cache","resolver retry"]
+    negative_signals: ["node-http-timeouts","node-http-keepalive"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Separate resolver failure classes and respect DNS freshness."
+    must_not_select: ["node-http-timeouts","node-http-keepalive"]
     expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
-
   - name: tls-certificate-management
     skill: node-tls-certificate-management
-    prompt: "Review or implement a production Node.js backend change involving  tls certificate management."
+    prompt: "Rotate a Node.js service certificate while preserving hostname verification, SNI, certificate-chain validation, private-key secrecy, and connections during overlap."
     pressure: ["existing conventions", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["SNI","certificate chain","hostname verification","rotation","private key"]
+    negative_signals: ["node-secrets","node-http-proxy-forwarding"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Treat TLS identity and lifecycle as protocol controls."
+    must_not_select: ["node-secrets","node-http-proxy-forwarding"]
     expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
-
   - name: http-proxy-forwarding
     skill: node-http-proxy-forwarding
-    prompt: "Review or implement a production Node.js backend change involving  http proxy forwarding."
+    prompt: "Fix incorrect client IP and scheme detection behind two trusted reverse proxies while rejecting attacker-supplied Forwarded and X-Forwarded-* headers on direct traffic."
     pressure: ["existing conventions", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["trusted proxy","Forwarded","X-Forwarded-For","hop count","scheme reconstruction"]
+    negative_signals: ["node-open-redirect-defense","node-http-engineering"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Define and test the proxy trust boundary before consuming forwarded metadata."
+    must_not_select: ["node-open-redirect-defense","node-http-engineering"]
     expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
-
   - name: http-timeouts
     skill: node-http-timeouts
-    prompt: "Review or implement a production Node.js backend change involving  http timeouts."
+    prompt: "Prevent an outbound Node.js request from consuming a worker indefinitely when the upstream stalls after headers, while propagating the caller deadline through dependent operations."
     pressure: ["existing conventions", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["deadline","AbortSignal","stalled read","stage budget","retry budget"]
+    negative_signals: ["node-http-keepalive","node-retry-timeouts"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Enforce one bounded end-to-end deadline and cancel downstream work."
+    must_not_select: ["node-http-keepalive","node-retry-timeouts"]
     expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
-
   - name: http-keepalive
     skill: node-http-keepalive
-    prompt: "Review or implement a production Node.js backend change involving  http keepalive."
+    prompt: "Tune a Node.js HTTP client experiencing socket churn and stale pooled connections while an upstream load balancer closes idle sockets sooner than the application."
     pressure: ["existing conventions", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["socket reuse","free socket","active sockets","idle timeout","drain"]
+    negative_signals: ["node-http-timeouts","node-connection-pooling"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Bound pooled sockets and align idle behavior with the peer."
+    must_not_select: ["node-http-timeouts","node-connection-pooling"]
     expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
-
   - name: webhook-ingress-security
     skill: node-webhook-ingress-security
-    prompt: "Review or implement a production Node.js backend change involving  webhook ingress security."
+    prompt: "Secure a third-party webhook endpoint that must verify the raw payload, reject oversized bodies, deduplicate event IDs, and acknowledge only after durable acceptance."
     pressure: ["existing conventions", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["raw body","event ID","signature","body limit","durable acceptance"]
+    negative_signals: ["node-request-signature-validation","node-replay-protection"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Treat authentication, replay, validation, and durability as separate ingress controls."
+    must_not_select: ["node-request-signature-validation","node-replay-protection"]
     expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
-
   - name: request-signature-validation
     skill: node-request-signature-validation
-    prompt: "Review or implement a production Node.js backend change involving  request signature validation."
+    prompt: "Implement HMAC validation for a partner callback whose protocol signs exact request bytes and requires timing-safe comparison, key IDs, and a freshness timestamp."
     pressure: ["existing conventions", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["HMAC","timing-safe","raw bytes","key ID","freshness"]
+    negative_signals: ["node-cryptography","node-replay-protection"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Follow the external signature protocol exactly before application parsing."
+    must_not_select: ["node-cryptography","node-replay-protection"]
     expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
-
   - name: replay-protection
     skill: node-replay-protection
-    prompt: "Review or implement a production Node.js backend change involving  replay protection."
+    prompt: "Prevent two concurrent deliveries of the same valid webhook nonce from executing a side effect on separate application replicas."
     pressure: ["existing conventions", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["nonce","atomic","concurrent delivery","shared state","TTL"]
+    negative_signals: ["node-request-signature-validation","node-idempotency"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Make freshness and uniqueness authoritative and atomic across replicas."
+    must_not_select: ["node-request-signature-validation","node-idempotency"]
     expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
-
   - name: csrf-defense
     skill: node-csrf-defense
-    prompt: "Review or implement a production Node.js backend change involving  csrf defense."
+    prompt: "Protect cookie-authenticated browser mutations from cross-site requests while preserving legitimate same-origin requests and keeping CORS separate from CSRF controls."
     pressure: ["existing conventions", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["SameSite","Origin","CSRF token","cookie authentication","CORS separation"]
+    negative_signals: ["node-cors-security","node-auth-security"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Model the browser credential boundary and require explicit anti-CSRF proof."
+    must_not_select: ["node-cors-security","node-auth-security"]
     expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
-
   - name: open-redirect-defense
     skill: node-open-redirect-defense
-    prompt: "Review or implement a production Node.js backend change involving  open redirect defense."
+    prompt: "Harden a login returnTo parameter against external origins, protocol-relative URLs, encoded bypasses, and javascript schemes without breaking approved same-origin redirects."
     pressure: ["existing conventions", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["allowlist","javascript:","protocol-relative","URL parser","returnTo"]
+    negative_signals: ["node-http-proxy-forwarding","node-auth-security"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Validate normalized URL components against an explicit redirect policy."
+    must_not_select: ["node-http-proxy-forwarding","node-auth-security"]
     expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
-
   - name: request-smuggling-defense
     skill: node-request-smuggling-defense
-    prompt: "Review or implement a production Node.js backend change involving  request smuggling defense."
+    prompt: "Harden an ingress path where a proxy and Node.js may parse conflicting Content-Length and Transfer-Encoding framing differently on keep-alive connections."
     pressure: ["existing conventions", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["Content-Length","Transfer-Encoding","parser disagreement","keep-alive","ambiguous framing"]
+    negative_signals: ["node-header-normalization","node-http-proxy-forwarding"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Reject ambiguous message framing consistently across every parser hop."
+    must_not_select: ["node-header-normalization","node-http-proxy-forwarding"]
     expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
-
   - name: header-normalization
     skill: node-header-normalization
-    prompt: "Review or implement a production Node.js backend change involving  header normalization."
+    prompt: "Normalize inbound and forwarded HTTP headers without collapsing security-sensitive duplicates, leaking hop-by-hop fields, or breaking a protocol-defined signature canonicalization."
     pressure: ["existing conventions", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["hop-by-hop","duplicate header","canonicalization","raw headers","case-insensitive"]
+    negative_signals: ["node-request-signature-validation","node-request-smuggling-defense"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Separate application normalization from protocol-exact representations."
+    must_not_select: ["node-request-signature-validation","node-request-smuggling-defense"]
     expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
