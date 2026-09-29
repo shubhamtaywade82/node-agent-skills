@@ -566,66 +566,6 @@ skills:
   - name: node-package-resolution
     category: runtime
     triggers: [Node package resolution, ESM CJS, exports, module resolution, workspace dependency]
-  - name: node-permission-model
-    category: security
-    triggers: [Permission Model, --permission, allow-fs-read, allow-child-process]
-  - name: node-async-context-propagation
-    category: runtime
-    triggers: [AsyncLocalStorage, async context, context propagation, correlation]
-  - name: node-request-context
-    category: runtime
-    triggers: [request context, request scoped context, correlation ID, deadline context]
-  - name: node-abort-cancellation
-    category: runtime
-    triggers: [AbortSignal, cancellation, abort, deadline propagation]
-  - name: node-worker-threads
-    category: runtime
-    triggers: [worker_threads, CPU bound, worker pool, event loop]
-  - name: node-child-process-safety
-    category: security
-    triggers: [child_process, execFile, spawn, command injection, subprocess]
-  - name: node-http-body-limits
-    category: api
-    triggers: [HTTP body limit, request size, payload limit, parser limit]
-  - name: node-upload-security
-    category: security
-    triggers: [file upload security, MIME validation, magic bytes, quarantine]
-  - name: node-ssrf-defense
-    category: security
-    triggers: [SSRF, server side request forgery, URL fetch, egress allowlist]
-  - name: node-cache-key-security
-    category: security
-    triggers: [cache key security, authorization cache, cache collision]
-  - name: node-tenant-cache-isolation
-    category: security
-    triggers: [tenant cache isolation, cross tenant cache, shared cache]
-  - name: node-database-index-engineering
-    category: persistence
-    triggers: [database indexes, composite index, partial index, execution plan]
-  - name: node-query-performance
-    category: performance
-    triggers: [query performance, slow query, execution plan, N+1]
-  - name: node-lock-contention
-    category: persistence
-    triggers: [lock contention, deadlock, lock wait, serialization failure]
-  - name: node-connection-leak-detection
-    category: persistence
-    triggers: [connection leak, pool exhaustion, resource leak, connection checkout]
-  - name: node-transaction-retry
-    category: persistence
-    triggers: [transaction retry, serialization failure, deadlock retry, transient database error]
-  - name: node-health-check-engineering
-    category: operations
-    triggers: [health check, liveness, readiness, startup probe, dependency health]
-  - name: node-startup-readiness
-    category: operations
-    triggers: [startup readiness, initialization, readiness gate, startup sequence]
-  - name: node-config-drift-detection
-    category: operations
-    triggers: [configuration drift, effective config, drift detection, config fingerprint]
-  - name: node-generated-code-governance
-    category: build
-    triggers: [code generation, generated code, OpenAPI generation, protobuf generation, reproducible codegen]
 
   - name: node-permission-model
     category: security
@@ -1016,14 +956,6 @@ adapters:
     path: adapters/mercurius/SKILL.md
     version_scope: current
     source: https://mercurius.dev/
-  hapi:
-    path: adapters/hapi/SKILL.md
-    version_scope: 21.x.x
-    source: https://hapi.dev/api/21.x.x
-  mercurius:
-    path: adapters/mercurius/SKILL.md
-    version_scope: current
-    source: https://mercurius.dev/
   graphql-yoga:
     path: adapters/graphql-yoga/SKILL.md
     version_scope: 5.x
@@ -1032,4 +964,3 @@ adapters:
     path: adapters/apollo-server/SKILL.md
     version_scope: 5.x
     source: https://www.apollographql.com/docs/apollo-server
-
