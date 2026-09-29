@@ -27,6 +27,7 @@ validating signed requests using canonical bytes, algorithms, keys, and freshnes
 - Restrict algorithms and key identifiers to an explicit allowlist.
 - Use timing-safe comparison where the signature protocol requires equality comparison.
 - Cryptographic validity does not prove freshness; replay checks remain independent.
+- HMAC is one supported signature mechanism; the accepted algorithm and key must come from the protocol allowlist.
 ## Implementation procedure
 
 1. Identify signature scheme.
