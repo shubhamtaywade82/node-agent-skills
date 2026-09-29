@@ -24,8 +24,8 @@ managing cross-skill references so agents can reliably resolve related guidance.
 ## Decision rules
 
 - References must point to authoritative HTTPS sources whenever an external contract is required.
-- Reference URLs should be stable enough to support later verification; avoid blogs when standards or vendor docs exist.
-- A reference must explain which decision it supports; unused links are documentation noise.
+- Prefer standards and first-party documentation over secondary summaries.
+- Each reference should support a concrete decision; unused links are documentation noise.
 - Broken or moved references are maintenance defects, not harmless prose drift.
 
 ## Implementation procedure
