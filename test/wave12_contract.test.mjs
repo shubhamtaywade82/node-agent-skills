@@ -46,7 +46,7 @@ test("Wave 12 skills have files and evaluation coverage", async () => {
 
 test("validator derives adapter inventory from the manifest", () => {
   assert.match(validator, /const adapterEntries = .*manifest\.matchAll/);
-  assert.match(validator, /for \(const \{ name, path, versionScope, source \} of adapterEntries\)/);
+  assert.match(validator, /for \(const \{ name, path(?:: adapterPath)?, versionScope, source \} of adapterEntries\)/);
 });
 
 test("Wave 12 adapters have registry, skill, README, and source metadata", async () => {
