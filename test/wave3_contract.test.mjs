@@ -47,5 +47,5 @@ test("Wave 3 adds platform adapters with explicit source metadata", async () => 
 
 test("repository manifest grows to the current target", async () => {
   const manifest = await readFile("skill-manifest.yml", "utf8");
-  assert.equal([...manifest.matchAll(/^  - name: /gm)].length, 226);
+  assert.equal([...manifest.matchAll(/^  - name: /gm)].length, 246);
 });
