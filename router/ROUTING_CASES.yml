@@ -466,3 +466,58 @@ cases:
   - name: test-isolation-engineering
     primary: node-test-isolation-engineering
     secondary: [node-testing, node-observability]
+
+  - name: api-compatibility
+    primary: node-api-compatibility
+    secondary: [node-testing, node-observability]
+  - name: api-contract-migration
+    primary: node-api-contract-migration
+    secondary: [node-testing, node-observability]
+  - name: batch-api-design
+    primary: node-batch-api-design
+    secondary: [node-testing, node-observability]
+  - name: bulk-operations
+    primary: node-bulk-operations
+    secondary: [node-testing, node-observability]
+  - name: resource-lifecycle
+    primary: node-resource-lifecycle
+    secondary: [node-testing, node-observability]
+  - name: data-retention
+    primary: node-data-retention
+    secondary: [node-testing, node-observability]
+  - name: data-lineage
+    primary: node-data-lineage
+    secondary: [node-testing, node-observability]
+  - name: data-quality
+    primary: node-data-quality
+    secondary: [node-testing, node-observability]
+  - name: data-masking
+    primary: node-data-masking
+    secondary: [node-testing, node-observability]
+  - name: encryption-at-rest
+    primary: node-encryption-at-rest
+    secondary: [node-testing, node-observability]
+  - name: key-management
+    primary: node-key-management
+    secondary: [node-testing, node-observability]
+  - name: message-ordering
+    primary: node-message-ordering
+    secondary: [node-testing, node-observability]
+  - name: message-deduplication
+    primary: node-message-deduplication
+    secondary: [node-testing, node-observability]
+  - name: consumer-poison-message
+    primary: node-consumer-poison-message
+    secondary: [node-testing, node-observability]
+  - name: dead-letter-queues
+    primary: node-dead-letter-queues
+    secondary: [node-testing, node-observability]
+  - name: schema-validation-at-boundary
+    primary: node-schema-validation-at-boundary
+    secondary: [node-testing, node-observability]
+  - name: runtime-type-safety
+    primary: node-runtime-type-safety
+    secondary: [node-testing, node-observability]
+  - name: package-resolution
+    primary: node-package-resolution
+    secondary: [node-testing, node-observability]

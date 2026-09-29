@@ -512,6 +512,60 @@ skills:
   - name: node-test-isolation-engineering
     category: testing
     triggers: [test isolation, parallel tests, shared state, test resources]
+  - name: node-api-compatibility
+    category: api
+    triggers: [API compatibility, breaking change, backward compatibility, consumer migration]
+  - name: node-api-contract-migration
+    category: api
+    triggers: [API migration, contract migration, version transition, deprecation migration]
+  - name: node-batch-api-design
+    category: api
+    triggers: [batch API, bulk request, partial success, batch endpoint]
+  - name: node-bulk-operations
+    category: data
+    triggers: [bulk operation, mass update, bulk delete, backfill mutation]
+  - name: node-resource-lifecycle
+    category: domain
+    triggers: [resource lifecycle, state transition, archive, delete lifecycle]
+  - name: node-data-retention
+    category: data
+    triggers: [data retention, deletion policy, expiry, retention schedule]
+  - name: node-data-lineage
+    category: data
+    triggers: [data lineage, provenance, transformation history, source tracking]
+  - name: node-data-quality
+    category: data
+    triggers: [data quality, data validation, data integrity, anomaly detection]
+  - name: node-data-masking
+    category: security
+    triggers: [data masking, PII masking, redaction, sanitized export]
+  - name: node-encryption-at-rest
+    category: security
+    triggers: [encryption at rest, field encryption, storage encryption]
+  - name: node-key-management
+    category: security
+    triggers: [key management, key rotation, KMS, encryption keys]
+  - name: node-message-ordering
+    category: messaging
+    triggers: [message ordering, event ordering, sequence, partition ordering]
+  - name: node-message-deduplication
+    category: messaging
+    triggers: [message deduplication, duplicate delivery, idempotent consumer]
+  - name: node-consumer-poison-message
+    category: messaging
+    triggers: [poison message, consumer retry, quarantine message]
+  - name: node-dead-letter-queues
+    category: messaging
+    triggers: [dead letter queue, DLQ, redrive, failed message]
+  - name: node-schema-validation-at-boundary
+    category: contracts
+    triggers: [runtime schema validation, boundary validation, untrusted input]
+  - name: node-runtime-type-safety
+    category: contracts
+    triggers: [runtime type safety, unknown data, type narrowing, runtime validation]
+  - name: node-package-resolution
+    category: runtime
+    triggers: [Node package resolution, ESM CJS, exports, module resolution, workspace dependency]
 
 adapters:
   express:
@@ -758,3 +812,19 @@ adapters:
     path: adapters/openid-client/SKILL.md
     version_scope: current
     source: https://github.com/panva/openid-client
+  ajv:
+    path: adapters/ajv/SKILL.md
+    version_scope: 8.x
+    source: https://ajv.js.org/
+  jose:
+    path: adapters/jose/SKILL.md
+    version_scope: 6.x
+    source: https://github.com/panva/jose
+  kysely:
+    path: adapters/kysely/SKILL.md
+    version_scope: 0.28.x
+    source: https://kysely.dev/
+  mongodb-memory-server:
+    path: adapters/mongodb-memory-server/SKILL.md
+    version_scope: 10.x
+    source: https://github.com/typegoose/mongodb-memory-server

@@ -86,6 +86,12 @@ npm run validate
 - Session revocation, OAuth/OIDC, MFA, password storage, and enumeration defense
 - Native Node test runner, HTTP integration testing, benchmarking, failure injection, and test isolation
 
+### Data, API, messaging, and runtime wave
+- API compatibility and contract migration, batch/bulk operations, and resource lifecycle
+- Data retention, lineage, quality, masking, encryption, and key management
+- Message ordering, deduplication, poison-message handling, and DLQs
+- Boundary schema validation, runtime type safety, and Node package-resolution diagnostics
+
 ### Framework and infrastructure adapters
 | Adapter | Guide | Supported scope |
 |---|---|---|
@@ -217,3 +223,8 @@ Adapters are conditional. Agents must detect the framework/library and installed
 - https://github.com/panva/openid-client
 
 CI workflow is validated on GitHub Actions for the current capability branch.
+
+- https://ajv.js.org/
+- https://github.com/panva/jose
+- https://kysely.dev/
+- https://github.com/typegoose/mongodb-memory-server

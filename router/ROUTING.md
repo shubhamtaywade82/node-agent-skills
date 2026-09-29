@@ -148,6 +148,25 @@ Route by the dominant backend boundary first. Framework adapters are a translati
 | failure injection testing | node-failure-injection-testing | node-resilience, node-chaos-engineering |
 | test isolation | node-test-isolation-engineering | node-testing, node-test-environment-engineering |
 
+| api-compatibility | node-api-compatibility | node-testing, node-observability |
+| api-contract-migration | node-api-contract-migration | node-testing, node-observability |
+| batch-api-design | node-batch-api-design | node-testing, node-observability |
+| bulk-operations | node-bulk-operations | node-testing, node-observability |
+| resource-lifecycle | node-resource-lifecycle | node-testing, node-observability |
+| data-retention | node-data-retention | node-testing, node-observability |
+| data-lineage | node-data-lineage | node-testing, node-observability |
+| data-quality | node-data-quality | node-testing, node-observability |
+| data-masking | node-data-masking | node-testing, node-observability |
+| encryption-at-rest | node-encryption-at-rest | node-testing, node-observability |
+| key-management | node-key-management | node-testing, node-observability |
+| message-ordering | node-message-ordering | node-testing, node-observability |
+| message-deduplication | node-message-deduplication | node-testing, node-observability |
+| consumer-poison-message | node-consumer-poison-message | node-testing, node-observability |
+| dead-letter-queues | node-dead-letter-queues | node-testing, node-observability |
+| schema-validation-at-boundary | node-schema-validation-at-boundary | node-testing, node-observability |
+| runtime-type-safety | node-runtime-type-safety | node-testing, node-observability |
+| package-resolution | node-package-resolution | node-testing, node-observability |
+
 ## Framework adapter selection
 
 After selecting the core owner, detect the actual framework from dependency manifests/imports before loading an adapter:
