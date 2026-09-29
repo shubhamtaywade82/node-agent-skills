@@ -293,6 +293,60 @@ skills:
   - name: node-saga-orchestration
     category: distributed
     triggers: [saga, orchestration, compensation, long-running workflow]
+  - name: node-grpc
+    category: distributed
+    triggers: [gRPC, RPC, protobuf, unary RPC, streaming RPC, deadlines]
+  - name: node-rpc-contracts
+    category: distributed
+    triggers: [RPC contracts, wire contract, cross-language, compatibility]
+  - name: node-api-gateway
+    category: api
+    triggers: [API gateway, proxy, fanout, downstream routing]
+  - name: node-service-mesh
+    category: production
+    triggers: [service mesh, sidecar, mTLS, proxy, traffic policy]
+  - name: node-message-delivery
+    category: distributed
+    triggers: [message delivery, acknowledgement, ordering, duplicates]
+  - name: node-schema-registry
+    category: distributed
+    triggers: [schema registry, compatibility mode, schema version]
+  - name: node-consumer-rebalancing
+    category: distributed
+    triggers: [consumer rebalance, partition assignment, offsets]
+  - name: node-authorization-models
+    category: security
+    triggers: [authorization, RBAC, ABAC, resource ownership, policy]
+  - name: node-threat-modeling
+    category: security
+    triggers: [threat model, trust boundary, abuse case, attack surface]
+  - name: node-secure-coding
+    category: security
+    triggers: [secure coding, command injection, path traversal, unsafe input]
+  - name: node-legacy-modernization
+    category: engineering
+    triggers: [legacy modernization, runtime upgrade, technical debt]
+  - name: node-change-impact-analysis
+    category: engineering
+    triggers: [change impact, dependency graph, consumers, compatibility]
+  - name: node-migration-assistant
+    category: tooling
+    triggers: [migration plan, upgrade plan, rollback, roll-forward]
+  - name: node-architecture-decision-records
+    category: tooling
+    triggers: [ADR, architecture decision, trade-offs, alternatives]
+  - name: node-test-data-management
+    category: testing
+    triggers: [test data, fixtures, factories, deterministic seed]
+  - name: node-flaky-test-engineering
+    category: testing
+    triggers: [flaky test, nondeterministic test, timing race]
+  - name: node-test-environment-engineering
+    category: testing
+    triggers: [test environment, CI parity, emulator, integration environment]
+  - name: node-api-deprecation
+    category: api
+    triggers: [API deprecation, sunset, compatibility window, consumer migration]
 
 adapters:
   express:
@@ -407,3 +461,47 @@ adapters:
     path: adapters/nx/SKILL.md
     version_scope: current
     source: https://nx.dev/docs/features
+  grpc-js:
+    path: adapters/grpc-js/SKILL.md
+    version_scope: current @grpc/grpc-js
+    source: https://grpc.io/docs/languages/node/basics/
+  protobufjs:
+    path: adapters/protobufjs/SKILL.md
+    version_scope: current protobufjs
+    source: https://github.com/protobufjs/protobuf.js/
+  amqplib:
+    path: adapters/amqplib/SKILL.md
+    version_scope: current amqplib
+    source: https://www.rabbitmq.com/tutorials/tutorial-one-javascript
+  nats:
+    path: adapters/nats/SKILL.md
+    version_scope: current NATS.js
+    source: https://docs.nats.io/using-nats/developer/connecting
+  aws-sqs:
+    path: adapters/aws-sqs/SKILL.md
+    version_scope: AWS SDK JavaScript v3
+    source: https://docs.aws.amazon.com/sdk-for-javascript/v3/developer-guide/javascript_sqs_code_examples.html
+  aws-sns:
+    path: adapters/aws-sns/SKILL.md
+    version_scope: AWS SDK JavaScript v3
+    source: https://docs.aws.amazon.com/sdk-for-javascript/v3/developer-guide/javascript_sns_code_examples.html
+  aws-dynamodb:
+    path: adapters/aws-dynamodb/SKILL.md
+    version_scope: AWS SDK JavaScript v3
+    source: https://docs.aws.amazon.com/code-library/latest/ug/javascript_3_dynamodb_code_examples.html
+  opensearch:
+    path: adapters/opensearch/SKILL.md
+    version_scope: current @opensearch-project/opensearch
+    source: https://docs.opensearch.org/latest/clients/javascript/
+  elasticsearch:
+    path: adapters/elasticsearch/SKILL.md
+    version_scope: current @elastic/elasticsearch
+    source: https://www.elastic.co/docs/reference/elasticsearch/clients/javascript
+  azure-sdk:
+    path: adapters/azure-sdk/SKILL.md
+    version_scope: current Azure SDK for JavaScript
+    source: https://learn.microsoft.com/en-us/azure/developer/javascript/
+  google-cloud:
+    path: adapters/google-cloud/SKILL.md
+    version_scope: current Google Cloud Node.js client libraries
+    source: https://docs.cloud.google.com/nodejs/docs/reference
