@@ -31,7 +31,7 @@ const skills = [
   "node-package-manager-policy",
 ];
 
-const adapters = ["tsx","tsup","esbuild","graphql-request"];
+const adapters = ["typescript","tsdown","graphql-codegen","swc-core"];
 
 test("Wave 15 skills have files and evaluation coverage", async () => {
   const evals = await readFile(new URL("../evals/cases/typescript-packages-diagnostics/workflow.yml", import.meta.url), "utf8");
