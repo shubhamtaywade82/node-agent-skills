@@ -239,6 +239,60 @@ skills:
     category: security
     triggers: [personal data, PII, retention, deletion, minimization, redaction]
 
+  - name: node-repository-forensics
+    category: engineering
+    triggers: [repository forensics, codebase discovery, architecture mapping]
+  - name: node-debugging
+    category: engineering
+    triggers: [debugging, incident, regression, root cause, failure reproduction]
+  - name: node-code-review
+    category: engineering
+    triggers: [code review, PR review, security review, reliability review]
+  - name: node-refactoring
+    category: engineering
+    triggers: [refactoring, simplification, decoupling, rename, code smell]
+  - name: node-dependency-upgrades
+    category: engineering
+    triggers: [dependency upgrade, package upgrade, major version, migration]
+  - name: node-monorepo-engineering
+    category: engineering
+    triggers: [monorepo, workspace, package graph, task graph]
+  - name: node-cli-engineering
+    category: tooling
+    triggers: [CLI, command line, migration command, exit code, stdin]
+  - name: node-streams
+    category: integrations
+    triggers: [streams, pipeline, backpressure, large file, streaming]
+  - name: node-server-sent-events
+    category: integrations
+    triggers: [SSE, Server-Sent Events, EventSource, streaming API]
+  - name: node-object-storage
+    category: integrations
+    triggers: [S3, object storage, presigned URL, blob, multipart upload]
+  - name: node-email-delivery
+    category: integrations
+    triggers: [email, transactional email, provider, bounce, delivery]
+  - name: node-search-engineering
+    category: integrations
+    triggers: [search, indexing, OpenSearch, Elasticsearch, reindex]
+  - name: node-cryptography
+    category: security
+    triggers: [cryptography, encryption, signing, hashing, nonce, key rotation]
+  - name: node-agent-evaluation
+    category: tooling
+    triggers: [agent evaluation, evals, coding agent, benchmark, regression cases]
+  - name: node-documentation-engineering
+    category: tooling
+    triggers: [documentation, README, runbook, API docs, architecture docs]
+  - name: node-developer-experience
+    category: engineering
+    triggers: [developer experience, onboarding, local setup, CI feedback]
+  - name: node-cloud-events
+    category: distributed
+    triggers: [CloudEvents, event envelope, event metadata, integration event]
+  - name: node-saga-orchestration
+    category: distributed
+    triggers: [saga, orchestration, compensation, long-running workflow]
 
 adapters:
   express:
@@ -305,3 +359,51 @@ adapters:
     path: adapters/playwright/SKILL.md
     version_scope: current Playwright Test
     source: https://playwright.dev/docs/api-testing/
+  pg:
+    path: adapters/pg/SKILL.md
+    version_scope: current node-postgres
+    source: https://node-postgres.com/features/pooling
+  undici:
+    path: adapters/undici/SKILL.md
+    version_scope: current undici
+    source: https://undici.nodejs.org/
+  zod:
+    path: adapters/zod/SKILL.md
+    version_scope: 4.x
+    source: https://zod.dev/packages/zod
+  valibot:
+    path: adapters/valibot/SKILL.md
+    version_scope: current
+    source: https://valibot.dev/guides/quick-start/
+  typebox:
+    path: adapters/typebox/SKILL.md
+    version_scope: current
+    source: https://github.com/sinclairzx81/typebox
+  kafkajs:
+    path: adapters/kafkajs/SKILL.md
+    version_scope: 2.x
+    source: https://kafka.js.org/docs/getting-started
+  aws-sdk-v3:
+    path: adapters/aws-sdk-v3/SKILL.md
+    version_scope: v3
+    source: https://docs.aws.amazon.com/sdk-for-javascript/
+  pino:
+    path: adapters/pino/SKILL.md
+    version_scope: current
+    source: https://getpino.io/
+  prometheus:
+    path: adapters/prometheus/SKILL.md
+    version_scope: current @prometheus-io/client
+    source: https://github.com/prometheus/client_js
+  pnpm:
+    path: adapters/pnpm/SKILL.md
+    version_scope: current
+    source: https://pnpm.io/workspaces
+  turborepo:
+    path: adapters/turborepo/SKILL.md
+    version_scope: current
+    source: https://turborepo.com/docs
+  nx:
+    path: adapters/nx/SKILL.md
+    version_scope: current
+    source: https://nx.dev/docs/features
