@@ -760,6 +760,79 @@ skills:
     category: build
     triggers: [repository health, dependency drift, CI health, maintainability]
 
+  - name: node-agent-installation
+    category: agent
+    triggers: [agent installation, skill pack install, bootstrap coding agent]
+  - name: node-agentskills-compatibility
+    category: agent
+    triggers: [agent skills compatibility, skill metadata, Agent Skills format]
+  - name: node-skill-packaging
+    category: agent
+    triggers: [skill packaging, release archive, skill distribution]
+  - name: node-skill-discovery-contract
+    category: agent
+    triggers: [skill discovery, activation metadata, skill description]
+  - name: node-skill-routing-contract
+    category: agent
+    triggers: [skill routing, primary owner, secondary skill]
+  - name: node-skill-evaluation-discipline
+    category: agent
+    triggers: [skill evaluation, eval corpus, behavioral evaluation]
+  - name: node-skill-version-governance
+    category: agent
+    triggers: [skill versioning, compatibility, breaking skill change]
+  - name: node-skill-reference-governance
+    category: agent
+    triggers: [skill references, broken links, cross-skill dependency]
+  - name: node-codegen-engineering
+    category: build
+    triggers: [code generation, generators, generated source]
+  - name: node-generated-schema-contracts
+    category: build
+    triggers: [generated schema, OpenAPI codegen, protobuf codegen, runtime validation]
+  - name: node-generated-client-governance
+    category: build
+    triggers: [generated API client, client codegen, auth retry wrapper]
+  - name: node-generated-artifact-determinism
+    category: build
+    triggers: [deterministic codegen, reproducible generated artifacts]
+  - name: node-release-notes-engineering
+    category: release
+    triggers: [release notes, changelog, migration notes]
+  - name: node-maintenance-engineering
+    category: release
+    triggers: [dependency maintenance, runtime upgrade, framework upgrade]
+  - name: node-deprecation-planning
+    category: release
+    triggers: [deprecation plan, API deprecation, sunset]
+  - name: node-change-log-integrity
+    category: release
+    triggers: [changelog integrity, release metadata]
+  - name: node-database-advisory-locks
+    category: persistence
+    triggers: [advisory lock, PostgreSQL advisory lock, cooperative serialization]
+  - name: node-database-read-replica-routing
+    category: persistence
+    triggers: [read replica, replica lag, read routing, read-after-write]
+  - name: node-query-plan-engineering
+    category: persistence
+    triggers: [EXPLAIN, query plan, execution plan, query optimization]
+  - name: node-postgres-locking
+    category: persistence
+    triggers: [PostgreSQL locks, SELECT FOR UPDATE, row lock]
+  - name: node-deadlock-diagnostics
+    category: persistence
+    triggers: [database deadlock, lock wait, wait graph]
+  - name: node-isolation-level-selection
+    category: persistence
+    triggers: [transaction isolation, serializable, repeatable read]
+  - name: node-signal-handling
+    category: runtime
+    triggers: [SIGTERM, SIGINT, signal handling, graceful shutdown]
+  - name: node-runtime-health-monitoring
+    category: operations
+    triggers: [runtime health, process health, event loop health, pool health]
+
 adapters:
   express:
     path: adapters/express/SKILL.md
@@ -1053,3 +1126,19 @@ adapters:
     path: adapters/opentelemetry-sdk-node/SKILL.md
     version_scope: current
     source: https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/opentelemetry-sdk-node
+  tsx:
+    path: adapters/tsx/SKILL.md
+    version_scope: current
+    source: https://github.com/privatenumber/tsx
+  tsup:
+    path: adapters/tsup/SKILL.md
+    version_scope: 8.5.1
+    source: https://github.com/egoist/tsup
+  esbuild:
+    path: adapters/esbuild/SKILL.md
+    version_scope: 0.28.2
+    source: https://github.com/evanw/esbuild
+  graphql-request:
+    path: adapters/graphql-request/SKILL.md
+    version_scope: 7.4.0
+    source: https://github.com/graffle-js/graffle/tree/graphql-request
