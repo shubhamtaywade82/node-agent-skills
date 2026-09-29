@@ -974,9 +974,6 @@ skills:
   - name: node-connection-pooler-engineering
     category: persistence
     triggers: [connection pool sizing, pool saturation, max connections]
-  - name: node-query-budgeting
-    category: persistence
-    triggers: [query budget, query count budget, database query limit]
 adapters:
   express:
     path: adapters/express/SKILL.md
