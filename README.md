@@ -258,4 +258,4 @@ CI workflow is validated on GitHub Actions for the current capability branch.
 
 ## Current capability line
 
-Wave 13 brings the repository to **250 core skills** and **73 adapters**. This wave adds filesystem/process diagnostics, HTTP cache semantics, authorization testing/auditing, security regression testing, and telemetry hygiene.
+Wave 13 brings the repository to **274 core skills** and **77 adapters**. This wave adds filesystem/process diagnostics, HTTP cache semantics, authorization testing/auditing, security regression testing, and telemetry hygiene.
