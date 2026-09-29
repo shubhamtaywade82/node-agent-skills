@@ -284,3 +284,37 @@ Do not select an adapter merely because the user says "Node API". Core skills ar
 
 | graphql-yoga | adapters/graphql-yoga/SKILL.md | 5.x |
 | apollo-server | adapters/apollo-server/SKILL.md | 5.x |
+
+
+## Primary ownership coverage
+
+Wave 13 makes previously secondary-only foundational capabilities explicit routing owners:
+
+| Domain | Primary | Secondary |
+|---|---|---|
+| architecture boundary | node-architecture | node-typescript-contracts, node-module-boundaries |
+| runtime foundations | node-runtime-foundations | node-production-runtime, node-async-concurrency |
+| async concurrency | node-async-concurrency | node-backpressure, node-abort-cancellation |
+| TypeScript contracts | node-typescript-contracts | node-runtime-validation, node-testing |
+| runtime validation | node-runtime-validation | node-typescript-contracts, node-testing |
+| API engineering | node-api-engineering | node-http-engineering, node-rest-api-design |
+| testing strategy | node-testing | node-integration-testing, node-test-environment-engineering |
+| production runtime | node-production-runtime | node-zero-downtime, node-observability |
+| external integrations | node-external-integrations | node-api-client-engineering, node-retry-timeouts |
+| database transactions | node-transactions | node-postgresql-persistence, node-optimistic-concurrency |
+| Redis | node-redis | node-caching, node-connection-pooling |
+| outbox | node-outbox | node-transactional-outbox, node-event-driven-architecture |
+| domain modeling | node-domain-modeling | node-architecture, node-cqrs |
+| hexagonal architecture | node-hexagonal-architecture | node-domain-modeling, node-dependency-injection |
+| dependency injection | node-dependency-injection | node-module-boundaries, node-architecture |
+| module boundaries | node-module-boundaries | node-architecture, node-change-impact-analysis |
+| integration testing | node-integration-testing | node-testing, node-testcontainers |
+| end-to-end testing | node-e2e-testing | node-integration-testing, node-testing |
+| Testcontainers | node-testcontainers | node-integration-testing, node-test-environment-engineering |
+| load testing | node-load-testing | node-performance, node-capacity-planning |
+| API clients | node-api-client-engineering | node-external-integrations, node-retry-timeouts |
+| file uploads | node-file-uploads | node-http-body-limits, node-upload-security |
+| scheduling | node-scheduling | node-queues, node-time-engineering |
+| multi-tenancy | node-multi-tenancy | node-authorization-models, node-database-engineering |
+| audit logging | node-audit-logging | node-observability, node-security-incident-response |
+| data privacy | node-data-privacy | node-data-retention, node-data-masking |
