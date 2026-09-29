@@ -918,7 +918,7 @@ adapters:
     source: https://docs.newrelic.com/docs/apm/agents/nodejs-agent/installation-configuration/install-nodejs-agent/
   node-test-runner:
     path: adapters/node-test-runner/SKILL.md
-    version_scope: Node 24.x `node:test`
+    version_scope: Node 24.x node:test
     source: https://nodejs.org/docs/latest-v24.x/api/test.html
   supertest:
     path: adapters/supertest/SKILL.md
