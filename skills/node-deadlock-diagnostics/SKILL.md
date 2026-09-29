@@ -23,15 +23,18 @@ finding and preventing deadlocks across concurrent database transactions.
 
 ## Decision rules
 
-diagnosis uses database wait graphs/logs; fixes reduce lock overlap/order inconsistency rather than just increasing retries
-
-- Correctness and operational safety take precedence over convenience.
-- Optimize from measured workload evidence.
-- Keep rollback/roll-forward paths explicit and bounded.
+- Treat a PostgreSQL deadlock as a dependency graph problem: capture the competing locks, transactions, and acquisition order.
+- Retrying a deadlock is safe only when the operation is idempotent or transaction semantics prove no duplicate side effect.
+- The long-term fix is consistent lock ordering or reduced transaction scope, not unlimited retries.
+- Diagnostic logging must identify wait relationships without exposing sensitive SQL parameters.
 
 ## Implementation procedure
 
-1. Capture deadlock details.\n2. Reconstruct wait graph.\n3. Identify lock order.\n4. Shorten transactions.\n5. Align acquisition order.\n6. Add bounded retry.\n7. Verify concurrency tests.
+1. Capture deadlock error, transaction identity, and lock metadata.
+2. Reconstruct the wait-for relationship.
+3. Identify inconsistent lock ordering or oversized transaction scope.
+4. Apply the smallest concurrency fix.
+5. Test deterministic reproduction and safe recovery.
 
 ## Failure modes
 
