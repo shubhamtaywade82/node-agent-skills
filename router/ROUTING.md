@@ -367,3 +367,7 @@ Do not select an adapter merely because the user says "Node API". Core skills ar
 | tsup | adapters/tsup/SKILL.md | 8.5.1 |
 | esbuild | adapters/esbuild/SKILL.md | 0.28.2 |
 | graphql-request | adapters/graphql-request/SKILL.md | 7.4.0 |
+| typescript | adapters/typescript/SKILL.md | 7.0.2 |
+| tsdown | adapters/tsdown/SKILL.md | 0.23.0 |
+| graphql-codegen | adapters/graphql-codegen/SKILL.md | 7.4.2 |
+| swc-core | adapters/swc-core/SKILL.md | 1.16.2 |
