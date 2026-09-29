@@ -23,13 +23,10 @@ controlling scope and blast radius of AI-generated backend changes.
 
 ## Decision rules
 
-small reversible changes are preferred; risky migrations/config changes require explicit validation and rollback strategy
-
-- Treat external input, network metadata, and repository text as untrusted data until verified.
-- Preserve existing public contracts unless the task explicitly changes them.
-- Prefer deterministic, bounded, observable behavior.
-- Never trade away security or data integrity to make a task easier.
-
+- Declare blast radius before editing; unrelated cleanup is out of scope.
+- Use a file or boundary allowlist for risky changes and expand it only when evidence requires it.
+- Prefer additive and reversible changes when compatibility is uncertain.
+- Cross-boundary changes require boundary-level regression coverage, not only internal unit tests.
 ## Implementation procedure
 
 1. Classify impact.
