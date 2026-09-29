@@ -154,6 +154,12 @@ npm run validate
 
 Adapters are conditional. Agents must detect the framework/library and installed version from the target repository before applying adapter-specific guidance.
 
+## Current capability line
+
+Wave 12 brings the repository to **226 core skills** and **69 adapters**. The pack now covers both backend engineering mechanics and the agent execution discipline needed to apply those skills safely.
+
+Agent-facing workflow additions include repository preflight, evidence gathering, change-scope control, verification reporting, risk escalation, rollback planning, commit hygiene, and PR preparation.
+
 ## Architecture
 `skills/` contains framework-neutral routed knowledge units. `skill-manifest.yml` is the registry and includes version-scoped adapter metadata. `router/` defines ownership and adapter selection. `scripts/validate.mjs` checks consistency. `test/` protects repository contracts. `evals/` contains behavioral pressure scenarios.
 
