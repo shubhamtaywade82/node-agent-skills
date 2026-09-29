@@ -40,11 +40,11 @@ test("Wave 11 skills have files and evaluation coverage", async () => {
     assert.match(text, new RegExp("^name: " + skill + "$", "m"));
     assert.match(evals, new RegExp("skill: " + skill, "m"));
   }
-  assert.equal([...manifest.matchAll(/^  - name: ([a-z0-9-]+)$/gm)].length, 274);
+  assert.equal([...manifest.matchAll(/^  - name: ([a-z0-9-]+)$/gm)].length, 298);
 });
 
 test("Wave 11 adapter inventory is complete", () => {
-  assert.equal([...manifest.matchAll(/^    path: adapters\//gm)].length, 77);
+  assert.equal([...manifest.matchAll(/^    path: adapters\//gm)].length, 81);
 });
 
 test("Wave 11 adapters have registry, skill, README, and source metadata", async () => {
