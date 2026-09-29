@@ -1,120 +1,120 @@
 cases:
   - name: agent-preflight
     skill: node-agent-preflight
-    prompt: "Implement or review a production Node.js backend change involving  agent preflight."
+    prompt: "Review or implement a production Node.js backend change involving  agent preflight."
     pressure: ["existing conventions", "failure path", "security boundary", "resource limits"]
-    expected_invariants: ["evidence-backed decision", "bounded risk", "observable behavior", "tests prove the contract"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
 
   - name: agent-evidence-gathering
     skill: node-agent-evidence-gathering
-    prompt: "Implement or review a production Node.js backend change involving  agent evidence gathering."
+    prompt: "Review or implement a production Node.js backend change involving  agent evidence gathering."
     pressure: ["existing conventions", "failure path", "security boundary", "resource limits"]
-    expected_invariants: ["evidence-backed decision", "bounded risk", "observable behavior", "tests prove the contract"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
 
   - name: agent-change-safety
     skill: node-agent-change-safety
-    prompt: "Implement or review a production Node.js backend change involving  agent change safety."
+    prompt: "Review or implement a production Node.js backend change involving  agent change safety."
     pressure: ["existing conventions", "failure path", "security boundary", "resource limits"]
-    expected_invariants: ["evidence-backed decision", "bounded risk", "observable behavior", "tests prove the contract"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
 
   - name: agent-verification-reporting
     skill: node-agent-verification-reporting
-    prompt: "Implement or review a production Node.js backend change involving  agent verification reporting."
+    prompt: "Review or implement a production Node.js backend change involving  agent verification reporting."
     pressure: ["existing conventions", "failure path", "security boundary", "resource limits"]
-    expected_invariants: ["evidence-backed decision", "bounded risk", "observable behavior", "tests prove the contract"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
 
   - name: agent-risk-escalation
     skill: node-agent-risk-escalation
-    prompt: "Implement or review a production Node.js backend change involving  agent risk escalation."
+    prompt: "Review or implement a production Node.js backend change involving  agent risk escalation."
     pressure: ["existing conventions", "failure path", "security boundary", "resource limits"]
-    expected_invariants: ["evidence-backed decision", "bounded risk", "observable behavior", "tests prove the contract"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
 
   - name: agent-rollback-planning
     skill: node-agent-rollback-planning
-    prompt: "Implement or review a production Node.js backend change involving  agent rollback planning."
+    prompt: "Review or implement a production Node.js backend change involving  agent rollback planning."
     pressure: ["existing conventions", "failure path", "security boundary", "resource limits"]
-    expected_invariants: ["evidence-backed decision", "bounded risk", "observable behavior", "tests prove the contract"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
 
   - name: agent-commit-hygiene
     skill: node-agent-commit-hygiene
-    prompt: "Implement or review a production Node.js backend change involving  agent commit hygiene."
+    prompt: "Review or implement a production Node.js backend change involving  agent commit hygiene."
     pressure: ["existing conventions", "failure path", "security boundary", "resource limits"]
-    expected_invariants: ["evidence-backed decision", "bounded risk", "observable behavior", "tests prove the contract"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
 
   - name: agent-pr-preparation
     skill: node-agent-pr-preparation
-    prompt: "Implement or review a production Node.js backend change involving  agent pr preparation."
+    prompt: "Review or implement a production Node.js backend change involving  agent pr preparation."
     pressure: ["existing conventions", "failure path", "security boundary", "resource limits"]
-    expected_invariants: ["evidence-backed decision", "bounded risk", "observable behavior", "tests prove the contract"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
 
   - name: dns-engineering
     skill: node-dns-engineering
-    prompt: "Implement or review a production Node.js backend change involving  dns engineering."
+    prompt: "Review or implement a production Node.js backend change involving  dns engineering."
     pressure: ["existing conventions", "failure path", "security boundary", "resource limits"]
-    expected_invariants: ["evidence-backed decision", "bounded risk", "observable behavior", "tests prove the contract"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
 
   - name: tls-certificate-management
     skill: node-tls-certificate-management
-    prompt: "Implement or review a production Node.js backend change involving  tls certificate management."
+    prompt: "Review or implement a production Node.js backend change involving  tls certificate management."
     pressure: ["existing conventions", "failure path", "security boundary", "resource limits"]
-    expected_invariants: ["evidence-backed decision", "bounded risk", "observable behavior", "tests prove the contract"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
 
   - name: http-proxy-forwarding
     skill: node-http-proxy-forwarding
-    prompt: "Implement or review a production Node.js backend change involving  http proxy forwarding."
+    prompt: "Review or implement a production Node.js backend change involving  http proxy forwarding."
     pressure: ["existing conventions", "failure path", "security boundary", "resource limits"]
-    expected_invariants: ["evidence-backed decision", "bounded risk", "observable behavior", "tests prove the contract"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
 
   - name: http-timeouts
     skill: node-http-timeouts
-    prompt: "Implement or review a production Node.js backend change involving  http timeouts."
+    prompt: "Review or implement a production Node.js backend change involving  http timeouts."
     pressure: ["existing conventions", "failure path", "security boundary", "resource limits"]
-    expected_invariants: ["evidence-backed decision", "bounded risk", "observable behavior", "tests prove the contract"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
 
   - name: http-keepalive
     skill: node-http-keepalive
-    prompt: "Implement or review a production Node.js backend change involving  http keepalive."
+    prompt: "Review or implement a production Node.js backend change involving  http keepalive."
     pressure: ["existing conventions", "failure path", "security boundary", "resource limits"]
-    expected_invariants: ["evidence-backed decision", "bounded risk", "observable behavior", "tests prove the contract"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
 
   - name: webhook-ingress-security
     skill: node-webhook-ingress-security
-    prompt: "Implement or review a production Node.js backend change involving  webhook ingress security."
+    prompt: "Review or implement a production Node.js backend change involving  webhook ingress security."
     pressure: ["existing conventions", "failure path", "security boundary", "resource limits"]
-    expected_invariants: ["evidence-backed decision", "bounded risk", "observable behavior", "tests prove the contract"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
 
   - name: request-signature-validation
     skill: node-request-signature-validation
-    prompt: "Implement or review a production Node.js backend change involving  request signature validation."
+    prompt: "Review or implement a production Node.js backend change involving  request signature validation."
     pressure: ["existing conventions", "failure path", "security boundary", "resource limits"]
-    expected_invariants: ["evidence-backed decision", "bounded risk", "observable behavior", "tests prove the contract"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
 
   - name: replay-protection
     skill: node-replay-protection
-    prompt: "Implement or review a production Node.js backend change involving  replay protection."
+    prompt: "Review or implement a production Node.js backend change involving  replay protection."
     pressure: ["existing conventions", "failure path", "security boundary", "resource limits"]
-    expected_invariants: ["evidence-backed decision", "bounded risk", "observable behavior", "tests prove the contract"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
 
   - name: csrf-defense
     skill: node-csrf-defense
-    prompt: "Implement or review a production Node.js backend change involving  csrf defense."
+    prompt: "Review or implement a production Node.js backend change involving  csrf defense."
     pressure: ["existing conventions", "failure path", "security boundary", "resource limits"]
-    expected_invariants: ["evidence-backed decision", "bounded risk", "observable behavior", "tests prove the contract"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
 
   - name: open-redirect-defense
     skill: node-open-redirect-defense
-    prompt: "Implement or review a production Node.js backend change involving  open redirect defense."
+    prompt: "Review or implement a production Node.js backend change involving  open redirect defense."
     pressure: ["existing conventions", "failure path", "security boundary", "resource limits"]
-    expected_invariants: ["evidence-backed decision", "bounded risk", "observable behavior", "tests prove the contract"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
 
   - name: request-smuggling-defense
     skill: node-request-smuggling-defense
-    prompt: "Implement or review a production Node.js backend change involving  request smuggling defense."
+    prompt: "Review or implement a production Node.js backend change involving  request smuggling defense."
     pressure: ["existing conventions", "failure path", "security boundary", "resource limits"]
-    expected_invariants: ["evidence-backed decision", "bounded risk", "observable behavior", "tests prove the contract"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
 
   - name: header-normalization
     skill: node-header-normalization
-    prompt: "Implement or review a production Node.js backend change involving  header normalization."
+    prompt: "Review or implement a production Node.js backend change involving  header normalization."
     pressure: ["existing conventions", "failure path", "security boundary", "resource limits"]
-    expected_invariants: ["evidence-backed decision", "bounded risk", "observable behavior", "tests prove the contract"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
