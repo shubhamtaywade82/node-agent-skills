@@ -39,13 +39,13 @@ test("Wave 3 adds platform adapters with explicit source metadata", async () => 
   const manifest = await readFile("skill-manifest.yml", "utf8");
   for (const name of ["npm", "docker", "kubernetes", "opentelemetry"]) {
     assert.match(manifest, new RegExp("^  " + name + ":$", "m"));
-    assert.match(manifest, new RegExp("^    path: adapters/" + name + "/SKILL\\.md$", "m"));
+    assert.match(manifest, new RegExp("^    path: adapters/" + name + "/SKILL\.md$", "m"));
     await access("adapters/" + name + "/SKILL.md");
     await access("adapters/" + name + "/README.md");
   }
 });
 
-test("repository manifest grows to the Wave 3 target", async () => {
+test("repository manifest grows to the current target", async () => {
   const manifest = await readFile("skill-manifest.yml", "utf8");
-  assert.equal([...manifest.matchAll(/^  - name: /gm)].length, 77);
+  assert.equal([...manifest.matchAll(/^  - name: /gm)].length, 95);
 });
