@@ -67,7 +67,7 @@ cases:
 
   - name: generated-artifact-determinism
     skill: node-generated-artifact-determinism
-    prompt: "Diagnose a generator that produces different files because timestamps and machine paths leak into generated artifacts."
+    prompt: "Diagnose a generator that produces non-deterministic files because timestamps and machine paths leak into generated artifacts."
     pressure: ["deterministic output", "timestamp", "machine path", "repeat generation"]
     expected_invariants: ["byte stability", "normalized environment", "no volatile metadata", "hash comparison"]
 
