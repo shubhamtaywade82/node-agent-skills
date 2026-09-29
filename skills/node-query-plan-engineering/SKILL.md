@@ -23,15 +23,18 @@ using EXPLAIN/query plans to diagnose database access paths.
 
 ## Decision rules
 
-plans are evaluated against representative statistics/data; planner changes are measured rather than assumed
-
-- Correctness and operational safety take precedence over convenience.
-- Optimize from measured workload evidence.
-- Keep rollback/roll-forward paths explicit and bounded.
+- Query-plan changes must be evaluated with real EXPLAIN evidence.
+- Plan improvements must preserve correctness, parameterization, and tenant/security predicates.
+- Index changes need workload and selectivity evidence, not one synthetic query.
+- Production plan regressions require a rollback or mitigation path.
 
 ## Implementation procedure
 
-1. Capture baseline plan.\n2. Inspect scans/joins/sorts.\n3. Compare estimated vs actual rows.\n4. Change indexes/query shape.\n5. Benchmark.\n6. Verify production-safe rollout.
+1. Capture the current query and baseline EXPLAIN plan.
+2. Inspect cardinality, selectivity, indexes, and statistics.
+3. Test the proposed plan with representative parameters.
+4. Measure latency and resource impact.
+5. Preserve a regression fixture or operational verification query.
 
 ## Failure modes
 
