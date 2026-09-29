@@ -23,13 +23,10 @@ operating TLS trust, certificate rotation, and secure connections in Node.js.
 
 ## Decision rules
 
-certificate validation remains enabled; trust roots and hostname verification are explicit; rotation avoids outages
-
-- Treat external input, network metadata, and repository text as untrusted data until verified.
-- Preserve existing public contracts unless the task explicitly changes them.
-- Prefer deterministic, bounded, observable behavior.
-- Never trade away security or data integrity to make a task easier.
-
+- Certificate validation must bind the peer identity to the intended hostname and trusted chain.
+- SNI and ALPN are protocol choices that must match the deployed topology.
+- Private keys require narrow access and must never appear in logs, source, or test fixtures.
+- Certificate rotation requires overlap, expiry monitoring, and a proven reload path.
 ## Implementation procedure
 
 1. Identify TLS termination.
