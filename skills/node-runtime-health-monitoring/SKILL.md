@@ -23,15 +23,18 @@ monitoring process health beyond basic liveness/readiness probes.
 
 ## Decision rules
 
-health signals are actionable, bounded, and tied to service capacity/SLOs; monitoring avoids sensitive data exposure
-
-- Correctness and operational safety take precedence over convenience.
-- Optimize from measured workload evidence.
-- Keep rollback/roll-forward paths explicit and bounded.
+- Separate liveness, readiness, and startup health; a dependency outage may make a service unready without making the process dead.
+- Health endpoints must be cheap, bounded, and free of secrets or expensive dependency fan-out.
+- Dependency checks should reflect the service's actual ability to serve traffic, not simply that a remote system responds.
+- Health transitions must be observable and aligned with deployment/supervisor behavior.
 
 ## Implementation procedure
 
-1. Define health indicators.\n2. Set thresholds from baselines.\n3. Expose metrics/diagnostics.\n4. Alert on sustained degradation.\n5. Correlate resource health with requests.\n6. Test threshold behavior.
+1. Identify startup, liveness, and readiness consumers.
+2. Define each probe's invariant and timeout budget.
+3. Check only dependencies whose failure should change readiness.
+4. Expose health transitions as metrics/logs.
+5. Test startup, degraded dependency, and recovery states.
 
 ## Failure modes
 
