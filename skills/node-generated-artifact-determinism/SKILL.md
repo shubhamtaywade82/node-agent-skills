@@ -23,15 +23,18 @@ ensuring generated files are byte-stable across CI and developer environments.
 
 ## Decision rules
 
-same source/toolchain produces stable artifacts; timestamps, paths, random IDs, and environment data are excluded
-
-- Source contracts remain authoritative over generated artifacts.
-- Generated output must be reproducible and reviewable.
-- Runtime validation remains distinct from compile-time typing.
+- Deterministic generation requires stable ordering, normalized environment inputs, and no volatile timestamps or machine-specific paths.
+- The same inputs must produce byte-identical output where the artifact format permits it.
+- Non-deterministic fields must be explicitly normalized or declared.
+- Determinism failures block review until their source is explained.
 
 ## Implementation procedure
 
-1. Pin tool/version.\n2. Normalize output.\n3. Remove volatile metadata.\n4. Regenerate in clean environment.\n5. Diff twice.\n6. Test reproducibility.
+1. Enumerate generator inputs and environment variables.
+2. Normalize ordering and volatile metadata.
+3. Generate twice from equivalent clean environments.
+4. Compare hashes and inspect any diff.
+5. Gate release generation on deterministic output.
 
 ## Failure modes
 
