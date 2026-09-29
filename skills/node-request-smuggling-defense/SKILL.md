@@ -23,13 +23,10 @@ reducing request desynchronization risk across Node.js servers, proxies, and par
 
 ## Decision rules
 
-all HTTP layers agree on message framing; ambiguous requests are rejected or normalized; parser behavior is documented and tested
-
-- Exact wire bytes and protocol semantics matter for cryptographic verification.
-- Security controls must survive proxies, retries, and duplicate delivery.
-- Timeouts and resource limits are end-to-end budgets, not isolated middleware settings.
-- Prefer explicit allowlists over string heuristics.
-
+- Every HTTP parsing hop must agree on message framing; ambiguity is a reject condition.
+- Conflicting or repeated Content-Length values must not be normalized casually.
+- Transfer-Encoding handling must match the actual intermediary and origin protocol behavior.
+- Parser errors must not leave a reusable connection in an uncertain message boundary state.
 ## Implementation procedure
 
 1. Inventory proxy/server/parser versions.
