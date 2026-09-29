@@ -243,3 +243,58 @@ cases:
   - name: saga-orchestration
     primary: node-saga-orchestration
     secondary: [node-testing, node-observability]
+
+  - name: grpc-service
+    primary: node-grpc
+    secondary: [node-rpc-contracts, node-retry-timeouts]
+  - name: rpc-contract
+    primary: node-rpc-contracts
+    secondary: [node-schema-evolution, node-testing]
+  - name: api-gateway
+    primary: node-api-gateway
+    secondary: [node-rate-limiting, node-retry-timeouts, node-auth-security]
+  - name: service-mesh
+    primary: node-service-mesh
+    secondary: [node-zero-downtime, node-retry-timeouts]
+  - name: message-delivery
+    primary: node-message-delivery
+    secondary: [node-message-brokers, node-idempotency]
+  - name: schema-registry
+    primary: node-schema-registry
+    secondary: [node-schema-evolution, node-event-driven-architecture]
+  - name: consumer-rebalance
+    primary: node-consumer-rebalancing
+    secondary: [node-message-delivery, node-background-jobs-reliability]
+  - name: authorization-model
+    primary: node-authorization-models
+    secondary: [node-auth-security, node-multi-tenancy]
+  - name: threat-model
+    primary: node-threat-modeling
+    secondary: [node-security-hardening, node-auth-security]
+  - name: secure-code
+    primary: node-secure-coding
+    secondary: [node-security-hardening, node-runtime-validation]
+  - name: legacy-modernization
+    primary: node-legacy-modernization
+    secondary: [node-dependency-upgrades, node-refactoring]
+  - name: change-impact
+    primary: node-change-impact-analysis
+    secondary: [node-repository-forensics, node-module-boundaries]
+  - name: migration-plan
+    primary: node-migration-assistant
+    secondary: [node-dependency-upgrades, node-database-migrations-production]
+  - name: architecture-decision
+    primary: node-architecture-decision-records
+    secondary: [node-architecture, node-documentation-engineering]
+  - name: test-data
+    primary: node-test-data-management
+    secondary: [node-testing, node-integration-testing]
+  - name: flaky-test
+    primary: node-flaky-test-engineering
+    secondary: [node-testing, node-test-environment-engineering]
+  - name: test-environment
+    primary: node-test-environment-engineering
+    secondary: [node-testcontainers, node-integration-testing]
+  - name: api-deprecation
+    primary: node-api-deprecation
+    secondary: [node-api-versioning, node-openapi]
