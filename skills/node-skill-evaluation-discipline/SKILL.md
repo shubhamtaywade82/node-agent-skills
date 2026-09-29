@@ -23,15 +23,18 @@ designing behavioral evaluations that measure whether skills improve agent decis
 
 ## Decision rules
 
-evals test observable invariants and adversarial pressure; evaluation corpora are not weakened to make CI green
-
-- Source metadata remains authoritative.
-- Keep discovery and routing deterministic and concise.
-- Test behavioral contracts, not prose wording.
+- Evaluation cases must test observable behavior, not keyword presence alone.
+- Include positive, negative, ambiguous, and failure-path pressure for each important routing decision.
+- Never edit the contract or expected result merely to make a failing implementation appear green.
+- Evaluation evidence must preserve the exact repository state and scenario inputs tested.
 
 ## Implementation procedure
 
-1. Define scenario.\n2. Add ambiguity/negative pressure.\n3. State expected invariants.\n4. Run baseline and candidate.\n5. Record regressions.
+1. Define the behavior or invariant being measured.
+2. Add failing, negative, and ambiguous cases.
+3. Apply repository-context and time-pressure conditions.
+4. Record the expected evidence before implementation.
+5. Run regression cases and inspect false-positive routing.
 
 ## Failure modes
 
