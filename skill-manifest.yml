@@ -974,6 +974,10 @@ skills:
   - name: node-connection-pooler-engineering
     category: persistence
     triggers: [connection pool sizing, pool saturation, max connections]
+  - name: node-agent-loop-control
+    category: agent
+    triggers: [agent loop, loop control, iteration budget, repeated tool call, termination condition]
+
 adapters:
   express:
     path: adapters/express/SKILL.md
