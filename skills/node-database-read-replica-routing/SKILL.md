@@ -23,15 +23,18 @@ routing database reads and writes across primary/replica topology without stale-
 
 ## Decision rules
 
-writes go to authoritative primary; read-after-write requirements override replica preference; routing is explicit and observable
-
-- Correctness and operational safety take precedence over convenience.
-- Optimize from measured workload evidence.
-- Keep rollback/roll-forward paths explicit and bounded.
+- Writes remain on the authoritative primary unless the storage contract explicitly supports otherwise.
+- Read-after-write paths must pin to the primary or use an explicit consistency mechanism.
+- Replica selection must account for lag and health rather than random choice alone.
+- Routing decisions must be observable so stale reads can be correlated with topology.
 
 ## Implementation procedure
 
-1. Classify query consistency.\n2. Detect primary/replica clients.\n3. Route reads.\n4. Pin sessions after writes when needed.\n5. Handle replica lag/failure.\n6. Test stale-read windows.
+1. Classify each read by consistency requirement.
+2. Detect primary and replica topology.
+3. Route only consistency-safe reads to replicas.
+4. Handle lag, replica failure, and post-write pinning.
+5. Test stale-read and failover scenarios.
 
 ## Failure modes
 
