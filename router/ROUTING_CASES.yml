@@ -862,3 +862,76 @@ cases:
   - name: package-manager-policy
     primary: node-package-manager-policy
     secondary: [node-testing, node-build-engineering]
+
+  - name: agent-task-intent
+    primary: node-agent-task-intent
+    secondary: [node-testing, node-observability]
+  - name: agent-tool-selection
+    primary: node-agent-tool-selection
+    secondary: [node-testing, node-observability]
+  - name: agent-tool-contract
+    primary: node-agent-tool-contract
+    secondary: [node-testing, node-observability]
+  - name: agent-state-machine
+    primary: node-agent-state-machine
+    secondary: [node-testing, node-observability]
+  - name: agent-context-budgeting
+    primary: node-agent-context-budgeting
+    secondary: [node-testing, node-observability]
+  - name: agent-replayability
+    primary: node-agent-replayability
+    secondary: [node-testing, node-observability]
+  - name: agent-deterministic-execution
+    primary: node-agent-deterministic-execution
+    secondary: [node-testing, node-observability]
+  - name: agent-safety-gates
+    primary: node-agent-safety-gates
+    secondary: [node-testing, node-observability]
+  - name: agent-human-escalation
+    primary: node-agent-human-escalation
+    secondary: [node-testing, node-observability]
+  - name: agent-tool-audit
+    primary: node-agent-tool-audit
+    secondary: [node-testing, node-observability]
+  - name: agent-observation-normalization
+    primary: node-agent-observation-normalization
+    secondary: [node-testing, node-observability]
+  - name: agent-action-approval
+    primary: node-agent-action-approval
+    secondary: [node-testing, node-observability]
+  - name: agent-loop-control
+    primary: node-agent-loop-control
+    secondary: [node-testing, node-observability]
+  - name: prototype-pollution-defense
+    primary: node-prototype-pollution-defense
+    secondary: [node-testing, node-observability]
+  - name: regex-dos-defense
+    primary: node-regex-dos-defense
+    secondary: [node-testing, node-observability]
+  - name: json-parse-safety
+    primary: node-json-parse-safety
+    secondary: [node-testing, node-observability]
+  - name: serialization-boundaries
+    primary: node-serialization-boundaries
+    secondary: [node-testing, node-observability]
+  - name: vm-isolation-limitations
+    primary: node-vm-isolation-limitations
+    secondary: [node-testing, node-observability]
+  - name: database-statement-timeouts
+    primary: node-database-statement-timeouts
+    secondary: [node-testing, node-observability]
+  - name: query-cancellation
+    primary: node-query-cancellation
+    secondary: [node-testing, node-observability]
+  - name: prepared-statement-safety
+    primary: node-prepared-statement-safety
+    secondary: [node-testing, node-observability]
+  - name: pooler-compatibility
+    primary: node-pooler-compatibility
+    secondary: [node-testing, node-observability]
+  - name: transaction-state-monitoring
+    primary: node-transaction-state-monitoring
+    secondary: [node-testing, node-observability]
+  - name: connection-pooler-engineering
+    primary: node-connection-pooler-engineering
+    secondary: [node-testing, node-observability]
