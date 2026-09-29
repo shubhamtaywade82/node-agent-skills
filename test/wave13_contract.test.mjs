@@ -68,7 +68,7 @@ test("Wave 13 evaluation cases apply domain-specific pressure", async () => {
     "rate-limit-headers": "Retry-After", "authz-policy-testing": "authorization matrix", "access-control-auditing": "audit event",
     "security-regression-testing": "regression test", "runtime-feature-detection": "feature detection", "repository-health": "health check"
   };
-  const cases = [...evals.matchAll(/^  - name: ([a-z0-9-]+)\\n    skill: ([a-z0-9-]+)\\n    prompt: "([^"]+)"/gm)];
+  const cases = [...evals.matchAll(/^  - name: ([a-z0-9-]+)\n    skill: ([a-z0-9-]+)\n    prompt: "([^"]+)"/gm)];
   assert.equal(cases.length, 24);
   const prompts = cases.map(m => m[3].toLowerCase());
   assert.equal(new Set(prompts).size, 24, "Wave 13 prompts must be distinct");
