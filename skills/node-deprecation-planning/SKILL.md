@@ -23,15 +23,18 @@ retiring APIs, events, fields, or dependencies without surprising consumers.
 
 ## Decision rules
 
-deprecation is observable, time-bounded, and compatible during migration; usage is measured before removal
-
-- Correctness and operational safety take precedence over convenience.
-- Optimize from measured workload evidence.
-- Keep rollback/roll-forward paths explicit and bounded.
+- Deprecation requires a documented replacement, migration path, and sunset criteria.
+- Existing consumers should have a coexistence period appropriate to the contract and release policy.
+- Warning mechanisms must be actionable and avoid leaking sensitive request context.
+- Removal is a separate breaking change and requires evidence that the migration path was available.
 
 ## Implementation procedure
 
-1. Identify consumers.\n2. Add deprecation signal.\n3. Publish replacement.\n4. Measure usage.\n5. Set removal criteria/date.\n6. Test mixed versions.\n7. Remove after evidence.
+1. Identify the contract and affected consumers.
+2. Define replacement behavior and migration steps.
+3. Add deprecation signaling and documentation.
+4. Establish a measurable sunset date or release gate.
+5. Test old and new paths during coexistence.
 
 ## Failure modes
 
