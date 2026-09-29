@@ -114,5 +114,9 @@ Adapters are conditional. Agents must detect the framework/library and installed
 - https://docs.nestjs.com/migration-guide
 - https://hono.dev/docs/guides/middleware
 - https://developer.mozilla.org/en-US/docs/Web/API/WebSocket
+- https://vitest.dev/guide/
+- https://jestjs.io/docs/getting-started
+- https://testcontainers.com/guides/getting-started-with-testcontainers-for-nodejs/
+- https://playwright.dev/docs/api-testing
 
 CI workflow is validated on GitHub Actions for the current capability branch.

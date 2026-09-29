@@ -7,7 +7,7 @@ test("repository manifest and package agree on the runtime contract", async () =
   const manifest = await readFile("skill-manifest.yml", "utf8");
   assert.equal(pkg.type, "module");
   assert.equal(pkg.engines.node, ">=24");
-  assert.equal([...manifest.matchAll(/^  - name: /gm)].length, 63);
-  assert.equal([...manifest.matchAll(/^    category: /gm)].length, 63);
-  assert.equal([...manifest.matchAll(/^    triggers: /gm)].length, 63);
+  assert.equal([...manifest.matchAll(/^  - name: /gm)].length, 77);
+  assert.equal([...manifest.matchAll(/^    category: /gm)].length, 77);
+  assert.equal([...manifest.matchAll(/^    triggers: /gm)].length, 77);
 });

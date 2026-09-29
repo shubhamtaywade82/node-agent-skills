@@ -196,6 +196,49 @@ skills:
   - name: node-serverless
     category: production
     triggers: [serverless, function handler, cold start, invocation retry, stateless function]
+  - name: node-domain-modeling
+    category: architecture
+    triggers: [domain modeling, aggregates, value objects, business invariants]
+  - name: node-hexagonal-architecture
+    category: architecture
+    triggers: [hexagonal architecture, ports, adapters, dependency direction]
+  - name: node-dependency-injection
+    category: architecture
+    triggers: [dependency injection, composition root, lifecycle, test doubles]
+  - name: node-module-boundaries
+    category: architecture
+    triggers: [module boundaries, public API, dependency graph, circular dependency]
+  - name: node-integration-testing
+    category: testing
+    triggers: [integration testing, database integration, HTTP integration, real dependency]
+  - name: node-e2e-testing
+    category: testing
+    triggers: [end to end, workflow test, system test, backend E2E]
+  - name: node-testcontainers
+    category: testing
+    triggers: [Testcontainers, real service, disposable dependency, containerized test]
+  - name: node-load-testing
+    category: testing
+    triggers: [load test, throughput, latency, concurrency, capacity]
+  - name: node-api-client-engineering
+    category: integrations
+    triggers: [HTTP client, API client, deadline, retry, pagination]
+  - name: node-file-uploads
+    category: api
+    triggers: [file upload, multipart, streaming, content type, object storage]
+  - name: node-scheduling
+    category: reliability
+    triggers: [cron, scheduled job, timezone, recurrence, missed run]
+  - name: node-multi-tenancy
+    category: security
+    triggers: [tenant isolation, tenant id, row ownership, cross-tenant leakage]
+  - name: node-audit-logging
+    category: security
+    triggers: [audit log, actor, target, security event, compliance evidence]
+  - name: node-data-privacy
+    category: security
+    triggers: [personal data, PII, retention, deletion, minimization, redaction]
+
 
 adapters:
   express:
@@ -230,7 +273,6 @@ adapters:
     path: adapters/redis/SKILL.md
     version_scope: node-redis-5.x
     source: https://redis.io/docs/latest/develop/clients/nodejs/
-
   npm:
     path: adapters/npm/SKILL.md
     version_scope: current npm CLI
@@ -247,3 +289,19 @@ adapters:
     path: adapters/opentelemetry/SKILL.md
     version_scope: current OpenTelemetry JavaScript SDK
     source: https://opentelemetry.io/docs/languages/js/
+  vitest:
+    path: adapters/vitest/SKILL.md
+    version_scope: current Vitest 5.x
+    source: https://vitest.dev/guide/
+  jest:
+    path: adapters/jest/SKILL.md
+    version_scope: 30.x
+    source: https://jestjs.io/docs/getting-started
+  testcontainers:
+    path: adapters/testcontainers/SKILL.md
+    version_scope: current Node.js Testcontainers
+    source: https://testcontainers.com/guides/getting-started-with-testcontainers-for-nodejs/
+  playwright:
+    path: adapters/playwright/SKILL.md
+    version_scope: current Playwright Test
+    source: https://playwright.dev/docs/api-testing/
