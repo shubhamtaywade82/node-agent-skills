@@ -71,6 +71,25 @@ Route by the dominant backend boundary first. Framework adapters are a translati
 | CloudEvents | node-cloud-events | node-event-driven-architecture, node-schema-evolution |
 | saga/workflow orchestration | node-saga-orchestration | node-distributed-systems, node-transactional-outbox |
 
+| gRPC/RPC | node-grpc | node-rpc-contracts, node-deadline-timeouts if present |
+| RPC contract | node-rpc-contracts | node-schema-evolution, node-testing |
+| API gateway/proxy | node-api-gateway | node-rate-limiting, node-retry-timeouts, node-auth-security |
+| service mesh | node-service-mesh | node-zero-downtime, node-production-runtime, node-retry-timeouts |
+| message delivery semantics | node-message-delivery | node-message-brokers, node-idempotency |
+| schema registry | node-schema-registry | node-schema-evolution, node-event-driven-architecture |
+| consumer rebalance | node-consumer-rebalancing | node-message-delivery, node-background-jobs-reliability |
+| authorization model | node-authorization-models | node-auth-security, node-multi-tenancy |
+| threat modeling | node-threat-modeling | node-security-hardening, node-auth-security |
+| secure coding | node-secure-coding | node-security-hardening, node-runtime-validation |
+| legacy modernization | node-legacy-modernization | node-dependency-upgrades, node-refactoring |
+| change impact analysis | node-change-impact-analysis | node-repository-forensics, node-module-boundaries |
+| migration planning | node-migration-assistant | node-dependency-upgrades, node-database-migrations-production |
+| ADR | node-architecture-decision-records | node-architecture, node-documentation-engineering |
+| test data | node-test-data-management | node-testing, node-integration-testing |
+| flaky tests | node-flaky-test-engineering | node-testing, node-test-environment-engineering |
+| test environment | node-test-environment-engineering | node-testcontainers, node-integration-testing |
+| API deprecation | node-api-deprecation | node-api-versioning, node-openapi |
+
 ## Framework adapter selection
 
 After selecting the core owner, detect the actual framework from dependency manifests/imports before loading an adapter:
@@ -97,6 +116,17 @@ After selecting the core owner, detect the actual framework from dependency mani
 | pnpm | adapters/pnpm/SKILL.md | current |
 | turborepo | adapters/turborepo/SKILL.md | current |
 | nx | adapters/nx/SKILL.md | current |
+| grpc-js | adapters/grpc-js/SKILL.md | current @grpc/grpc-js |
+| protobufjs | adapters/protobufjs/SKILL.md | current protobufjs |
+| amqplib | adapters/amqplib/SKILL.md | current amqplib |
+| nats | adapters/nats/SKILL.md | current NATS.js |
+| aws-sqs | adapters/aws-sqs/SKILL.md | AWS SDK JavaScript v3 |
+| aws-sns | adapters/aws-sns/SKILL.md | AWS SDK JavaScript v3 |
+| aws-dynamodb | adapters/aws-dynamodb/SKILL.md | AWS SDK JavaScript v3 |
+| opensearch | adapters/opensearch/SKILL.md | current @opensearch-project/opensearch |
+| elasticsearch | adapters/elasticsearch/SKILL.md | current @elastic/elasticsearch |
+| azure-sdk | adapters/azure-sdk/SKILL.md | current Azure SDK for JavaScript |
+| google-cloud | adapters/google-cloud/SKILL.md | current Google Cloud Node.js client libraries |
 
 Do not select an adapter merely because the user says "Node API". Core skills are always applicable; adapters are conditional.
 

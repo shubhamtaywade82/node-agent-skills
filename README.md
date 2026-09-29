@@ -58,6 +58,14 @@ npm run validate
 - Agent evaluation, backend documentation, and developer experience
 - CloudEvents and saga orchestration
 
+### Advanced services and agent-engineering wave
+- gRPC/RPC contracts, API gateways, service-mesh interaction, and message-delivery semantics
+- Schema registries and consumer rebalancing
+- Authorization models, threat modeling, and secure coding
+- Legacy modernization, impact analysis, migration planning, and ADRs
+- Test-data, flaky-test, and test-environment engineering
+- API deprecation lifecycle
+
 ### Framework and infrastructure adapters
 | Adapter | Guide | Supported scope |
 |---|---|---|
@@ -81,6 +89,17 @@ npm run validate
 | pnpm | adapters/pnpm/SKILL.md | current |
 | turborepo | adapters/turborepo/SKILL.md | current |
 | nx | adapters/nx/SKILL.md | current |
+| grpc-js | adapters/grpc-js/SKILL.md | current @grpc/grpc-js |
+| protobufjs | adapters/protobufjs/SKILL.md | current protobufjs |
+| amqplib | adapters/amqplib/SKILL.md | current amqplib |
+| nats | adapters/nats/SKILL.md | current NATS.js |
+| aws-sqs | adapters/aws-sqs/SKILL.md | AWS SDK JavaScript v3 |
+| aws-sns | adapters/aws-sns/SKILL.md | AWS SDK JavaScript v3 |
+| aws-dynamodb | adapters/aws-dynamodb/SKILL.md | AWS SDK JavaScript v3 |
+| opensearch | adapters/opensearch/SKILL.md | current @opensearch-project/opensearch |
+| elasticsearch | adapters/elasticsearch/SKILL.md | current @elastic/elasticsearch |
+| azure-sdk | adapters/azure-sdk/SKILL.md | current Azure SDK for JavaScript |
+| google-cloud | adapters/google-cloud/SKILL.md | current Google Cloud Node.js client libraries |
 | npm | adapters/npm/SKILL.md | current CLI |
 | Docker | adapters/docker/SKILL.md | current Docker/BuildKit |
 | Kubernetes | adapters/kubernetes/SKILL.md | current API conventions |
@@ -145,5 +164,14 @@ Adapters are conditional. Agents must detect the framework/library and installed
 - https://docs.aws.amazon.com/sdk-for-javascript/
 - https://pnpm.io/workspaces
 - https://nx.dev/docs/features
+- https://grpc.io/docs/languages/node/basics/
+- https://github.com/protobufjs/protobuf.js/
+- https://www.rabbitmq.com/tutorials/tutorial-one-javascript
+- https://docs.nats.io/using-nats/developer/connecting
+- https://docs.aws.amazon.com/sdk-for-javascript/v3/developer-guide/javascript_sqs_code_examples.html
+- https://docs.opensearch.org/latest/clients/javascript/
+- https://www.elastic.co/docs/reference/elasticsearch/clients/javascript
+- https://learn.microsoft.com/en-us/azure/developer/javascript/
+- https://docs.cloud.google.com/nodejs/docs/reference
 
 CI workflow is validated on GitHub Actions for the current capability branch.
