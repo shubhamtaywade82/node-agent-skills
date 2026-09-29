@@ -704,3 +704,64 @@ cases:
   - name: agent-regression-prevention
     primary: node-agent-regression-prevention
     secondary: [node-testing, node-repository-forensics]
+
+  - name: module-resolution-diagnostics
+    primary: node-module-resolution-diagnostics
+    secondary: [node-testing, node-observability]
+  - name: lockfile-integrity
+    primary: node-lockfile-integrity
+    secondary: [node-testing, node-observability]
+  - name: package-manager-diagnostics
+    primary: node-package-manager-diagnostics
+    secondary: [node-testing, node-observability]
+  - name: runtime-feature-detection
+    primary: node-runtime-feature-detection
+    secondary: [node-testing, node-observability]
+  - name: process-supervision
+    primary: node-process-supervision
+    secondary: [node-testing, node-observability]
+  - name: memory-leak-diagnostics
+    primary: node-memory-leak-diagnostics
+    secondary: [node-testing, node-observability]
+  - name: heap-diagnostics
+    primary: node-heap-diagnostics
+    secondary: [node-testing, node-observability]
+  - name: event-loop-diagnostics
+    primary: node-event-loop-diagnostics
+    secondary: [node-testing, node-observability]
+  - name: log-redaction
+    primary: node-log-redaction
+    secondary: [node-testing, node-observability]
+  - name: telemetry-sampling
+    primary: node-telemetry-sampling
+    secondary: [node-testing, node-observability]
+  - name: cardinality-control
+    primary: node-cardinality-control
+    secondary: [node-testing, node-observability]
+  - name: trace-context-propagation
+    primary: node-trace-context-propagation
+    secondary: [node-testing, node-observability]
+  - name: codegen-engineering
+    primary: node-codegen-engineering
+    secondary: [node-testing, node-observability]
+  - name: generated-code-review
+    primary: node-generated-code-review
+    secondary: [node-testing, node-observability]
+  - name: release-notes-engineering
+    primary: node-release-notes-engineering
+    secondary: [node-testing, node-observability]
+  - name: maintenance-engineering
+    primary: node-maintenance-engineering
+    secondary: [node-testing, node-observability]
+  - name: repository-health
+    primary: node-repository-health
+    secondary: [node-testing, node-observability]
+  - name: deprecation-management
+    primary: node-deprecation-management
+    secondary: [node-testing, node-observability]
+  - name: backward-compatibility-testing
+    primary: node-backward-compatibility-testing
+    secondary: [node-testing, node-observability]
+  - name: runtime-upgrade-planning
+    primary: node-runtime-upgrade-planning
+    secondary: [node-testing, node-observability]
