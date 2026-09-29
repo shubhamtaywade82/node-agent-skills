@@ -13,7 +13,7 @@ cases:
 
   - name: path-traversal-defense
     skill: node-path-traversal-defense
-    prompt: "Harden a download endpoint where percent-encoded ../ and platform-specific separators can reach filesystem paths."
+    prompt: "Harden a download endpoint with canonical path validation where percent-encoded ../ and platform-specific separators can reach filesystem paths."
     pressure: ["percent decoding", "platform separators", "canonicalization", "malicious input"]
     expected_invariants: ["canonical containment", "decode-before-check policy", "safe fallback", "bypass regression"]
 
