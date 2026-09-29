@@ -5,35 +5,36 @@ import { readFile } from "node:fs/promises";
 const manifest = await readFile(new URL("../skill-manifest.yml", import.meta.url), "utf8");
 
 const skills = [
-  "node-permission-model",
-  "node-async-context-propagation",
-  "node-request-context",
-  "node-abort-cancellation",
-  "node-worker-threads",
-  "node-child-process-safety",
-  "node-http-body-limits",
-  "node-upload-security",
-  "node-ssrf-defense",
-  "node-cache-key-security",
-  "node-tenant-cache-isolation",
-  "node-database-index-engineering",
-  "node-query-performance",
-  "node-lock-contention",
-  "node-connection-leak-detection",
-  "node-transaction-retry",
-  "node-health-check-engineering",
-  "node-startup-readiness",
-  "node-config-drift-detection",
-  "node-generated-code-governance",
+  "node-filesystem-safety",
+  "node-temp-file-safety",
+  "node-path-traversal-defense",
+  "node-archive-extraction-safety",
+  "node-file-descriptor-lifecycle",
+  "node-process-supervision",
+  "node-worker-crash-recovery",
+  "node-event-loop-diagnostics",
+  "node-memory-leak-diagnostics",
+  "node-heap-diagnostics",
+  "node-log-redaction",
+  "node-telemetry-sampling",
+  "node-metric-cardinality-control",
+  "node-trace-context-propagation",
+  "node-api-content-negotiation",
+  "node-http-cache-semantics",
+  "node-etag-cache-validation",
+  "node-api-conditional-requests",
+  "node-rate-limit-headers",
+  "node-authz-policy-testing",
+  "node-access-control-auditing",
+  "node-security-regression-testing",
+  "node-runtime-feature-detection",
+  "node-repository-health",
 ];
 
-const adapters = [
-  "hapi",
-  "mercurius",
-];
+const adapters = ["fastify-swagger","fastify-multipart","nestjs-swagger","opentelemetry-sdk-node"];
 
-test("Wave 11 skills have files and evaluation coverage", async () => {
-  const evals = await readFile(new URL("../evals/cases/runtime-data-security/workflow.yml", import.meta.url), "utf8").catch(() => "");
+test("Wave 13 skills have files and evaluation coverage", async () => {
+  const evals = await readFile(new URL("../evals/cases/runtime-http-auth-observability/workflow.yml", import.meta.url), "utf8").catch(() => "");
   for (const skill of skills) {
     assert.match(manifest, new RegExp("^  - name: " + skill + "$", "m"));
     const text = await readFile(new URL("../skills/" + skill + "/SKILL.md", import.meta.url), "utf8");
@@ -41,13 +42,10 @@ test("Wave 11 skills have files and evaluation coverage", async () => {
     assert.match(evals, new RegExp("skill: " + skill, "m"));
   }
   assert.equal([...manifest.matchAll(/^  - name: ([a-z0-9-]+)$/gm)].length, 250);
-});
-
-test("Wave 11 adapter inventory is complete", () => {
   assert.equal([...manifest.matchAll(/^    path: adapters\//gm)].length, 73);
 });
 
-test("Wave 11 adapters have registry, skill, README, and source metadata", async () => {
+test("Wave 13 adapters have registry, skill, README, and source metadata", async () => {
   for (const name of adapters) {
     assert.match(manifest, new RegExp("^  " + name + ":\n    path: adapters/" + name + "/SKILL\.md\n    version_scope: .+\n    source: https://", "m"));
     const skill = await readFile(new URL("../adapters/" + name + "/SKILL.md", import.meta.url), "utf8");

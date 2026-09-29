@@ -643,3 +643,76 @@ cases:
   - name: header-normalization
     primary: node-header-normalization
     secondary: [node-testing, node-observability]
+
+  - name: filesystem-safety
+    primary: node-filesystem-safety
+    secondary: [node-testing, node-observability]
+  - name: temp-file-safety
+    primary: node-temp-file-safety
+    secondary: [node-testing, node-observability]
+  - name: path-traversal-defense
+    primary: node-path-traversal-defense
+    secondary: [node-testing, node-observability]
+  - name: archive-extraction-safety
+    primary: node-archive-extraction-safety
+    secondary: [node-testing, node-observability]
+  - name: file-descriptor-lifecycle
+    primary: node-file-descriptor-lifecycle
+    secondary: [node-testing, node-observability]
+  - name: process-supervision
+    primary: node-process-supervision
+    secondary: [node-testing, node-observability]
+  - name: worker-crash-recovery
+    primary: node-worker-crash-recovery
+    secondary: [node-testing, node-observability]
+  - name: event-loop-diagnostics
+    primary: node-event-loop-diagnostics
+    secondary: [node-testing, node-observability]
+  - name: memory-leak-diagnostics
+    primary: node-memory-leak-diagnostics
+    secondary: [node-testing, node-observability]
+  - name: heap-diagnostics
+    primary: node-heap-diagnostics
+    secondary: [node-testing, node-observability]
+  - name: log-redaction
+    primary: node-log-redaction
+    secondary: [node-testing, node-observability]
+  - name: telemetry-sampling
+    primary: node-telemetry-sampling
+    secondary: [node-testing, node-observability]
+  - name: metric-cardinality-control
+    primary: node-metric-cardinality-control
+    secondary: [node-testing, node-observability]
+  - name: trace-context-propagation
+    primary: node-trace-context-propagation
+    secondary: [node-testing, node-observability]
+  - name: api-content-negotiation
+    primary: node-api-content-negotiation
+    secondary: [node-testing, node-observability]
+  - name: http-cache-semantics
+    primary: node-http-cache-semantics
+    secondary: [node-testing, node-observability]
+  - name: etag-cache-validation
+    primary: node-etag-cache-validation
+    secondary: [node-testing, node-observability]
+  - name: api-conditional-requests
+    primary: node-api-conditional-requests
+    secondary: [node-testing, node-observability]
+  - name: rate-limit-headers
+    primary: node-rate-limit-headers
+    secondary: [node-testing, node-observability]
+  - name: authz-policy-testing
+    primary: node-authz-policy-testing
+    secondary: [node-testing, node-observability]
+  - name: access-control-auditing
+    primary: node-access-control-auditing
+    secondary: [node-testing, node-observability]
+  - name: security-regression-testing
+    primary: node-security-regression-testing
+    secondary: [node-testing, node-observability]
+  - name: runtime-feature-detection
+    primary: node-runtime-feature-detection
+    secondary: [node-testing, node-observability]
+  - name: repository-health
+    primary: node-repository-health
+    secondary: [node-testing, node-observability]
