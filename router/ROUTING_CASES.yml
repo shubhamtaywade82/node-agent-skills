@@ -188,3 +188,58 @@ cases:
   - name: design-pattern-refactor
     primary: node-design-patterns
     secondary: [node-architecture, node-typescript-contracts, node-testing]
+
+  - name: repository-forensics
+    primary: node-repository-forensics
+    secondary: [node-testing, node-observability]
+  - name: debugging
+    primary: node-debugging
+    secondary: [node-testing, node-observability]
+  - name: code-review
+    primary: node-code-review
+    secondary: [node-testing, node-observability]
+  - name: refactoring
+    primary: node-refactoring
+    secondary: [node-testing, node-observability]
+  - name: dependency-upgrades
+    primary: node-dependency-upgrades
+    secondary: [node-testing, node-observability]
+  - name: monorepo-engineering
+    primary: node-monorepo-engineering
+    secondary: [node-testing, node-observability]
+  - name: cli-engineering
+    primary: node-cli-engineering
+    secondary: [node-testing, node-observability]
+  - name: streams
+    primary: node-streams
+    secondary: [node-testing, node-observability]
+  - name: server-sent-events
+    primary: node-server-sent-events
+    secondary: [node-testing, node-observability]
+  - name: object-storage
+    primary: node-object-storage
+    secondary: [node-testing, node-observability]
+  - name: email-delivery
+    primary: node-email-delivery
+    secondary: [node-testing, node-observability]
+  - name: search-engineering
+    primary: node-search-engineering
+    secondary: [node-testing, node-observability]
+  - name: cryptography
+    primary: node-cryptography
+    secondary: [node-testing, node-observability]
+  - name: agent-evaluation
+    primary: node-agent-evaluation
+    secondary: [node-testing, node-observability]
+  - name: documentation-engineering
+    primary: node-documentation-engineering
+    secondary: [node-testing, node-observability]
+  - name: developer-experience
+    primary: node-developer-experience
+    secondary: [node-testing, node-observability]
+  - name: cloud-events
+    primary: node-cloud-events
+    secondary: [node-testing, node-observability]
+  - name: saga-orchestration
+    primary: node-saga-orchestration
+    secondary: [node-testing, node-observability]

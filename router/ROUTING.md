@@ -52,6 +52,25 @@ Route by the dominant backend boundary first. Framework adapters are a translati
 | runtime diagnosis | node-runtime-diagnostics | node-performance, node-observability |
 | release engineering | node-release-engineering | node-zero-downtime, node-database-migrations-production |
 
+| repository discovery | node-repository-forensics | node-architecture, node-module-boundaries |
+| debugging/incident diagnosis | node-debugging | node-observability, node-runtime-diagnostics |
+| backend code review | node-code-review | node-security-hardening, node-testing |
+| safe refactoring | node-refactoring | node-design-patterns, node-testing |
+| dependency upgrade | node-dependency-upgrades | node-supply-chain, node-build-engineering |
+| monorepo/workspaces | node-monorepo-engineering | node-module-boundaries, node-build-engineering |
+| CLI/operational command | node-cli-engineering | node-runtime-foundations, node-observability |
+| streams/large I/O | node-streams | node-backpressure, node-async-concurrency |
+| SSE/realtime HTTP | node-server-sent-events | node-streams, node-auth-security |
+| object storage | node-object-storage | node-file-uploads, node-external-integrations |
+| email delivery | node-email-delivery | node-queues, node-external-integrations |
+| search/indexing | node-search-engineering | node-database-engineering, node-multi-tenancy |
+| cryptography | node-cryptography | node-secrets, node-security-hardening |
+| agent evaluation | node-agent-evaluation | node-testing, node-code-review |
+| documentation | node-documentation-engineering | node-repository-forensics, node-release-engineering |
+| developer experience | node-developer-experience | node-package-tooling, node-build-engineering |
+| CloudEvents | node-cloud-events | node-event-driven-architecture, node-schema-evolution |
+| saga/workflow orchestration | node-saga-orchestration | node-distributed-systems, node-transactional-outbox |
+
 ## Framework adapter selection
 
 After selecting the core owner, detect the actual framework from dependency manifests/imports before loading an adapter:
@@ -66,6 +85,18 @@ After selecting the core owner, detect the actual framework from dependency mani
 | Drizzle | adapters/drizzle/SKILL.md | Current/v1; verify exact package versions |
 | BullMQ | adapters/bullmq/SKILL.md | BullMQ 5.x/6.x; verify exact major |
 | node-redis | adapters/redis/SKILL.md | node-redis 5.x; verify exact version |
+| pg | adapters/pg/SKILL.md | current node-postgres |
+| undici | adapters/undici/SKILL.md | current undici |
+| zod | adapters/zod/SKILL.md | 4.x |
+| valibot | adapters/valibot/SKILL.md | current |
+| typebox | adapters/typebox/SKILL.md | current |
+| kafkajs | adapters/kafkajs/SKILL.md | 2.x |
+| aws-sdk-v3 | adapters/aws-sdk-v3/SKILL.md | v3 |
+| pino | adapters/pino/SKILL.md | current |
+| prometheus | adapters/prometheus/SKILL.md | current @prometheus-io/client |
+| pnpm | adapters/pnpm/SKILL.md | current |
+| turborepo | adapters/turborepo/SKILL.md | current |
+| nx | adapters/nx/SKILL.md | current |
 
 Do not select an adapter merely because the user says "Node API". Core skills are always applicable; adapters are conditional.
 
