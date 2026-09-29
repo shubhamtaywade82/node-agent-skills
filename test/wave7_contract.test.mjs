@@ -23,6 +23,7 @@ const skills = [
   "node-patch-validation",
   "node-merge-conflict-resolution",
   "node-validation-triage",
+  "node-review-feedback",
 ];
 
 const adapters = [
@@ -46,7 +47,7 @@ test("Wave 7 skills have files and evaluation coverage", async () => {
     assert.match(text, new RegExp(`^name: ${skill}$`, "m"));
     assert.match(evals, new RegExp(`skill: ${skill}`, "m"));
   }
-  assert.equal([...manifest.matchAll(/^  - name: ([a-z0-9-]+)$/gm)].length, 131);
+  assert.equal([...manifest.matchAll(/^  - name: ([a-z0-9-]+)$/gm)].length, 132);
 });
 
 test("Wave 7 adapters have registry, skill, README, and source metadata", async () => {
