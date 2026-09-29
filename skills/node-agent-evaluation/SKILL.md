@@ -32,7 +32,12 @@ evaluate behavior and invariants, not prose style; include adversarial pressure;
 
 ## Implementation procedure
 
-1. Define target behavior.\n2. Create failing/edge cases.\n3. Assert architectural invariants and verification steps.\n4. Include repository-context pressure.\n5. Record expected evidence.\n6. Run regression set after changes.
+1. Define target behavior.
+2. Create failing and edge cases.
+3. Assert architectural invariants and verification steps.
+4. Include repository-context pressure.
+5. Record expected evidence.
+6. Run the regression set after changes.
 
 ## Failure modes
 
