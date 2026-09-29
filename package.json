@@ -9,6 +9,7 @@
   },
   "scripts": {
     "test": "node --test",
-    "validate": "node scripts/validate.mjs"
+    "validate": "node scripts/validate.mjs",
+    "pack:export": "node scripts/export-pack.mjs --output dist/node-agent-skills"
   }
 }

@@ -643,3 +643,64 @@ cases:
   - name: header-normalization
     primary: node-header-normalization
     secondary: [node-testing, node-observability]
+
+  - name: skill-pack-format
+    primary: node-skill-pack-format
+    secondary: [node-testing, node-repository-forensics]
+  - name: skill-pack-compatibility
+    primary: node-skill-pack-compatibility
+    secondary: [node-testing, node-repository-forensics]
+  - name: skill-pack-manifest-governance
+    primary: node-skill-pack-manifest-governance
+    secondary: [node-testing, node-repository-forensics]
+  - name: skill-pack-routing-governance
+    primary: node-skill-pack-routing-governance
+    secondary: [node-testing, node-repository-forensics]
+  - name: skill-pack-evaluation-governance
+    primary: node-skill-pack-evaluation-governance
+    secondary: [node-testing, node-repository-forensics]
+  - name: skill-pack-source-governance
+    primary: node-skill-pack-source-governance
+    secondary: [node-testing, node-repository-forensics]
+  - name: skill-pack-versioning
+    primary: node-skill-pack-versioning
+    secondary: [node-testing, node-repository-forensics]
+  - name: skill-pack-release
+    primary: node-skill-pack-release
+    secondary: [node-testing, node-repository-forensics]
+  - name: skill-pack-distribution
+    primary: node-skill-pack-distribution
+    secondary: [node-testing, node-repository-forensics]
+  - name: skill-pack-installation
+    primary: node-skill-pack-installation
+    secondary: [node-testing, node-repository-forensics]
+  - name: agent-progress-tracking
+    primary: node-agent-progress-tracking
+    secondary: [node-testing, node-repository-forensics]
+  - name: agent-task-checkpointing
+    primary: node-agent-task-checkpointing
+    secondary: [node-testing, node-repository-forensics]
+  - name: agent-context-budgeting
+    primary: node-agent-context-budgeting
+    secondary: [node-testing, node-repository-forensics]
+  - name: agent-tool-selection
+    primary: node-agent-tool-selection
+    secondary: [node-testing, node-repository-forensics]
+  - name: agent-command-safety
+    primary: node-agent-command-safety
+    secondary: [node-testing, node-repository-forensics]
+  - name: agent-output-contracts
+    primary: node-agent-output-contracts
+    secondary: [node-testing, node-repository-forensics]
+  - name: agent-handoff
+    primary: node-agent-handoff
+    secondary: [node-testing, node-repository-forensics]
+  - name: agent-recovery
+    primary: node-agent-recovery
+    secondary: [node-testing, node-repository-forensics]
+  - name: agent-multi-file-coordination
+    primary: node-agent-multi-file-coordination
+    secondary: [node-testing, node-repository-forensics]
+  - name: agent-regression-prevention
+    primary: node-agent-regression-prevention
+    secondary: [node-testing, node-repository-forensics]

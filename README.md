@@ -8,7 +8,10 @@ The core is framework-neutral. The pack teaches agents to inspect first, identif
 ```bash
 npm test
 npm run validate
+npm run pack:export
 ```
+
+`pack:export` produces a self-contained distribution with `pack-manifest.json` and SHA-256 checksums.
 
 ## Capability inventory
 
@@ -242,10 +245,3 @@ CI workflow is validated on GitHub Actions for the current capability branch.
 
 - https://the-guild.dev/graphql/yoga-server/docs
 - https://www.apollographql.com/docs/apollo-server
-
-
-### Wave 12 — agent governance and network security
-- AI-agent preflight, evidence gathering, change safety, verification reporting, escalation, rollback, commit, and PR preparation
-- DNS, TLS/certificate management, proxy forwarding, HTTP timeouts/keep-alive
-- Webhook ingress, request signatures, replay protection, CSRF, open redirects, request smuggling, header normalization
-- GraphQL Yoga 5.x and Apollo Server 5.x adapters

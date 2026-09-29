@@ -566,7 +566,6 @@ skills:
   - name: node-package-resolution
     category: runtime
     triggers: [Node package resolution, ESM CJS, exports, module resolution, workspace dependency]
-
   - name: node-permission-model
     category: security
     triggers: [Permission Model, --permission, allow-fs-read, allow-child-process]
@@ -628,65 +627,126 @@ skills:
     category: build
     triggers: [code generation, generated code, OpenAPI generation, protobuf generation, reproducible codegen]
   - name: node-agent-preflight
-    category: agent-governance
-    triggers: [agent preflight, repository inspection, task planning, coding agent]
+    category: tooling
+    triggers: [agent preflight, repository inspection, implementation preflight, coding agent]
   - name: node-agent-evidence-gathering
-    category: agent-governance
-    triggers: [evidence gathering, source of truth, repository evidence, coding agent]
+    category: tooling
+    triggers: [evidence gathering, repository evidence, coding agent context, authoritative source]
   - name: node-agent-change-safety
-    category: agent-governance
-    triggers: [change safety, blast radius, scoped change, coding agent]
+    category: tooling
+    triggers: [change safety, blast radius, scoped change, reversible patch]
   - name: node-agent-verification-reporting
-    category: agent-governance
-    triggers: [verification report, tests run, residual risk, coding agent]
+    category: tooling
+    triggers: [verification report, test evidence, coding agent result, residual risk]
   - name: node-agent-risk-escalation
-    category: agent-governance
-    triggers: [risk escalation, human approval, uncertainty, irreversible change]
+    category: tooling
+    triggers: [risk escalation, human review, blocking uncertainty, unsafe change]
   - name: node-agent-rollback-planning
-    category: agent-governance
-    triggers: [rollback planning, migration rollback, recovery plan]
+    category: tooling
+    triggers: [rollback plan, roll forward, migration rollback, deployment recovery]
   - name: node-agent-commit-hygiene
-    category: agent-governance
-    triggers: [commit hygiene, focused commits, staged diff, coding agent]
+    category: tooling
+    triggers: [commit hygiene, focused commit, staged diff, coding agent commit]
   - name: node-agent-pr-preparation
-    category: agent-governance
-    triggers: [pull request preparation, PR readiness, base branch, CI]
+    category: tooling
+    triggers: [pull request preparation, PR readiness, base branch, merge readiness]
   - name: node-dns-engineering
     category: network
-    triggers: [DNS, hostname resolution, resolver, TTL, IPv4, IPv6]
+    triggers: [DNS, name resolution, DNS failure, resolver, address validation]
   - name: node-tls-certificate-management
     category: security
-    triggers: [TLS, certificates, trust store, certificate rotation]
+    triggers: [TLS, certificates, certificate rotation, trust store, hostname verification]
   - name: node-http-proxy-forwarding
-    category: network
-    triggers: [proxy, Forwarded, X-Forwarded-For, trusted proxy]
+    category: api
+    triggers: [reverse proxy, forwarded headers, proxy forwarding, X-Forwarded-For]
   - name: node-http-timeouts
-    category: network
-    triggers: [HTTP timeout, connection timeout, header timeout, request deadline]
+    category: api
+    triggers: [HTTP timeout, connection timeout, read timeout, request deadline, slowloris]
   - name: node-http-keepalive
-    category: network
-    triggers: [HTTP keep alive, connection pooling, socket pool]
+    category: performance
+    triggers: [HTTP keep alive, connection pool, socket reuse, idle connection]
   - name: node-webhook-ingress-security
     category: security
-    triggers: [webhook security, signed webhook, replay, idempotency]
+    triggers: [webhook ingress, raw body signature, webhook replay, webhook security]
   - name: node-request-signature-validation
     category: security
-    triggers: [request signature, HMAC, signed request, raw body]
+    triggers: [request signature, HMAC, signature verification, canonical bytes]
   - name: node-replay-protection
     category: security
-    triggers: [replay protection, nonce, timestamp, duplicate request]
+    triggers: [replay protection, nonce, timestamp window, duplicate request]
   - name: node-csrf-defense
     category: security
-    triggers: [CSRF, cross site request forgery, browser session]
+    triggers: [CSRF, cross site request forgery, browser session, origin validation]
   - name: node-open-redirect-defense
     category: security
-    triggers: [open redirect, next parameter, redirect URL]
+    triggers: [open redirect, redirect URL, next parameter, return URL]
   - name: node-request-smuggling-defense
     category: security
-    triggers: [HTTP request smuggling, CL TE, message framing]
+    triggers: [request smuggling, HTTP desync, Content-Length, Transfer-Encoding]
   - name: node-header-normalization
-    category: network
-    triggers: [HTTP headers, duplicate headers, header normalization]
+    category: security
+    triggers: [HTTP header normalization, duplicate headers, forwarded headers]
+  - name: node-skill-pack-format
+    category: tooling
+    triggers: [Agent Skills, SKILL.md, skill format, frontmatter, progressive disclosure]
+  - name: node-skill-pack-compatibility
+    category: tooling
+    triggers: [agent compatibility, portable skills, vendor neutral skills]
+  - name: node-skill-pack-manifest-governance
+    category: tooling
+    triggers: [skill manifest, registry governance, manifest validation]
+  - name: node-skill-pack-routing-governance
+    category: tooling
+    triggers: [skill routing, primary skill, secondary skill, routing rules]
+  - name: node-skill-pack-evaluation-governance
+    category: tooling
+    triggers: [skill evaluations, eval cases, regression benchmark, eval governance]
+  - name: node-skill-pack-source-governance
+    category: tooling
+    triggers: [skill sources, documentation source, version scope, source governance]
+  - name: node-skill-pack-versioning
+    category: tooling
+    triggers: [skill pack versioning, semantic version, compatibility change]
+  - name: node-skill-pack-release
+    category: release
+    triggers: [skill pack release, release artifact, verified release]
+  - name: node-skill-pack-distribution
+    category: tooling
+    triggers: [skill pack distribution, pack export, filesystem distribution]
+  - name: node-skill-pack-installation
+    category: tooling
+    triggers: [skill pack installation, install skills, agent skills directory]
+  - name: node-agent-progress-tracking
+    category: tooling
+    triggers: [agent progress, task progress, coding agent state]
+  - name: node-agent-task-checkpointing
+    category: tooling
+    triggers: [agent checkpoint, resumable task, coding session checkpoint]
+  - name: node-agent-context-budgeting
+    category: tooling
+    triggers: [agent context budget, progressive disclosure, context minimization]
+  - name: node-agent-tool-selection
+    category: tooling
+    triggers: [agent tool selection, read only inspection, repository tools]
+  - name: node-agent-command-safety
+    category: security
+    triggers: [agent command safety, destructive command, shell safety]
+  - name: node-agent-output-contracts
+    category: tooling
+    triggers: [agent output contract, verification report, structured result]
+  - name: node-agent-handoff
+    category: tooling
+    triggers: [agent handoff, session handoff, coding task transfer]
+  - name: node-agent-recovery
+    category: tooling
+    triggers: [agent recovery, interrupted task, partial patch recovery]
+  - name: node-agent-multi-file-coordination
+    category: tooling
+    triggers: [multi file change, coding agent coordination, dependency order]
+  - name: node-agent-regression-prevention
+    category: testing
+    triggers: [regression prevention, coding agent regression, regression tests]
+
 adapters:
   express:
     path: adapters/express/SKILL.md
@@ -918,7 +978,7 @@ adapters:
     source: https://docs.newrelic.com/docs/apm/agents/nodejs-agent/installation-configuration/install-nodejs-agent/
   node-test-runner:
     path: adapters/node-test-runner/SKILL.md
-    version_scope: Node 24.x node:test
+    version_scope: Node 24.x `node:test`
     source: https://nodejs.org/docs/latest-v24.x/api/test.html
   supertest:
     path: adapters/supertest/SKILL.md

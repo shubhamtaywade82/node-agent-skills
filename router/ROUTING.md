@@ -209,6 +209,27 @@ Route by the dominant backend boundary first. Framework adapters are a translati
 | request-smuggling-defense | node-request-smuggling-defense | node-testing, node-observability |
 | header-normalization | node-header-normalization | node-testing, node-observability |
 
+| skill-pack-format | node-skill-pack-format | node-testing, node-repository-forensics |
+| skill-pack-compatibility | node-skill-pack-compatibility | node-testing, node-repository-forensics |
+| skill-pack-manifest-governance | node-skill-pack-manifest-governance | node-testing, node-repository-forensics |
+| skill-pack-routing-governance | node-skill-pack-routing-governance | node-testing, node-repository-forensics |
+| skill-pack-evaluation-governance | node-skill-pack-evaluation-governance | node-testing, node-repository-forensics |
+| skill-pack-source-governance | node-skill-pack-source-governance | node-testing, node-repository-forensics |
+| skill-pack-versioning | node-skill-pack-versioning | node-testing, node-repository-forensics |
+| skill-pack-release | node-skill-pack-release | node-testing, node-repository-forensics |
+| skill-pack-distribution | node-skill-pack-distribution | node-testing, node-repository-forensics |
+| skill-pack-installation | node-skill-pack-installation | node-testing, node-repository-forensics |
+| agent-progress-tracking | node-agent-progress-tracking | node-testing, node-repository-forensics |
+| agent-task-checkpointing | node-agent-task-checkpointing | node-testing, node-repository-forensics |
+| agent-context-budgeting | node-agent-context-budgeting | node-testing, node-repository-forensics |
+| agent-tool-selection | node-agent-tool-selection | node-testing, node-repository-forensics |
+| agent-command-safety | node-agent-command-safety | node-testing, node-repository-forensics |
+| agent-output-contracts | node-agent-output-contracts | node-testing, node-repository-forensics |
+| agent-handoff | node-agent-handoff | node-testing, node-repository-forensics |
+| agent-recovery | node-agent-recovery | node-testing, node-repository-forensics |
+| agent-multi-file-coordination | node-agent-multi-file-coordination | node-testing, node-repository-forensics |
+| agent-regression-prevention | node-agent-regression-prevention | node-testing, node-repository-forensics |
+
 ## Framework adapter selection
 
 After selecting the core owner, detect the actual framework from dependency manifests/imports before loading an adapter:
@@ -281,6 +302,3 @@ Do not select an adapter merely because the user says "Node API". Core skills ar
 | multi-tenancy | node-multi-tenancy | node-auth-security, node-database-engineering |
 | audit logging | node-audit-logging | node-observability, node-auth-security |
 | data privacy | node-data-privacy | node-secrets, node-observability, node-audit-logging |
-
-| graphql-yoga | adapters/graphql-yoga/SKILL.md | 5.x |
-| apollo-server | adapters/apollo-server/SKILL.md | 5.x |
