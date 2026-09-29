@@ -230,7 +230,6 @@ adapters:
     path: adapters/redis/SKILL.md
     version_scope: node-redis-5.x
     source: https://redis.io/docs/latest/develop/clients/nodejs/
-
   npm:
     path: adapters/npm/SKILL.md
     version_scope: current npm CLI
@@ -247,50 +246,6 @@ adapters:
     path: adapters/opentelemetry/SKILL.md
     version_scope: current OpenTelemetry JavaScript SDK
     source: https://opentelemetry.io/docs/languages/js/
-  - name: node-domain-modeling
-    category: architecture
-    triggers: [domain modeling, aggregates, value objects]
-  - name: node-hexagonal-architecture
-    category: architecture
-    triggers: [hexagonal architecture, ports, adapters]
-  - name: node-dependency-injection
-    category: architecture
-    triggers: [dependency injection, composition root]
-  - name: node-module-boundaries
-    category: architecture
-    triggers: [module boundaries, public API, dependency graph]
-  - name: node-integration-testing
-    category: testing
-    triggers: [integration testing, real dependencies]
-  - name: node-e2e-testing
-    category: testing
-    triggers: [end to end testing, workflows]
-  - name: node-testcontainers
-    category: testing
-    triggers: [Testcontainers, disposable infrastructure]
-  - name: node-load-testing
-    category: testing
-    triggers: [load testing, throughput, capacity]
-  - name: node-api-client-engineering
-    category: integrations
-    triggers: [API client, HTTP client, outbound calls]
-  - name: node-file-uploads
-    category: api
-    triggers: [file upload, multipart, streaming]
-  - name: node-scheduling
-    category: reliability
-    triggers: [cron, scheduled jobs, recurrence]
-  - name: node-multi-tenancy
-    category: security
-    triggers: [multi tenancy, tenant isolation]
-  - name: node-audit-logging
-    category: security
-    triggers: [audit logging, security events]
-  - name: node-data-privacy
-    category: security
-    triggers: [privacy, PII, retention, deletion]
-
-adapters:
   vitest:
     path: adapters/vitest/SKILL.md
     version_scope: current Vitest 5.x
