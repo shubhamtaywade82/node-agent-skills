@@ -199,3 +199,393 @@ cases:
     disambiguation: "Separate application normalization from protocol-exact representations."
     must_not_select: ["node-request-signature-validation","node-request-smuggling-defense"]
     expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: architecture-boundary
+    skill: node-architecture
+    prompt: "Choose the owning module boundary for a backend that is becoming a modular monolith, keeping dependency direction explicit and avoiding accidental cross-domain imports."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["dependency direction","module ownership","bounded context","architecture boundary"]
+    negative_signals: ["node-design-patterns","node-module-boundaries"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the domain-specific owner from the concrete boundary and avoid the adjacent concerns named as negatives."
+    must_not_select: ["node-design-patterns","node-module-boundaries"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: design-pattern-collision
+    skill: node-design-patterns
+    prompt: "Refactor a growing Node.js orchestration branch into a behaviorally equivalent pattern without introducing a framework-specific architecture redesign."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["Strategy","composition","behavior-preserving refactor","pattern selection"]
+    negative_signals: ["node-architecture","node-refactoring"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the domain-specific owner from the concrete boundary and avoid the adjacent concerns named as negatives."
+    must_not_select: ["node-architecture","node-refactoring"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: runtime-foundations
+    skill: node-runtime-foundations
+    prompt: "Diagnose startup behavior that differs between ESM and CommonJS packages and determine the correct lifecycle and package-resolution boundary."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["ESM","CommonJS","startup lifecycle","package exports"]
+    negative_signals: ["node-production-runtime","node-package-tooling"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the domain-specific owner from the concrete boundary and avoid the adjacent concerns named as negatives."
+    must_not_select: ["node-production-runtime","node-package-tooling"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: async-concurrency
+    skill: node-async-concurrency
+    prompt: "Bound concurrent downstream work in a request fan-out while preserving cancellation and preventing an unbounded Promise queue."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["bounded concurrency","AbortController","fan-out","cancellation"]
+    negative_signals: ["node-retry-timeouts","node-backpressure"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the domain-specific owner from the concrete boundary and avoid the adjacent concerns named as negatives."
+    must_not_select: ["node-retry-timeouts","node-backpressure"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: typescript-contracts
+    skill: node-typescript-contracts
+    prompt: "Tighten public TypeScript contracts for a library API using strict generics and discriminated unions without confusing compile-time types with runtime validation."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["strict TypeScript","generics","discriminated union","public type"]
+    negative_signals: ["node-runtime-validation","node-schema-validation-at-boundary"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the domain-specific owner from the concrete boundary and avoid the adjacent concerns named as negatives."
+    must_not_select: ["node-runtime-validation","node-schema-validation-at-boundary"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: runtime-validation
+    skill: node-runtime-validation
+    prompt: "Validate untrusted JSON and environment-derived configuration before it reaches typed domain code, including malformed and missing fields."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["runtime schema","untrusted input","environment variables","boundary validation"]
+    negative_signals: ["node-typescript-contracts","node-schema-validation-at-boundary"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the domain-specific owner from the concrete boundary and avoid the adjacent concerns named as negatives."
+    must_not_select: ["node-typescript-contracts","node-schema-validation-at-boundary"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: api-engineering
+    skill: node-api-engineering
+    prompt: "Design a backend API change covering pagination, idempotency, compatibility, and operational limits across multiple HTTP resources."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["API contract","pagination","idempotency","compatibility"]
+    negative_signals: ["node-http-engineering","node-rest-api-design"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the domain-specific owner from the concrete boundary and avoid the adjacent concerns named as negatives."
+    must_not_select: ["node-http-engineering","node-rest-api-design"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: testing-strategy
+    skill: node-testing
+    prompt: "Choose the appropriate test pyramid and verification mix for a backend change crossing unit logic, database integration, and an API boundary."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["test pyramid","unit","integration","API test"]
+    negative_signals: ["node-integration-testing","node-test-environment-engineering"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the domain-specific owner from the concrete boundary and avoid the adjacent concerns named as negatives."
+    must_not_select: ["node-integration-testing","node-test-environment-engineering"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: production-runtime
+    skill: node-production-runtime
+    prompt: "Make a Node.js service safe for deployment and shutdown, including readiness, liveness, signal handling, and draining in-flight work."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["graceful shutdown","readiness","liveness","signal handling"]
+    negative_signals: ["node-zero-downtime","node-kubernetes"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the domain-specific owner from the concrete boundary and avoid the adjacent concerns named as negatives."
+    must_not_select: ["node-zero-downtime","node-kubernetes"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: external-integrations
+    skill: node-external-integrations
+    prompt: "Integrate a third-party API with explicit timeout, retry, authentication, secret handling, and failure semantics at the application boundary."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["third-party API","retry","timeout","secret handling"]
+    negative_signals: ["node-api-client-engineering","node-retry-timeouts"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the domain-specific owner from the concrete boundary and avoid the adjacent concerns named as negatives."
+    must_not_select: ["node-api-client-engineering","node-retry-timeouts"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: database-transactions
+    skill: node-transactions
+    prompt: "Protect a multi-step database mutation with explicit isolation, rollback behavior, lock ownership, and deadlock handling."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["transaction boundary","isolation level","rollback","deadlock"]
+    negative_signals: ["node-postgresql-persistence","node-optimistic-concurrency"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the domain-specific owner from the concrete boundary and avoid the adjacent concerns named as negatives."
+    must_not_select: ["node-postgresql-persistence","node-optimistic-concurrency"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: redis-engineering
+    skill: node-redis
+    prompt: "Implement distributed coordination using Redis primitives while accounting for connection reuse, transactions, and failure semantics."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["Redis","MULTI/EXEC","connection lifecycle","distributed state"]
+    negative_signals: ["node-caching","node-connection-pooling"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the domain-specific owner from the concrete boundary and avoid the adjacent concerns named as negatives."
+    must_not_select: ["node-caching","node-connection-pooling"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: outbox-pattern
+    skill: node-outbox
+    prompt: "Publish a domain event after a database transaction without creating a dual-write gap between durable state and event delivery."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["outbox record","dual write","event relay","durable publication"]
+    negative_signals: ["node-transactional-outbox","node-event-driven-architecture"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the domain-specific owner from the concrete boundary and avoid the adjacent concerns named as negatives."
+    must_not_select: ["node-transactional-outbox","node-event-driven-architecture"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: domain-modeling
+    skill: node-domain-modeling
+    prompt: "Model an order aggregate with value objects and invariants so business rules remain explicit instead of leaking into infrastructure adapters."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["aggregate","value object","domain invariant","business rule"]
+    negative_signals: ["node-architecture","node-cqrs"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the domain-specific owner from the concrete boundary and avoid the adjacent concerns named as negatives."
+    must_not_select: ["node-architecture","node-cqrs"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: hexagonal-architecture
+    skill: node-hexagonal-architecture
+    prompt: "Separate domain logic from an external payment provider by defining ports and infrastructure adapters with dependency direction pointing inward."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["ports","adapters","dependency direction","domain isolation"]
+    negative_signals: ["node-domain-modeling","node-dependency-injection"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the domain-specific owner from the concrete boundary and avoid the adjacent concerns named as negatives."
+    must_not_select: ["node-domain-modeling","node-dependency-injection"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: dependency-injection
+    skill: node-dependency-injection
+    prompt: "Move runtime wiring into a composition root so services receive explicit dependencies and tests do not rely on global mutable state."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["composition root","explicit dependencies","lifecycle","test doubles"]
+    negative_signals: ["node-module-boundaries","node-architecture"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the domain-specific owner from the concrete boundary and avoid the adjacent concerns named as negatives."
+    must_not_select: ["node-module-boundaries","node-architecture"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: module-boundaries
+    skill: node-module-boundaries
+    prompt: "Stop a domain package from importing internal implementation details from another package while preserving a narrow public module API."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["public module API","dependency graph","circular dependency","internal export"]
+    negative_signals: ["node-architecture","node-change-impact-analysis"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the domain-specific owner from the concrete boundary and avoid the adjacent concerns named as negatives."
+    must_not_select: ["node-architecture","node-change-impact-analysis"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: integration-testing
+    skill: node-integration-testing
+    prompt: "Verify a repository implementation against a real database and HTTP dependency rather than replacing every boundary with mocks."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["real database","HTTP integration","boundary test","fixture isolation"]
+    negative_signals: ["node-testing","node-testcontainers"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the domain-specific owner from the concrete boundary and avoid the adjacent concerns named as negatives."
+    must_not_select: ["node-testing","node-testcontainers"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: e2e-testing
+    skill: node-e2e-testing
+    prompt: "Exercise a complete backend workflow from authenticated request through persistence and asynchronous processing, validating externally visible outcomes."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["system workflow","end-to-end","authenticated request","async completion"]
+    negative_signals: ["node-integration-testing","node-testing"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the domain-specific owner from the concrete boundary and avoid the adjacent concerns named as negatives."
+    must_not_select: ["node-integration-testing","node-testing"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: testcontainers
+    skill: node-testcontainers
+    prompt: "Provision disposable PostgreSQL and Redis services for integration tests so the suite exercises production-like dependencies without shared state."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["Testcontainers","disposable dependency","PostgreSQL","Redis"]
+    negative_signals: ["node-integration-testing","node-test-environment-engineering"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the domain-specific owner from the concrete boundary and avoid the adjacent concerns named as negatives."
+    must_not_select: ["node-integration-testing","node-test-environment-engineering"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: load-testing
+    skill: node-load-testing
+    prompt: "Measure a Node.js service under controlled concurrency, tracking throughput, latency percentiles, saturation, and error rate."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["concurrency","throughput","p95 latency","saturation"]
+    negative_signals: ["node-performance","node-benchmark-engineering"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the domain-specific owner from the concrete boundary and avoid the adjacent concerns named as negatives."
+    must_not_select: ["node-performance","node-benchmark-engineering"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: api-client-engineering
+    skill: node-api-client-engineering
+    prompt: "Build a typed outbound API client with deadlines, retry classification, pagination, and response validation at the provider boundary."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["outbound client","deadline","retry classification","pagination"]
+    negative_signals: ["node-external-integrations","node-retry-timeouts"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the domain-specific owner from the concrete boundary and avoid the adjacent concerns named as negatives."
+    must_not_select: ["node-external-integrations","node-retry-timeouts"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: file-uploads
+    skill: node-file-uploads
+    prompt: "Handle large multipart uploads through bounded streaming to object storage while enforcing content limits and safe file handling."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["multipart","streaming","object storage","body limit"]
+    negative_signals: ["node-http-body-limits","node-upload-security"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the domain-specific owner from the concrete boundary and avoid the adjacent concerns named as negatives."
+    must_not_select: ["node-http-body-limits","node-upload-security"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: scheduling
+    skill: node-scheduling
+    prompt: "Run a recurring backend job at a business timezone, accounting for daylight-saving transitions, missed runs, and duplicate execution."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["cron","timezone","DST","missed run"]
+    negative_signals: ["node-queues","node-time-engineering"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the domain-specific owner from the concrete boundary and avoid the adjacent concerns named as negatives."
+    must_not_select: ["node-queues","node-time-engineering"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: multi-tenancy
+    skill: node-multi-tenancy
+    prompt: "Prevent cross-tenant data access in a shared backend by carrying tenant identity through authorization and persistence boundaries."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["tenant ID","row ownership","cross-tenant isolation","authorization"]
+    negative_signals: ["node-authorization-models","node-auth-security"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the domain-specific owner from the concrete boundary and avoid the adjacent concerns named as negatives."
+    must_not_select: ["node-authorization-models","node-auth-security"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: audit-logging
+    skill: node-audit-logging
+    prompt: "Record security-sensitive mutations with actor, target, timestamp, and outcome fields that can serve as durable compliance evidence."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["audit event","actor","target","compliance evidence"]
+    negative_signals: ["node-observability","node-security-incident-response"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the domain-specific owner from the concrete boundary and avoid the adjacent concerns named as negatives."
+    must_not_select: ["node-observability","node-security-incident-response"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: data-privacy
+    skill: node-data-privacy
+    prompt: "Design handling for personal data with minimization, retention, deletion, and redaction requirements across logs and persistence."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["PII","minimization","retention","deletion"]
+    negative_signals: ["node-data-retention","node-data-masking"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the domain-specific owner from the concrete boundary and avoid the adjacent concerns named as negatives."
+    must_not_select: ["node-data-retention","node-data-masking"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: streams
+    skill: node-streams
+    prompt: "Process a large response as a Node.js stream without buffering the entire payload, while handling backpressure and cleanup correctly."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["ReadableStream","pipeline","backpressure","large payload"]
+    negative_signals: ["node-backpressure","node-file-uploads"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the domain-specific owner from the concrete boundary and avoid the adjacent concerns named as negatives."
+    must_not_select: ["node-backpressure","node-file-uploads"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: server-sent-events
+    skill: node-server-sent-events
+    prompt: "Implement a long-lived SSE endpoint with reconnect semantics, event IDs, heartbeat handling, and bounded per-client buffering."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["SSE","EventSource","event ID","heartbeat"]
+    negative_signals: ["node-streams","node-websockets"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the domain-specific owner from the concrete boundary and avoid the adjacent concerns named as negatives."
+    must_not_select: ["node-streams","node-websockets"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: object-storage
+    skill: node-object-storage
+    prompt: "Store user-generated files in object storage using server-side controls and presigned URLs without turning uploads into an application-memory bottleneck."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["S3","presigned URL","object storage","multipart"]
+    negative_signals: ["node-file-uploads","node-external-integrations"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the domain-specific owner from the concrete boundary and avoid the adjacent concerns named as negatives."
+    must_not_select: ["node-file-uploads","node-external-integrations"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: email-delivery
+    skill: node-email-delivery
+    prompt: "Integrate transactional email delivery with retry-safe enqueueing, provider responses, bounce handling, and operational delivery visibility."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["transactional email","provider response","bounce","delivery status"]
+    negative_signals: ["node-external-integrations","node-queues"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the domain-specific owner from the concrete boundary and avoid the adjacent concerns named as negatives."
+    must_not_select: ["node-external-integrations","node-queues"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: search-engineering
+    skill: node-search-engineering
+    prompt: "Maintain an OpenSearch or Elasticsearch index for domain documents, including mappings, reindexing, and consistency with the source database."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["index mapping","reindex","search document","source of truth"]
+    negative_signals: ["node-database-engineering","node-object-storage"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the domain-specific owner from the concrete boundary and avoid the adjacent concerns named as negatives."
+    must_not_select: ["node-database-engineering","node-object-storage"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: cryptography
+    skill: node-cryptography
+    prompt: "Implement application-level signing or encryption with explicit key material, nonce handling, rotation, and cryptographic API boundaries."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["signing","encryption","nonce","key rotation"]
+    negative_signals: ["node-secrets","node-security-hardening"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the domain-specific owner from the concrete boundary and avoid the adjacent concerns named as negatives."
+    must_not_select: ["node-secrets","node-security-hardening"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: cloud-events
+    skill: node-cloud-events
+    prompt: "Publish an integration event using a standard event envelope carrying source, type, subject, identity, and time metadata."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["CloudEvents","event envelope","source","event type"]
+    negative_signals: ["node-event-driven-architecture","node-schema-evolution"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the domain-specific owner from the concrete boundary and avoid the adjacent concerns named as negatives."
+    must_not_select: ["node-event-driven-architecture","node-schema-evolution"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: saga-orchestration
+    skill: node-saga-orchestration
+    prompt: "Coordinate a long-running multi-service workflow with explicit compensation steps when later actions fail after earlier side effects."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["saga","compensation","long-running workflow","partial failure"]
+    negative_signals: ["node-distributed-systems","node-durable-workflows"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the domain-specific owner from the concrete boundary and avoid the adjacent concerns named as negatives."
+    must_not_select: ["node-distributed-systems","node-durable-workflows"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: grpc-contract
+    skill: node-grpc
+    prompt: "Expose a protobuf-defined RPC service with unary and streaming calls while enforcing request deadlines and compatibility."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["gRPC","protobuf","RPC deadline","streaming"]
+    negative_signals: ["node-rpc-contracts","node-message-delivery"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the domain-specific owner from the concrete boundary and avoid the adjacent concerns named as negatives."
+    must_not_select: ["node-rpc-contracts","node-message-delivery"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: api-gateway
+    skill: node-api-gateway
+    prompt: "Route external API traffic through a gateway that authenticates requests, applies policy, and forwards to the correct downstream service."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["API gateway","downstream routing","fan-out","policy enforcement"]
+    negative_signals: ["node-service-mesh","node-http-engineering"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the domain-specific owner from the concrete boundary and avoid the adjacent concerns named as negatives."
+    must_not_select: ["node-service-mesh","node-http-engineering"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: service-mesh
+    skill: node-service-mesh
+    prompt: "Operate a Node.js service behind a service-mesh sidecar where mTLS, traffic policy, retries, and readiness interact across proxies."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["service mesh","sidecar","mTLS","traffic policy"]
+    negative_signals: ["node-api-gateway","node-zero-downtime"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the domain-specific owner from the concrete boundary and avoid the adjacent concerns named as negatives."
+    must_not_select: ["node-api-gateway","node-zero-downtime"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: message-delivery
+    skill: node-message-delivery
+    prompt: "Define consumer acknowledgement and delivery semantics for messages where duplicates, ordering, and retry behavior must be explicit."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["acknowledgement","delivery semantics","ordering","duplicates"]
+    negative_signals: ["node-message-brokers","node-idempotency"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the domain-specific owner from the concrete boundary and avoid the adjacent concerns named as negatives."
+    must_not_select: ["node-message-brokers","node-idempotency"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
