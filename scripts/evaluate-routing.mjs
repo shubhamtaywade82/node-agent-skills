@@ -28,6 +28,7 @@ if (!decisionsPath) {
   const manifestText = await readFile(path.join(root, "skill-manifest.yml"), "utf8");
 
   const cases = parseRoutingCases(casesText);
+  const corpusNames = new Set(cases.map((caseDefinition) => caseDefinition.name));
   const registeredSkills = new Set(
     [...manifestText.matchAll(/^  - name: ([a-z0-9-]+)$/gm)].map((match) => match[1])
   );
@@ -53,6 +54,17 @@ if (!decisionsPath) {
     }
     return evaluateRoutingCase(caseDefinition, decision, registeredSkills);
   });
+
+  for (const [caseName, decision] of decisions) {
+    if (!corpusNames.has(caseName)) {
+      results.push({
+        case: caseName,
+        pass: false,
+        errors: ["UNKNOWN_CASE"],
+        primary: decision.primary,
+      });
+    }
+  }
 
   const report = summarizeRoutingResults(results);
   console.log(JSON.stringify(report, null, 2));
