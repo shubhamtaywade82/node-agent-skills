@@ -25,6 +25,8 @@ building deterministic evaluation cases that measure AI coding-agent behavior.
 
 evaluate behavior and invariants, not prose style; include adversarial pressure; keep fixtures deterministic; never weaken validators to improve scores
 
+- For routing evaluation, use `npm run eval:routing -- --decisions <jsonl>` and treat its machine-readable failure codes as the source of truth.
+
 - Prefer the smallest design that makes ownership, failure, and observability explicit.
 - Detect exact dependency versions before using version-specific APIs.
 - Treat external input and resource state as untrusted runtime data.
@@ -38,6 +40,7 @@ evaluate behavior and invariants, not prose style; include adversarial pressure;
 4. Include repository-context pressure.
 5. Record expected evidence.
 6. Run the regression set after changes.
+7. For routing changes, submit one JSONL decision per evaluation case and fail closed on missing, extra, malformed, or incompatible selections.
 
 ## Failure modes
 
