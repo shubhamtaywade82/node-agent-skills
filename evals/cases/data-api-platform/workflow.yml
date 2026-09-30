@@ -1,0 +1,108 @@
+cases:
+  - name: api-compatibility
+    skill: node-api-compatibility
+    prompt: "Implement or review a production Node.js backend change involving  api compatibility."
+    pressure: ["existing consumers", "failure path", "compatibility", "security"]
+    expected_invariants: ["explicit ownership", "bounded work", "observable behavior", "tests prove the contract"]
+
+  - name: api-contract-migration
+    skill: node-api-contract-migration
+    prompt: "Implement or review a production Node.js backend change involving  api contract migration."
+    pressure: ["existing consumers", "failure path", "compatibility", "security"]
+    expected_invariants: ["explicit ownership", "bounded work", "observable behavior", "tests prove the contract"]
+
+  - name: batch-api-design
+    skill: node-batch-api-design
+    prompt: "Implement or review a production Node.js backend change involving  batch api design."
+    pressure: ["existing consumers", "failure path", "compatibility", "security"]
+    expected_invariants: ["explicit ownership", "bounded work", "observable behavior", "tests prove the contract"]
+
+  - name: bulk-operations
+    skill: node-bulk-operations
+    prompt: "Implement or review a production Node.js backend change involving  bulk operations."
+    pressure: ["existing consumers", "failure path", "compatibility", "security"]
+    expected_invariants: ["explicit ownership", "bounded work", "observable behavior", "tests prove the contract"]
+
+  - name: resource-lifecycle
+    skill: node-resource-lifecycle
+    prompt: "Implement or review a production Node.js backend change involving  resource lifecycle."
+    pressure: ["existing consumers", "failure path", "compatibility", "security"]
+    expected_invariants: ["explicit ownership", "bounded work", "observable behavior", "tests prove the contract"]
+
+  - name: data-retention
+    skill: node-data-retention
+    prompt: "Implement or review a production Node.js backend change involving  data retention."
+    pressure: ["existing consumers", "failure path", "compatibility", "security"]
+    expected_invariants: ["explicit ownership", "bounded work", "observable behavior", "tests prove the contract"]
+
+  - name: data-lineage
+    skill: node-data-lineage
+    prompt: "Implement or review a production Node.js backend change involving  data lineage."
+    pressure: ["existing consumers", "failure path", "compatibility", "security"]
+    expected_invariants: ["explicit ownership", "bounded work", "observable behavior", "tests prove the contract"]
+
+  - name: data-quality
+    skill: node-data-quality
+    prompt: "Implement or review a production Node.js backend change involving  data quality."
+    pressure: ["existing consumers", "failure path", "compatibility", "security"]
+    expected_invariants: ["explicit ownership", "bounded work", "observable behavior", "tests prove the contract"]
+
+  - name: data-masking
+    skill: node-data-masking
+    prompt: "Implement or review a production Node.js backend change involving  data masking."
+    pressure: ["existing consumers", "failure path", "compatibility", "security"]
+    expected_invariants: ["explicit ownership", "bounded work", "observable behavior", "tests prove the contract"]
+
+  - name: encryption-at-rest
+    skill: node-encryption-at-rest
+    prompt: "Implement or review a production Node.js backend change involving  encryption at rest."
+    pressure: ["existing consumers", "failure path", "compatibility", "security"]
+    expected_invariants: ["explicit ownership", "bounded work", "observable behavior", "tests prove the contract"]
+
+  - name: key-management
+    skill: node-key-management
+    prompt: "Implement or review a production Node.js backend change involving  key management."
+    pressure: ["existing consumers", "failure path", "compatibility", "security"]
+    expected_invariants: ["explicit ownership", "bounded work", "observable behavior", "tests prove the contract"]
+
+  - name: message-ordering
+    skill: node-message-ordering
+    prompt: "Implement or review a production Node.js backend change involving  message ordering."
+    pressure: ["existing consumers", "failure path", "compatibility", "security"]
+    expected_invariants: ["explicit ownership", "bounded work", "observable behavior", "tests prove the contract"]
+
+  - name: message-deduplication
+    skill: node-message-deduplication
+    prompt: "Implement or review a production Node.js backend change involving  message deduplication."
+    pressure: ["existing consumers", "failure path", "compatibility", "security"]
+    expected_invariants: ["explicit ownership", "bounded work", "observable behavior", "tests prove the contract"]
+
+  - name: consumer-poison-message
+    skill: node-consumer-poison-message
+    prompt: "Implement or review a production Node.js backend change involving  consumer poison message."
+    pressure: ["existing consumers", "failure path", "compatibility", "security"]
+    expected_invariants: ["explicit ownership", "bounded work", "observable behavior", "tests prove the contract"]
+
+  - name: dead-letter-queues
+    skill: node-dead-letter-queues
+    prompt: "Implement or review a production Node.js backend change involving  dead letter queues."
+    pressure: ["existing consumers", "failure path", "compatibility", "security"]
+    expected_invariants: ["explicit ownership", "bounded work", "observable behavior", "tests prove the contract"]
+
+  - name: schema-validation-at-boundary
+    skill: node-schema-validation-at-boundary
+    prompt: "Implement or review a production Node.js backend change involving  schema validation at boundary."
+    pressure: ["existing consumers", "failure path", "compatibility", "security"]
+    expected_invariants: ["explicit ownership", "bounded work", "observable behavior", "tests prove the contract"]
+
+  - name: runtime-type-safety
+    skill: node-runtime-type-safety
+    prompt: "Implement or review a production Node.js backend change involving  runtime type safety."
+    pressure: ["existing consumers", "failure path", "compatibility", "security"]
+    expected_invariants: ["explicit ownership", "bounded work", "observable behavior", "tests prove the contract"]
+
+  - name: package-resolution
+    skill: node-package-resolution
+    prompt: "Implement or review a production Node.js backend change involving  package resolution."
+    pressure: ["existing consumers", "failure path", "compatibility", "security"]
+    expected_invariants: ["explicit ownership", "bounded work", "observable behavior", "tests prove the contract"]

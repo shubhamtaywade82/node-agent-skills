@@ -512,7 +512,181 @@ skills:
   - name: node-test-isolation-engineering
     category: testing
     triggers: [test isolation, parallel tests, shared state, test resources]
+  - name: node-api-compatibility
+    category: api
+    triggers: [API compatibility, breaking change, backward compatibility, consumer migration]
+  - name: node-api-contract-migration
+    category: api
+    triggers: [API migration, contract migration, version transition, deprecation migration]
+  - name: node-batch-api-design
+    category: api
+    triggers: [batch API, bulk request, partial success, batch endpoint]
+  - name: node-bulk-operations
+    category: data
+    triggers: [bulk operation, mass update, bulk delete, backfill mutation]
+  - name: node-resource-lifecycle
+    category: domain
+    triggers: [resource lifecycle, state transition, archive, delete lifecycle]
+  - name: node-data-retention
+    category: data
+    triggers: [data retention, deletion policy, expiry, retention schedule]
+  - name: node-data-lineage
+    category: data
+    triggers: [data lineage, provenance, transformation history, source tracking]
+  - name: node-data-quality
+    category: data
+    triggers: [data quality, data validation, data integrity, anomaly detection]
+  - name: node-data-masking
+    category: security
+    triggers: [data masking, PII masking, redaction, sanitized export]
+  - name: node-encryption-at-rest
+    category: security
+    triggers: [encryption at rest, field encryption, storage encryption]
+  - name: node-key-management
+    category: security
+    triggers: [key management, key rotation, KMS, encryption keys]
+  - name: node-message-ordering
+    category: messaging
+    triggers: [message ordering, event ordering, sequence, partition ordering]
+  - name: node-message-deduplication
+    category: messaging
+    triggers: [message deduplication, duplicate delivery, idempotent consumer]
+  - name: node-consumer-poison-message
+    category: messaging
+    triggers: [poison message, consumer retry, quarantine message]
+  - name: node-dead-letter-queues
+    category: messaging
+    triggers: [dead letter queue, DLQ, redrive, failed message]
+  - name: node-schema-validation-at-boundary
+    category: contracts
+    triggers: [runtime schema validation, boundary validation, untrusted input]
+  - name: node-runtime-type-safety
+    category: contracts
+    triggers: [runtime type safety, unknown data, type narrowing, runtime validation]
+  - name: node-package-resolution
+    category: runtime
+    triggers: [Node package resolution, ESM CJS, exports, module resolution, workspace dependency]
 
+  - name: node-permission-model
+    category: security
+    triggers: [Permission Model, --permission, allow-fs-read, allow-child-process]
+  - name: node-async-context-propagation
+    category: runtime
+    triggers: [AsyncLocalStorage, async context, context propagation, correlation]
+  - name: node-request-context
+    category: runtime
+    triggers: [request context, request scoped context, correlation ID, deadline context]
+  - name: node-abort-cancellation
+    category: runtime
+    triggers: [AbortSignal, cancellation, abort, deadline propagation]
+  - name: node-worker-threads
+    category: runtime
+    triggers: [worker_threads, CPU bound, worker pool, event loop]
+  - name: node-child-process-safety
+    category: security
+    triggers: [child_process, execFile, spawn, command injection, subprocess]
+  - name: node-http-body-limits
+    category: api
+    triggers: [HTTP body limit, request size, payload limit, parser limit]
+  - name: node-upload-security
+    category: security
+    triggers: [file upload security, MIME validation, magic bytes, quarantine]
+  - name: node-ssrf-defense
+    category: security
+    triggers: [SSRF, server side request forgery, URL fetch, egress allowlist]
+  - name: node-cache-key-security
+    category: security
+    triggers: [cache key security, authorization cache, cache collision]
+  - name: node-tenant-cache-isolation
+    category: security
+    triggers: [tenant cache isolation, cross tenant cache, shared cache]
+  - name: node-database-index-engineering
+    category: persistence
+    triggers: [database indexes, composite index, partial index, execution plan]
+  - name: node-query-performance
+    category: performance
+    triggers: [query performance, slow query, execution plan, N+1]
+  - name: node-lock-contention
+    category: persistence
+    triggers: [lock contention, deadlock, lock wait, serialization failure]
+  - name: node-connection-leak-detection
+    category: persistence
+    triggers: [connection leak, pool exhaustion, resource leak, connection checkout]
+  - name: node-transaction-retry
+    category: persistence
+    triggers: [transaction retry, serialization failure, deadlock retry, transient database error]
+  - name: node-health-check-engineering
+    category: operations
+    triggers: [health check, liveness, readiness, startup probe, dependency health]
+  - name: node-startup-readiness
+    category: operations
+    triggers: [startup readiness, initialization, readiness gate, startup sequence]
+  - name: node-config-drift-detection
+    category: operations
+    triggers: [configuration drift, effective config, drift detection, config fingerprint]
+  - name: node-generated-code-governance
+    category: build
+    triggers: [code generation, generated code, OpenAPI generation, protobuf generation, reproducible codegen]
+  - name: node-agent-preflight
+    category: agent-governance
+    triggers: [agent preflight, repository inspection, task planning, coding agent]
+  - name: node-agent-evidence-gathering
+    category: agent-governance
+    triggers: [evidence gathering, source of truth, repository evidence, coding agent]
+  - name: node-agent-change-safety
+    category: agent-governance
+    triggers: [change safety, blast radius, scoped change, coding agent]
+  - name: node-agent-verification-reporting
+    category: agent-governance
+    triggers: [verification report, tests run, residual risk, coding agent]
+  - name: node-agent-risk-escalation
+    category: agent-governance
+    triggers: [risk escalation, human approval, uncertainty, irreversible change]
+  - name: node-agent-rollback-planning
+    category: agent-governance
+    triggers: [rollback planning, migration rollback, recovery plan]
+  - name: node-agent-commit-hygiene
+    category: agent-governance
+    triggers: [commit hygiene, focused commits, staged diff, coding agent]
+  - name: node-agent-pr-preparation
+    category: agent-governance
+    triggers: [pull request preparation, PR readiness, base branch, CI]
+  - name: node-dns-engineering
+    category: network
+    triggers: [DNS, hostname resolution, resolver, TTL, IPv4, IPv6]
+  - name: node-tls-certificate-management
+    category: security
+    triggers: [TLS, certificates, trust store, certificate rotation]
+  - name: node-http-proxy-forwarding
+    category: network
+    triggers: [proxy, Forwarded, X-Forwarded-For, trusted proxy]
+  - name: node-http-timeouts
+    category: network
+    triggers: [HTTP timeout, connection timeout, header timeout, request deadline]
+  - name: node-http-keepalive
+    category: network
+    triggers: [HTTP keep alive, connection pooling, socket pool]
+  - name: node-webhook-ingress-security
+    category: security
+    triggers: [webhook security, signed webhook, replay, idempotency]
+  - name: node-request-signature-validation
+    category: security
+    triggers: [request signature, HMAC, signed request, raw body]
+  - name: node-replay-protection
+    category: security
+    triggers: [replay protection, nonce, timestamp, duplicate request]
+  - name: node-csrf-defense
+    category: security
+    triggers: [CSRF, cross site request forgery, browser session]
+  - name: node-open-redirect-defense
+    category: security
+    triggers: [open redirect, next parameter, redirect URL]
+  - name: node-request-smuggling-defense
+    category: security
+    triggers: [HTTP request smuggling, CL TE, message framing]
+  - name: node-header-normalization
+    category: network
+    triggers: [HTTP headers, duplicate headers, header normalization]
 adapters:
   express:
     path: adapters/express/SKILL.md
@@ -744,7 +918,7 @@ adapters:
     source: https://docs.newrelic.com/docs/apm/agents/nodejs-agent/installation-configuration/install-nodejs-agent/
   node-test-runner:
     path: adapters/node-test-runner/SKILL.md
-    version_scope: Node 24.x `node:test`
+    version_scope: Node 24.x node:test
     source: https://nodejs.org/docs/latest-v24.x/api/test.html
   supertest:
     path: adapters/supertest/SKILL.md
@@ -758,3 +932,35 @@ adapters:
     path: adapters/openid-client/SKILL.md
     version_scope: current
     source: https://github.com/panva/openid-client
+  ajv:
+    path: adapters/ajv/SKILL.md
+    version_scope: 8.x
+    source: https://ajv.js.org/
+  jose:
+    path: adapters/jose/SKILL.md
+    version_scope: 6.x
+    source: https://github.com/panva/jose
+  kysely:
+    path: adapters/kysely/SKILL.md
+    version_scope: 0.28.x
+    source: https://kysely.dev/
+  mongodb-memory-server:
+    path: adapters/mongodb-memory-server/SKILL.md
+    version_scope: 10.x
+    source: https://github.com/typegoose/mongodb-memory-server
+  hapi:
+    path: adapters/hapi/SKILL.md
+    version_scope: 21.x.x
+    source: https://hapi.dev/api/21.x.x
+  mercurius:
+    path: adapters/mercurius/SKILL.md
+    version_scope: current
+    source: https://mercurius.dev/
+  graphql-yoga:
+    path: adapters/graphql-yoga/SKILL.md
+    version_scope: 5.x
+    source: https://the-guild.dev/graphql/yoga-server/docs
+  apollo-server:
+    path: adapters/apollo-server/SKILL.md
+    version_scope: 5.x
+    source: https://www.apollographql.com/docs/apollo-server

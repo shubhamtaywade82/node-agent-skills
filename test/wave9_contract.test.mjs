@@ -40,7 +40,7 @@ test("Wave 9 skills have files and evaluation coverage", async () => {
     assert.match(text, new RegExp(`^name: ${skill}$`, "m"));
     assert.match(evals, new RegExp(`skill: ${skill}`, "m"));
   }
-  assert.equal([...manifest.matchAll(/^  - name: ([a-z0-9-]+)$/gm)].length, 168);
+  assert.equal([...manifest.matchAll(/^  - name: ([a-z0-9-]+)$/gm)].length, 226);
 });
 
 test("Wave 9 adapters have registry, skill, README, and source metadata", async () => {

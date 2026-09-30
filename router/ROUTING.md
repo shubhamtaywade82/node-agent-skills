@@ -148,6 +148,67 @@ Route by the dominant backend boundary first. Framework adapters are a translati
 | failure injection testing | node-failure-injection-testing | node-resilience, node-chaos-engineering |
 | test isolation | node-test-isolation-engineering | node-testing, node-test-environment-engineering |
 
+| api-compatibility | node-api-compatibility | node-testing, node-observability |
+| api-contract-migration | node-api-contract-migration | node-testing, node-observability |
+| batch-api-design | node-batch-api-design | node-testing, node-observability |
+| bulk-operations | node-bulk-operations | node-testing, node-observability |
+| resource-lifecycle | node-resource-lifecycle | node-testing, node-observability |
+| data-retention | node-data-retention | node-testing, node-observability |
+| data-lineage | node-data-lineage | node-testing, node-observability |
+| data-quality | node-data-quality | node-testing, node-observability |
+| data-masking | node-data-masking | node-testing, node-observability |
+| encryption-at-rest | node-encryption-at-rest | node-testing, node-observability |
+| key-management | node-key-management | node-testing, node-observability |
+| message-ordering | node-message-ordering | node-testing, node-observability |
+| message-deduplication | node-message-deduplication | node-testing, node-observability |
+| consumer-poison-message | node-consumer-poison-message | node-testing, node-observability |
+| dead-letter-queues | node-dead-letter-queues | node-testing, node-observability |
+| schema-validation-at-boundary | node-schema-validation-at-boundary | node-testing, node-observability |
+| runtime-type-safety | node-runtime-type-safety | node-testing, node-observability |
+| package-resolution | node-package-resolution | node-testing, node-observability |
+
+| permission-model | node-permission-model | node-testing, node-observability |
+| async-context-propagation | node-async-context-propagation | node-testing, node-observability |
+| request-context | node-request-context | node-testing, node-observability |
+| abort-cancellation | node-abort-cancellation | node-testing, node-observability |
+| worker-threads | node-worker-threads | node-testing, node-observability |
+| child-process-safety | node-child-process-safety | node-testing, node-observability |
+| http-body-limits | node-http-body-limits | node-testing, node-observability |
+| upload-security | node-upload-security | node-testing, node-observability |
+| ssrf-defense | node-ssrf-defense | node-testing, node-observability |
+| cache-key-security | node-cache-key-security | node-testing, node-observability |
+| tenant-cache-isolation | node-tenant-cache-isolation | node-testing, node-observability |
+| database-index-engineering | node-database-index-engineering | node-testing, node-observability |
+| query-performance | node-query-performance | node-testing, node-observability |
+| lock-contention | node-lock-contention | node-testing, node-observability |
+| connection-leak-detection | node-connection-leak-detection | node-testing, node-observability |
+| transaction-retry | node-transaction-retry | node-testing, node-observability |
+| health-check-engineering | node-health-check-engineering | node-testing, node-observability |
+| startup-readiness | node-startup-readiness | node-testing, node-observability |
+| config-drift-detection | node-config-drift-detection | node-testing, node-observability |
+| generated-code-governance | node-generated-code-governance | node-testing, node-observability |
+
+| agent-preflight | node-agent-preflight | node-testing, node-observability |
+| agent-evidence-gathering | node-agent-evidence-gathering | node-testing, node-observability |
+| agent-change-safety | node-agent-change-safety | node-testing, node-observability |
+| agent-verification-reporting | node-agent-verification-reporting | node-testing, node-observability |
+| agent-risk-escalation | node-agent-risk-escalation | node-testing, node-observability |
+| agent-rollback-planning | node-agent-rollback-planning | node-testing, node-observability |
+| agent-commit-hygiene | node-agent-commit-hygiene | node-testing, node-observability |
+| agent-pr-preparation | node-agent-pr-preparation | node-testing, node-observability |
+| dns-engineering | node-dns-engineering | node-testing, node-observability |
+| tls-certificate-management | node-tls-certificate-management | node-testing, node-observability |
+| http-proxy-forwarding | node-http-proxy-forwarding | node-testing, node-observability |
+| http-timeouts | node-http-timeouts | node-testing, node-observability |
+| http-keepalive | node-http-keepalive | node-testing, node-observability |
+| webhook-ingress-security | node-webhook-ingress-security | node-testing, node-observability |
+| request-signature-validation | node-request-signature-validation | node-testing, node-observability |
+| replay-protection | node-replay-protection | node-testing, node-observability |
+| csrf-defense | node-csrf-defense | node-testing, node-observability |
+| open-redirect-defense | node-open-redirect-defense | node-testing, node-observability |
+| request-smuggling-defense | node-request-smuggling-defense | node-testing, node-observability |
+| header-normalization | node-header-normalization | node-testing, node-observability |
+
 ## Framework adapter selection
 
 After selecting the core owner, detect the actual framework from dependency manifests/imports before loading an adapter:
@@ -220,3 +281,40 @@ Do not select an adapter merely because the user says "Node API". Core skills ar
 | multi-tenancy | node-multi-tenancy | node-auth-security, node-database-engineering |
 | audit logging | node-audit-logging | node-observability, node-auth-security |
 | data privacy | node-data-privacy | node-secrets, node-observability, node-audit-logging |
+
+| graphql-yoga | adapters/graphql-yoga/SKILL.md | 5.x |
+| apollo-server | adapters/apollo-server/SKILL.md | 5.x |
+
+
+## Primary ownership coverage
+
+Wave 13 makes previously secondary-only foundational capabilities explicit routing owners:
+
+| Domain | Primary | Secondary |
+|---|---|---|
+| architecture boundary | node-architecture | node-typescript-contracts, node-module-boundaries |
+| runtime foundations | node-runtime-foundations | node-production-runtime, node-async-concurrency |
+| async concurrency | node-async-concurrency | node-backpressure, node-abort-cancellation |
+| TypeScript contracts | node-typescript-contracts | node-runtime-validation, node-testing |
+| runtime validation | node-runtime-validation | node-typescript-contracts, node-testing |
+| API engineering | node-api-engineering | node-http-engineering, node-rest-api-design |
+| testing strategy | node-testing | node-integration-testing, node-test-environment-engineering |
+| production runtime | node-production-runtime | node-zero-downtime, node-observability |
+| external integrations | node-external-integrations | node-api-client-engineering, node-retry-timeouts |
+| database transactions | node-transactions | node-postgresql-persistence, node-optimistic-concurrency |
+| Redis | node-redis | node-caching, node-connection-pooling |
+| outbox | node-outbox | node-transactional-outbox, node-event-driven-architecture |
+| domain modeling | node-domain-modeling | node-architecture, node-cqrs |
+| hexagonal architecture | node-hexagonal-architecture | node-domain-modeling, node-dependency-injection |
+| dependency injection | node-dependency-injection | node-module-boundaries, node-architecture |
+| module boundaries | node-module-boundaries | node-architecture, node-change-impact-analysis |
+| integration testing | node-integration-testing | node-testing, node-testcontainers |
+| end-to-end testing | node-e2e-testing | node-integration-testing, node-testing |
+| Testcontainers | node-testcontainers | node-integration-testing, node-test-environment-engineering |
+| load testing | node-load-testing | node-performance, node-capacity-planning |
+| API clients | node-api-client-engineering | node-external-integrations, node-retry-timeouts |
+| file uploads | node-file-uploads | node-http-body-limits, node-upload-security |
+| scheduling | node-scheduling | node-queues, node-time-engineering |
+| multi-tenancy | node-multi-tenancy | node-authorization-models, node-database-engineering |
+| audit logging | node-audit-logging | node-observability, node-security-incident-response |
+| data privacy | node-data-privacy | node-data-retention, node-data-masking |

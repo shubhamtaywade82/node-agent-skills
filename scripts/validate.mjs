@@ -22,25 +22,54 @@ const dirs = (await readdir(path.join(root, "skills"), {withFileTypes:true})).fi
 if (JSON.stringify(dirs) !== JSON.stringify([...names].sort())) throw new Error("manifest/skills mismatch");
 console.log(`validated ${names.length} skills`);
 
-const adapterScopes = { express: "5.x", fastify: "5.x", nestjs: "12.x", hono: "4.x", prisma: "7.x/8.x", drizzle: "current/v1", bullmq: "5.x/6.x", redis: "node-redis-5.x", npm: "current npm CLI", docker: "current Docker/BuildKit", kubernetes: "current Kubernetes API conventions", opentelemetry: "current OpenTelemetry JavaScript SDK", vitest: "current Vitest 5.x", jest: "30.x", testcontainers: "current Node.js Testcontainers", playwright: "current Playwright Test", pg: "current node-postgres", undici: "current undici", zod: "4.x", valibot: "current", typebox: "current", kafkajs: "2.x", "aws-sdk-v3": "v3", pino: "current", prometheus: "current @prometheus-io/client", pnpm: "current", turborepo: "current", nx: "current", "github-actions": "current GitHub Actions / Node.js workflow", terraform: "current Terraform", helm: "current Helm", argocd: "current Argo CD", "aws-cloudwatch": "AWS SDK JavaScript v3", sentry: "current Sentry Node.js SDK", datadog: "current dd-trace", newrelic: "current newrelic", "node-test-runner": "Node 24.x `node:test`", supertest: "current", oauth4webapi: "3.x", "openid-client": "current" };
-for (const [name, scope] of Object.entries(adapterScopes)) {
-  const lines = manifest.split("\n");
-  const index = lines.indexOf("  " + name + ":");
-  if (index < 0) throw new Error("adapter registry mismatch: " + name);
-  if (lines[index + 1] !== "    path: adapters/" + name + "/SKILL.md") {
-    throw new Error("adapter path mismatch: " + name);
-  }
-  if (lines[index + 2] !== "    version_scope: " + scope) {
-    throw new Error("adapter version_scope mismatch: " + name);
-  }
-  if (!/^    source: https:\/\//.test(lines[index + 3] ?? "")) {
-    throw new Error("adapter source missing: " + name);
-  }
-  for (const relative of ["adapters/" + name + "/SKILL.md", "adapters/" + name + "/README.md"]) {
-    const file = path.join(root, relative);
-    await access(file);
-    const adapterText = await readFile(file, "utf8");
-    if (adapterText.split("\n").length > 500) throw new Error(relative + ": exceeds 500 lines");
-  }
+const adapterEntries = [];
+const manifestLines = manifest.split("\n");
+for (let index = 0; index < manifestLines.length; index += 1) {
+  const match = manifestLines[index].match(/^  ([a-z0-9-]+):$/);
+  if (!match) continue;
+  const name = match[1];
+  const pathLine = manifestLines[index + 1] ?? "";
+  const scopeLine = manifestLines[index + 2] ?? "";
+  const sourceLine = manifestLines[index + 3] ?? "";
+  const pathPrefix = "    path: ";
+  const scopePrefix = "    version_scope: ";
+  const sourcePrefix = "    source: ";
+  if (!pathLine.startsWith(pathPrefix) || !pathLine.slice(pathPrefix.length).startsWith("adapters/")) continue;
+  if (!scopeLine.startsWith(scopePrefix) || !scopeLine.slice(scopePrefix.length).trim()) continue;
+  if (!sourceLine.startsWith(sourcePrefix) || !sourceLine.slice(sourcePrefix.length).startsWith("https://")) continue;
+  adapterEntries.push({
+    name,
+    path: pathLine.slice(pathPrefix.length),
+    versionScope: scopeLine.slice(scopePrefix.length),
+    source: sourceLine.slice(sourcePrefix.length),
+  });
 }
-console.log("validated " + names.length + " skills and " + Object.keys(adapterScopes).length + " adapters");
+if (!adapterEntries.length) throw new Error("manifest contains no adapters");
+if (new Set(adapterEntries.map((adapter) => adapter.name)).size !== adapterEntries.length) {
+  throw new Error("duplicate adapter name");
+}
+
+for (const { name, path: adapterPath, versionScope, source } of adapterEntries) {
+  if (!adapterPath.endsWith("/SKILL.md")) throw new Error("adapter path mismatch: " + name);
+  if (!versionScope.trim()) throw new Error("adapter version_scope missing: " + name);
+  if (!source.startsWith("https://")) throw new Error("adapter source missing: " + name);
+  const expectedPath = path.join(root, adapterPath);
+  const readmePath = path.join(root, "adapters", name, "README.md");
+  await access(expectedPath);
+  await access(readmePath);
+  const adapterText = await readFile(expectedPath, "utf8");
+  const readmeText = await readFile(readmePath, "utf8");
+  if (adapterText.split("\n").length > 500) throw new Error(adapterPath + ": exceeds 500 lines");
+  if (readmeText.split("\n").length > 500) throw new Error(readmePath + ": exceeds 500 lines");
+}
+
+const adapterDirs = (await readdir(path.join(root, "adapters"), {withFileTypes:true}))
+  .filter((entry) => entry.isDirectory())
+  .map((entry) => entry.name)
+  .sort();
+const registeredAdapterDirs = adapterEntries.map((adapter) => adapter.name).sort();
+if (JSON.stringify(adapterDirs) !== JSON.stringify(registeredAdapterDirs)) {
+  throw new Error("manifest/adapters mismatch");
+}
+
+console.log("validated " + names.length + " skills and " + adapterEntries.length + " adapters");

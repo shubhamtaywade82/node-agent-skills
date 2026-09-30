@@ -86,7 +86,24 @@ npm run validate
 - Session revocation, OAuth/OIDC, MFA, password storage, and enumeration defense
 - Native Node test runner, HTTP integration testing, benchmarking, failure injection, and test isolation
 
-### Framework and infrastructure adapters
+### Data, API, messaging, and runtime wave
+- API compatibility and contract migration, batch/bulk operations, and resource lifecycle
+- Data retention, lineage, quality, masking, encryption, and key management
+- Message ordering, deduplication, poison-message handling, and DLQs
+- Boundary schema validation, runtime type safety, and Node package-resolution diagnostics
+
+### Runtime, data, security, and lifecycle wave
+- Node permission model, async/request context, cancellation, workers, and safe child processes
+- HTTP body limits, secure uploads, SSRF defense, cache-key and tenant-cache isolation
+- Database indexes, query performance, lock contention, connection-leak detection, transaction retry
+- Health checks, startup readiness, configuration-drift detection, and generated-code governance
+
+### Agent governance and HTTP/network security wave
+- Agent preflight, evidence gathering, change safety, verification reporting, risk escalation, rollback planning
+- Commit/PR hygiene and merge-readiness discipline
+- DNS, TLS/certificate management, proxy forwarding, HTTP timeouts and keep-alive
+- Secure webhook ingress, request signatures, replay protection, CSRF, redirects, request smuggling, header normalization
+
 | Adapter | Guide | Supported scope |
 |---|---|---|
 | Express | adapters/express/SKILL.md | 5.x |
@@ -136,6 +153,12 @@ npm run validate
 | OpenTelemetry | adapters/opentelemetry/SKILL.md | current JS SDK |
 
 Adapters are conditional. Agents must detect the framework/library and installed version from the target repository before applying adapter-specific guidance.
+
+## Current capability line
+
+Wave 12 brings the repository to **226 core skills** and **69 adapters**. The pack now covers both backend engineering mechanics and the agent execution discipline needed to apply those skills safely.
+
+Agent-facing workflow additions include repository preflight, evidence gathering, change-scope control, verification reporting, risk escalation, rollback planning, commit hygiene, and PR preparation.
 
 ## Architecture
 `skills/` contains framework-neutral routed knowledge units. `skill-manifest.yml` is the registry and includes version-scoped adapter metadata. `router/` defines ownership and adapter selection. `scripts/validate.mjs` checks consistency. `test/` protects repository contracts. `evals/` contains behavioral pressure scenarios.
@@ -217,3 +240,18 @@ Adapters are conditional. Agents must detect the framework/library and installed
 - https://github.com/panva/openid-client
 
 CI workflow is validated on GitHub Actions for the current capability branch.
+
+- https://ajv.js.org/
+- https://github.com/panva/jose
+- https://kysely.dev/
+- https://github.com/typegoose/mongodb-memory-server
+
+- https://the-guild.dev/graphql/yoga-server/docs
+- https://www.apollographql.com/docs/apollo-server
+
+
+### Wave 12 — agent governance and network security
+- AI-agent preflight, evidence gathering, change safety, verification reporting, escalation, rollback, commit, and PR preparation
+- DNS, TLS/certificate management, proxy forwarding, HTTP timeouts/keep-alive
+- Webhook ingress, request signatures, replay protection, CSRF, open redirects, request smuggling, header normalization
+- GraphQL Yoga 5.x and Apollo Server 5.x adapters
