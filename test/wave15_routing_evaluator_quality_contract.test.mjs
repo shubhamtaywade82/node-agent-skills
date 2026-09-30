@@ -13,7 +13,7 @@ const registered = new Set([
   "node-testing",
 ]);
 
-test("Wave 15 corpus validation requires discriminative routing metadata", () => {
+test("Wave 15 corpus validation requires discriminative routing metadata in evaluation mode", () => {
   const errors = validateRoutingCorpus(
     [{
       name: "incomplete",
@@ -21,6 +21,8 @@ test("Wave 15 corpus validation requires discriminative routing metadata", () =>
       must_not_select: ["node-http-engineering"],
     }],
     registered,
+    new Set(),
+    { requireEvaluationMetadata: true },
   );
 
   assert.deepEqual(errors.sort(), [
