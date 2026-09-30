@@ -13,7 +13,7 @@ test("accepts the adapter required by an adapter-specific routing case", () => {
       name: "express-api",
       skill: "node-http-engineering",
       adapter: "adapters/express/SKILL.md",
-      must_not_select: ["node-runtime-validation"],
+      must_not_select: ["node-rest-api-design", "node-testing"],
     },
     {
       primary: "node-http-engineering",
@@ -23,6 +23,7 @@ test("accepts the adapter required by an adapter-specific routing case", () => {
     registered
   );
   assert.equal(result.pass, true);
+  assert.equal(result.adapter, "adapters/express/SKILL.md");
 });
 
 test("rejects an incorrect adapter selection", () => {
