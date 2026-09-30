@@ -6,6 +6,7 @@ import { fileURLToPath } from "node:url";
 import {
   evaluateRoutingCase,
   parseRoutingCases,
+  parseRoutingDecisions,
   summarizeRoutingResults,
   validateRoutingCorpus,
 } from "../lib/routing-evaluator.mjs";
@@ -48,14 +49,18 @@ if (!decisionsPath) {
   } else {
   const corpusNames = new Set(cases.map((caseDefinition) => caseDefinition.name));
 
-  const decisions = new Map();
-  for (const line of decisionsText.split(/\r?\n/)) {
-    if (!line.trim()) continue;
-    const decision = JSON.parse(line);
-    if (!decision.case) throw new Error("routing decision is missing case");
-    if (decisions.has(decision.case)) throw new Error("duplicate routing decision: " + decision.case);
-    decisions.set(decision.case, decision);
-  }
+  const decisionsResult = parseRoutingDecisions(decisionsText);
+  if (!(decisionsResult instanceof Map)) {
+    console.log(JSON.stringify({
+      total: cases.length,
+      passed: 0,
+      failed: cases.length,
+      primary_accuracy: 0,
+      failures: [{ case: null, errors: decisionsResult.errors, primary: null }],
+    }, null, 2));
+    process.exitCode = 1;
+  } else {
+  const decisions = decisionsResult;
 
   const results = cases.map((caseDefinition) => {
     const decision = decisions.get(caseDefinition.name);
@@ -84,5 +89,6 @@ if (!decisionsPath) {
   const report = summarizeRoutingResults(results);
   console.log(JSON.stringify(report, null, 2));
   process.exitCode = report.failed === 0 ? 0 : 1;
+  }
   }
 }
