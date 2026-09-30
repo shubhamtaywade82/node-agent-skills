@@ -156,9 +156,9 @@ Adapters are conditional. Agents must detect the framework/library and installed
 
 ## Current capability line
 
-Wave 12 brings the repository to **226 core skills** and **69 adapters**. The pack now covers both backend engineering mechanics and the agent execution discipline needed to apply those skills safely.
+Wave 15 brings the repository to **226 core skills** and **69 adapters**. The pack now covers backend engineering mechanics, agent execution discipline, and deterministic routing evaluation with explicit quality metrics.
 
-Agent-facing workflow additions include repository preflight, evidence gathering, change-scope control, verification reporting, risk escalation, rollback planning, commit hygiene, PR preparation, and deterministic routing evaluation.
+Agent-facing workflow additions include repository preflight, evidence gathering, change-scope control, verification reporting, risk escalation, rollback planning, commit hygiene, PR preparation, and routing-evaluator hardening.
 
 ## Architecture
 `skills/` contains framework-neutral routed knowledge units. `skill-manifest.yml` is the registry and includes version-scoped adapter metadata. `router/` defines ownership and adapter selection. `scripts/validate.mjs` checks consistency. `test/` protects repository contracts. `evals/` contains behavioral pressure scenarios.

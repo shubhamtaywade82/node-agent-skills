@@ -36,13 +36,20 @@ if (!decisionsPath) {
   const registeredAdapters = new Set(
     [...manifestText.matchAll(/^    path: (adapters\/[^\n]+)$/gm)].map((match) => match[1].trim())
   );
-  const corpusErrors = validateRoutingCorpus(cases, registeredSkills, registeredAdapters);
+  const corpusErrors = validateRoutingCorpus(
+    cases,
+    registeredSkills,
+    registeredAdapters,
+    { requireEvaluationMetadata: true },
+  );
   if (corpusErrors.length > 0) {
     console.log(JSON.stringify({
       total: cases.length,
       passed: 0,
       failed: cases.length,
       primary_accuracy: 0,
+      adapter_accuracy: null,
+      secondary_violation_rate: 0,
       failures: [{ case: null, errors: corpusErrors, primary: null }],
     }, null, 2));
     process.exitCode = 1;
@@ -56,6 +63,8 @@ if (!decisionsPath) {
       passed: 0,
       failed: cases.length,
       primary_accuracy: 0,
+      adapter_accuracy: null,
+      secondary_violation_rate: 0,
       failures: [{ case: null, errors: decisionsResult.errors, primary: null }],
     }, null, 2));
     process.exitCode = 1;

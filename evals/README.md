@@ -31,7 +31,7 @@ The evaluator fails closed for:
 - forbidden or unknown skills: FORBIDDEN_* and UNKNOWN_SKILL
 - missing or incorrect adapters: ADAPTER_MISSING, ADAPTER_MISMATCH, UNEXPECTED_ADAPTER
 
-The corpus is validated before scoring. Invalid primary, secondary, forbidden-skill, duplicate-case, or adapter references stop evaluation.
+The corpus is validated in strict evaluation mode before scoring. Required prompt, routing-signal, negative-signal, evidence, disambiguation, forbidden-skill, and invariant metadata must be present. Invalid primary, secondary, forbidden-skill, duplicate-case, or adapter references stop evaluation.
 
 ## Report contract
 
@@ -40,10 +40,16 @@ The corpus is validated before scoring. Invalid primary, secondary, forbidden-sk
       "passed": 20,
       "failed": 0,
       "primary_accuracy": 1,
+      "adapter_accuracy": 1,
+      "secondary_violation_rate": 0,
       "failures": []
     }
 
 primary_accuracy is calculated only over scored corpus cases; missing and extra submissions do not inflate it.
+
+adapter_accuracy is calculated only across cases that explicitly require an adapter and is null when the corpus has no adapter-required cases.
+
+secondary_violation_rate measures scored decisions that contain malformed, duplicate, self-referential, unknown, or forbidden secondary selections.
 
 ## Agent workflow
 
