@@ -40,7 +40,7 @@ evaluate behavior and invariants, not prose style; include adversarial pressure;
 4. Include repository-context pressure.
 5. Record expected evidence.
 6. Run the regression set after changes.
-7. For routing changes, submit one JSONL decision per evaluation case and fail closed on missing, extra, malformed, or incompatible selections.
+7. For routing changes, submit one JSONL routing decision per evaluation case and fail closed on missing, extra, malformed, or incompatible selections.
 
 ## Failure modes
 
