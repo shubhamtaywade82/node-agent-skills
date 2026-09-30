@@ -25,10 +25,22 @@ async function withFixture(callback) {
     const cases = `cases:
   - name: rest
     skill: node-rest-api-design
+    prompt: "Design a REST resource endpoint with explicit response and error semantics."
+    routing_signals: ["resource endpoint", "status code"]
+    negative_signals: ["HTTP middleware only"]
+    evidence: ["route implementation", "API tests"]
+    disambiguation: "The requested unit is resource design, not transport middleware."
     must_not_select: [node-http-engineering]
+    expected_invariants: ["stable response contract", "validated boundary"]
   - name: timeout
     skill: node-http-timeouts
+    prompt: "Bound an outbound request with an explicit deadline and cancellation path."
+    routing_signals: ["deadline", "AbortSignal"]
+    negative_signals: ["socket reuse"]
+    evidence: ["HTTP client call site", "timeout tests"]
+    disambiguation: "The dominant concern is bounded request lifetime, not connection pooling."
     must_not_select: [node-http-keepalive]
+    expected_invariants: ["bounded execution", "cancellation propagates"]
 `;
     await writeFile(path.join(dir, "cases.yml"), cases);
     return await callback(dir);

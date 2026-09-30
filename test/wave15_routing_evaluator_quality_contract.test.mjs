@@ -28,6 +28,7 @@ test("Wave 15 corpus validation requires discriminative routing metadata in eval
   assert.deepEqual(errors.sort(), [
     "DISAMBIGUATION_MISSING",
     "EVIDENCE_MISSING",
+    "EXPECTED_INVARIANTS_MISSING",
     "NEGATIVE_SIGNALS_MISSING",
     "PROMPT_MISSING",
     "ROUTING_SIGNALS_MISSING",
