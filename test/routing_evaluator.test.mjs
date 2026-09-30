@@ -80,6 +80,8 @@ test("summarizes corpus results without hiding failures", () => {
     passed: 1,
     failed: 1,
     primary_accuracy: 0.5,
+    adapter_accuracy: null,
+    secondary_violation_rate: 0,
     failures: [{ case: "bad", errors: ["PRIMARY_MISMATCH"], primary: "node-b" }],
   });
 });
