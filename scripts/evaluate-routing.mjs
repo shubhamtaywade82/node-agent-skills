@@ -7,6 +7,7 @@ import {
   evaluateRoutingCase,
   parseRoutingCases,
   summarizeRoutingResults,
+  validateRoutingCorpus,
 } from "../lib/routing-evaluator.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -28,10 +29,24 @@ if (!decisionsPath) {
   const manifestText = await readFile(path.join(root, "skill-manifest.yml"), "utf8");
 
   const cases = parseRoutingCases(casesText);
-  const corpusNames = new Set(cases.map((caseDefinition) => caseDefinition.name));
   const registeredSkills = new Set(
     [...manifestText.matchAll(/^  - name: ([a-z0-9-]+)$/gm)].map((match) => match[1])
   );
+  const registeredAdapters = new Set(
+    [...manifestText.matchAll(/^    path: (adapters\/[^\n]+)$/gm)].map((match) => match[1].trim())
+  );
+  const corpusErrors = validateRoutingCorpus(cases, registeredSkills, registeredAdapters);
+  if (corpusErrors.length > 0) {
+    console.log(JSON.stringify({
+      total: cases.length,
+      passed: 0,
+      failed: cases.length,
+      primary_accuracy: 0,
+      failures: [{ case: null, errors: corpusErrors, primary: null }],
+    }, null, 2));
+    process.exitCode = 1;
+  } else {
+  const corpusNames = new Set(cases.map((caseDefinition) => caseDefinition.name));
 
   const decisions = new Map();
   for (const line of decisionsText.split(/\r?\n/)) {
@@ -69,4 +84,5 @@ if (!decisionsPath) {
   const report = summarizeRoutingResults(results);
   console.log(JSON.stringify(report, null, 2));
   process.exitCode = report.failed === 0 ? 0 : 1;
+  }
 }
