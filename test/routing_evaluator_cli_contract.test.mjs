@@ -70,6 +70,8 @@ test("CLI evaluates a complete decision corpus", async () => {
       { total: report.total, passed: report.passed, failed: report.failed },
       { total: 2, passed: 2, failed: 0 }
     );
+    assert.equal(report.adapter_accuracy, null);
+    assert.equal(report.secondary_violation_rate, 0);
   });
 });
 

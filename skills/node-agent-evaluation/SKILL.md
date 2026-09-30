@@ -26,6 +26,8 @@ building deterministic evaluation cases that measure AI coding-agent behavior.
 evaluate behavior and invariants, not prose style; include adversarial pressure; keep fixtures deterministic; never weaken validators to improve scores
 
 - For routing evaluation, use `npm run eval:routing -- --decisions <jsonl>` and treat its machine-readable failure codes as the source of truth.
+- Require strict corpus metadata validation for evaluation workflows; missing prompt, routing-signal, evidence, disambiguation, or invariant metadata is a corpus defect, not a scoring adjustment.
+- Track primary accuracy, adapter accuracy, and secondary violation rate separately so a good primary route cannot hide adapter or secondary-selection regressions.
 
 - Prefer the smallest design that makes ownership, failure, and observability explicit.
 - Detect exact dependency versions before using version-specific APIs.
