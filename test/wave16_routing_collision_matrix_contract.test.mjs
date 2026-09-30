@@ -20,8 +20,8 @@ test("Wave 16 routing collision matrix reaches 60 discriminative cases", () => {
   const cases = parseRoutingCases(casesText);
   const primarySkills = new Set(cases.map((caseDefinition) => caseDefinition.skill));
 
-  assert.equal(cases.length, 60);
-  assert.equal(primarySkills.size, 60);
+  assert.equal(cases.length, 100);
+  assert.equal(primarySkills.size, 100);
 
   for (const caseDefinition of cases) {
     assert.ok(caseDefinition.prompt, caseDefinition.name);

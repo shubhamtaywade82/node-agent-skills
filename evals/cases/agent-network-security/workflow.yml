@@ -844,7 +844,7 @@ cases:
     prompt: "Define creation, activation, suspension, deletion, and cleanup transitions for a long-lived backend resource with explicit legal states."
     pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
     routing_signals: ["resource state","lifecycle transition","cleanup","state machine"]
-    negative_signals: ["node-domain-modeling","node-state-machines"]
+    negative_signals: ["node-domain-modeling","node-design-patterns"]
     evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
     disambiguation: "Select the owner from the dominant contract and distinguish it from the adjacent concerns named as negatives."
     must_not_select: ["node-domain-modeling","node-state-machines"]
