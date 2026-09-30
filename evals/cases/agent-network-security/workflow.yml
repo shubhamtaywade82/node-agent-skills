@@ -599,3 +599,403 @@ cases:
     disambiguation: "The primary concern is dependency lifecycle and compatibility migration, not broad legacy modernization or package export design."
     must_not_select: ["node-legacy-modernization","node-package-tooling"]
     expected_invariants: ["explicit dependency boundary", "compatible consumers", "reproducible install", "tests prove the contract"]
+  - name: observability-validation
+    skill: node-observability-validation
+    prompt: "Verify that a backend service emits the required metrics, logs, traces, and health signals with stable names and useful cardinality before calling an observability rollout complete."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["metric contract","log fields","trace propagation","health signal"]
+    negative_signals: ["node-observability","node-sli-slo-engineering"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the owner from the dominant contract and distinguish it from the adjacent concerns named as negatives."
+    must_not_select: ["node-observability","node-sli-slo-engineering"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: runbook-engineering
+    skill: node-runbook-engineering
+    prompt: "Turn an operational recovery procedure into an executable runbook with prerequisites, commands, decision points, rollback steps, and verification evidence."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["runbook","operator steps","decision point","rollback"]
+    negative_signals: ["node-documentation-engineering","node-incident-engineering"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the owner from the dominant contract and distinguish it from the adjacent concerns named as negatives."
+    must_not_select: ["node-documentation-engineering","node-incident-engineering"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: sli-slo-engineering
+    skill: node-sli-slo-engineering
+    prompt: "Define service-level indicators and objectives for an API, including latency/error measurement boundaries and an explicit service-level target."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["SLI","SLO","latency window","error ratio"]
+    negative_signals: ["node-observability","node-error-budget-engineering"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the owner from the dominant contract and distinguish it from the adjacent concerns named as negatives."
+    must_not_select: ["node-observability","node-error-budget-engineering"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: error-budget-engineering
+    skill: node-error-budget-engineering
+    prompt: "Use an established service objective to determine the remaining error budget and how it constrains release risk and operational work."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["error budget","burn rate","release policy","budget remaining"]
+    negative_signals: ["node-sli-slo-engineering","node-release-engineering"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the owner from the dominant contract and distinguish it from the adjacent concerns named as negatives."
+    must_not_select: ["node-sli-slo-engineering","node-release-engineering"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: service-ownership
+    skill: node-service-ownership
+    prompt: "Document the owning team, escalation path, dependencies, and operational responsibility for a Node.js service that currently has ambiguous ownership."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["service owner","dependency map","escalation path","operational responsibility"]
+    negative_signals: ["node-documentation-engineering","node-incident-engineering"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the owner from the dominant contract and distinguish it from the adjacent concerns named as negatives."
+    must_not_select: ["node-documentation-engineering","node-incident-engineering"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: oncall-readiness
+    skill: node-oncall-readiness
+    prompt: "Assess whether an on-call rotation has actionable alerts, ownership, escalation, dashboards, and recovery procedures before taking production responsibility."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["on-call","alert actionability","escalation","recovery procedure"]
+    negative_signals: ["node-operational-readiness","node-runbook-engineering"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the owner from the dominant contract and distinguish it from the adjacent concerns named as negatives."
+    must_not_select: ["node-operational-readiness","node-runbook-engineering"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: operational-readiness
+    skill: node-operational-readiness
+    prompt: "Gate a production release on readiness evidence covering dependencies, rollback, monitoring, capacity, ownership, and recovery paths."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["production readiness","dependency checks","rollback readiness","operational gate"]
+    negative_signals: ["node-release-engineering","node-disaster-recovery"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the owner from the dominant contract and distinguish it from the adjacent concerns named as negatives."
+    must_not_select: ["node-release-engineering","node-disaster-recovery"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: security-incident-response
+    skill: node-security-incident-response
+    prompt: "Coordinate response to a leaked credential or security event by preserving evidence, containing access, rotating affected secrets, and recording actions."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["security incident","containment","credential rotation","evidence preservation"]
+    negative_signals: ["node-secrets","node-incident-engineering"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the owner from the dominant contract and distinguish it from the adjacent concerns named as negatives."
+    must_not_select: ["node-secrets","node-incident-engineering"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: vulnerability-management
+    skill: node-vulnerability-management
+    prompt: "Manage a dependency or runtime vulnerability from detection through severity assessment, remediation, verification, and exception tracking."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["CVE","severity","remediation","exception"]
+    negative_signals: ["node-supply-chain","node-dependency-upgrades"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the owner from the dominant contract and distinguish it from the adjacent concerns named as negatives."
+    must_not_select: ["node-supply-chain","node-dependency-upgrades"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: auth-session-revocation
+    skill: node-auth-session-revocation
+    prompt: "Invalidate active sessions or refresh tokens after a credential compromise without requiring a password reset for unrelated accounts."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["session revocation","refresh token","credential compromise","active sessions"]
+    negative_signals: ["node-session-management","node-auth-security"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the owner from the dominant contract and distinguish it from the adjacent concerns named as negatives."
+    must_not_select: ["node-session-management","node-auth-security"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: oauth-client-security
+    skill: node-oauth-client-security
+    prompt: "Secure an OAuth client integration with redirect URI controls, state handling, client authentication, and token storage boundaries."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["OAuth client","redirect URI","state","token storage"]
+    negative_signals: ["node-oidc-integration","node-auth-security"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the owner from the dominant contract and distinguish it from the adjacent concerns named as negatives."
+    must_not_select: ["node-oidc-integration","node-auth-security"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: oidc-integration
+    skill: node-oidc-integration
+    prompt: "Integrate an OpenID Connect identity provider, including issuer discovery, ID-token validation, nonce handling, and claim mapping."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["OIDC","issuer","ID token","nonce"]
+    negative_signals: ["node-oauth-client-security","node-auth-security"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the owner from the dominant contract and distinguish it from the adjacent concerns named as negatives."
+    must_not_select: ["node-oauth-client-security","node-auth-security"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: mfa-engineering
+    skill: node-mfa-engineering
+    prompt: "Add multi-factor authentication enrollment and verification with recovery codes, factor lifecycle, and step-up authentication semantics."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["MFA","factor enrollment","recovery codes","step-up"]
+    negative_signals: ["node-auth-security","node-auth-session-revocation"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the owner from the dominant contract and distinguish it from the adjacent concerns named as negatives."
+    must_not_select: ["node-auth-security","node-auth-session-revocation"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: password-storage
+    skill: node-password-storage
+    prompt: "Replace insecure password handling with a modern password hashing scheme, calibrated cost, secure comparison, and migration strategy."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["password hashing","work factor","salt","credential migration"]
+    negative_signals: ["node-cryptography","node-auth-security"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the owner from the dominant contract and distinguish it from the adjacent concerns named as negatives."
+    must_not_select: ["node-cryptography","node-auth-security"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: user-enumeration-defense
+    skill: node-user-enumeration-defense
+    prompt: "Prevent account discovery through login, password-reset, or signup responses while preserving useful abuse telemetry."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["account enumeration","response parity","timing parity","abuse telemetry"]
+    negative_signals: ["node-auth-security","node-rate-limiting"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the owner from the dominant contract and distinguish it from the adjacent concerns named as negatives."
+    must_not_select: ["node-auth-security","node-rate-limiting"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: native-test-runner
+    skill: node-native-test-runner
+    prompt: "Migrate a backend test suite to the built-in Node.js test runner while preserving isolation, hooks, assertions, and deterministic parallel execution."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["node:test","test hooks","parallel execution","assertions"]
+    negative_signals: ["node-testing","node-test-environment-engineering"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the owner from the dominant contract and distinguish it from the adjacent concerns named as negatives."
+    must_not_select: ["node-testing","node-test-environment-engineering"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: http-testing
+    skill: node-http-testing
+    prompt: "Exercise an HTTP server through real requests, validating headers, status codes, streaming behavior, and error responses at the transport boundary."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["HTTP integration test","headers","status code","real request"]
+    negative_signals: ["node-integration-testing","node-http-engineering"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the owner from the dominant contract and distinguish it from the adjacent concerns named as negatives."
+    must_not_select: ["node-integration-testing","node-http-engineering"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: benchmark-engineering
+    skill: node-benchmark-engineering
+    prompt: "Create a reproducible microbenchmark for a hot Node.js code path with warmup, iterations, variance checks, and regression thresholds."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["microbenchmark","warmup","iterations","regression threshold"]
+    negative_signals: ["node-performance","node-load-testing"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the owner from the dominant contract and distinguish it from the adjacent concerns named as negatives."
+    must_not_select: ["node-performance","node-load-testing"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: failure-injection-testing
+    skill: node-failure-injection-testing
+    prompt: "Inject controlled dependency failures into a backend workflow to verify timeout, retry, fallback, and cleanup behavior under deterministic conditions."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["failure injection","dependency fault","fallback","cleanup"]
+    negative_signals: ["node-chaos-engineering","node-resilience"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the owner from the dominant contract and distinguish it from the adjacent concerns named as negatives."
+    must_not_select: ["node-chaos-engineering","node-resilience"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: test-isolation-engineering
+    skill: node-test-isolation-engineering
+    prompt: "Eliminate state leakage between backend tests involving environment variables, ports, databases, timers, and shared process state."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["test isolation","shared state","environment reset","parallel tests"]
+    negative_signals: ["node-testing","node-test-environment-engineering"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the owner from the dominant contract and distinguish it from the adjacent concerns named as negatives."
+    must_not_select: ["node-testing","node-test-environment-engineering"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: api-compatibility
+    skill: node-api-compatibility
+    prompt: "Verify that a backend API change remains compatible with existing consumers, including response shape, status semantics, and additive versus breaking changes."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["consumer compatibility","response shape","breaking change","compatibility check"]
+    negative_signals: ["node-api-versioning","node-contract-testing"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the owner from the dominant contract and distinguish it from the adjacent concerns named as negatives."
+    must_not_select: ["node-api-versioning","node-contract-testing"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: api-contract-migration
+    skill: node-api-contract-migration
+    prompt: "Move API consumers from an old contract to a new one with explicit compatibility windows, staged migration, and removal criteria."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["contract migration","compatibility window","consumer rollout","removal criteria"]
+    negative_signals: ["node-api-compatibility","node-api-deprecation"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the owner from the dominant contract and distinguish it from the adjacent concerns named as negatives."
+    must_not_select: ["node-api-compatibility","node-api-deprecation"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: batch-api-design
+    skill: node-batch-api-design
+    prompt: "Design a backend endpoint for processing many resources in one request with per-item outcomes, bounded work, and idempotent semantics."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["batch endpoint","per-item result","bounded batch","idempotency"]
+    negative_signals: ["node-bulk-operations","node-rest-api-design"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the owner from the dominant contract and distinguish it from the adjacent concerns named as negatives."
+    must_not_select: ["node-bulk-operations","node-rest-api-design"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: bulk-operations
+    skill: node-bulk-operations
+    prompt: "Implement large-scale backend mutations with chunking, progress tracking, partial-failure handling, and resource limits."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["bulk mutation","chunking","partial failure","progress tracking"]
+    negative_signals: ["node-batch-processing","node-load-shedding"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the owner from the dominant contract and distinguish it from the adjacent concerns named as negatives."
+    must_not_select: ["node-batch-processing","node-load-shedding"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: resource-lifecycle
+    skill: node-resource-lifecycle
+    prompt: "Define creation, activation, suspension, deletion, and cleanup transitions for a long-lived backend resource with explicit legal states."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["resource state","lifecycle transition","cleanup","state machine"]
+    negative_signals: ["node-domain-modeling","node-design-patterns"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the owner from the dominant contract and distinguish it from the adjacent concerns named as negatives."
+    must_not_select: ["node-domain-modeling","node-design-patterns"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: data-retention
+    skill: node-data-retention
+    prompt: "Apply retention periods to application data and logs, including expiry jobs, legal holds, deletion evidence, and exceptions."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["retention period","expiry","legal hold","deletion evidence"]
+    negative_signals: ["node-data-privacy","node-data-archival"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the owner from the dominant contract and distinguish it from the adjacent concerns named as negatives."
+    must_not_select: ["node-data-privacy","node-data-archival"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: data-lineage
+    skill: node-data-lineage
+    prompt: "Trace a derived data field from its source records through transformations and downstream consumers so changes can be impact-assessed."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["data lineage","source-to-target","transformation","consumer trace"]
+    negative_signals: ["node-data-quality","node-change-impact-analysis"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the owner from the dominant contract and distinguish it from the adjacent concerns named as negatives."
+    must_not_select: ["node-data-quality","node-change-impact-analysis"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: data-quality
+    skill: node-data-quality
+    prompt: "Establish measurable data-quality checks for completeness, uniqueness, validity, and freshness before downstream consumers trust a dataset."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["data quality","completeness","uniqueness","freshness"]
+    negative_signals: ["node-data-lineage","node-runtime-validation"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the owner from the dominant contract and distinguish it from the adjacent concerns named as negatives."
+    must_not_select: ["node-data-lineage","node-runtime-validation"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: data-masking
+    skill: node-data-masking
+    prompt: "Mask or tokenize sensitive fields in logs, exports, and non-production datasets while preserving enough structure for debugging and testing."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["data masking","tokenization","sensitive field","non-production data"]
+    negative_signals: ["node-data-privacy","node-secrets"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the owner from the dominant contract and distinguish it from the adjacent concerns named as negatives."
+    must_not_select: ["node-data-privacy","node-secrets"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: encryption-at-rest
+    skill: node-encryption-at-rest
+    prompt: "Protect persisted sensitive data with encryption at rest, including key selection, rotation effects, backup coverage, and recovery procedures."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["encryption at rest","storage encryption","key rotation","backup coverage"]
+    negative_signals: ["node-key-management","node-data-privacy"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the owner from the dominant contract and distinguish it from the adjacent concerns named as negatives."
+    must_not_select: ["node-key-management","node-data-privacy"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: key-management
+    skill: node-key-management
+    prompt: "Manage application encryption keys across creation, access control, rotation, versioning, and retirement without exposing key material."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["key lifecycle","rotation","key version","access control"]
+    negative_signals: ["node-encryption-at-rest","node-secrets"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the owner from the dominant contract and distinguish it from the adjacent concerns named as negatives."
+    must_not_select: ["node-encryption-at-rest","node-secrets"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: message-ordering
+    skill: node-message-ordering
+    prompt: "Preserve required ordering for messages sharing a business key while allowing unrelated keys to process concurrently."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["message ordering","partition key","sequence","per-key concurrency"]
+    negative_signals: ["node-message-delivery","node-message-brokers"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the owner from the dominant contract and distinguish it from the adjacent concerns named as negatives."
+    must_not_select: ["node-message-delivery","node-message-brokers"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: message-deduplication
+    skill: node-message-deduplication
+    prompt: "Deduplicate repeated message deliveries using durable message identity so a consumer side effect occurs once within the defined window."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["message ID","deduplication","durable identity","delivery replay"]
+    negative_signals: ["node-idempotency","node-message-delivery"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the owner from the dominant contract and distinguish it from the adjacent concerns named as negatives."
+    must_not_select: ["node-idempotency","node-message-delivery"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: consumer-poison-message
+    skill: node-consumer-poison-message
+    prompt: "Prevent one permanently failing message from blocking a consumer by applying retry limits, quarantine, and operator-visible failure handling."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["poison message","retry limit","quarantine","consumer progress"]
+    negative_signals: ["node-dead-letter-queues","node-message-brokers"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the owner from the dominant contract and distinguish it from the adjacent concerns named as negatives."
+    must_not_select: ["node-dead-letter-queues","node-message-brokers"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: dead-letter-queues
+    skill: node-dead-letter-queues
+    prompt: "Design a dead-letter path for messages that exhaust retry policy, retaining enough metadata for diagnosis, replay, and controlled remediation."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["DLQ","retry exhaustion","replay","failure metadata"]
+    negative_signals: ["node-consumer-poison-message","node-background-jobs-reliability"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the owner from the dominant contract and distinguish it from the adjacent concerns named as negatives."
+    must_not_select: ["node-consumer-poison-message","node-background-jobs-reliability"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: schema-validation-at-boundary
+    skill: node-schema-validation-at-boundary
+    prompt: "Validate external payloads against an explicit runtime schema before business logic consumes them, rejecting unknown or malformed structures safely."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["runtime schema","unknown fields","malformed payload","boundary validation"]
+    negative_signals: ["node-runtime-validation","node-runtime-type-safety"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the owner from the dominant contract and distinguish it from the adjacent concerns named as negatives."
+    must_not_select: ["node-runtime-validation","node-runtime-type-safety"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: runtime-type-safety
+    skill: node-runtime-type-safety
+    prompt: "Close gaps where TypeScript types claim a value is safe but runtime inputs can still violate the assumed shape or discriminant."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["runtime type guard","type assertion","discriminant","unsafe cast"]
+    negative_signals: ["node-typescript-contracts","node-schema-validation-at-boundary"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the owner from the dominant contract and distinguish it from the adjacent concerns named as negatives."
+    must_not_select: ["node-typescript-contracts","node-schema-validation-at-boundary"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: package-resolution
+    skill: node-package-resolution
+    prompt: "Diagnose a package import that resolves differently across Node.js ESM, package exports, symlinks, and workspace boundaries."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["package resolution","exports map","ESM","workspace symlink"]
+    negative_signals: ["node-package-tooling","node-runtime-foundations"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the owner from the dominant contract and distinguish it from the adjacent concerns named as negatives."
+    must_not_select: ["node-package-tooling","node-runtime-foundations"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: permission-model
+    skill: node-permission-model
+    prompt: "Restrict a Node.js service's runtime access to filesystem, network, child processes, and other capabilities using an explicit permission policy."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["Node permission model","filesystem permission","network permission","capability boundary"]
+    negative_signals: ["node-security-hardening","node-production-runtime"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the owner from the dominant contract and distinguish it from the adjacent concerns named as negatives."
+    must_not_select: ["node-security-hardening","node-production-runtime"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: async-context-propagation
+    skill: node-async-context-propagation
+    prompt: "Preserve request or trace context across asynchronous callbacks, promises, workers, and downstream operations without mutable global state."
+    pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
+    routing_signals: ["AsyncLocalStorage","context propagation","trace context","async boundary"]
+    negative_signals: ["node-request-context","node-async-concurrency"]
+    evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
+    disambiguation: "Select the owner from the dominant contract and distinguish it from the adjacent concerns named as negatives."
+    must_not_select: ["node-request-context","node-async-concurrency"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]

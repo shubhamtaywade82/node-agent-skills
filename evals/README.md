@@ -36,7 +36,7 @@ The corpus is validated in strict evaluation mode before scoring. Required promp
 ## Report contract
 
     {
-      "total": 60,
+      "total": 100,
       "passed": 20,
       "failed": 0,
       "primary_accuracy": 1,
