@@ -11,7 +11,7 @@ const field = (block, name) => block.split("\n").find(line => line.startsWith(" 
 
 test("Wave 13 routing corpus uses registered skill IDs", () => {
   const blocks = cases.split(/^  - name: /m).slice(1);
-  assert.equal(blocks.length, 20);
+  assert.equal(blocks.length, 60);
   for (const block of blocks) {
     const skill = field(block, "skill").slice("    skill: ".length).trim();
     assert.ok(skill && registered.has(skill), "unregistered primary skill: " + skill);
