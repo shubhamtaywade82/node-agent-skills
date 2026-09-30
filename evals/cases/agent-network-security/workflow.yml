@@ -589,3 +589,13 @@ cases:
     disambiguation: "Select the domain-specific owner from the concrete boundary and avoid the adjacent concerns named as negatives."
     must_not_select: ["node-message-brokers","node-idempotency"]
     expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+  - name: dependency-upgrades
+    skill: node-dependency-upgrades
+    prompt: "Upgrade a Node.js dependency across a major-version boundary while tracing breaking API changes, lockfile effects, and consumer migration requirements."
+    pressure: ["version drift", "failure path", "compatibility boundary", "resource limits"]
+    routing_signals: ["major version", "breaking change", "lockfile", "migration path"]
+    negative_signals: ["legacy modernization", "package exports"]
+    evidence: ["package manifest", "lockfile", "upgrade diff", "regression tests"]
+    disambiguation: "The primary concern is dependency lifecycle and compatibility migration, not broad legacy modernization or package export design."
+    must_not_select: ["node-legacy-modernization","node-package-tooling"]
+    expected_invariants: ["explicit dependency boundary", "compatible consumers", "reproducible install", "tests prove the contract"]
