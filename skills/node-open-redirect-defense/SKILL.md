@@ -23,13 +23,10 @@ preventing untrusted input from redirecting users to attacker-controlled destina
 
 ## Decision rules
 
-redirect destinations are validated against a trusted policy; relative-path handling is explicit; scheme/host cannot be smuggled
-
-- Exact wire bytes and protocol semantics matter for cryptographic verification.
-- Security controls must survive proxies, retries, and duplicate delivery.
-- Timeouts and resource limits are end-to-end budgets, not isolated middleware settings.
-- Prefer explicit allowlists over string heuristics.
-
+- Prefer an explicit destination allowlist or same-origin comparison over string-prefix heuristics.
+- Parse URLs structurally before comparing scheme, host, port, and path.
+- Reject dangerous schemes such as javascript: and ambiguous protocol-relative targets outside the contract.
+- Validate the exact normalized representation that will be passed to the redirect.
 ## Implementation procedure
 
 1. Define allowed redirect classes.

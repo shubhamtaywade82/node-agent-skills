@@ -23,13 +23,10 @@ tuning persistent HTTP connections without exhausting sockets or causing stale c
 
 ## Decision rules
 
-keep-alive is a capacity and latency trade-off; pool limits and idle expiry are explicit; connection reuse does not bypass request deadlines
-
-- Exact wire bytes and protocol semantics matter for cryptographic verification.
-- Security controls must survive proxies, retries, and duplicate delivery.
-- Timeouts and resource limits are end-to-end budgets, not isolated middleware settings.
-- Prefer explicit allowlists over string heuristics.
-
+- Reuse sockets only within the peer's idle-lifetime contract.
+- Bound active sockets and retained free sockets; keep-alive is a bounded resource pool.
+- A stale free socket is a transport failure and may be retried only when the operation is replay-safe.
+- Graceful shutdown must drain pooled connections without waiting indefinitely.
 ## Implementation procedure
 
 1. Inspect client/agent pooling.

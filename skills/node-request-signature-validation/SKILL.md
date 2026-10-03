@@ -23,13 +23,11 @@ validating signed requests using canonical bytes, algorithms, keys, and freshnes
 
 ## Decision rules
 
-signature verification operates on exact signed bytes; algorithm/key identity is constrained; timing-safe comparison is used where appropriate
-
-- Exact wire bytes and protocol semantics matter for cryptographic verification.
-- Security controls must survive proxies, retries, and duplicate delivery.
-- Timeouts and resource limits are end-to-end budgets, not isolated middleware settings.
-- Prefer explicit allowlists over string heuristics.
-
+- Verify the exact byte representation defined by the signature protocol; do not invent canonicalization.
+- Restrict algorithms and key identifiers to an explicit allowlist.
+- Use timing-safe comparison where the signature protocol requires equality comparison.
+- Cryptographic validity does not prove freshness; replay checks remain independent.
+- HMAC is one supported signature mechanism; the accepted algorithm and key must come from the protocol allowlist.
 ## Implementation procedure
 
 1. Identify signature scheme.
