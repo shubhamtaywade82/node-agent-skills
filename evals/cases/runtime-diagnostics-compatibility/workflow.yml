@@ -1,0 +1,120 @@
+cases:
+  - name: module-resolution-diagnostics
+    skill: node-module-resolution-diagnostics
+    prompt: "Review or implement a production Node.js change involving  module resolution diagnostics."
+    pressure: ["existing repository conventions", "failure path", "resource or security boundary", "verification evidence"]
+    expected_invariants: ["bounded behavior", "reproducibility", "observable correctness", "tests prove the contract"]
+
+  - name: lockfile-integrity
+    skill: node-lockfile-integrity
+    prompt: "Review or implement a production Node.js change involving  lockfile integrity."
+    pressure: ["existing repository conventions", "failure path", "resource or security boundary", "verification evidence"]
+    expected_invariants: ["bounded behavior", "reproducibility", "observable correctness", "tests prove the contract"]
+
+  - name: package-manager-diagnostics
+    skill: node-package-manager-diagnostics
+    prompt: "Review or implement a production Node.js change involving  package manager diagnostics."
+    pressure: ["existing repository conventions", "failure path", "resource or security boundary", "verification evidence"]
+    expected_invariants: ["bounded behavior", "reproducibility", "observable correctness", "tests prove the contract"]
+
+  - name: runtime-feature-detection
+    skill: node-runtime-feature-detection
+    prompt: "Review or implement a production Node.js change involving  runtime feature detection."
+    pressure: ["existing repository conventions", "failure path", "resource or security boundary", "verification evidence"]
+    expected_invariants: ["bounded behavior", "reproducibility", "observable correctness", "tests prove the contract"]
+
+  - name: process-supervision
+    skill: node-process-supervision
+    prompt: "Review or implement a production Node.js change involving  process supervision."
+    pressure: ["existing repository conventions", "failure path", "resource or security boundary", "verification evidence"]
+    expected_invariants: ["bounded behavior", "reproducibility", "observable correctness", "tests prove the contract"]
+
+  - name: memory-leak-diagnostics
+    skill: node-memory-leak-diagnostics
+    prompt: "Review or implement a production Node.js change involving  memory leak diagnostics."
+    pressure: ["existing repository conventions", "failure path", "resource or security boundary", "verification evidence"]
+    expected_invariants: ["bounded behavior", "reproducibility", "observable correctness", "tests prove the contract"]
+
+  - name: heap-diagnostics
+    skill: node-heap-diagnostics
+    prompt: "Review or implement a production Node.js change involving  heap diagnostics."
+    pressure: ["existing repository conventions", "failure path", "resource or security boundary", "verification evidence"]
+    expected_invariants: ["bounded behavior", "reproducibility", "observable correctness", "tests prove the contract"]
+
+  - name: event-loop-diagnostics
+    skill: node-event-loop-diagnostics
+    prompt: "Review or implement a production Node.js change involving  event loop diagnostics."
+    pressure: ["existing repository conventions", "failure path", "resource or security boundary", "verification evidence"]
+    expected_invariants: ["bounded behavior", "reproducibility", "observable correctness", "tests prove the contract"]
+
+  - name: log-redaction
+    skill: node-log-redaction
+    prompt: "Review or implement a production Node.js change involving  log redaction."
+    pressure: ["existing repository conventions", "failure path", "resource or security boundary", "verification evidence"]
+    expected_invariants: ["bounded behavior", "reproducibility", "observable correctness", "tests prove the contract"]
+
+  - name: telemetry-sampling
+    skill: node-telemetry-sampling
+    prompt: "Review or implement a production Node.js change involving  telemetry sampling."
+    pressure: ["existing repository conventions", "failure path", "resource or security boundary", "verification evidence"]
+    expected_invariants: ["bounded behavior", "reproducibility", "observable correctness", "tests prove the contract"]
+
+  - name: cardinality-control
+    skill: node-cardinality-control
+    prompt: "Review or implement a production Node.js change involving  cardinality control."
+    pressure: ["existing repository conventions", "failure path", "resource or security boundary", "verification evidence"]
+    expected_invariants: ["bounded behavior", "reproducibility", "observable correctness", "tests prove the contract"]
+
+  - name: trace-context-propagation
+    skill: node-trace-context-propagation
+    prompt: "Review or implement a production Node.js change involving  trace context propagation."
+    pressure: ["existing repository conventions", "failure path", "resource or security boundary", "verification evidence"]
+    expected_invariants: ["bounded behavior", "reproducibility", "observable correctness", "tests prove the contract"]
+
+  - name: codegen-engineering
+    skill: node-codegen-engineering
+    prompt: "Review or implement a production Node.js change involving  codegen engineering."
+    pressure: ["existing repository conventions", "failure path", "resource or security boundary", "verification evidence"]
+    expected_invariants: ["bounded behavior", "reproducibility", "observable correctness", "tests prove the contract"]
+
+  - name: generated-code-review
+    skill: node-generated-code-review
+    prompt: "Review or implement a production Node.js change involving  generated code review."
+    pressure: ["existing repository conventions", "failure path", "resource or security boundary", "verification evidence"]
+    expected_invariants: ["bounded behavior", "reproducibility", "observable correctness", "tests prove the contract"]
+
+  - name: release-notes-engineering
+    skill: node-release-notes-engineering
+    prompt: "Review or implement a production Node.js change involving  release notes engineering."
+    pressure: ["existing repository conventions", "failure path", "resource or security boundary", "verification evidence"]
+    expected_invariants: ["bounded behavior", "reproducibility", "observable correctness", "tests prove the contract"]
+
+  - name: maintenance-engineering
+    skill: node-maintenance-engineering
+    prompt: "Review or implement a production Node.js change involving  maintenance engineering."
+    pressure: ["existing repository conventions", "failure path", "resource or security boundary", "verification evidence"]
+    expected_invariants: ["bounded behavior", "reproducibility", "observable correctness", "tests prove the contract"]
+
+  - name: repository-health
+    skill: node-repository-health
+    prompt: "Review or implement a production Node.js change involving  repository health."
+    pressure: ["existing repository conventions", "failure path", "resource or security boundary", "verification evidence"]
+    expected_invariants: ["bounded behavior", "reproducibility", "observable correctness", "tests prove the contract"]
+
+  - name: deprecation-management
+    skill: node-deprecation-management
+    prompt: "Review or implement a production Node.js change involving  deprecation management."
+    pressure: ["existing repository conventions", "failure path", "resource or security boundary", "verification evidence"]
+    expected_invariants: ["bounded behavior", "reproducibility", "observable correctness", "tests prove the contract"]
+
+  - name: backward-compatibility-testing
+    skill: node-backward-compatibility-testing
+    prompt: "Review or implement a production Node.js change involving  backward compatibility testing."
+    pressure: ["existing repository conventions", "failure path", "resource or security boundary", "verification evidence"]
+    expected_invariants: ["bounded behavior", "reproducibility", "observable correctness", "tests prove the contract"]
+
+  - name: runtime-upgrade-planning
+    skill: node-runtime-upgrade-planning
+    prompt: "Review or implement a production Node.js change involving  runtime upgrade planning."
+    pressure: ["existing repository conventions", "failure path", "resource or security boundary", "verification evidence"]
+    expected_invariants: ["bounded behavior", "reproducibility", "observable correctness", "tests prove the contract"]

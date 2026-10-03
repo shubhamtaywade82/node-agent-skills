@@ -38,5 +38,5 @@ test("Wave 2C cross-wave adversarial evaluation exists", async () => {
 
 test("repository contract expects all approved skills", async () => {
   const manifest = await readFile("skill-manifest.yml", "utf8");
-  assert.equal([...manifest.matchAll(/^  - name: /gm)].length, 226);
+  assert.equal([...manifest.matchAll(/^  - name: /gm)].length, 329);
 });

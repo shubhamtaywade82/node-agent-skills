@@ -1,0 +1,120 @@
+cases:
+  - name: file-system-safety
+    skill: node-file-system-safety
+    prompt: "Review or implement a production Node.js backend change involving  file system safety."
+    pressure: ["existing conventions", "failure path", "security boundary", "resource limits"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+
+  - name: temp-file-safety
+    skill: node-temp-file-safety
+    prompt: "Review or implement a production Node.js backend change involving  temp file safety."
+    pressure: ["existing conventions", "failure path", "security boundary", "resource limits"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+
+  - name: path-traversal-defense
+    skill: node-path-traversal-defense
+    prompt: "Review or implement a production Node.js backend change involving  path traversal defense."
+    pressure: ["existing conventions", "failure path", "security boundary", "resource limits"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+
+  - name: runtime-feature-detection
+    skill: node-runtime-feature-detection
+    prompt: "Review or implement a production Node.js backend change involving  runtime feature detection."
+    pressure: ["existing conventions", "failure path", "security boundary", "resource limits"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+
+  - name: process-supervision
+    skill: node-process-supervision
+    prompt: "Review or implement a production Node.js backend change involving  process supervision."
+    pressure: ["existing conventions", "failure path", "security boundary", "resource limits"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+
+  - name: memory-leak-diagnostics
+    skill: node-memory-leak-diagnostics
+    prompt: "Review or implement a production Node.js backend change involving  memory leak diagnostics."
+    pressure: ["existing conventions", "failure path", "security boundary", "resource limits"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+
+  - name: heap-diagnostics
+    skill: node-heap-diagnostics
+    prompt: "Review or implement a production Node.js backend change involving  heap diagnostics."
+    pressure: ["existing conventions", "failure path", "security boundary", "resource limits"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+
+  - name: event-loop-diagnostics
+    skill: node-event-loop-diagnostics
+    prompt: "Review or implement a production Node.js backend change involving  event loop diagnostics."
+    pressure: ["existing conventions", "failure path", "security boundary", "resource limits"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+
+  - name: log-redaction
+    skill: node-log-redaction
+    prompt: "Review or implement a production Node.js backend change involving  log redaction."
+    pressure: ["existing conventions", "failure path", "security boundary", "resource limits"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+
+  - name: telemetry-sampling
+    skill: node-telemetry-sampling
+    prompt: "Review or implement a production Node.js backend change involving  telemetry sampling."
+    pressure: ["existing conventions", "failure path", "security boundary", "resource limits"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+
+  - name: cardinality-control
+    skill: node-cardinality-control
+    prompt: "Review or implement a production Node.js backend change involving  cardinality control."
+    pressure: ["existing conventions", "failure path", "security boundary", "resource limits"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+
+  - name: trace-context-propagation
+    skill: node-trace-context-propagation
+    prompt: "Review or implement a production Node.js backend change involving  trace context propagation."
+    pressure: ["existing conventions", "failure path", "security boundary", "resource limits"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+
+  - name: read-replica-routing
+    skill: node-read-replica-routing
+    prompt: "Review or implement a production Node.js backend change involving  read replica routing."
+    pressure: ["existing conventions", "failure path", "security boundary", "resource limits"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+
+  - name: query-plan-engineering
+    skill: node-query-plan-engineering
+    prompt: "Review or implement a production Node.js backend change involving  query plan engineering."
+    pressure: ["existing conventions", "failure path", "security boundary", "resource limits"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+
+  - name: index-engineering
+    skill: node-index-engineering
+    prompt: "Review or implement a production Node.js backend change involving  index engineering."
+    pressure: ["existing conventions", "failure path", "security boundary", "resource limits"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+
+  - name: postgres-locking
+    skill: node-postgres-locking
+    prompt: "Review or implement a production Node.js backend change involving  postgres locking."
+    pressure: ["existing conventions", "failure path", "security boundary", "resource limits"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+
+  - name: advisory-locks
+    skill: node-advisory-locks
+    prompt: "Review or implement a production Node.js backend change involving  advisory locks."
+    pressure: ["existing conventions", "failure path", "security boundary", "resource limits"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+
+  - name: api-content-negotiation
+    skill: node-api-content-negotiation
+    prompt: "Review or implement a production Node.js backend change involving  api content negotiation."
+    pressure: ["existing conventions", "failure path", "security boundary", "resource limits"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+
+  - name: http-cache-semantics
+    skill: node-http-cache-semantics
+    prompt: "Review or implement a production Node.js backend change involving  http cache semantics."
+    pressure: ["existing conventions", "failure path", "security boundary", "resource limits"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
+
+  - name: api-conditional-requests
+    skill: node-api-conditional-requests
+    prompt: "Review or implement a production Node.js backend change involving  api conditional requests."
+    pressure: ["existing conventions", "failure path", "security boundary", "resource limits"]
+    expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]

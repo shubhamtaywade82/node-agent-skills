@@ -1,53 +1,67 @@
-cases:
   - name: rest-endpoint
     primary: node-rest-api-design
     secondary: [node-http-engineering, node-runtime-validation, node-auth-security, node-testing]
+
   - name: versioned-api
     primary: node-api-versioning
     secondary: [node-openapi, node-rest-api-design]
+
   - name: paginated-search
     primary: node-pagination-filtering
     secondary: [node-postgresql-persistence, node-api-engineering]
+
   - name: safe-mutation-retry
     primary: node-idempotency
     secondary: [node-external-integrations, node-background-jobs-reliability]
+
   - name: openapi-contract
     primary: node-openapi
     secondary: [node-runtime-validation, node-api-versioning]
+
   - name: graphql-tenant-data
     primary: node-graphql
     secondary: [node-auth-security, node-runtime-validation]
+
   - name: websocket-stream
     primary: node-websockets
     secondary: [node-async-concurrency, node-observability]
+
   - name: provider-webhook
     primary: node-webhooks
     secondary: [node-idempotency, node-external-integrations]
+
   - name: express-api
     primary: node-http-engineering
     secondary: [node-runtime-validation]
     adapter: adapters/express/SKILL.md
+
   - name: fastify-api
     primary: node-http-engineering
     secondary: [node-runtime-validation]
     adapter: adapters/fastify/SKILL.md
+
   - name: nestjs-api
     primary: node-http-engineering
     secondary: [node-runtime-validation, node-auth-security]
     adapter: adapters/nestjs/SKILL.md
+
   - name: hono-api
     primary: node-http-engineering
     secondary: [node-runtime-validation]
     adapter: adapters/hono/SKILL.md
+
   - name: postgres-transaction
     primary: node-postgresql-persistence
     secondary: [node-testing]
+
   - name: queue-retry
     primary: node-background-jobs-reliability
     secondary: [node-async-concurrency, node-observability]
+
   - name: production-memory
     primary: node-performance
     secondary: [node-observability, node-production-runtime]
+
   - name: tenant-authorization
     primary: node-auth-security
     secondary: [node-runtime-validation, node-testing]
@@ -55,30 +69,38 @@ cases:
   - name: database-constraints
     primary: node-database-engineering
     secondary: [node-transactions, node-testing]
+
   - name: schema-migration
     primary: node-migrations
     secondary: [node-database-engineering, node-production-runtime]
+
   - name: pool-exhaustion
     primary: node-connection-pooling
     secondary: [node-postgresql-persistence, node-performance]
+
   - name: redis-cache
     primary: node-caching
     secondary: [node-redis, node-performance]
     adapter: adapters/redis/SKILL.md
+
   - name: queued-worker
     primary: node-queues
     secondary: [node-background-jobs-reliability, node-async-concurrency]
     adapter: adapters/bullmq/SKILL.md
+
   - name: broker-consumer
     primary: node-message-brokers
     secondary: [node-background-jobs-reliability, node-observability]
+
   - name: durable-outbox
     primary: node-transactional-outbox
     secondary: [node-transactions, node-message-brokers]
+
   - name: prisma-persistence
     primary: node-database-engineering
     secondary: [node-transactions, node-migrations]
     adapter: adapters/prisma/SKILL.md
+
   - name: drizzle-persistence
     primary: node-database-engineering
     secondary: [node-transactions, node-migrations]
@@ -87,51 +109,67 @@ cases:
   - name: dependency-retries
     primary: node-retry-timeouts
     secondary: [node-idempotency, node-resilience]
+
   - name: resilient-dependency
     primary: node-resilience
     secondary: [node-retry-timeouts, node-observability]
+
   - name: circuit-protected-provider
     primary: node-circuit-breakers
     secondary: [node-retry-timeouts, node-resilience]
+
   - name: isolated-capacity
     primary: node-bulkheads
     secondary: [node-load-shedding, node-backpressure]
+
   - name: overload-protection
     primary: node-load-shedding
     secondary: [node-rate-limiting, node-backpressure]
+
   - name: stream-backpressure
     primary: node-backpressure
     secondary: [node-async-concurrency, node-load-shedding]
+
   - name: distributed-tenant-limit
     primary: node-rate-limiting
     secondary: [node-auth-security, node-redis]
+
   - name: cross-service-workflow
     primary: node-distributed-systems
     secondary: [node-idempotency, node-observability]
+
   - name: leased-resource-lock
     primary: node-distributed-locks
     secondary: [node-database-engineering, node-redis]
+
   - name: domain-events
     primary: node-event-driven-architecture
     secondary: [node-message-brokers, node-transactional-outbox]
+
   - name: rolling-deploy
     primary: node-zero-downtime
     secondary: [node-production-runtime, node-database-migrations-production]
+
   - name: large-production-ddl
     primary: node-database-migrations-production
     secondary: [node-migrations, node-zero-downtime]
+
   - name: production-incident
     primary: node-incident-engineering
     secondary: [node-observability, node-runtime-diagnostics]
+
   - name: runtime-memory-latency
     primary: node-runtime-diagnostics
     secondary: [node-performance, node-observability]
+
   - name: staged-backend-release
     primary: node-release-engineering
     secondary: [node-zero-downtime, node-database-migrations-production]
+
   - name: retry-through-queue
     primary: node-retry-timeouts
     secondary: [node-idempotency, node-queues, node-outbox]
+
   - name: shutdown-with-inflight-work
     primary: node-zero-downtime
     secondary: [node-production-runtime, node-transactions, node-queues]
@@ -139,52 +177,67 @@ cases:
   - name: configuration-boundary
     primary: node-configuration
     secondary: [node-secrets, node-runtime-validation]
+
   - name: secret-rotation
     primary: node-secrets
     secondary: [node-configuration, node-security-hardening]
+
   - name: unsafe-outbound-url
     primary: node-security-hardening
     secondary: [node-auth-security, node-external-integrations]
+
   - name: reproducible-install
     primary: node-supply-chain
     secondary: [node-package-tooling, node-release-engineering]
     adapter: adapters/npm/SKILL.md
+
   - name: public-package-exports
     primary: node-package-tooling
     secondary: [node-typescript-contracts, node-build-engineering]
+
   - name: multi-project-typescript-build
     primary: node-build-engineering
     secondary: [node-typescript-contracts, node-package-tooling]
+
   - name: provider-consumer-contract
     primary: node-contract-testing
     secondary: [node-openapi, node-event-driven-architecture]
+
   - name: parser-invariant
     primary: node-property-testing
     secondary: [node-testing, node-runtime-validation]
+
   - name: parser-fuzzing
     primary: node-fuzz-testing
     secondary: [node-testing, node-runtime-validation]
+
   - name: mixed-schema-rollout
     primary: node-schema-evolution
     secondary: [node-migrations, node-event-driven-architecture]
+
   - name: progressive-feature-rollout
     primary: node-feature-flags
     secondary: [node-release-engineering, node-zero-downtime]
+
   - name: production-image
     primary: node-containerization
     secondary: [node-production-runtime, node-build-engineering]
     adapter: adapters/docker/SKILL.md
+
   - name: kubernetes-rollout
     primary: node-kubernetes
     secondary: [node-containerization, node-zero-downtime]
     adapter: adapters/kubernetes/SKILL.md
+
   - name: serverless-event-handler
     primary: node-serverless
     secondary: [node-idempotency, node-external-integrations]
+
   - name: opentelemetry-instrumentation
     primary: node-observability
     secondary: [node-runtime-diagnostics]
     adapter: adapters/opentelemetry/SKILL.md
+
   - name: design-pattern-refactor
     primary: node-design-patterns
     secondary: [node-architecture, node-typescript-contracts, node-testing]
@@ -192,54 +245,71 @@ cases:
   - name: repository-forensics
     primary: node-repository-forensics
     secondary: [node-testing, node-observability]
+
   - name: debugging
     primary: node-debugging
     secondary: [node-testing, node-observability]
+
   - name: code-review
     primary: node-code-review
     secondary: [node-testing, node-observability]
+
   - name: refactoring
     primary: node-refactoring
     secondary: [node-testing, node-observability]
+
   - name: dependency-upgrades
     primary: node-dependency-upgrades
     secondary: [node-testing, node-observability]
+
   - name: monorepo-engineering
     primary: node-monorepo-engineering
     secondary: [node-testing, node-observability]
+
   - name: cli-engineering
     primary: node-cli-engineering
     secondary: [node-testing, node-observability]
+
   - name: streams
     primary: node-streams
     secondary: [node-testing, node-observability]
+
   - name: server-sent-events
     primary: node-server-sent-events
     secondary: [node-testing, node-observability]
+
   - name: object-storage
     primary: node-object-storage
     secondary: [node-testing, node-observability]
+
   - name: email-delivery
     primary: node-email-delivery
     secondary: [node-testing, node-observability]
+
   - name: search-engineering
     primary: node-search-engineering
     secondary: [node-testing, node-observability]
+
   - name: cryptography
     primary: node-cryptography
     secondary: [node-testing, node-observability]
+
   - name: agent-evaluation
     primary: node-agent-evaluation
     secondary: [node-testing, node-observability]
+
   - name: documentation-engineering
     primary: node-documentation-engineering
     secondary: [node-testing, node-observability]
+
   - name: developer-experience
     primary: node-developer-experience
     secondary: [node-testing, node-observability]
+
   - name: cloud-events
     primary: node-cloud-events
     secondary: [node-testing, node-observability]
+
   - name: saga-orchestration
     primary: node-saga-orchestration
     secondary: [node-testing, node-observability]
@@ -247,54 +317,71 @@ cases:
   - name: grpc-service
     primary: node-grpc
     secondary: [node-rpc-contracts, node-retry-timeouts]
+
   - name: rpc-contract
     primary: node-rpc-contracts
     secondary: [node-schema-evolution, node-testing]
+
   - name: api-gateway
     primary: node-api-gateway
     secondary: [node-rate-limiting, node-retry-timeouts, node-auth-security]
+
   - name: service-mesh
     primary: node-service-mesh
     secondary: [node-zero-downtime, node-retry-timeouts]
+
   - name: message-delivery
     primary: node-message-delivery
     secondary: [node-message-brokers, node-idempotency]
+
   - name: schema-registry
     primary: node-schema-registry
     secondary: [node-schema-evolution, node-event-driven-architecture]
+
   - name: consumer-rebalance
     primary: node-consumer-rebalancing
     secondary: [node-message-delivery, node-background-jobs-reliability]
+
   - name: authorization-model
     primary: node-authorization-models
     secondary: [node-auth-security, node-multi-tenancy]
+
   - name: threat-model
     primary: node-threat-modeling
     secondary: [node-security-hardening, node-auth-security]
+
   - name: secure-code
     primary: node-secure-coding
     secondary: [node-security-hardening, node-runtime-validation]
+
   - name: legacy-modernization
     primary: node-legacy-modernization
     secondary: [node-dependency-upgrades, node-refactoring]
+
   - name: change-impact
     primary: node-change-impact-analysis
     secondary: [node-repository-forensics, node-module-boundaries]
+
   - name: migration-plan
     primary: node-migration-assistant
     secondary: [node-dependency-upgrades, node-database-migrations-production]
+
   - name: architecture-decision
     primary: node-architecture-decision-records
     secondary: [node-architecture, node-documentation-engineering]
+
   - name: test-data
     primary: node-test-data-management
     secondary: [node-testing, node-integration-testing]
+
   - name: flaky-test
     primary: node-flaky-test-engineering
     secondary: [node-testing, node-test-environment-engineering]
+
   - name: test-environment
     primary: node-test-environment-engineering
     secondary: [node-testcontainers, node-integration-testing]
+
   - name: api-deprecation
     primary: node-api-deprecation
     secondary: [node-api-versioning, node-openapi]
@@ -302,57 +389,75 @@ cases:
   - name: cqrs
     primary: node-cqrs
     secondary: [node-testing, node-observability]
+
   - name: read-models
     primary: node-read-models
     secondary: [node-testing, node-observability]
+
   - name: event-sourcing
     primary: node-event-sourcing
     secondary: [node-testing, node-observability]
+
   - name: optimistic-concurrency
     primary: node-optimistic-concurrency
     secondary: [node-testing, node-observability]
+
   - name: data-reconciliation
     primary: node-data-reconciliation
     secondary: [node-testing, node-observability]
+
   - name: batch-processing
     primary: node-batch-processing
     secondary: [node-testing, node-observability]
+
   - name: data-import-export
     primary: node-data-import-export
     secondary: [node-testing, node-observability]
+
   - name: database-read-replicas
     primary: node-database-read-replicas
     secondary: [node-testing, node-observability]
+
   - name: database-sharding
     primary: node-database-sharding
     secondary: [node-testing, node-observability]
+
   - name: data-archival
     primary: node-data-archival
     secondary: [node-testing, node-observability]
+
   - name: durable-workflows
     primary: node-durable-workflows
     secondary: [node-testing, node-observability]
+
   - name: outbound-webhooks
     primary: node-outbound-webhooks
     secondary: [node-testing, node-observability]
+
   - name: task-decomposition
     primary: node-task-decomposition
     secondary: [node-testing, node-observability]
+
   - name: context-engineering
     primary: node-context-engineering
     secondary: [node-testing, node-observability]
+
   - name: implementation-planning
     primary: node-implementation-planning
     secondary: [node-testing, node-observability]
+
   - name: patch-validation
     primary: node-patch-validation
     secondary: [node-testing, node-observability]
+
   - name: merge-conflict-resolution
     primary: node-merge-conflict-resolution
     secondary: [node-testing, node-observability]
+
   - name: validation-triage
     primary: node-validation-triage
     secondary: [node-testing, node-observability]
+
   - name: review-feedback
     primary: node-review-feedback
     secondary: [node-testing, node-observability]
@@ -360,54 +465,71 @@ cases:
   - name: disaster-recovery
     primary: node-disaster-recovery
     secondary: [node-testing, node-observability]
+
   - name: backup-restore
     primary: node-backup-restore
     secondary: [node-testing, node-observability]
+
   - name: chaos-engineering
     primary: node-chaos-engineering
     secondary: [node-testing, node-observability]
+
   - name: capacity-planning
     primary: node-capacity-planning
     secondary: [node-testing, node-observability]
+
   - name: cost-aware-engineering
     primary: node-cost-aware-engineering
     secondary: [node-testing, node-observability]
+
   - name: multi-region
     primary: node-multi-region
     secondary: [node-testing, node-observability]
+
   - name: failover-engineering
     primary: node-failover-engineering
     secondary: [node-testing, node-observability]
+
   - name: graceful-degradation
     primary: node-graceful-degradation
     secondary: [node-testing, node-observability]
+
   - name: time-engineering
     primary: node-time-engineering
     secondary: [node-testing, node-observability]
+
   - name: session-management
     primary: node-session-management
     secondary: [node-testing, node-observability]
+
   - name: cookie-security
     primary: node-cookie-security
     secondary: [node-testing, node-observability]
+
   - name: cors-security
     primary: node-cors-security
     secondary: [node-testing, node-observability]
+
   - name: security-headers
     primary: node-security-headers
     secondary: [node-testing, node-observability]
+
   - name: ci-pipeline-engineering
     primary: node-ci-pipeline-engineering
     secondary: [node-testing, node-observability]
+
   - name: progressive-delivery
     primary: node-progressive-delivery
     secondary: [node-testing, node-observability]
+
   - name: infrastructure-as-code
     primary: node-infrastructure-as-code
     secondary: [node-testing, node-observability]
+
   - name: observability-validation
     primary: node-observability-validation
     secondary: [node-testing, node-observability]
+
   - name: runbook-engineering
     primary: node-runbook-engineering
     secondary: [node-testing, node-observability]
@@ -415,54 +537,71 @@ cases:
   - name: sli-slo-engineering
     primary: node-sli-slo-engineering
     secondary: [node-testing, node-observability]
+
   - name: error-budget-engineering
     primary: node-error-budget-engineering
     secondary: [node-testing, node-observability]
+
   - name: service-ownership
     primary: node-service-ownership
     secondary: [node-testing, node-observability]
+
   - name: oncall-readiness
     primary: node-oncall-readiness
     secondary: [node-testing, node-observability]
+
   - name: operational-readiness
     primary: node-operational-readiness
     secondary: [node-testing, node-observability]
+
   - name: security-incident-response
     primary: node-security-incident-response
     secondary: [node-testing, node-observability]
+
   - name: vulnerability-management
     primary: node-vulnerability-management
     secondary: [node-testing, node-observability]
+
   - name: auth-session-revocation
     primary: node-auth-session-revocation
     secondary: [node-testing, node-observability]
+
   - name: oauth-client-security
     primary: node-oauth-client-security
     secondary: [node-testing, node-observability]
+
   - name: oidc-integration
     primary: node-oidc-integration
     secondary: [node-testing, node-observability]
+
   - name: mfa-engineering
     primary: node-mfa-engineering
     secondary: [node-testing, node-observability]
+
   - name: password-storage
     primary: node-password-storage
     secondary: [node-testing, node-observability]
+
   - name: user-enumeration-defense
     primary: node-user-enumeration-defense
     secondary: [node-testing, node-observability]
+
   - name: native-test-runner
     primary: node-native-test-runner
     secondary: [node-testing, node-observability]
+
   - name: http-testing
     primary: node-http-testing
     secondary: [node-testing, node-observability]
+
   - name: benchmark-engineering
     primary: node-benchmark-engineering
     secondary: [node-testing, node-observability]
+
   - name: failure-injection-testing
     primary: node-failure-injection-testing
     secondary: [node-testing, node-observability]
+
   - name: test-isolation-engineering
     primary: node-test-isolation-engineering
     secondary: [node-testing, node-observability]
@@ -470,54 +609,71 @@ cases:
   - name: api-compatibility
     primary: node-api-compatibility
     secondary: [node-testing, node-observability]
+
   - name: api-contract-migration
     primary: node-api-contract-migration
     secondary: [node-testing, node-observability]
+
   - name: batch-api-design
     primary: node-batch-api-design
     secondary: [node-testing, node-observability]
+
   - name: bulk-operations
     primary: node-bulk-operations
     secondary: [node-testing, node-observability]
+
   - name: resource-lifecycle
     primary: node-resource-lifecycle
     secondary: [node-testing, node-observability]
+
   - name: data-retention
     primary: node-data-retention
     secondary: [node-testing, node-observability]
+
   - name: data-lineage
     primary: node-data-lineage
     secondary: [node-testing, node-observability]
+
   - name: data-quality
     primary: node-data-quality
     secondary: [node-testing, node-observability]
+
   - name: data-masking
     primary: node-data-masking
     secondary: [node-testing, node-observability]
+
   - name: encryption-at-rest
     primary: node-encryption-at-rest
     secondary: [node-testing, node-observability]
+
   - name: key-management
     primary: node-key-management
     secondary: [node-testing, node-observability]
+
   - name: message-ordering
     primary: node-message-ordering
     secondary: [node-testing, node-observability]
+
   - name: message-deduplication
     primary: node-message-deduplication
     secondary: [node-testing, node-observability]
+
   - name: consumer-poison-message
     primary: node-consumer-poison-message
     secondary: [node-testing, node-observability]
+
   - name: dead-letter-queues
     primary: node-dead-letter-queues
     secondary: [node-testing, node-observability]
+
   - name: schema-validation-at-boundary
     primary: node-schema-validation-at-boundary
     secondary: [node-testing, node-observability]
+
   - name: runtime-type-safety
     primary: node-runtime-type-safety
     secondary: [node-testing, node-observability]
+
   - name: package-resolution
     primary: node-package-resolution
     secondary: [node-testing, node-observability]
@@ -525,60 +681,79 @@ cases:
   - name: permission-model
     primary: node-permission-model
     secondary: [node-testing, node-observability]
+
   - name: async-context-propagation
     primary: node-async-context-propagation
     secondary: [node-testing, node-observability]
+
   - name: request-context
     primary: node-request-context
     secondary: [node-testing, node-observability]
+
   - name: abort-cancellation
     primary: node-abort-cancellation
     secondary: [node-testing, node-observability]
+
   - name: worker-threads
     primary: node-worker-threads
     secondary: [node-testing, node-observability]
+
   - name: child-process-safety
     primary: node-child-process-safety
     secondary: [node-testing, node-observability]
+
   - name: http-body-limits
     primary: node-http-body-limits
     secondary: [node-testing, node-observability]
+
   - name: upload-security
     primary: node-upload-security
     secondary: [node-testing, node-observability]
+
   - name: ssrf-defense
     primary: node-ssrf-defense
     secondary: [node-testing, node-observability]
+
   - name: cache-key-security
     primary: node-cache-key-security
     secondary: [node-testing, node-observability]
+
   - name: tenant-cache-isolation
     primary: node-tenant-cache-isolation
     secondary: [node-testing, node-observability]
+
   - name: database-index-engineering
     primary: node-database-index-engineering
     secondary: [node-testing, node-observability]
+
   - name: query-performance
     primary: node-query-performance
     secondary: [node-testing, node-observability]
+
   - name: lock-contention
     primary: node-lock-contention
     secondary: [node-testing, node-observability]
+
   - name: connection-leak-detection
     primary: node-connection-leak-detection
     secondary: [node-testing, node-observability]
+
   - name: transaction-retry
     primary: node-transaction-retry
     secondary: [node-testing, node-observability]
+
   - name: health-check-engineering
     primary: node-health-check-engineering
     secondary: [node-testing, node-observability]
+
   - name: startup-readiness
     primary: node-startup-readiness
     secondary: [node-testing, node-observability]
+
   - name: config-drift-detection
     primary: node-config-drift-detection
     secondary: [node-testing, node-observability]
+
   - name: generated-code-governance
     primary: node-generated-code-governance
     secondary: [node-testing, node-observability]
@@ -586,63 +761,83 @@ cases:
   - name: agent-preflight
     primary: node-agent-preflight
     secondary: [node-testing, node-observability]
+
   - name: agent-evidence-gathering
     primary: node-agent-evidence-gathering
     secondary: [node-testing, node-observability]
+
   - name: agent-change-safety
     primary: node-agent-change-safety
     secondary: [node-testing, node-observability]
+
   - name: agent-verification-reporting
     primary: node-agent-verification-reporting
     secondary: [node-testing, node-observability]
+
   - name: agent-risk-escalation
     primary: node-agent-risk-escalation
     secondary: [node-testing, node-observability]
+
   - name: agent-rollback-planning
     primary: node-agent-rollback-planning
     secondary: [node-testing, node-observability]
+
   - name: agent-commit-hygiene
     primary: node-agent-commit-hygiene
     secondary: [node-testing, node-observability]
+
   - name: agent-pr-preparation
     primary: node-agent-pr-preparation
     secondary: [node-testing, node-observability]
+
   - name: dns-engineering
     primary: node-dns-engineering
     secondary: [node-testing, node-observability]
+
   - name: tls-certificate-management
     primary: node-tls-certificate-management
     secondary: [node-testing, node-observability]
+
   - name: http-proxy-forwarding
     primary: node-http-proxy-forwarding
     secondary: [node-testing, node-observability]
+
   - name: http-timeouts
     primary: node-http-timeouts
     secondary: [node-testing, node-observability]
+
   - name: http-keepalive
     primary: node-http-keepalive
     secondary: [node-testing, node-observability]
+
   - name: webhook-ingress-security
     primary: node-webhook-ingress-security
     secondary: [node-testing, node-observability]
+
   - name: request-signature-validation
     primary: node-request-signature-validation
     secondary: [node-testing, node-observability]
+
   - name: replay-protection
     primary: node-replay-protection
     secondary: [node-testing, node-observability]
+
   - name: csrf-defense
     primary: node-csrf-defense
     secondary: [node-testing, node-observability]
+
   - name: open-redirect-defense
     primary: node-open-redirect-defense
     secondary: [node-testing, node-observability]
+
   - name: request-smuggling-defense
     primary: node-request-smuggling-defense
     secondary: [node-testing, node-observability]
+
   - name: header-normalization
     primary: node-header-normalization
     secondary: [node-testing, node-observability]
+
   - name: architecture-boundary
     primary: node-architecture
     secondary: [node-typescript-contracts,node-module-boundaries]
@@ -747,3 +942,414 @@ cases:
     primary: node-data-privacy
     secondary: [node-data-retention,node-data-masking]
 
+  - name: file-system-safety
+    primary: node-file-system-safety
+    secondary: [node-testing, node-observability]
+
+  - name: temp-file-safety
+    primary: node-temp-file-safety
+    secondary: [node-testing, node-observability]
+
+  - name: path-traversal-defense
+    primary: node-path-traversal-defense
+    secondary: [node-testing, node-observability]
+
+  - name: runtime-feature-detection
+    primary: node-runtime-feature-detection
+    secondary: [node-testing, node-observability]
+
+  - name: process-supervision
+    primary: node-process-supervision
+    secondary: [node-testing, node-observability]
+
+  - name: memory-leak-diagnostics
+    primary: node-memory-leak-diagnostics
+    secondary: [node-testing, node-observability]
+
+  - name: heap-diagnostics
+    primary: node-heap-diagnostics
+    secondary: [node-testing, node-observability]
+
+  - name: event-loop-diagnostics
+    primary: node-event-loop-diagnostics
+    secondary: [node-testing, node-observability]
+
+  - name: log-redaction
+    primary: node-log-redaction
+    secondary: [node-testing, node-observability]
+
+  - name: telemetry-sampling
+    primary: node-telemetry-sampling
+    secondary: [node-testing, node-observability]
+
+  - name: cardinality-control
+    primary: node-cardinality-control
+    secondary: [node-testing, node-observability]
+
+  - name: trace-context-propagation
+    primary: node-trace-context-propagation
+    secondary: [node-testing, node-observability]
+
+  - name: read-replica-routing
+    primary: node-read-replica-routing
+    secondary: [node-testing, node-observability]
+
+  - name: query-plan-engineering
+    primary: node-query-plan-engineering
+    secondary: [node-testing, node-observability]
+
+  - name: index-engineering
+    primary: node-index-engineering
+    secondary: [node-testing, node-observability]
+
+  - name: postgres-locking
+    primary: node-postgres-locking
+    secondary: [node-testing, node-observability]
+
+  - name: advisory-locks
+    primary: node-advisory-locks
+    secondary: [node-testing, node-observability]
+
+  - name: api-content-negotiation
+    primary: node-api-content-negotiation
+    secondary: [node-testing, node-observability]
+
+  - name: http-cache-semantics
+    primary: node-http-cache-semantics
+    secondary: [node-testing, node-observability]
+
+  - name: api-conditional-requests
+    primary: node-api-conditional-requests
+    secondary: [node-testing, node-observability]
+
+  - name: skill-pack-format
+    primary: node-skill-pack-format
+    secondary: [node-testing, node-repository-forensics]
+
+  - name: skill-pack-compatibility
+    primary: node-skill-pack-compatibility
+    secondary: [node-testing, node-repository-forensics]
+
+  - name: skill-pack-manifest-governance
+    primary: node-skill-pack-manifest-governance
+    secondary: [node-testing, node-repository-forensics]
+
+  - name: skill-pack-routing-governance
+    primary: node-skill-pack-routing-governance
+    secondary: [node-testing, node-repository-forensics]
+
+  - name: skill-pack-evaluation-governance
+    primary: node-skill-pack-evaluation-governance
+    secondary: [node-testing, node-repository-forensics]
+
+  - name: skill-pack-source-governance
+    primary: node-skill-pack-source-governance
+    secondary: [node-testing, node-repository-forensics]
+
+  - name: skill-pack-versioning
+    primary: node-skill-pack-versioning
+    secondary: [node-testing, node-repository-forensics]
+
+  - name: skill-pack-release
+    primary: node-skill-pack-release
+    secondary: [node-testing, node-repository-forensics]
+
+  - name: skill-pack-distribution
+    primary: node-skill-pack-distribution
+    secondary: [node-testing, node-repository-forensics]
+
+  - name: skill-pack-installation
+    primary: node-skill-pack-installation
+    secondary: [node-testing, node-repository-forensics]
+
+  - name: agent-progress-tracking
+    primary: node-agent-progress-tracking
+    secondary: [node-testing, node-repository-forensics]
+
+  - name: agent-task-checkpointing
+    primary: node-agent-task-checkpointing
+    secondary: [node-testing, node-repository-forensics]
+
+  - name: agent-context-budgeting
+    primary: node-agent-context-budgeting
+    secondary: [node-testing, node-repository-forensics]
+
+  - name: agent-tool-selection
+    primary: node-agent-tool-selection
+    secondary: [node-testing, node-repository-forensics]
+
+  - name: agent-command-safety
+    primary: node-agent-command-safety
+    secondary: [node-testing, node-repository-forensics]
+
+  - name: agent-output-contracts
+    primary: node-agent-output-contracts
+    secondary: [node-testing, node-repository-forensics]
+
+  - name: agent-handoff
+    primary: node-agent-handoff
+    secondary: [node-testing, node-repository-forensics]
+
+  - name: agent-recovery
+    primary: node-agent-recovery
+    secondary: [node-testing, node-repository-forensics]
+
+  - name: agent-multi-file-coordination
+    primary: node-agent-multi-file-coordination
+    secondary: [node-testing, node-repository-forensics]
+
+  - name: agent-regression-prevention
+    primary: node-agent-regression-prevention
+    secondary: [node-testing, node-repository-forensics]
+
+  - name: module-resolution-diagnostics
+    primary: node-module-resolution-diagnostics
+    secondary: [node-testing, node-observability]
+
+  - name: lockfile-integrity
+    primary: node-lockfile-integrity
+    secondary: [node-testing, node-observability]
+
+  - name: package-manager-diagnostics
+    primary: node-package-manager-diagnostics
+    secondary: [node-testing, node-observability]
+
+  - name: codegen-engineering
+    primary: node-codegen-engineering
+    secondary: [node-testing, node-observability]
+
+  - name: generated-code-review
+    primary: node-generated-code-review
+    secondary: [node-testing, node-observability]
+
+  - name: release-notes-engineering
+    primary: node-release-notes-engineering
+    secondary: [node-testing, node-observability]
+
+  - name: maintenance-engineering
+    primary: node-maintenance-engineering
+    secondary: [node-testing, node-observability]
+
+  - name: repository-health
+    primary: node-repository-health
+    secondary: [node-testing, node-observability]
+
+  - name: deprecation-management
+    primary: node-deprecation-management
+    secondary: [node-testing, node-observability]
+
+  - name: backward-compatibility-testing
+    primary: node-backward-compatibility-testing
+    secondary: [node-testing, node-observability]
+
+  - name: runtime-upgrade-planning
+    primary: node-runtime-upgrade-planning
+    secondary: [node-testing, node-observability]
+
+  - name: filesystem-safety
+    primary: node-filesystem-safety
+    secondary: [node-testing, node-observability]
+
+  - name: archive-extraction-safety
+    primary: node-archive-extraction-safety
+    secondary: [node-testing, node-observability]
+
+  - name: file-descriptor-lifecycle
+    primary: node-file-descriptor-lifecycle
+    secondary: [node-testing, node-observability]
+
+  - name: worker-crash-recovery
+    primary: node-worker-crash-recovery
+    secondary: [node-testing, node-observability]
+
+  - name: metric-cardinality-control
+    primary: node-metric-cardinality-control
+    secondary: [node-testing, node-observability]
+
+  - name: etag-cache-validation
+    primary: node-etag-cache-validation
+    secondary: [node-testing, node-observability]
+
+  - name: rate-limit-headers
+    primary: node-rate-limit-headers
+    secondary: [node-testing, node-observability]
+
+  - name: authz-policy-testing
+    primary: node-authz-policy-testing
+    secondary: [node-testing, node-observability]
+
+  - name: access-control-auditing
+    primary: node-access-control-auditing
+    secondary: [node-testing, node-observability]
+
+  - name: security-regression-testing
+    primary: node-security-regression-testing
+    secondary: [node-testing, node-observability]
+
+  - name: agent-installation
+    primary: node-agent-installation
+    secondary: [node-testing, node-observability]
+
+  - name: agentskills-compatibility
+    primary: node-agentskills-compatibility
+    secondary: [node-testing, node-observability]
+
+  - name: skill-packaging
+    primary: node-skill-packaging
+    secondary: [node-testing, node-observability]
+
+  - name: skill-discovery-contract
+    primary: node-skill-discovery-contract
+    secondary: [node-testing, node-observability]
+
+  - name: skill-routing-contract
+    primary: node-skill-routing-contract
+    secondary: [node-testing, node-observability]
+
+  - name: skill-evaluation-discipline
+    primary: node-skill-evaluation-discipline
+    secondary: [node-testing, node-observability]
+
+  - name: skill-version-governance
+    primary: node-skill-version-governance
+    secondary: [node-testing, node-observability]
+
+  - name: skill-reference-governance
+    primary: node-skill-reference-governance
+    secondary: [node-testing, node-observability]
+
+  - name: generated-schema-contracts
+    primary: node-generated-schema-contracts
+    secondary: [node-testing, node-observability]
+
+  - name: generated-client-governance
+    primary: node-generated-client-governance
+    secondary: [node-testing, node-observability]
+
+  - name: generated-artifact-determinism
+    primary: node-generated-artifact-determinism
+    secondary: [node-testing, node-observability]
+
+  - name: deprecation-planning
+    primary: node-deprecation-planning
+    secondary: [node-testing, node-observability]
+
+  - name: change-log-integrity
+    primary: node-change-log-integrity
+    secondary: [node-testing, node-observability]
+
+  - name: database-advisory-locks
+    primary: node-database-advisory-locks
+    secondary: [node-testing, node-observability]
+
+  - name: database-read-replica-routing
+    primary: node-database-read-replica-routing
+    secondary: [node-testing, node-observability]
+
+  - name: deadlock-diagnostics
+    primary: node-deadlock-diagnostics
+    secondary: [node-testing, node-observability]
+
+  - name: isolation-level-selection
+    primary: node-isolation-level-selection
+    secondary: [node-testing, node-observability]
+
+  - name: signal-handling
+    primary: node-signal-handling
+    secondary: [node-testing, node-observability]
+
+  - name: runtime-health-monitoring
+    primary: node-runtime-health-monitoring
+    secondary: [node-testing, node-observability]
+
+  - name: typescript-config-engineering
+    primary: node-typescript-config-engineering
+    secondary: [node-testing, node-build-engineering]
+
+  - name: tsconfig-project-references
+    primary: node-tsconfig-project-references
+    secondary: [node-testing, node-build-engineering]
+
+  - name: typescript-module-resolution
+    primary: node-typescript-module-resolution
+    secondary: [node-testing, node-build-engineering]
+
+  - name: esm-cjs-interoperability
+    primary: node-esm-cjs-interoperability
+    secondary: [node-testing, node-build-engineering]
+
+  - name: package-exports
+    primary: node-package-exports
+    secondary: [node-testing, node-build-engineering]
+
+  - name: package-imports
+    primary: node-package-imports
+    secondary: [node-testing, node-build-engineering]
+
+  - name: package-self-reference
+    primary: node-package-self-reference
+    secondary: [node-testing, node-build-engineering]
+
+  - name: subpath-patterns
+    primary: node-subpath-patterns
+    secondary: [node-testing, node-build-engineering]
+
+  - name: dual-package-hazards
+    primary: node-dual-package-hazards
+    secondary: [node-testing, node-build-engineering]
+
+  - name: npm-publishing
+    primary: node-npm-publishing
+    secondary: [node-testing, node-build-engineering]
+
+  - name: package-provenance
+    primary: node-package-provenance
+    secondary: [node-testing, node-build-engineering]
+
+  - name: typescript-declaration-publishing
+    primary: node-typescript-declaration-publishing
+    secondary: [node-testing, node-build-engineering]
+
+  - name: dependency-confusion-defense
+    primary: node-dependency-confusion-defense
+    secondary: [node-testing, node-build-engineering]
+
+  - name: install-script-safety
+    primary: node-install-script-safety
+    secondary: [node-testing, node-build-engineering]
+
+  - name: postinstall-safety
+    primary: node-postinstall-safety
+    secondary: [node-testing, node-build-engineering]
+
+  - name: build-cache-integrity
+    primary: node-build-cache-integrity
+    secondary: [node-testing, node-build-engineering]
+
+  - name: source-map-governance
+    primary: node-source-map-governance
+    secondary: [node-testing, node-build-engineering]
+
+  - name: runtime-inspector-security
+    primary: node-runtime-inspector-security
+    secondary: [node-testing, node-build-engineering]
+
+  - name: diagnostic-reports
+    primary: node-diagnostic-reports
+    secondary: [node-testing, node-build-engineering]
+
+  - name: startup-profiling
+    primary: node-startup-profiling
+    secondary: [node-testing, node-build-engineering]
+
+  - name: http2-engineering
+    primary: node-http2-engineering
+    secondary: [node-testing, node-build-engineering]
+
+  - name: structured-cloning
+    primary: node-structured-cloning
+    secondary: [node-testing, node-build-engineering]
+
+  - name: package-manager-policy
+    primary: node-package-manager-policy
+    secondary: [node-testing, node-build-engineering]
