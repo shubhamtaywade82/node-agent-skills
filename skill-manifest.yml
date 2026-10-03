@@ -688,6 +688,317 @@ skills:
     category: network
     triggers: [HTTP headers, duplicate headers, header normalization]
 adapters:
+
+  - name: node-file-system-safety
+    category: runtime-security
+    triggers: [file, system, safety]
+  - name: node-read-replica-routing
+    category: persistence
+    triggers: [read, replica, routing]
+  - name: node-index-engineering
+    category: persistence
+    triggers: [index, engineering]
+  - name: node-advisory-locks
+    category: persistence
+    triggers: [advisory, locks]
+  - name: node-cardinality-control
+    category: observability
+    triggers: [metric cardinality, labels, series explosion, route normalization]
+  - name: node-skill-pack-format
+    category: tooling
+    triggers: [Agent Skills, SKILL.md, skill format, frontmatter, progressive disclosure]
+  - name: node-skill-pack-compatibility
+    category: tooling
+    triggers: [agent compatibility, portable skills, vendor neutral skills]
+  - name: node-skill-pack-manifest-governance
+    category: tooling
+    triggers: [skill manifest, registry governance, manifest validation]
+  - name: node-skill-pack-routing-governance
+    category: tooling
+    triggers: [skill routing, primary skill, secondary skill, routing rules]
+  - name: node-skill-pack-evaluation-governance
+    category: tooling
+    triggers: [skill evaluations, eval cases, regression benchmark, eval governance]
+  - name: node-skill-pack-source-governance
+    category: tooling
+    triggers: [skill sources, documentation source, version scope, source governance]
+  - name: node-skill-pack-versioning
+    category: tooling
+    triggers: [skill pack versioning, semantic version, compatibility change]
+  - name: node-skill-pack-release
+    category: release
+    triggers: [skill pack release, release artifact, verified release]
+  - name: node-skill-pack-distribution
+    category: tooling
+    triggers: [skill pack distribution, pack export, filesystem distribution]
+  - name: node-skill-pack-installation
+    category: tooling
+    triggers: [skill pack installation, install skills, agent skills directory]
+  - name: node-agent-progress-tracking
+    category: tooling
+    triggers: [agent progress, task progress, coding agent state]
+  - name: node-agent-task-checkpointing
+    category: tooling
+    triggers: [agent checkpoint, resumable task, coding session checkpoint]
+  - name: node-agent-context-budgeting
+    category: tooling
+    triggers: [agent context budget, progressive disclosure, context minimization]
+  - name: node-agent-tool-selection
+    category: tooling
+    triggers: [agent tool selection, read only inspection, repository tools]
+  - name: node-agent-command-safety
+    category: security
+    triggers: [agent command safety, destructive command, shell safety]
+  - name: node-agent-output-contracts
+    category: tooling
+    triggers: [agent output contract, verification report, structured result]
+  - name: node-agent-handoff
+    category: tooling
+    triggers: [agent handoff, session handoff, coding task transfer]
+  - name: node-agent-recovery
+    category: tooling
+    triggers: [agent recovery, interrupted task, partial patch recovery]
+  - name: node-agent-multi-file-coordination
+    category: tooling
+    triggers: [multi file change, coding agent coordination, dependency order]
+  - name: node-agent-regression-prevention
+    category: testing
+    triggers: [regression prevention, coding agent regression, regression tests]
+  - name: node-module-resolution-diagnostics
+    category: runtime
+    triggers: [module resolution, ESM, CommonJS, package exports, ERR_MODULE_NOT_FOUND]
+  - name: node-package-manager-diagnostics
+    category: tooling
+    triggers: [npm, pnpm, package manager, workspace, install diagnostics]
+  - name: node-generated-code-review
+    category: build
+    triggers: [generated code review, generated diff, schema source, codegen]
+  - name: node-deprecation-management
+    category: api
+    triggers: [deprecation, migration path, compatibility window, API removal]
+  - name: node-backward-compatibility-testing
+    category: testing
+    triggers: [backward compatibility, compatibility matrix, contract testing, mixed version]
+  - name: node-runtime-upgrade-planning
+    category: runtime
+    triggers: [Node runtime upgrade, major version upgrade, runtime migration]
+  - name: node-temp-file-safety
+    category: security
+    triggers: [temporary files, temp directory, cleanup, secure temp]
+  - name: node-path-traversal-defense
+    category: security
+    triggers: [path traversal, dot dot, path containment, encoded path]
+  - name: node-runtime-feature-detection
+    category: runtime
+    triggers: [runtime feature detection, capability detection, Node version]
+  - name: node-process-supervision
+    category: runtime
+    triggers: [process supervision, SIGTERM, graceful shutdown, supervisor]
+  - name: node-memory-leak-diagnostics
+    category: performance
+    triggers: [memory leak, RSS growth, heap retention, GC]
+  - name: node-heap-diagnostics
+    category: runtime
+    triggers: [heap snapshot, heap statistics, memory diagnostics]
+  - name: node-event-loop-diagnostics
+    category: performance
+    triggers: [event loop lag, event loop utilization, blocking work]
+  - name: node-log-redaction
+    category: security
+    triggers: [log redaction, secrets in logs, sensitive headers]
+  - name: node-telemetry-sampling
+    category: observability
+    triggers: [telemetry sampling, trace sampling, log sampling]
+  - name: node-trace-context-propagation
+    category: observability
+    triggers: [trace context, traceparent, distributed tracing]
+  - name: node-query-plan-engineering
+    category: persistence
+    triggers: [EXPLAIN, query plan, execution plan, query optimization]
+  - name: node-postgres-locking
+    category: persistence
+    triggers: [PostgreSQL locks, SELECT FOR UPDATE, row lock]
+  - name: node-api-content-negotiation
+    category: api
+    triggers: [Accept header, Content-Type, content negotiation, Vary]
+  - name: node-http-cache-semantics
+    category: api
+    triggers: [Cache-Control, shared cache, private response, freshness]
+  - name: node-api-conditional-requests
+    category: api
+    triggers: [If-Match, If-None-Match, conditional request, precondition]
+  - name: node-lockfile-integrity
+    category: security
+    triggers: [lockfile integrity, frozen install, dependency lock]
+  - name: node-codegen-engineering
+    category: build
+    triggers: [code generation, generators, generated source]
+  - name: node-release-notes-engineering
+    category: release
+    triggers: [release notes, changelog, migration notes]
+  - name: node-maintenance-engineering
+    category: release
+    triggers: [dependency maintenance, runtime upgrade, framework upgrade]
+  - name: node-repository-health
+    category: build
+    triggers: [repository health, dependency drift, CI health, maintainability]
+  - name: node-filesystem-safety
+    category: security
+    triggers: [filesystem safety, file access, symlink, path containment]
+  - name: node-archive-extraction-safety
+    category: security
+    triggers: [archive extraction, zip slip, tar traversal, archive bomb]
+  - name: node-file-descriptor-lifecycle
+    category: runtime
+    triggers: [file descriptor leaks, handle cleanup, stream lifecycle]
+  - name: node-worker-crash-recovery
+    category: runtime
+    triggers: [worker crash, worker thread failure, background worker recovery]
+  - name: node-metric-cardinality-control
+    category: observability
+    triggers: [metric cardinality, label budget, high cardinality]
+  - name: node-etag-cache-validation
+    category: api
+    triggers: [ETag, If-None-Match, conditional GET, 304]
+  - name: node-rate-limit-headers
+    category: api
+    triggers: [rate limit headers, Retry-After, remaining, reset]
+  - name: node-authz-policy-testing
+    category: security
+    triggers: [authorization policy testing, RBAC, ABAC, default deny]
+  - name: node-access-control-auditing
+    category: security
+    triggers: [access control audit, privileged action audit, authorization audit]
+  - name: node-security-regression-testing
+    category: security
+    triggers: [security regression test, vulnerability regression, exploit test]
+  - name: node-agent-installation
+    category: agent
+    triggers: [agent installation, skill pack install, bootstrap coding agent]
+  - name: node-agentskills-compatibility
+    category: agent
+    triggers: [agent skills compatibility, skill metadata, Agent Skills format]
+  - name: node-skill-packaging
+    category: agent
+    triggers: [skill packaging, release archive, skill distribution]
+  - name: node-skill-discovery-contract
+    category: agent
+    triggers: [skill discovery, activation metadata, skill description]
+  - name: node-skill-routing-contract
+    category: agent
+    triggers: [skill routing, primary owner, secondary skill]
+  - name: node-skill-evaluation-discipline
+    category: agent
+    triggers: [skill evaluation, eval corpus, behavioral evaluation]
+  - name: node-skill-version-governance
+    category: agent
+    triggers: [skill versioning, compatibility, breaking skill change]
+  - name: node-skill-reference-governance
+    category: agent
+    triggers: [skill references, broken links, cross-skill dependency]
+  - name: node-generated-schema-contracts
+    category: build
+    triggers: [generated schema, OpenAPI codegen, protobuf codegen, runtime validation]
+  - name: node-generated-client-governance
+    category: build
+    triggers: [generated API client, client codegen, auth retry wrapper]
+  - name: node-generated-artifact-determinism
+    category: build
+    triggers: [deterministic codegen, reproducible generated artifacts]
+  - name: node-deprecation-planning
+    category: release
+    triggers: [deprecation plan, API deprecation, sunset]
+  - name: node-change-log-integrity
+    category: release
+    triggers: [changelog integrity, release metadata]
+  - name: node-database-advisory-locks
+    category: persistence
+    triggers: [advisory lock, PostgreSQL advisory lock, cooperative serialization]
+  - name: node-database-read-replica-routing
+    category: persistence
+    triggers: [read replica, replica lag, read routing, read-after-write]
+  - name: node-deadlock-diagnostics
+    category: persistence
+    triggers: [database deadlock, lock wait, wait graph]
+  - name: node-isolation-level-selection
+    category: persistence
+    triggers: [transaction isolation, serializable, repeatable read]
+  - name: node-signal-handling
+    category: runtime
+    triggers: [SIGTERM, SIGINT, signal handling, graceful shutdown]
+  - name: node-runtime-health-monitoring
+    category: operations
+    triggers: [runtime health, process health, event loop health, pool health]
+  - name: node-typescript-config-engineering
+    category: typescript
+    triggers: [tsconfig, TypeScript compiler options, strict mode, target]
+  - name: node-tsconfig-project-references
+    category: typescript
+    triggers: [project references, composite TypeScript projects, incremental build]
+  - name: node-typescript-module-resolution
+    category: typescript
+    triggers: [module resolution, moduleResolution, NodeNext, bundler resolution]
+  - name: node-esm-cjs-interoperability
+    category: runtime
+    triggers: [ESM CJS interop, import require, module interoperability]
+  - name: node-package-exports
+    category: build
+    triggers: [package exports, conditional exports, subpath exports]
+  - name: node-package-imports
+    category: build
+    triggers: [package imports, hash imports, internal aliases]
+  - name: node-package-self-reference
+    category: build
+    triggers: [package self reference, package-name import, exports]
+  - name: node-subpath-patterns
+    category: build
+    triggers: [package subpath patterns, wildcard exports]
+  - name: node-dual-package-hazards
+    category: build
+    triggers: [dual package hazard, ESM CJS dual package]
+  - name: node-npm-publishing
+    category: release
+    triggers: [npm publish, package tarball, release package]
+  - name: node-package-provenance
+    category: security
+    triggers: [npm provenance, trusted publishing, OIDC publish]
+  - name: node-typescript-declaration-publishing
+    category: typescript
+    triggers: [declaration files, d.ts publishing, types exports]
+  - name: node-dependency-confusion-defense
+    category: security
+    triggers: [dependency confusion, registry scope, private package]
+  - name: node-install-script-safety
+    category: security
+    triggers: [install scripts, lifecycle scripts, dependency install]
+  - name: node-postinstall-safety
+    category: security
+    triggers: [postinstall, native dependency install, remote binary]
+  - name: node-build-cache-integrity
+    category: build
+    triggers: [build cache, cache key, remote build cache]
+  - name: node-source-map-governance
+    category: security
+    triggers: [source maps, hidden source maps, source content]
+  - name: node-runtime-inspector-security
+    category: security
+    triggers: [Node inspector, debugger port, remote debugging]
+  - name: node-diagnostic-reports
+    category: runtime
+    triggers: [diagnostic report, Node report, crash diagnostics]
+  - name: node-startup-profiling
+    category: performance
+    triggers: [startup profiling, cold start, module loading]
+  - name: node-http2-engineering
+    category: network
+    triggers: [HTTP/2, http2, ALPN, stream concurrency]
+  - name: node-structured-cloning
+    category: runtime
+    triggers: [structured clone, worker message, transferable]
+  - name: node-package-manager-policy
+    category: build
+    triggers: [package manager policy, npm, pnpm, yarn, Corepack]
+
   express:
     path: adapters/express/SKILL.md
     version_scope: 5.x
@@ -964,3 +1275,51 @@ adapters:
     path: adapters/apollo-server/SKILL.md
     version_scope: 5.x
     source: https://www.apollographql.com/docs/apollo-server
+  fastify-swagger:
+    path: adapters/fastify-swagger/SKILL.md
+    version_scope: >=9.x (Fastify 5.x)
+    source: https://github.com/fastify/fastify-swagger
+  fastify-multipart:
+    path: adapters/fastify-multipart/SKILL.md
+    version_scope: current; verify Fastify major
+    source: https://github.com/fastify/fastify-multipart
+  nestjs-swagger:
+    path: adapters/nestjs-swagger/SKILL.md
+    version_scope: current; verify NestJS major
+    source: https://docs.nestjs.com/openapi/introduction
+  opentelemetry-sdk-node:
+    path: adapters/opentelemetry-sdk-node/SKILL.md
+    version_scope: current
+    source: https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/opentelemetry-sdk-node
+  tsx:
+    path: adapters/tsx/SKILL.md
+    version_scope: current
+    source: https://github.com/privatenumber/tsx
+  tsup:
+    path: adapters/tsup/SKILL.md
+    version_scope: 8.5.1
+    source: https://github.com/egoist/tsup
+  esbuild:
+    path: adapters/esbuild/SKILL.md
+    version_scope: 0.28.2
+    source: https://github.com/evanw/esbuild
+  graphql-request:
+    path: adapters/graphql-request/SKILL.md
+    version_scope: 7.4.0
+    source: https://github.com/graffle-js/graffle/tree/graphql-request
+  typescript:
+    path: adapters/typescript/SKILL.md
+    version_scope: 7.0.2
+    source: https://www.typescriptlang.org/
+  tsdown:
+    path: adapters/tsdown/SKILL.md
+    version_scope: 0.23.0
+    source: https://tsdown.dev/
+  graphql-codegen:
+    path: adapters/graphql-codegen/SKILL.md
+    version_scope: 7.4.2
+    source: https://the-guild.dev/graphql/codegen
+  swc-core:
+    path: adapters/swc-core/SKILL.md
+    version_scope: 1.16.2
+    source: https://swc.rs/
