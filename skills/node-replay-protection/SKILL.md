@@ -23,10 +23,13 @@ preventing valid requests or tokens from being reused beyond their intended wind
 
 ## Decision rules
 
-- Enforce freshness and uniqueness at the authoritative processing boundary.
-- Consume a nonce or event ID atomically so concurrent requests cannot both succeed.
-- Replay state retention must cover the protocol window and expected delivery delay.
-- Multi-instance deployments need shared or coordinated replay state unless ownership is provably single-instance.
+freshness and uniqueness are explicit; replay state is stored at the authoritative boundary with a bounded retention period
+
+- Exact wire bytes and protocol semantics matter for cryptographic verification.
+- Security controls must survive proxies, retries, and duplicate delivery.
+- Timeouts and resource limits are end-to-end budgets, not isolated middleware settings.
+- Prefer explicit allowlists over string heuristics.
+
 ## Implementation procedure
 
 1. Define nonce/event ID.

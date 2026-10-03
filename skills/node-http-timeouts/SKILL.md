@@ -23,10 +23,13 @@ setting bounded connection, header, body, and application deadlines for Node.js 
 
 ## Decision rules
 
-- The end-to-end deadline is authoritative; every stage budget must fit inside it.
-- AbortSignal propagation should stop cancellable downstream work when the request is cancelled.
-- Timeouts are capacity controls, not merely error formatting.
-- Retries must fit inside the remaining deadline and require an idempotency decision for mutations.
+each stage has an explicit budget; total request deadline is authoritative; timeout errors are classified and cancellation propagated
+
+- Exact wire bytes and protocol semantics matter for cryptographic verification.
+- Security controls must survive proxies, retries, and duplicate delivery.
+- Timeouts and resource limits are end-to-end budgets, not isolated middleware settings.
+- Prefer explicit allowlists over string heuristics.
+
 ## Implementation procedure
 
 1. Map client/server timeout stages.

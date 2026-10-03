@@ -23,11 +23,13 @@ handling HTTP headers consistently and safely across Node.js/proxy boundaries.
 
 ## Decision rules
 
-- Header names are case-insensitive, but duplicate values can have protocol-specific meaning and must not be collapsed blindly.
-- Hop-by-hop headers must not cross an end-to-end service boundary as application metadata.
-- Cryptographic canonicalization must follow the signature protocol rather than generic normalization.
-- Create one explicit normalized view for application consumers while preserving raw headers where protocol verification requires them.
-- Treat duplicate header instances as security-significant input until the HTTP contract says they are safely combinable.
+headers are case-insensitive but duplicate/conflicting semantics are explicit; security-sensitive headers have a single authoritative source
+
+- Exact wire bytes and protocol semantics matter for cryptographic verification.
+- Security controls must survive proxies, retries, and duplicate delivery.
+- Timeouts and resource limits are end-to-end budgets, not isolated middleware settings.
+- Prefer explicit allowlists over string heuristics.
+
 ## Implementation procedure
 
 1. Identify security-critical headers.

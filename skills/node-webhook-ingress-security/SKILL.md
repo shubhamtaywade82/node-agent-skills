@@ -23,10 +23,13 @@ securely receiving third-party webhooks at a Node.js HTTP boundary.
 
 ## Decision rules
 
-- Preserve and authenticate the raw payload before parsing when the provider signs exact bytes.
-- Signature validation, replay protection, schema validation, and idempotent processing are separate controls.
-- A successful HTTP acknowledgment should follow a durable acceptance decision.
-- Enforce payload and processing bounds before expensive downstream work.
+raw bytes are verified before parsing; source authentication, replay resistance, size limits, and idempotency are explicit
+
+- Exact wire bytes and protocol semantics matter for cryptographic verification.
+- Security controls must survive proxies, retries, and duplicate delivery.
+- Timeouts and resource limits are end-to-end budgets, not isolated middleware settings.
+- Prefer explicit allowlists over string heuristics.
+
 ## Implementation procedure
 
 1. Capture raw body safely.

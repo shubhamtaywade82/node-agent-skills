@@ -1,0 +1,144 @@
+cases:
+  - name: typescript-config-engineering
+    skill: node-typescript-config-engineering
+    prompt: "Implement or review a production Node.js or TypeScript change involving typescript config engineering."
+    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "supply-chain or runtime constraints"]
+    expected_invariants: ["explicit ownership", "reproducible behavior", "observable outcome", "tests prove the contract"]
+
+  - name: tsconfig-project-references
+    skill: node-tsconfig-project-references
+    prompt: "Implement or review a production Node.js or TypeScript change involving tsconfig project references."
+    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "supply-chain or runtime constraints"]
+    expected_invariants: ["explicit ownership", "reproducible behavior", "observable outcome", "tests prove the contract"]
+
+  - name: typescript-module-resolution
+    skill: node-typescript-module-resolution
+    prompt: "Implement or review a production Node.js or TypeScript change involving typescript module resolution."
+    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "supply-chain or runtime constraints"]
+    expected_invariants: ["explicit ownership", "reproducible behavior", "observable outcome", "tests prove the contract"]
+
+  - name: esm-cjs-interoperability
+    skill: node-esm-cjs-interoperability
+    prompt: "Implement or review a production Node.js or TypeScript change involving esm cjs interoperability."
+    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "supply-chain or runtime constraints"]
+    expected_invariants: ["explicit ownership", "reproducible behavior", "observable outcome", "tests prove the contract"]
+
+  - name: package-exports
+    skill: node-package-exports
+    prompt: "Implement or review a production Node.js or TypeScript change involving package exports."
+    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "supply-chain or runtime constraints"]
+    expected_invariants: ["explicit ownership", "reproducible behavior", "observable outcome", "tests prove the contract"]
+
+  - name: package-imports
+    skill: node-package-imports
+    prompt: "Implement or review a production Node.js or TypeScript change involving package imports."
+    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "supply-chain or runtime constraints"]
+    expected_invariants: ["explicit ownership", "reproducible behavior", "observable outcome", "tests prove the contract"]
+
+  - name: package-self-reference
+    skill: node-package-self-reference
+    prompt: "Implement or review a production Node.js or TypeScript change involving package self reference."
+    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "supply-chain or runtime constraints"]
+    expected_invariants: ["explicit ownership", "reproducible behavior", "observable outcome", "tests prove the contract"]
+
+  - name: subpath-patterns
+    skill: node-subpath-patterns
+    prompt: "Implement or review a production Node.js or TypeScript change involving subpath patterns."
+    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "supply-chain or runtime constraints"]
+    expected_invariants: ["explicit ownership", "reproducible behavior", "observable outcome", "tests prove the contract"]
+
+  - name: dual-package-hazards
+    skill: node-dual-package-hazards
+    prompt: "Implement or review a production Node.js or TypeScript change involving dual package hazards."
+    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "supply-chain or runtime constraints"]
+    expected_invariants: ["explicit ownership", "reproducible behavior", "observable outcome", "tests prove the contract"]
+
+  - name: npm-publishing
+    skill: node-npm-publishing
+    prompt: "Implement or review a production Node.js or TypeScript change involving npm publishing."
+    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "supply-chain or runtime constraints"]
+    expected_invariants: ["explicit ownership", "reproducible behavior", "observable outcome", "tests prove the contract"]
+
+  - name: package-provenance
+    skill: node-package-provenance
+    prompt: "Implement or review a production Node.js or TypeScript change involving package provenance."
+    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "supply-chain or runtime constraints"]
+    expected_invariants: ["explicit ownership", "reproducible behavior", "observable outcome", "tests prove the contract"]
+
+  - name: typescript-declaration-publishing
+    skill: node-typescript-declaration-publishing
+    prompt: "Implement or review a production Node.js or TypeScript change involving typescript declaration publishing."
+    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "supply-chain or runtime constraints"]
+    expected_invariants: ["explicit ownership", "reproducible behavior", "observable outcome", "tests prove the contract"]
+
+  - name: lockfile-integrity
+    skill: node-lockfile-integrity
+    prompt: "Implement or review a production Node.js or TypeScript change involving lockfile integrity."
+    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "supply-chain or runtime constraints"]
+    expected_invariants: ["explicit ownership", "reproducible behavior", "observable outcome", "tests prove the contract"]
+
+  - name: dependency-confusion-defense
+    skill: node-dependency-confusion-defense
+    prompt: "Implement or review a production Node.js or TypeScript change involving dependency confusion defense."
+    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "supply-chain or runtime constraints"]
+    expected_invariants: ["explicit ownership", "reproducible behavior", "observable outcome", "tests prove the contract"]
+
+  - name: install-script-safety
+    skill: node-install-script-safety
+    prompt: "Implement or review a production Node.js or TypeScript change involving install script safety."
+    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "supply-chain or runtime constraints"]
+    expected_invariants: ["explicit ownership", "reproducible behavior", "observable outcome", "tests prove the contract"]
+
+  - name: postinstall-safety
+    skill: node-postinstall-safety
+    prompt: "Implement or review a production Node.js or TypeScript change involving postinstall safety."
+    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "supply-chain or runtime constraints"]
+    expected_invariants: ["explicit ownership", "reproducible behavior", "observable outcome", "tests prove the contract"]
+
+  - name: build-cache-integrity
+    skill: node-build-cache-integrity
+    prompt: "Implement or review a production Node.js or TypeScript change involving build cache integrity."
+    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "supply-chain or runtime constraints"]
+    expected_invariants: ["explicit ownership", "reproducible behavior", "observable outcome", "tests prove the contract"]
+
+  - name: source-map-governance
+    skill: node-source-map-governance
+    prompt: "Implement or review a production Node.js or TypeScript change involving source map governance."
+    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "supply-chain or runtime constraints"]
+    expected_invariants: ["explicit ownership", "reproducible behavior", "observable outcome", "tests prove the contract"]
+
+  - name: runtime-inspector-security
+    skill: node-runtime-inspector-security
+    prompt: "Implement or review a production Node.js or TypeScript change involving runtime inspector security."
+    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "supply-chain or runtime constraints"]
+    expected_invariants: ["explicit ownership", "reproducible behavior", "observable outcome", "tests prove the contract"]
+
+  - name: diagnostic-reports
+    skill: node-diagnostic-reports
+    prompt: "Implement or review a production Node.js or TypeScript change involving diagnostic reports."
+    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "supply-chain or runtime constraints"]
+    expected_invariants: ["explicit ownership", "reproducible behavior", "observable outcome", "tests prove the contract"]
+
+  - name: startup-profiling
+    skill: node-startup-profiling
+    prompt: "Implement or review a production Node.js or TypeScript change involving startup profiling."
+    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "supply-chain or runtime constraints"]
+    expected_invariants: ["explicit ownership", "reproducible behavior", "observable outcome", "tests prove the contract"]
+
+  - name: http2-engineering
+    skill: node-http2-engineering
+    prompt: "Implement or review a production Node.js or TypeScript change involving http2 engineering."
+    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "supply-chain or runtime constraints"]
+    expected_invariants: ["explicit ownership", "reproducible behavior", "observable outcome", "tests prove the contract"]
+
+  - name: structured-cloning
+    skill: node-structured-cloning
+    prompt: "Implement or review a production Node.js or TypeScript change involving structured cloning."
+    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "supply-chain or runtime constraints"]
+    expected_invariants: ["explicit ownership", "reproducible behavior", "observable outcome", "tests prove the contract"]
+
+  - name: package-manager-policy
+    skill: node-package-manager-policy
+    prompt: "Implement or review a production Node.js or TypeScript change involving package manager policy."
+    pressure: ["existing repository conventions", "failure path", "compatibility boundary", "supply-chain or runtime constraints"]
+    expected_invariants: ["explicit ownership", "reproducible behavior", "observable outcome", "tests prove the contract"]
