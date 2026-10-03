@@ -318,3 +318,7 @@ Wave 13 makes previously secondary-only foundational capabilities explicit routi
 | multi-tenancy | node-multi-tenancy | node-authorization-models, node-database-engineering |
 | audit logging | node-audit-logging | node-observability, node-security-incident-response |
 | data privacy | node-data-privacy | node-data-retention, node-data-masking |
+
+## Reconciled capability stacks
+
+The current mainline preserves the deterministic routing/evaluator path and adds the canonical open capability stacks for runtime/database diagnostics, portable agent/skill-pack governance, HTTP/auth/observability, distribution/code generation, and TypeScript/package diagnostics. Exact skill ownership is recorded in `ROUTING_CASES.yml`; adapter-specific behavior remains conditional on repository version detection.

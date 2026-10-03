@@ -152,13 +152,18 @@ npm run validate
 | Kubernetes | adapters/kubernetes/SKILL.md | current API conventions |
 | OpenTelemetry | adapters/opentelemetry/SKILL.md | current JS SDK |
 
+### Reconciled adapters
+
+Added adapters: fastify-swagger, fastify-multipart, nestjs-swagger, opentelemetry-sdk-node, tsx, tsup, esbuild, graphql-request, typescript, tsdown, graphql-codegen, swc-core.
+
 Adapters are conditional. Agents must detect the framework/library and installed version from the target repository before applying adapter-specific guidance.
 
 ## Current capability line
 
-Wave 17 brings the repository to **226 core skills** and **69 adapters**. The pack now covers backend engineering mechanics, agent execution discipline, and deterministic routing evaluation with explicit quality metrics across a 100-case collision matrix.
+The reconciled capability line contains **329 core skills** and **81 adapters**. It combines runtime/database diagnostics, portable agent/skill-pack governance, HTTP/auth/observability, distribution/code-generation/database-runtime, and TypeScript/package diagnostics while retaining the current deterministic routing/evaluator hardening.
 
-Agent-facing workflow additions include repository preflight, evidence gathering, change-scope control, verification reporting, risk escalation, rollback planning, commit hygiene, PR preparation, routing-evaluator hardening, and broad routing collision coverage.
+The agent workflow remains repository-first: inspect evidence, identify the owning boundary, load only required secondaries/adapters, implement within an explicit change boundary, and verify with reproducible evidence.
+
 
 ## Architecture
 `skills/` contains framework-neutral routed knowledge units. `skill-manifest.yml` is the registry and includes version-scoped adapter metadata. `router/` defines ownership and adapter selection. `scripts/validate.mjs` checks consistency. `test/` protects repository contracts. `evals/` contains behavioral pressure scenarios.
