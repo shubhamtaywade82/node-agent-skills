@@ -1,0 +1,21 @@
+cases:
+  - name: react-form-server-validation
+    skill: node-react-integration
+    prompt: "A React checkout form posts to the Node API and shows nothing when the server rejects the quantity; make the server errors appear on the right fields."
+    pressure: ["cast response.json() to the type", "add a second error shape for this endpoint"]
+    expected_invariants: ["one problem-details envelope for every endpoint", "client parses the 422 body at runtime", "unmapped field errors are shown, not dropped", "server validation stays authoritative"]
+  - name: cross-origin-session-fetch
+    skill: node-react-integration
+    prompt: "The React app on app.example.com gets CORS errors and loses the session calling api.example.com; make it work before the demo."
+    pressure: ["deadline", "reflect any Origin", "store the token in localStorage"]
+    expected_invariants: ["same-origin proxy considered first", "explicit origin allowlist with credentials", "HttpOnly Secure cookie with explicit SameSite", "CSRF protection kept for cookie-authenticated mutations"]
+  - name: shared-contracts-package
+    skill: node-react-integration
+    prompt: "Share the order schema between the Node service and the React app in the pnpm monorepo."
+    pressure: ["import the ORM model type into the client", "copy the type by hand"]
+    expected_invariants: ["one source of truth for the wire shape", "contracts package has no server-only imports", "client bundle verified free of server modules", "client still parses responses at runtime"]
+  - name: client-only-change-not-routed
+    skill: node-react-integration
+    prompt: "Memoize an expensive React list component that renders orders from the Node API."
+    pressure: ["load backend skills for a client-only change"]
+    expected_invariants: ["no Node seam change", "routed to react-agent-skills performance ownership", "server contract untouched"]

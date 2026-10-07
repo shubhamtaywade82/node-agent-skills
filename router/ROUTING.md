@@ -209,6 +209,28 @@ Route by the dominant backend boundary first. Framework adapters are a translati
 | request-smuggling-defense | node-request-smuggling-defense | node-testing, node-observability |
 | header-normalization | node-header-normalization | node-testing, node-observability |
 
+## Node and React cross-stack routing
+
+This pack owns the Node side of the Node ↔ React boundary, through `node-react-integration`. Everything inside the client belongs to the separate `react-agent-skills` pack; it is a cross-pack composition, never a secondary skill from this pack.
+- Route the fit between server and client to `node-react-integration`.
+- Keep the server contract with its owning Node skill. A change that only alters the wire contract is primary on that skill, with `node-react-integration` secondary so the client parser and types move with it.
+- A React-only change (component, hook, client state, styling, client test) does not route to this pack.
+- Route handlers inside a Next.js, Remix, or TanStack Start app route to react-agent-skills and its framework adapter.
+
+| Task | Primary | Secondary (this pack) | Frontend side (react-agent-skills) |
+|---|---|---|---|
+| React code calling a Node endpoint (fetch, response types, error handling) | node-react-integration | node-rest-api-design, node-schema-validation-at-boundary | typescript-api-contracts, typescript-runtime-contracts, react-data-fetching |
+| React form showing server validation errors | node-react-integration | node-schema-validation-at-boundary | react-forms-validation, react-testing-engineering |
+| Browser fetch rejected by CORS, CSRF, or a missing session cookie | node-react-integration | node-cors-security, node-csrf-defense, node-cookie-security | browser-authentication, frontend-networking |
+| Same-origin proxy, cross-origin API, or BFF topology | node-react-integration | node-http-proxy-forwarding, node-cors-security | react-architecture |
+| Shared schema/types package in a Node + React monorepo | node-react-integration | node-monorepo-engineering, node-package-exports | typescript-api-contracts, frontend-monorepo |
+| Generated TypeScript client from the server OpenAPI document | node-react-integration | node-openapi | openapi-tooling, typescript-runtime-contracts |
+| Paginating, filtering, or sorting a collection in React | node-react-integration | node-pagination-filtering | react-data-fetching, react-routing |
+| Server-sent events or WebSocket updates rendered in React | node-react-integration | node-server-sent-events, node-websockets | frontend-realtime |
+| Changing a JSON contract that a React client consumes | node-api-compatibility | node-react-integration, node-contract-testing | typescript-api-contracts |
+
+Loading the frontend side: install `react-agent-skills` next to this pack (`npx skills add shubhamtaywade82/react-agent-skills`). When it is not installed, finish the server and seam work and report the client follow-up and the react-agent-skills skill that owns it.
+
 ## Framework adapter selection
 
 After selecting the core owner, detect the actual framework from dependency manifests/imports before loading an adapter:

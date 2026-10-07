@@ -437,6 +437,9 @@ skills:
   - name: node-cookie-security
     category: security
     triggers: [cookies, HttpOnly, Secure, SameSite, cookie scope]
+  - name: node-react-integration
+    category: api
+    triggers: [React client, React frontend, Node React integration, full-stack TypeScript, shared contracts package, BFF, Vite proxy, fetch credentials, CSRF token in fetch, problem details in forms, SSE to browser, WebSocket to React]
   - name: node-cors-security
     category: security
     triggers: [CORS, cross origin, preflight, Access-Control-Allow-Origin]

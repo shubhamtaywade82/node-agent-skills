@@ -1353,3 +1353,7 @@
   - name: package-manager-policy
     primary: node-package-manager-policy
     secondary: [node-testing, node-build-engineering]
+
+  - name: react-client-seam
+    primary: node-react-integration
+    secondary: [node-rest-api-design, node-csrf-defense, node-cors-security]

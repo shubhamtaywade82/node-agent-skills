@@ -41,7 +41,7 @@ test("Wave 13 skills have files and evaluation coverage", async () => {
     assert.match(text, new RegExp("^name: " + skill + "$", "m"));
     assert.match(evals, new RegExp("skill: " + skill, "m"));
   }
-  assert.equal([...manifest.matchAll(/^  - name: ([a-z0-9-]+)$/gm)].length, 329);
+  assert.equal([...manifest.matchAll(/^  - name: ([a-z0-9-]+)$/gm)].length, 330);
   assert.equal([...manifest.matchAll(/^    path: adapters\//gm)].length, 81);
 });
 
