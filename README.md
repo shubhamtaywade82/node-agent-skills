@@ -160,10 +160,29 @@ Adapters are conditional. Agents must detect the framework/library and installed
 
 ## Current capability line
 
-The reconciled capability line contains **329 core skills** and **81 adapters**. It combines runtime/database diagnostics, portable agent/skill-pack governance, HTTP/auth/observability, distribution/code-generation/database-runtime, and TypeScript/package diagnostics while retaining the current deterministic routing/evaluator hardening.
+The reconciled capability line contains **330 core skills** and **81 adapters**. It combines runtime/database diagnostics, portable agent/skill-pack governance, HTTP/auth/observability, distribution/code-generation/database-runtime, and TypeScript/package diagnostics while retaining the current deterministic routing/evaluator hardening.
 
 The agent workflow remains repository-first: inspect evidence, identify the owning boundary, load only required secondaries/adapters, implement within an explicit change boundary, and verify with reproducible evidence.
 
+
+## Full-stack Node + React
+
+This pack does not copy React skills. For a Node.js backend with a React frontend, install the React pack next to this one:
+
+```bash
+npx skills add shubhamtaywade82/node-agent-skills -a claude-code   # this pack (or npm run pack:export, see docs/PACK_DISTRIBUTION.md)
+npx skills add shubhamtaywade82/react-agent-skills -a claude-code  # React + TypeScript client
+```
+
+Agents route by boundary (see `router/ROUTING.md`, "Node and React cross-stack routing"):
+
+| Change | Load |
+|---|---|
+| Node only (route, schema, persistence, job) | this pack |
+| Seam (fetch from React, CORS/cookies/CSRF, error envelope in forms, shared contracts package, OpenAPI client, pagination, SSE/WebSocket) | `node-react-integration` + the owning Node skill, then the react-agent-skills skills it names |
+| React only (component, hook, client state, styling, client test) | react-agent-skills |
+
+Skill names do not collide: this pack prefixes every skill with `node-`. When `react-agent-skills` is not installed, `node-react-integration` still does the seam work and names the client-side follow-up and the react-agent-skills skill that owns it.
 
 ## Architecture
 `skills/` contains framework-neutral routed knowledge units. `skill-manifest.yml` is the registry and includes version-scoped adapter metadata. `router/` defines ownership and adapter selection. `scripts/validate.mjs` checks consistency. `test/` protects repository contracts. `evals/` contains behavioral pressure scenarios.

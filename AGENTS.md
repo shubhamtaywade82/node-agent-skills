@@ -27,5 +27,8 @@ This repository is an agent-oriented Node.js + TypeScript backend skill system. 
 ## Skill contract
 Every SKILL.md must contain valid name/description frontmatter, a precise trigger, repository inspection, decision rules, implementation procedure, failure modes, and verification. Keep skills focused and below 500 lines.
 
+## Companion packs
+React/TypeScript client work belongs to `react-agent-skills`; never copy its skills here. For a Node + React change, follow `router/ROUTING.md` "Node and React cross-stack routing": this pack owns the server and the seam (`node-react-integration`), react-agent-skills owns the client. If react-agent-skills is not installed, report the client follow-up and its owning skill instead of improvising.
+
 ## Framework strategy
 Core skills are framework-neutral. Framework, ORM, queue, cloud, and infrastructure integrations are adapters layered on top of the core contracts.
