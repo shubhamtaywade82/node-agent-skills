@@ -1,10 +1,13 @@
 name: Validate
+
 on:
   push:
     branches: ["**"]
   pull_request:
+
 permissions:
   contents: read
+
 jobs:
   validate:
     runs-on: ubuntu-latest
@@ -15,5 +18,27 @@ jobs:
           node-version: 24
           package-manager-cache: false
       - run: node --version
-      - run: npm test
-      - run: npm run validate
+      - run: npm --version
+      - name: Lint check (structural)
+        run: npm run validate
+      - name: Test suite
+        run: npm test
+      - name: Pack export smoke test
+        run: npm run pack:export
+      - name: Skill loader smoke test
+        run: |
+          node bin/skills.mjs route "add a Postgres transaction with an index" --repo .
+          node bin/skills.mjs list --category persistence
+          node bin/skills.mjs show node-architecture
+      - name: MCP server smoke test
+        run: |
+          printf '%s\n' \
+            '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{}}' \
+            '{"jsonrpc":"2.0","id":2,"method":"tools/list","params":{}}' \
+            '{"jsonrpc":"2.0","id":3,"method":"tools/call","params":{"name":"list_skills","arguments":{"category":"ai"}}}' \
+            | node lib/mcp-server.mjs
+      - name: Verify exported pack manifest
+        run: |
+          test -f dist/node-agent-skills/pack-manifest.json
+          test -f dist/node-agent-skills/checksums.sha256
+          node -e "const m=require('./dist/node-agent-skills/pack-manifest.json');console.log('skills:',m.skills,'adapters:',m.adapters,'files:',m.files.length)"
