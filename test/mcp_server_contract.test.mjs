@@ -93,7 +93,7 @@ test("tools/call list_skills with category filter", async () => {
   assert.ok(body.every((s) => s.category === "architecture"));
 });
 
-test("tools/call list_adapters returns 81 adapters", async () => {
+test("tools/call list_adapters returns 95 adapters", async () => {
   const { responses, err } = await callServer([
     rpc("initialize", {}, 1),
     rpc("tools/call", { name: "list_adapters", arguments: {} }, 2),
@@ -102,7 +102,7 @@ test("tools/call list_adapters returns 81 adapters", async () => {
   const call = responses.find((r) => r.id === 2);
   assert.ok(call);
   const body = JSON.parse(call.result.content[0].text);
-  assert.equal(body.length, 81);
+  assert.equal(body.length, 95);
 });
 
 test("tools/call get_skill returns error for unknown skill", async () => {
