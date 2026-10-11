@@ -42,3 +42,19 @@ jobs:
           test -f dist/node-agent-skills/pack-manifest.json
           test -f dist/node-agent-skills/checksums.sha256
           node -e "const m=require('./dist/node-agent-skills/pack-manifest.json');console.log('skills:',m.skills,'adapters:',m.adapters,'files:',m.files.length)"
+      - name: Fixture repo adapter detection smoke test
+        run: |
+          # The skill loader should detect all declared adapters in the fixture's package.json.
+          DETECTED=$(node bin/skills.mjs detect-repo examples/ecommerce-api | python3 -c "import json,sys; d=json.load(sys.stdin); print(','.join(sorted(a['name'] for a in d)))")
+          for required in bullmq fastify ioredis pg pino zod; do
+            echo "checking adapter: $required"
+            echo "$DETECTED" | grep -q "\b$required\b" || (echo "missing $required in detected adapters: $DETECTED" && exit 1)
+          done
+          echo "all required adapters detected: $DETECTED"
+      - name: Fixture repo route prompt smoke test
+        run: |
+          # A "transactional outbox" prompt routed against the fixture should land on
+          # the transactional-outbox or postgresql-persistence primary.
+          PRIMARY=$(node bin/skills.mjs route "add a transactional outbox for order creation" --repo examples/ecommerce-api | python3 -c "import json,sys; d=json.load(sys.stdin); print(d['primary'])")
+          echo "primary: $PRIMARY"
+          test "$PRIMARY" = "node-transactional-outbox" || test "$PRIMARY" = "node-postgresql-persistence"
