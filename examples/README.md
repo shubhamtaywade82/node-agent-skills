@@ -5,8 +5,9 @@ Fixture repositories demonstrating the node-agent-skills pack against real code.
 | Fixture | Stack | Skills exercised |
 |---|---|---|
 | `ecommerce-api` | Fastify + Postgres + BullMQ + zod + pino | http-engineering, api-engineering, runtime-validation, postgresql-persistence, transactional-outbox, background-jobs-reliability, idempotency, observability, production-runtime, async-concurrency |
+| `edge-worker` | Cloudflare Workers + Workers AI + KV + Durable Objects + zod | edge-runtime-foundations, http-engineering, runtime-validation, async-concurrency, llm-streaming, llm-application-patterns, distributed-locks, production-runtime |
 
-Each fixture is independently runnable — `cd examples/<name> && npm install && npm start`. Each fixture's `README.md` cross-references the skills it demonstrates.
+Each fixture is independently runnable — `cd examples/<name> && npm install && npm start` (or `npm run dev` for the Workers fixture). Each fixture's `README.md` cross-references the skills it demonstrates.
 
 ## Why fixtures matter
 
