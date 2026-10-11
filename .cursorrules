@@ -1,0 +1,36 @@
+# .cursorrules — orientation for Cursor when editing this repository
+
+This is a portable AI coding agent skill pack, not a runnable application. Zero runtime dependencies.
+
+## Before editing
+
+1. Read `AGENTS.md`, `docs/SKILL_CONTRACT.md`, and `docs/RUNTIME_INTEGRATION.md`.
+2. Run `npm test && npm run validate`. Both must pass before any commit.
+
+## Skill content standard
+
+Every `skills/<name>/SKILL.md` MUST contain:
+- YAML frontmatter: `name:` (matches directory), `description: Use when ...` (searchable)
+- Sections: `## Purpose`, `## Activate when`, `## Repository inspection`, `## Decision rules`, `## Implementation procedure`, `## Failure modes`, `## Verification`
+- ≤ 500 lines
+- Anchor skills (most-routed) should be ≥ 100 lines with commands, library names, and code samples
+
+## Runtime files
+
+- `lib/skill-loader.mjs` — prompt routing + adapter detection
+- `lib/mcp-server.mjs` — MCP server (stdio, JSON-RPC 2.0)
+- `bin/skills.mjs` — CLI
+- `lib/routing-evaluator.mjs` — deterministic routing regression harness
+
+## Adding a skill
+
+1. Create `skills/<name>/SKILL.md` following the content standard.
+2. Register in `skill-manifest.yml` under `skills:` with `name`, `category`, `triggers: [...]`.
+3. Add a routing case to `router/ROUTING_CASES.yml` (primary + secondary).
+4. Add an evaluation case to the relevant `evals/cases/<workflow>/workflow.yml`.
+5. Run `npm test && npm run validate`.
+
+## Commit rules
+
+- No `Co-Authored-By` trailers.
+- Each commit must keep CI green (`npm test && npm run validate`).
