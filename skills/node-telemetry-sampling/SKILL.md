@@ -31,7 +31,12 @@ sampling preserves critical/error signals and is explicit by signal type; sampli
 
 ## Implementation procedure
 
-1. Define sampling policy.\n2. Preserve errors and important operations.\n3. Bound attributes.\n4. Apply consistently at ingress.\n5. Measure dropped telemetry.\n6. Test peak load.
+1. Define sampling policy.
+2. Preserve errors and important operations.
+3. Bound attributes.
+4. Apply consistently at ingress.
+5. Measure dropped telemetry.
+6. Test peak load.
 
 ## Failure modes
 

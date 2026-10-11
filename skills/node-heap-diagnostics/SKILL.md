@@ -31,7 +31,11 @@ heap diagnostics may contain secrets and must be access-controlled; collection i
 
 ## Implementation procedure
 
-1. Define authorized collection path.\n2. Inspect heap statistics.\n3. Capture snapshots only with operational controls.\n4. Redact/export securely.\n5. Compare before/after.
+1. Define authorized collection path.
+2. Inspect heap statistics.
+3. Capture snapshots only with operational controls.
+4. Redact/export securely.
+5. Compare before/after.
 
 ## Failure modes
 

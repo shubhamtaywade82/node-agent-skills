@@ -31,7 +31,12 @@ writes go to authoritative primary; read-after-write requirements override repli
 
 ## Implementation procedure
 
-1. Classify query consistency.\n2. Detect primary/replica clients.\n3. Route reads.\n4. Pin sessions after writes when needed.\n5. Handle replica lag/failure.\n6. Test stale-read windows.
+1. Classify query consistency.
+2. Detect primary/replica clients.
+3. Route reads.
+4. Pin sessions after writes when needed.
+5. Handle replica lag/failure.
+6. Test stale-read windows.
 
 ## Failure modes
 

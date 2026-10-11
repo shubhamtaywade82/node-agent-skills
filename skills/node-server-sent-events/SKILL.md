@@ -32,7 +32,13 @@ send valid SSE framing; terminate cleanly; heartbeat idle connections when requi
 
 ## Implementation procedure
 
-1. Define event names/data/id/retry semantics.\n2. Authenticate before stream creation.\n3. Register disconnect cleanup.\n4. Heartbeat.\n5. Bound subscriber queues.\n6. Choose replay storage.\n7. Instrument active connections.
+1. Define event names/data/id/retry semantics.
+2. Authenticate before stream creation.
+3. Register disconnect cleanup.
+4. Heartbeat.
+5. Bound subscriber queues.
+6. Choose replay storage.
+7. Instrument active connections.
 
 ## Failure modes
 

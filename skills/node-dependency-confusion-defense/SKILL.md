@@ -31,7 +31,11 @@ registry scopes and source policy are explicit; private names cannot silently fa
 
 ## Implementation procedure
 
-1. Inventory registry config.\n2. Scope internal packages.\n3. Configure provenance/registry policy.\n4. Inspect lockfile sources.\n5. Test clean install.
+1. Inventory registry config.
+2. Scope internal packages.
+3. Configure provenance/registry policy.
+4. Inspect lockfile sources.
+5. Test clean install.
 
 ## Failure modes
 

@@ -31,7 +31,11 @@ the compiler's module and resolution mode must match the runtime/toolchain; pack
 
 ## Implementation procedure
 
-1. Detect ESM/CJS.\n2. Inspect moduleResolution.\n3. Test package exports.\n4. Resolve extension behavior.\n5. Compile and execute representative imports.
+1. Detect ESM/CJS.
+2. Inspect moduleResolution.
+3. Test package exports.
+4. Resolve extension behavior.
+5. Compile and execute representative imports.
 
 ## Failure modes
 

@@ -32,7 +32,13 @@ store immutable object identifiers and metadata separately from blobs; keep buck
 
 ## Implementation procedure
 
-1. Define object key ownership.\n2. Validate content length/type.\n3. Use checksums where useful.\n4. Select multipart threshold.\n5. Issue short-lived presigned URLs.\n6. Model orphan cleanup.\n7. Keep tenant isolation in keys/policies.
+1. Define object key ownership.
+2. Validate content length/type.
+3. Use checksums where useful.
+4. Select multipart threshold.
+5. Issue short-lived presigned URLs.
+6. Model orphan cleanup.
+7. Keep tenant isolation in keys/policies.
 
 ## Failure modes
 

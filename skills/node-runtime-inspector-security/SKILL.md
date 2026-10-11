@@ -31,7 +31,12 @@ inspector is privileged control; bind only to protected interfaces; authenticati
 
 ## Implementation procedure
 
-1. Inventory inspector usage.\n2. Disable by default.\n3. Bind loopback/protected network.\n4. Firewall access.\n5. Restrict production exposure.\n6. Test reachability.
+1. Inventory inspector usage.
+2. Disable by default.
+3. Bind loopback/protected network.
+4. Firewall access.
+5. Restrict production exposure.
+6. Test reachability.
 
 ## Failure modes
 

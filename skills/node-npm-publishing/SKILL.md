@@ -31,7 +31,12 @@ published files are intentional; version/tag/access and lifecycle scripts are ex
 
 ## Implementation procedure
 
-1. Inspect files/package.json.\n2. Run npm pack.\n3. Inspect tarball.\n4. Validate version/tag.\n5. Publish from clean CI.\n6. Verify installed artifact.
+1. Inspect files/package.json.
+2. Run npm pack.
+3. Inspect tarball.
+4. Validate version/tag.
+5. Publish from clean CI.
+6. Verify installed artifact.
 
 ## Failure modes
 

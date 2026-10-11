@@ -31,7 +31,13 @@ temporary names are unpredictable; lifetime and ownership are bounded; cleanup o
 
 ## Implementation procedure
 
-1. Use OS temp primitives.\n2. Create private directories.\n3. Write with exclusive creation.\n4. Register cleanup.\n5. Cap size/count.\n6. Test crash/abort cleanup.\n7. Exclude secrets from temp logs.
+1. Use OS temp primitives.
+2. Create private directories.
+3. Write with exclusive creation.
+4. Register cleanup.
+5. Cap size/count.
+6. Test crash/abort cleanup.
+7. Exclude secrets from temp logs.
 
 ## Failure modes
 

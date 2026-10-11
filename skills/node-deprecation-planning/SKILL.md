@@ -31,7 +31,13 @@ deprecation is observable, time-bounded, and compatible during migration; usage 
 
 ## Implementation procedure
 
-1. Identify consumers.\n2. Add deprecation signal.\n3. Publish replacement.\n4. Measure usage.\n5. Set removal criteria/date.\n6. Test mixed versions.\n7. Remove after evidence.
+1. Identify consumers.
+2. Add deprecation signal.
+3. Publish replacement.
+4. Measure usage.
+5. Set removal criteria/date.
+6. Test mixed versions.
+7. Remove after evidence.
 
 ## Failure modes
 

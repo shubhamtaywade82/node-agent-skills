@@ -31,7 +31,12 @@ install scripts are trusted executable code; repository policy determines whethe
 
 ## Implementation procedure
 
-1. Inventory lifecycle scripts.\n2. Inspect package manager script policy.\n3. Isolate CI permissions.\n4. Use frozen lockfile.\n5. Review unexpected script changes.\n6. Test clean install.
+1. Inventory lifecycle scripts.
+2. Inspect package manager script policy.
+3. Isolate CI permissions.
+4. Use frozen lockfile.
+5. Review unexpected script changes.
+6. Test clean install.
 
 ## Failure modes
 

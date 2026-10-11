@@ -31,7 +31,12 @@ validation uses canonical filesystem semantics, not string prefix heuristics; de
 
 ## Implementation procedure
 
-1. Decode input once where appropriate.\n2. Reject absolute paths.\n3. Resolve against allowed root.\n4. Compare canonical paths.\n5. Decide symlink policy.\n6. Test encoded traversal and platform separators.
+1. Decode input once where appropriate.
+2. Reject absolute paths.
+3. Resolve against allowed root.
+4. Compare canonical paths.
+5. Decide symlink policy.
+6. Test encoded traversal and platform separators.
 
 ## Failure modes
 

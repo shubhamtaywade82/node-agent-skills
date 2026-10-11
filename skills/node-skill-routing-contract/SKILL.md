@@ -31,7 +31,11 @@ one primary owner is preferred; secondary skills represent real dependencies; ro
 
 ## Implementation procedure
 
-1. Define routing cases.\n2. Choose primary owner.\n3. Add bounded secondary set.\n4. Test ambiguous prompts.\n5. Detect orphan skills.
+1. Define routing cases.
+2. Choose primary owner.
+3. Add bounded secondary set.
+4. Test ambiguous prompts.
+5. Detect orphan skills.
 
 ## Failure modes
 

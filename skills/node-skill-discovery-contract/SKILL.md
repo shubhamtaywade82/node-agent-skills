@@ -31,7 +31,11 @@ discovery metadata is concise and deterministic; descriptions encode activation 
 
 ## Implementation procedure
 
-1. Define discovery fields.\n2. Map skill to triggers.\n3. Validate frontmatter.\n4. Test positive/negative discovery cases.\n5. Inspect collisions.
+1. Define discovery fields.
+2. Map skill to triggers.
+3. Validate frontmatter.
+4. Test positive/negative discovery cases.
+5. Inspect collisions.
 
 ## Failure modes
 

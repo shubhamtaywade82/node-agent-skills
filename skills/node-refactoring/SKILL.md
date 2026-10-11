@@ -32,7 +32,12 @@ define invariants first; change in small reversible steps; keep seams stable; av
 
 ## Implementation procedure
 
-1. Characterize behavior.\n2. Choose one seam.\n3. Refactor incrementally.\n4. Run focused tests after each meaningful step.\n5. Update imports/contracts.\n6. Run the full suite.
+1. Characterize behavior.
+2. Choose one seam.
+3. Refactor incrementally.
+4. Run focused tests after each meaningful step.
+5. Update imports/contracts.
+6. Run the full suite.
 
 ## Failure modes
 

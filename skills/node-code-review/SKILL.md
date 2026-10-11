@@ -32,7 +32,12 @@ review behavior before style; inspect trust boundaries, async lifecycle, persist
 
 ## Implementation procedure
 
-1. Read surrounding code and tests.\n2. Trace changed paths.\n3. Check failure modes and concurrency.\n4. Inspect data/API compatibility.\n5. Verify tests cover changed behavior.\n6. Report concrete findings tied to lines/behavior.
+1. Read surrounding code and tests.
+2. Trace changed paths.
+3. Check failure modes and concurrency.
+4. Inspect data/API compatibility.
+5. Verify tests cover changed behavior.
+6. Report concrete findings tied to lines/behavior.
 
 ## Failure modes
 

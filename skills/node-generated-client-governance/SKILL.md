@@ -31,7 +31,12 @@ generated transport stays replaceable; auth/timeout/retry policy remains explici
 
 ## Implementation procedure
 
-1. Define generator/source.\n2. Isolate generated output.\n3. Wrap with small domain client.\n4. Document retry/auth behavior.\n5. Regenerate in CI.\n6. Test contract failures.
+1. Define generator/source.
+2. Isolate generated output.
+3. Wrap with small domain client.
+4. Document retry/auth behavior.
+5. Regenerate in CI.
+6. Test contract failures.
 
 ## Failure modes
 

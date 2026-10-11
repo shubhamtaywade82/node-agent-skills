@@ -32,7 +32,13 @@ detect actual versions first; read release/migration notes; inspect peer/engine 
 
 ## Implementation procedure
 
-1. Inventory dependency graph.\n2. Identify breaking changes.\n3. Update one compatibility cluster.\n4. Regenerate lockfile with project package manager.\n5. Run unit/integration/build checks.\n6. Verify deployment/runtime constraints.\n7. Document rollback.
+1. Inventory dependency graph.
+2. Identify breaking changes.
+3. Update one compatibility cluster.
+4. Regenerate lockfile with project package manager.
+5. Run unit/integration/build checks.
+6. Verify deployment/runtime constraints.
+7. Document rollback.
 
 ## Failure modes
 

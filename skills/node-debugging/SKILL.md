@@ -32,7 +32,13 @@ reproduce before fixing; capture inputs and environment; form falsifiable hypoth
 
 ## Implementation procedure
 
-1. Capture exact error and request/job context.\n2. Minimize reproduction.\n3. Inspect logs/traces/metrics.\n4. Test hypotheses.\n5. Add regression test.\n6. Implement minimal fix.\n7. Verify no adjacent regressions.
+1. Capture exact error and request/job context.
+2. Minimize reproduction.
+3. Inspect logs/traces/metrics.
+4. Test hypotheses.
+5. Add regression test.
+6. Implement minimal fix.
+7. Verify no adjacent regressions.
 
 ## Failure modes
 

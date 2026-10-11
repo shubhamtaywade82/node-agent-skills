@@ -31,7 +31,10 @@ the two module graphs must not create duplicate state or semantic differences; c
 
 ## Implementation procedure
 
-1. Identify shared singleton/state.\n2. Test import and require separately.\n3. Decide single-source state strategy.\n4. Run consumer fixtures.
+1. Identify shared singleton/state.
+2. Test import and require separately.
+3. Decide single-source state strategy.
+4. Run consumer fixtures.
 
 ## Failure modes
 

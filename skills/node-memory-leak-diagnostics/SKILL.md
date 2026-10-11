@@ -31,7 +31,12 @@ leak diagnosis compares repeated snapshots under controlled load; distinguish he
 
 ## Implementation procedure
 
-1. Reproduce sustained workload.\n2. Monitor heap/RSS/external memory.\n3. Compare heap snapshots.\n4. Identify retaining paths.\n5. Fix owner lifecycle.\n6. Verify after multiple cycles.
+1. Reproduce sustained workload.
+2. Monitor heap/RSS/external memory.
+3. Compare heap snapshots.
+4. Identify retaining paths.
+5. Fix owner lifecycle.
+6. Verify after multiple cycles.
 
 ## Failure modes
 

@@ -32,7 +32,13 @@ model workflow state explicitly; each forward step and compensation must be idem
 
 ## Implementation procedure
 
-1. Define state machine.\n2. Assign ownership.\n3. Persist step status.\n4. Use outbox/queues for progression.\n5. Make each command idempotent.\n6. Implement compensation and timeout paths.\n7. Add reconciliation.
+1. Define state machine.
+2. Assign ownership.
+3. Persist step status.
+4. Use outbox/queues for progression.
+5. Make each command idempotent.
+6. Implement compensation and timeout paths.
+7. Add reconciliation.
 
 ## Failure modes
 

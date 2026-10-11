@@ -32,7 +32,13 @@ email is an external side effect; use a provider adapter; queue delivery when la
 
 ## Implementation procedure
 
-1. Define message identity/idempotency.\n2. Render from versioned templates.\n3. Enqueue after durable state change.\n4. Add provider timeout/retry policy.\n5. Capture delivery status.\n6. Handle bounce/complaint signals.\n7. Minimize PII.
+1. Define message identity/idempotency.
+2. Render from versioned templates.
+3. Enqueue after durable state change.
+4. Add provider timeout/retry policy.
+5. Capture delivery status.
+6. Handle bounce/complaint signals.
+7. Minimize PII.
 
 ## Failure modes
 

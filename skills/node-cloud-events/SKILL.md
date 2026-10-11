@@ -32,7 +32,12 @@ separate event envelope from domain payload; require stable id/source/type seman
 
 ## Implementation procedure
 
-1. Define event identity and source.\n2. Validate required envelope fields.\n3. Serialize deterministically.\n4. Preserve causation/correlation.\n5. Bind to transport.\n6. Design replay/idempotency.
+1. Define event identity and source.
+2. Validate required envelope fields.
+3. Serialize deterministically.
+4. Preserve causation/correlation.
+5. Bind to transport.
+6. Design replay/idempotency.
 
 ## Failure modes
 

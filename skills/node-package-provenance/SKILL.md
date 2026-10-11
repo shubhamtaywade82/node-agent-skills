@@ -31,7 +31,11 @@ CI identity, source revision, workflow, and artifact are traceable; provenance i
 
 ## Implementation procedure
 
-1. Configure trusted publishing/OIDC where supported.\n2. Enable provenance.\n3. Record source commit/workflow.\n4. Verify attestations.\n5. Restrict legacy tokens.
+1. Configure trusted publishing/OIDC where supported.
+2. Enable provenance.
+3. Record source commit/workflow.
+4. Verify attestations.
+5. Restrict legacy tokens.
 
 ## Failure modes
 

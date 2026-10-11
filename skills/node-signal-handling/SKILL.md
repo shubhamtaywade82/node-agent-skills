@@ -31,7 +31,13 @@ signal handlers are minimal and idempotent; shutdown ownership is explicit; proc
 
 ## Implementation procedure
 
-1. Define supported signals.\n2. Trigger shared shutdown controller.\n3. Stop admission.\n4. Drain resources.\n5. Enforce deadline.\n6. Exit with correct status.\n7. Test repeated signals.
+1. Define supported signals.
+2. Trigger shared shutdown controller.
+3. Stop admission.
+4. Drain resources.
+5. Enforce deadline.
+6. Exit with correct status.
+7. Test repeated signals.
 
 ## Failure modes
 

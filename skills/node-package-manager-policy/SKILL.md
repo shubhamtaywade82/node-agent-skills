@@ -31,7 +31,11 @@ one authoritative package manager/version is declared; scripts and CI use the sa
 
 ## Implementation procedure
 
-1. Inspect packageManager and lockfile.\n2. Define supported commands.\n3. Align CI.\n4. Prevent mixed lockfiles.\n5. Test clean install.
+1. Inspect packageManager and lockfile.
+2. Define supported commands.
+3. Align CI.
+4. Prevent mixed lockfiles.
+5. Test clean install.
 
 ## Failure modes
 

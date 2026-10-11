@@ -31,7 +31,12 @@ references form a directed graph; composite outputs are explicit; dependency bou
 
 ## Implementation procedure
 
-1. Map packages.\n2. Enable composite where appropriate.\n3. Define references.\n4. Isolate build outputs.\n5. Run build graph.\n6. Test incremental rebuilds.
+1. Map packages.
+2. Enable composite where appropriate.
+3. Define references.
+4. Isolate build outputs.
+5. Run build graph.
+6. Test incremental rebuilds.
 
 ## Failure modes
 

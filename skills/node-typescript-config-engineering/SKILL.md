@@ -31,7 +31,12 @@ tsconfig is a build contract; compiler strictness, module mode, resolution, targ
 
 ## Implementation procedure
 
-1. Inspect extends chain.\n2. Detect module/resolution.\n3. Define strictness.\n4. Align target with runtime support.\n5. Separate build/test configs when needed.\n6. Run tsc on representative packages.
+1. Inspect extends chain.
+2. Detect module/resolution.
+3. Define strictness.
+4. Align target with runtime support.
+5. Separate build/test configs when needed.
+6. Run tsc on representative packages.
 
 ## Failure modes
 

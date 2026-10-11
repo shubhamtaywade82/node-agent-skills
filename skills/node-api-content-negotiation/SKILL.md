@@ -31,7 +31,11 @@ server-supported formats are explicit; unsupported or ambiguous representations 
 
 ## Implementation procedure
 
-1. Inventory supported media types.\n2. Define precedence.\n3. Emit Content-Type/Vary correctly.\n4. Reject unsupported bodies.\n5. Test Accept wildcards and quality weights.
+1. Inventory supported media types.
+2. Define precedence.
+3. Emit Content-Type/Vary correctly.
+4. Reject unsupported bodies.
+5. Test Accept wildcards and quality weights.
 
 ## Failure modes
 

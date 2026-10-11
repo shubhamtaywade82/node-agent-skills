@@ -31,7 +31,10 @@ patterns are narrow and deterministic; generated names cannot expose private art
 
 ## Implementation procedure
 
-1. Define constrained patterns.\n2. Inspect generated output.\n3. Test allowed/forbidden paths.\n4. Review package tarball.
+1. Define constrained patterns.
+2. Inspect generated output.
+3. Test allowed/forbidden paths.
+4. Review package tarball.
 
 ## Failure modes
 

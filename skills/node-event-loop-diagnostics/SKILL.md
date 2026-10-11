@@ -31,7 +31,11 @@ measure before optimizing; diagnostic overhead is bounded; sampled metrics ident
 
 ## Implementation procedure
 
-1. Instrument event-loop delay/utilization.\n2. Correlate with endpoints/jobs.\n3. Capture CPU profiles when needed.\n4. Identify synchronous hotspots.\n5. Benchmark after changes.
+1. Instrument event-loop delay/utilization.
+2. Correlate with endpoints/jobs.
+3. Capture CPU profiles when needed.
+4. Identify synchronous hotspots.
+5. Benchmark after changes.
 
 ## Failure modes
 

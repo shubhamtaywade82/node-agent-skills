@@ -31,7 +31,11 @@ evals test observable invariants and adversarial pressure; evaluation corpora ar
 
 ## Implementation procedure
 
-1. Define scenario.\n2. Add ambiguity/negative pressure.\n3. State expected invariants.\n4. Run baseline and candidate.\n5. Record regressions.
+1. Define scenario.
+2. Add ambiguity/negative pressure.
+3. State expected invariants.
+4. Run baseline and candidate.
+5. Record regressions.
 
 ## Failure modes
 

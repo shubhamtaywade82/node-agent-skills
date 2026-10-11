@@ -32,7 +32,13 @@ stdout is machine-readable output when promised; stderr is diagnostics; exit cod
 
 ## Implementation procedure
 
-1. Define command contract.\n2. Parse and validate args/config.\n3. Separate output from diagnostics.\n4. Support non-TTY execution.\n5. Handle SIGINT/SIGTERM.\n6. Make retries/idempotency explicit.\n7. Test exit codes and failure output.
+1. Define command contract.
+2. Parse and validate args/config.
+3. Separate output from diagnostics.
+4. Support non-TTY execution.
+5. Handle SIGINT/SIGTERM.
+6. Make retries/idempotency explicit.
+7. Test exit codes and failure output.
 
 ## Failure modes
 

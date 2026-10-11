@@ -31,7 +31,12 @@ lock namespace and scope are explicit; session/transaction lifetime is safe; loc
 
 ## Implementation procedure
 
-1. Identify shared resource.\n2. Choose lock key namespace.\n3. Choose transaction/session scope.\n4. Bound wait.\n5. Release deterministically.\n6. Test competing workers and crashes.
+1. Identify shared resource.
+2. Choose lock key namespace.
+3. Choose transaction/session scope.
+4. Bound wait.
+5. Release deterministically.
+6. Test competing workers and crashes.
 
 ## Failure modes
 

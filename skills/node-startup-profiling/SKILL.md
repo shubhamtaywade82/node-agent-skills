@@ -31,7 +31,11 @@ startup profiling separates module loading, config, connection initialization, a
 
 ## Implementation procedure
 
-1. Measure cold/warm start.\n2. Capture module timing.\n3. Identify heavy imports.\n4. Defer optional initialization.\n5. Benchmark after change.
+1. Measure cold/warm start.
+2. Capture module timing.
+3. Identify heavy imports.
+4. Defer optional initialization.
+5. Benchmark after change.
 
 ## Failure modes
 

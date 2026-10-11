@@ -31,7 +31,12 @@ redaction is defense-in-depth; allowlists for logged fields beat blacklist-only 
 
 ## Implementation procedure
 
-1. Classify sensitive fields.\n2. Configure structured redaction.\n3. Remove authorization/cookie headers.\n4. Bound payload logging.\n5. Test nested/redacted objects.\n6. Review exception paths.
+1. Classify sensitive fields.
+2. Configure structured redaction.
+3. Remove authorization/cookie headers.
+4. Bound payload logging.
+5. Test nested/redacted objects.
+6. Review exception paths.
 
 ## Failure modes
 

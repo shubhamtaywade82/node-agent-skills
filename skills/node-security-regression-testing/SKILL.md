@@ -31,7 +31,12 @@ tests reproduce the exploit at the narrowest boundary and remain independent of 
 
 ## Implementation procedure
 
-1. Write reproduction first.\n2. Assert exploit is blocked.\n3. Test nearby variants.\n4. Add CI coverage.\n5. Document affected boundary.\n6. Verify no unsafe fixture leaks secrets.
+1. Write reproduction first.
+2. Assert exploit is blocked.
+3. Test nearby variants.
+4. Add CI coverage.
+5. Document affected boundary.
+6. Verify no unsafe fixture leaks secrets.
 
 ## Failure modes
 
