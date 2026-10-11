@@ -25,11 +25,6 @@ integrating S3-compatible object storage without turning the application server 
 
 store immutable object identifiers and metadata separately from blobs; keep buckets private by default; validate size/type; prefer streaming or presigned URLs where appropriate
 
-- Prefer the smallest design that makes ownership, failure, and observability explicit.
-- Detect exact dependency versions before using version-specific APIs.
-- Treat external input and resource state as untrusted runtime data.
-- Preserve existing contracts unless the task explicitly changes them.
-
 ## Implementation procedure
 
 1. Define object key ownership.
@@ -45,8 +40,6 @@ store immutable object identifiers and metadata separately from blobs; keep buck
 Avoid:
 
 - trusting client MIME type; public buckets by convenience; path traversal keys; buffering large objects; deleting metadata before durable storage state is known.
-- Hidden coupling, unbounded resource use, or silent fallback.
-- Tests that prove implementation details instead of the observable contract.
 
 ## Verification
 
@@ -55,3 +48,5 @@ Avoid:
 3. Run focused tests, then the full repository test suite.
 4. Run lint/typecheck/build/deployment gates defined by the repository.
 5. Record assumptions, risks, and rollback implications.
+
+See references/agent-discipline.md for the shared lines that were removed from this section.

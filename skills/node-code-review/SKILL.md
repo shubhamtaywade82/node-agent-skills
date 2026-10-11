@@ -25,11 +25,6 @@ reviewing Node.js/TypeScript changes for correctness, security, reliability, and
 
 review behavior before style; inspect trust boundaries, async lifecycle, persistence, compatibility, security, and tests; distinguish must-fix defects from preferences
 
-- Prefer the smallest design that makes ownership, failure, and observability explicit.
-- Detect exact dependency versions before using version-specific APIs.
-- Treat external input and resource state as untrusted runtime data.
-- Preserve existing contracts unless the task explicitly changes them.
-
 ## Implementation procedure
 
 1. Read surrounding code and tests.
@@ -44,8 +39,6 @@ review behavior before style; inspect trust boundaries, async lifecycle, persist
 Avoid:
 
 - style-only review; approving because tests are green; assuming framework behavior; speculative findings without evidence.
-- Hidden coupling, unbounded resource use, or silent fallback.
-- Tests that prove implementation details instead of the observable contract.
 
 ## Verification
 
@@ -54,3 +47,5 @@ Avoid:
 3. Run focused tests, then the full repository test suite.
 4. Run lint/typecheck/build/deployment gates defined by the repository.
 5. Record assumptions, risks, and rollback implications.
+
+See references/agent-discipline.md for the shared lines that were removed from this section.

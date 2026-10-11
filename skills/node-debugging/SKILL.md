@@ -25,11 +25,6 @@ reproducing and diagnosing Node.js backend defects without masking root causes.
 
 reproduce before fixing; capture inputs and environment; form falsifiable hypotheses; prefer observability over guesswork; preserve the failing case
 
-- Prefer the smallest design that makes ownership, failure, and observability explicit.
-- Detect exact dependency versions before using version-specific APIs.
-- Treat external input and resource state as untrusted runtime data.
-- Preserve existing contracts unless the task explicitly changes them.
-
 ## Implementation procedure
 
 1. Capture exact error and request/job context.
@@ -45,8 +40,6 @@ reproduce before fixing; capture inputs and environment; form falsifiable hypoth
 Avoid:
 
 - changing multiple variables at once; swallowing exceptions; adding retries to hide failures; debugging only from stack traces.
-- Hidden coupling, unbounded resource use, or silent fallback.
-- Tests that prove implementation details instead of the observable contract.
 
 ## Verification
 
@@ -55,3 +48,5 @@ Avoid:
 3. Run focused tests, then the full repository test suite.
 4. Run lint/typecheck/build/deployment gates defined by the repository.
 5. Record assumptions, risks, and rollback implications.
+
+See references/agent-discipline.md for the shared lines that were removed from this section.

@@ -25,11 +25,6 @@ coordinating long-running multi-service workflows with explicit compensations.
 
 model workflow state explicitly; each forward step and compensation must be idempotent; use timeouts and durable state; surface manual intervention when compensation is impossible
 
-- Prefer the smallest design that makes ownership, failure, and observability explicit.
-- Detect exact dependency versions before using version-specific APIs.
-- Treat external input and resource state as untrusted runtime data.
-- Preserve existing contracts unless the task explicitly changes them.
-
 ## Implementation procedure
 
 1. Define state machine.
@@ -45,8 +40,6 @@ model workflow state explicitly; each forward step and compensation must be idem
 Avoid:
 
 - distributed transaction pretence; non-repeatable compensation; in-memory workflow state; missing timeout/manual path.
-- Hidden coupling, unbounded resource use, or silent fallback.
-- Tests that prove implementation details instead of the observable contract.
 
 ## Verification
 
@@ -55,3 +48,5 @@ Avoid:
 3. Run focused tests, then the full repository test suite.
 4. Run lint/typecheck/build/deployment gates defined by the repository.
 5. Record assumptions, risks, and rollback implications.
+
+See references/agent-discipline.md for the shared lines that were removed from this section.
