@@ -1326,3 +1326,59 @@ adapters:
     path: adapters/swc-core/SKILL.md
     version_scope: 1.16.2
     source: https://swc.rs/
+  cloudflare-workers:
+    path: adapters/cloudflare-workers/SKILL.md
+    version_scope: current Workers runtime
+    source: https://developers.cloudflare.com/workers/
+  vercel-edge:
+    path: adapters/vercel-edge/SKILL.md
+    version_scope: current Vercel Edge Runtime
+    source: https://vercel.com/docs/functions/edge-functions
+  neon:
+    path: adapters/neon/SKILL.md
+    version_scope: current Neon serverless Postgres
+    source: https://neon.tech/docs
+  supabase:
+    path: adapters/supabase/SKILL.md
+    version_scope: current Supabase
+    source: https://supabase.com/docs
+  clerk:
+    path: adapters/clerk/SKILL.md
+    version_scope: current Clerk
+    source: https://clerk.com/docs
+  auth0:
+    path: adapters/auth0/SKILL.md
+    version_scope: current Auth0 / Okta
+    source: https://auth0.com/docs
+  langchain:
+    path: adapters/langchain/SKILL.md
+    version_scope: current LangChain.js / LangGraph.js
+    source: https://js.langchain.com/
+  ai-sdk:
+    path: adapters/ai-sdk/SKILL.md
+    version_scope: current Vercel AI SDK
+    source: https://sdk.vercel.ai/docs
+  trpc:
+    path: adapters/trpc/SKILL.md
+    version_scope: current tRPC v10/v11
+    source: https://trpc.io/docs
+  vite:
+    path: adapters/vite/SKILL.md
+    version_scope: current Vite 5+
+    source: https://vite.dev/guide/
+  xstate:
+    path: adapters/xstate/SKILL.md
+    version_scope: current XState 5
+    source: https://xstate.js.org/docs/
+  resend:
+    path: adapters/resend/SKILL.md
+    version_scope: current Resend
+    source: https://resend.com/docs
+  msw:
+    path: adapters/msw/SKILL.md
+    version_scope: current MSW 2.x
+    source: https://mswjs.io/docs/
+  storybook:
+    path: adapters/storybook/SKILL.md
+    version_scope: current Storybook 8+
+    source: https://storybook.js.org/docs

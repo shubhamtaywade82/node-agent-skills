@@ -11,10 +11,10 @@ import {
   detectAdapters,
 } from "../lib/skill-loader.mjs";
 
-test("parseManifest returns 330 skills and 81 adapters", async () => {
+test("parseManifest returns 330 skills and 95 adapters", async () => {
   const { skills, adapters } = await parseManifest();
   assert.equal(skills.length, 330);
-  assert.equal(adapters.length, 81);
+  assert.equal(adapters.length, 95);
   for (const skill of skills) {
     assert.ok(skill.name, "skill has a name");
     assert.ok(skill.category, `${skill.name}: category missing`);
@@ -35,9 +35,9 @@ test("listSkills returns all skills, filter works", async () => {
   assert.ok(architecture.every((s) => s.category === "architecture"));
 });
 
-test("listAdapters returns 81 adapters", async () => {
+test("listAdapters returns 95 adapters", async () => {
   const adapters = await listAdapters();
-  assert.equal(adapters.length, 81);
+  assert.equal(adapters.length, 95);
   const names = new Set(adapters.map((a) => a.name));
   assert.ok(names.has("express"));
   assert.ok(names.has("fastify"));
