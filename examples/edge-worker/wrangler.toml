@@ -1,0 +1,38 @@
+name = "edge-worker"
+main = "src/index.js"
+compatibility_date = "2026-10-01"
+compatibility_flags = ["nodejs_compat"]
+
+# Bindings declared here appear on the `env` object in the handler.
+# Run `wrangler secret put <NAME>` for secret bindings before deploy.
+
+# Static edge-config binding (feature flags, kill switches)
+[[unsafe.bindings]]
+name = "FEATURE_FLAGS"
+type = "edge_config"
+
+# KV binding for rate-limit counters and session lookup
+[[kv_namespaces]]
+binding = "KV"
+id = "edge-worker-kv-dev"
+
+# Durable Object binding for single-writer leader election
+[[durable_objects_bindings]]
+name = "LEADER"
+class_name = "LeaderDO"
+
+[[durable_objects]]
+class_name = "LeaderDO"
+new_sql_class = true
+
+# Cron trigger — runs every minute
+[triggers]
+crons = ["* * * * *"]
+
+# Workers AI binding for on-the-edge LLM calls
+[ai]
+binding = "AI"
+
+# Observability — push logs to the Workers Logs pipeline
+[observability]
+enabled = true

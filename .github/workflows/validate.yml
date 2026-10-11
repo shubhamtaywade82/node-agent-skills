@@ -58,3 +58,11 @@ jobs:
           PRIMARY=$(node bin/skills.mjs route "add a transactional outbox for order creation" --repo examples/ecommerce-api | python3 -c "import json,sys; d=json.load(sys.stdin); print(d['primary'])")
           echo "primary: $PRIMARY"
           test "$PRIMARY" = "node-transactional-outbox" || test "$PRIMARY" = "node-postgresql-persistence"
+      - name: Edge-worker fixture adapter detection smoke test
+        run: |
+          DETECTED=$(node bin/skills.mjs detect-repo examples/edge-worker | python3 -c "import json,sys; d=json.load(sys.stdin); print(','.join(sorted(a['name'] for a in d)))")
+          for required in vitest zod; do
+            echo "checking adapter: $required"
+            echo "$DETECTED" | grep -q "\b$required\b" || (echo "missing $required in detected adapters: $DETECTED" && exit 1)
+          done
+          echo "all required edge-worker adapters detected: $DETECTED"
