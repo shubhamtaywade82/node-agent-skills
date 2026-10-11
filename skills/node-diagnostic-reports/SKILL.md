@@ -31,7 +31,12 @@ reports can include environment, stacks, and runtime details; collection/access/
 
 ## Implementation procedure
 
-1. Define trigger.\n2. Configure safe destination.\n3. Restrict access.\n4. Redact before external export.\n5. Automate collection for fatal conditions.\n6. Test report generation.
+1. Define trigger.
+2. Configure safe destination.
+3. Restrict access.
+4. Redact before external export.
+5. Automate collection for fatal conditions.
+6. Test report generation.
 
 ## Failure modes
 

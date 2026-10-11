@@ -31,7 +31,12 @@ installation is versioned and reproducible; the agent discovers repository-local
 
 ## Implementation procedure
 
-1. Identify supported agent format.\n2. Pin repository revision.\n3. Install/copy skills.\n4. Verify manifest and validator.\n5. Record install source.\n6. Test discovery.
+1. Identify supported agent format.
+2. Pin repository revision.
+3. Install/copy skills.
+4. Verify manifest and validator.
+5. Record install source.
+6. Test discovery.
 
 ## Failure modes
 

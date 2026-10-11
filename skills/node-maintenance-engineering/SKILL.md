@@ -31,7 +31,13 @@ maintenance is scoped, reversible, and tested against compatibility matrices; st
 
 ## Implementation procedure
 
-1. Inventory aging dependencies.\n2. Classify support status.\n3. Schedule upgrades.\n4. Test representative workloads.\n5. Update docs/config.\n6. Define rollback.\n7. Verify CI and runtime health.
+1. Inventory aging dependencies.
+2. Classify support status.
+3. Schedule upgrades.
+4. Test representative workloads.
+5. Update docs/config.
+6. Define rollback.
+7. Verify CI and runtime health.
 
 ## Failure modes
 

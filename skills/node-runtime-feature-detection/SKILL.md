@@ -31,7 +31,11 @@ prefer capability checks where possible; minimum engine requirements remain auth
 
 ## Implementation procedure
 
-1. Identify capability.\n2. Use documented APIs.\n3. Gate optional behavior.\n4. Test supported and unsupported paths.\n5. Document operational requirements.
+1. Identify capability.
+2. Use documented APIs.
+3. Gate optional behavior.
+4. Test supported and unsupported paths.
+5. Document operational requirements.
 
 ## Failure modes
 

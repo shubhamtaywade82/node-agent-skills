@@ -31,7 +31,11 @@ imports are private to the package; mapping is supported by the actual runtime/t
 
 ## Implementation procedure
 
-1. Define internal aliases.\n2. Align TypeScript resolution.\n3. Verify Node execution.\n4. Test development and built output.\n5. Keep aliases internal.
+1. Define internal aliases.
+2. Align TypeScript resolution.
+3. Verify Node execution.
+4. Test development and built output.
+5. Keep aliases internal.
 
 ## Failure modes
 

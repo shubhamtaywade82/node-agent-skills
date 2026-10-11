@@ -31,7 +31,12 @@ same source/toolchain produces stable artifacts; timestamps, paths, random IDs, 
 
 ## Implementation procedure
 
-1. Pin tool/version.\n2. Normalize output.\n3. Remove volatile metadata.\n4. Regenerate in clean environment.\n5. Diff twice.\n6. Test reproducibility.
+1. Pin tool/version.
+2. Normalize output.
+3. Remove volatile metadata.
+4. Regenerate in clean environment.
+5. Diff twice.
+6. Test reproducibility.
 
 ## Failure modes
 

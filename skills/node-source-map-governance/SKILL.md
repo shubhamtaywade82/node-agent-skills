@@ -31,7 +31,11 @@ source-map exposure is an explicit product decision; paths and embedded sources 
 
 ## Implementation procedure
 
-1. Choose hidden/public/source-content policy.\n2. Normalize paths.\n3. Review map contents.\n4. Test stack trace mapping.\n5. Restrict hosted maps.
+1. Choose hidden/public/source-content policy.
+2. Normalize paths.
+3. Review map contents.
+4. Test stack trace mapping.
+5. Restrict hosted maps.
 
 ## Failure modes
 

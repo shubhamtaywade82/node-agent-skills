@@ -32,7 +32,13 @@ prefer maintained libraries and platform primitives; distinguish hashing, encryp
 
 ## Implementation procedure
 
-1. Define security goal.\n2. Choose primitive appropriate to goal.\n3. Generate/store keys safely.\n4. Encode metadata/version.\n5. Separate key identifiers from ciphertext.\n6. Test rotation and invalid inputs.\n7. Document algorithm choices.
+1. Define security goal.
+2. Choose primitive appropriate to goal.
+3. Generate/store keys safely.
+4. Encode metadata/version.
+5. Separate key identifiers from ciphertext.
+6. Test rotation and invalid inputs.
+7. Document algorithm choices.
 
 ## Failure modes
 

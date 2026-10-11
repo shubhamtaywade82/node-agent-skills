@@ -31,7 +31,12 @@ propagate standardized trace context only at trusted protocol boundaries; do not
 
 ## Implementation procedure
 
-1. Extract context at ingress.\n2. Validate protocol format.\n3. Create child spans.\n4. Inject on outbound calls/messages.\n5. Correlate async jobs.\n6. Test missing/malformed context.
+1. Extract context at ingress.
+2. Validate protocol format.
+3. Create child spans.
+4. Inject on outbound calls/messages.
+5. Correlate async jobs.
+6. Test missing/malformed context.
 
 ## Failure modes
 

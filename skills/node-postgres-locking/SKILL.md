@@ -31,7 +31,12 @@ lock mode and ordering are intentional; transactions remain short; deadlock/retr
 
 ## Implementation procedure
 
-1. Identify rows/resources.\n2. Choose lock mode.\n3. Lock in stable order.\n4. Keep transaction short.\n5. Classify retryable errors.\n6. Test contention/deadlock cases.
+1. Identify rows/resources.
+2. Choose lock mode.
+3. Lock in stable order.
+4. Keep transaction short.
+5. Classify retryable errors.
+6. Test contention/deadlock cases.
 
 ## Failure modes
 

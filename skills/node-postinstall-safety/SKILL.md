@@ -31,7 +31,11 @@ postinstall actions are deterministic, expected, and do not fetch arbitrary exec
 
 ## Implementation procedure
 
-1. Inspect package scripts.\n2. Identify native binary downloads/builds.\n3. Pin versions/check integrity.\n4. Restrict network/credentials during install.\n5. Verify artifact.
+1. Inspect package scripts.
+2. Identify native binary downloads/builds.
+3. Pin versions/check integrity.
+4. Restrict network/credentials during install.
+5. Verify artifact.
 
 ## Failure modes
 

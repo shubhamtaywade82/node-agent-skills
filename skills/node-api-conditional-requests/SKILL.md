@@ -31,7 +31,11 @@ preconditions run before mutation/read processing according to HTTP semantics; a
 
 ## Implementation procedure
 
-1. Classify safe vs state-changing operations.\n2. Evaluate preconditions.\n3. Return correct precondition failures.\n4. Integrate resource versioning.\n5. Test races and missing validators.
+1. Classify safe vs state-changing operations.
+2. Evaluate preconditions.
+3. Return correct precondition failures.
+4. Integrate resource versioning.
+5. Test races and missing validators.
 
 ## Failure modes
 

@@ -31,7 +31,11 @@ tests cover allow/deny boundaries and default-deny behavior; authentication stat
 
 ## Implementation procedure
 
-1. Model policy inputs.\n2. Create matrix tests.\n3. Cover resource ownership/tenant boundaries.\n4. Test unknown roles/actions.\n5. Exercise policy through real boundary tests where possible.
+1. Model policy inputs.
+2. Create matrix tests.
+3. Cover resource ownership/tenant boundaries.
+4. Test unknown roles/actions.
+5. Exercise policy through real boundary tests where possible.
 
 ## Failure modes
 

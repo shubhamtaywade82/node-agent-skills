@@ -31,7 +31,12 @@ every resource has an owner and close path; streams and abort/error paths releas
 
 ## Implementation procedure
 
-1. Map open/close lifecycle.\n2. Use async disposal where available.\n3. Close on abort/error.\n4. Bound concurrent opens.\n5. Instrument leaks.\n6. Test repeated failure paths.
+1. Map open/close lifecycle.
+2. Use async disposal where available.
+3. Close on abort/error.
+4. Bound concurrent opens.
+5. Instrument leaks.
+6. Test repeated failure paths.
 
 ## Failure modes
 

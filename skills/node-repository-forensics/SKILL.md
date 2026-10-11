@@ -32,7 +32,13 @@ treat checked-in files, lockfiles, CI, and package metadata as evidence; separat
 
 ## Implementation procedure
 
-1. Inventory package manager and workspaces.\n2. Identify entrypoints.\n3. Map scripts and CI.\n4. Trace dependency direction.\n5. Locate tests/config.\n6. Record conventions.\n7. Only then edit.
+1. Inventory package manager and workspaces.
+2. Identify entrypoints.
+3. Map scripts and CI.
+4. Trace dependency direction.
+5. Locate tests/config.
+6. Record conventions.
+7. Only then edit.
 
 ## Failure modes
 

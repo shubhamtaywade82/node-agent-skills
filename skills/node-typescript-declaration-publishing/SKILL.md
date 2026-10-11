@@ -31,7 +31,11 @@ declarations describe the public surface, resolve through package exports, and a
 
 ## Implementation procedure
 
-1. Configure declaration generation.\n2. Test published package types.\n3. Verify exports/types fields.\n4. Use API review for breaking changes.\n5. Test consumer compilation.
+1. Configure declaration generation.
+2. Test published package types.
+3. Verify exports/types fields.
+4. Use API review for breaking changes.
+5. Test consumer compilation.
 
 ## Failure modes
 

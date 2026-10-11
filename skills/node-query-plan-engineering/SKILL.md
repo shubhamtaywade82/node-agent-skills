@@ -31,7 +31,12 @@ plans are evaluated against representative statistics/data; planner changes are 
 
 ## Implementation procedure
 
-1. Capture baseline plan.\n2. Inspect scans/joins/sorts.\n3. Compare estimated vs actual rows.\n4. Change indexes/query shape.\n5. Benchmark.\n6. Verify production-safe rollout.
+1. Capture baseline plan.
+2. Inspect scans/joins/sorts.
+3. Compare estimated vs actual rows.
+4. Change indexes/query shape.
+5. Benchmark.
+6. Verify production-safe rollout.
 
 ## Failure modes
 

@@ -31,7 +31,12 @@ change logs describe actual shipped behavior and remain traceable to commits or 
 
 ## Implementation procedure
 
-1. Compare changelog with diff.\n2. Verify version/date.\n3. Include migrations and security fixes.\n4. Remove speculative language.\n5. Check links.\n6. Validate release artifact.
+1. Compare changelog with diff.
+2. Verify version/date.
+3. Include migrations and security fixes.
+4. Remove speculative language.
+5. Check links.
+6. Validate release artifact.
 
 ## Failure modes
 

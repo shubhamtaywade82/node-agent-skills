@@ -31,7 +31,11 @@ transfer semantics, cloning cost, transferable ownership, and prototype behavior
 
 ## Implementation procedure
 
-1. Define message schema.\n2. Minimize payload size.\n3. Transfer large buffers deliberately.\n4. Validate inbound messages.\n5. Benchmark cloning cost.
+1. Define message schema.
+2. Minimize payload size.
+3. Transfer large buffers deliberately.
+4. Validate inbound messages.
+5. Benchmark cloning cost.
 
 ## Failure modes
 

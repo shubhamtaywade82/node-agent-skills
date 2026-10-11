@@ -31,7 +31,12 @@ references are repository-relative or canonical; broken links are detected; refe
 
 ## Implementation procedure
 
-1. Inventory references.\n2. Normalize paths.\n3. Validate target existence.\n4. Detect cycles/obsolete targets.\n5. Test representative navigation.\n6. Document external sources.
+1. Inventory references.
+2. Normalize paths.
+3. Validate target existence.
+4. Detect cycles/obsolete targets.
+5. Test representative navigation.
+6. Document external sources.
 
 ## Failure modes
 

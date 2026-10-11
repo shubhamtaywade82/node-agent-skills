@@ -31,7 +31,12 @@ stream concurrency, flow control, header compression, TLS, and graceful shutdown
 
 ## Implementation procedure
 
-1. Identify protocol topology.\n2. Configure ALPN/TLS.\n3. Bound concurrent streams.\n4. Monitor sessions.\n5. Propagate cancellation.\n6. Test reset/drain behavior.
+1. Identify protocol topology.
+2. Configure ALPN/TLS.
+3. Bound concurrent streams.
+4. Monitor sessions.
+5. Propagate cancellation.
+6. Test reset/drain behavior.
 
 ## Failure modes
 

@@ -31,7 +31,12 @@ archive entries are untrusted; extraction has quotas; destinations remain contai
 
 ## Implementation procedure
 
-1. Inspect entry names/types.\n2. Reject escapes and unsafe links.\n3. Enforce file/count/uncompressed-size limits.\n4. Extract to quarantine.\n5. Verify final paths.\n6. Test malicious archives.
+1. Inspect entry names/types.
+2. Reject escapes and unsafe links.
+3. Enforce file/count/uncompressed-size limits.
+4. Extract to quarantine.
+5. Verify final paths.
+6. Test malicious archives.
 
 ## Failure modes
 

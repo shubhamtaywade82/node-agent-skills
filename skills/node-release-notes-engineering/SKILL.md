@@ -31,7 +31,12 @@ notes are derived from actual commits/diffs and call out breaking changes, migra
 
 ## Implementation procedure
 
-1. Collect release changes.\n2. Classify user/operator impact.\n3. Summarize compatibility.\n4. Document migrations/rollback.\n5. Verify links and version identifiers.\n6. Keep notes free of unverified claims.
+1. Collect release changes.
+2. Classify user/operator impact.
+3. Summarize compatibility.
+4. Document migrations/rollback.
+5. Verify links and version identifiers.
+6. Keep notes free of unverified claims.
 
 ## Failure modes
 

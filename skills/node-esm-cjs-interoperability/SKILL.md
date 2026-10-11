@@ -31,7 +31,11 @@ interop is governed by actual package exports/runtime behavior; default/named im
 
 ## Implementation procedure
 
-1. Inspect package type/exports.\n2. Test import/require paths.\n3. Use dynamic import where required.\n4. Document interop boundary.\n5. Test built output.
+1. Inspect package type/exports.
+2. Test import/require paths.
+3. Use dynamic import where required.
+4. Document interop boundary.
+5. Test built output.
 
 ## Failure modes
 

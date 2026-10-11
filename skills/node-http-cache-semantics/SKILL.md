@@ -31,7 +31,12 @@ cacheability is a property of response semantics and data sensitivity; authentic
 
 ## Implementation procedure
 
-1. Classify responses.\n2. Set Cache-Control directives.\n3. Define freshness/staleness policy.\n4. Include Vary dimensions.\n5. Test public/private/authenticated responses.\n6. Measure hit behavior.
+1. Classify responses.
+2. Set Cache-Control directives.
+3. Define freshness/staleness policy.
+4. Include Vary dimensions.
+5. Test public/private/authenticated responses.
+6. Measure hit behavior.
 
 ## Failure modes
 

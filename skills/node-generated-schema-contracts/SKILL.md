@@ -31,7 +31,12 @@ schema is authoritative; generated types cannot be mistaken for runtime validati
 
 ## Implementation procedure
 
-1. Identify schema source.\n2. Validate schema.\n3. Generate artifacts.\n4. Compare contract diff.\n5. Pair compile-time types with runtime validation.\n6. Test consumers.
+1. Identify schema source.
+2. Validate schema.
+3. Generate artifacts.
+4. Compare contract diff.
+5. Pair compile-time types with runtime validation.
+6. Test consumers.
 
 ## Failure modes
 

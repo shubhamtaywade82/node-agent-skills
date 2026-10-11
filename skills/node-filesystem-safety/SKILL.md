@@ -31,7 +31,13 @@ filesystem paths are capabilities, not trusted strings; canonicalization and aut
 
 ## Implementation procedure
 
-1. Define allowed root.\n2. Resolve user paths relative to it.\n3. Reject escapes.\n4. Handle symlinks according to policy.\n5. Enforce file size/count limits.\n6. Use safe permissions.\n7. Test traversal and concurrent writes.
+1. Define allowed root.
+2. Resolve user paths relative to it.
+3. Reject escapes.
+4. Handle symlinks according to policy.
+5. Enforce file size/count limits.
+6. Use safe permissions.
+7. Test traversal and concurrent writes.
 
 ## Failure modes
 

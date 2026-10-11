@@ -31,7 +31,13 @@ application code should exit with meaningful status on fatal corruption; supervi
 
 ## Implementation procedure
 
-1. Define fatal vs recoverable faults.\n2. Wire SIGTERM/SIGINT shutdown.\n3. Drain work.\n4. Set hard shutdown deadline.\n5. Expose startup/readiness.\n6. Configure supervisor restart policy.\n7. Test repeated crashes.
+1. Define fatal vs recoverable faults.
+2. Wire SIGTERM/SIGINT shutdown.
+3. Drain work.
+4. Set hard shutdown deadline.
+5. Expose startup/readiness.
+6. Configure supervisor restart policy.
+7. Test repeated crashes.
 
 ## Failure modes
 

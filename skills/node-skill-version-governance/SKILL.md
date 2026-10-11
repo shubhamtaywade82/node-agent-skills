@@ -31,7 +31,12 @@ breaking behavioral changes are identified and versioned; compatibility notes ar
 
 ## Implementation procedure
 
-1. Classify change impact.\n2. Update version metadata.\n3. Add migration notes.\n4. Preserve aliases where justified.\n5. Add regression evals.\n6. Verify release artifact.
+1. Classify change impact.
+2. Update version metadata.
+3. Add migration notes.
+4. Preserve aliases where justified.
+5. Add regression evals.
+6. Verify release artifact.
 
 ## Failure modes
 

@@ -31,7 +31,10 @@ self-reference must resolve through package exports and current package metadata
 
 ## Implementation procedure
 
-1. Configure package name/exports.\n2. Test self-import.\n3. Pack and install locally.\n4. Compile and run consumer fixtures.
+1. Configure package name/exports.
+2. Test self-import.
+3. Pack and install locally.
+4. Compile and run consumer fixtures.
 
 ## Failure modes
 

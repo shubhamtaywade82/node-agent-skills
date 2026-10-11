@@ -31,7 +31,11 @@ exports are an allowlist; internal files remain private; conditions are ordered 
 
 ## Implementation procedure
 
-1. Define explicit exports map.\n2. Include types condition correctly.\n3. Test subpath imports.\n4. Test Node resolution.\n5. Remove accidental deep imports.
+1. Define explicit exports map.
+2. Include types condition correctly.
+3. Test subpath imports.
+4. Test Node resolution.
+5. Remove accidental deep imports.
 
 ## Failure modes
 

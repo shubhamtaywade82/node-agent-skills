@@ -31,7 +31,13 @@ worker failure is treated as loss of execution state; jobs are retryable only wh
 
 ## Implementation procedure
 
-1. Define worker job protocol.\n2. Detect exit/error.\n3. Mark in-flight work.\n4. Replace workers with backoff.\n5. Prevent duplicate completion.\n6. Propagate cancellation.\n7. Test crash during job.
+1. Define worker job protocol.
+2. Detect exit/error.
+3. Mark in-flight work.
+4. Replace workers with backoff.
+5. Prevent duplicate completion.
+6. Propagate cancellation.
+7. Test crash during job.
 
 ## Failure modes
 

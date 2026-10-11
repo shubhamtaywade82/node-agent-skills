@@ -32,7 +32,12 @@ optimize time-to-first-valid-change; make environment assumptions explicit; pres
 
 ## Implementation procedure
 
-1. Measure current friction.\n2. Consolidate canonical commands.\n3. Add deterministic fixtures.\n4. Improve failure messages.\n5. Document required services.\n6. Verify clean-checkout setup.
+1. Measure current friction.
+2. Consolidate canonical commands.
+3. Add deterministic fixtures.
+4. Improve failure messages.
+5. Document required services.
+6. Verify clean-checkout setup.
 
 ## Failure modes
 

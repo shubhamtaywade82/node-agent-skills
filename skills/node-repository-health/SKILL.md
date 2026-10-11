@@ -31,7 +31,12 @@ health is evidence-based: dependency state, tests, CI, docs, ownership, generate
 
 ## Implementation procedure
 
-1. Run repository preflight.\n2. Inspect package and lockfile consistency.\n3. Verify test/build/CI commands.\n4. Detect stale artifacts.\n5. Inspect ownership/docs.\n6. Record findings and blockers.
+1. Run repository preflight.
+2. Inspect package and lockfile consistency.
+3. Verify test/build/CI commands.
+4. Detect stale artifacts.
+5. Inspect ownership/docs.
+6. Record findings and blockers.
 
 ## Failure modes
 

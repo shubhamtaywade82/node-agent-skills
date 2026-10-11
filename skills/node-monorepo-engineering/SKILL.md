@@ -32,7 +32,13 @@ make package ownership explicit; prefer package-level APIs; keep dependency dire
 
 ## Implementation procedure
 
-1. Discover workspace manager.\n2. Map package graph.\n3. Define public package exports.\n4. Enforce internal dependency policy.\n5. Align build/test task dependencies.\n6. Isolate package-local config.\n7. Verify affected packages and full CI.
+1. Discover workspace manager.
+2. Map package graph.
+3. Define public package exports.
+4. Enforce internal dependency policy.
+5. Align build/test task dependencies.
+6. Isolate package-local config.
+7. Verify affected packages and full CI.
 
 ## Failure modes
 

@@ -31,7 +31,12 @@ isolation is selected for an explicit invariant and workload, not as a blanket d
 
 ## Implementation procedure
 
-1. State required invariants.\n2. Map anomaly risks.\n3. Choose level.\n4. Test concurrent schedules.\n5. Measure contention.\n6. Document rationale.
+1. State required invariants.
+2. Map anomaly risks.
+3. Choose level.
+4. Test concurrent schedules.
+5. Measure contention.
+6. Document rationale.
 
 ## Failure modes
 

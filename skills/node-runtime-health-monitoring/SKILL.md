@@ -31,7 +31,12 @@ health signals are actionable, bounded, and tied to service capacity/SLOs; monit
 
 ## Implementation procedure
 
-1. Define health indicators.\n2. Set thresholds from baselines.\n3. Expose metrics/diagnostics.\n4. Alert on sustained degradation.\n5. Correlate resource health with requests.\n6. Test threshold behavior.
+1. Define health indicators.
+2. Set thresholds from baselines.
+3. Expose metrics/diagnostics.
+4. Alert on sustained degradation.
+5. Correlate resource health with requests.
+6. Test threshold behavior.
 
 ## Failure modes
 

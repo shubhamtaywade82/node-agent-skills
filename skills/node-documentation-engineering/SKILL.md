@@ -32,7 +32,12 @@ document decisions and contracts, not obvious syntax; prefer generated/executabl
 
 ## Implementation procedure
 
-1. Identify audience and owner.\n2. Document contract and failure modes.\n3. Link to source/config.\n4. Add command examples.\n5. Validate examples.\n6. Update affected docs with behavior changes.
+1. Identify audience and owner.
+2. Document contract and failure modes.
+3. Link to source/config.
+4. Add command examples.
+5. Validate examples.
+6. Update affected docs with behavior changes.
 
 ## Failure modes
 

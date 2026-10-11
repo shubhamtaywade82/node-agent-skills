@@ -31,7 +31,11 @@ header semantics match the configured policy; values are bounded and do not leak
 
 ## Implementation procedure
 
-1. Define quota window/remaining/reset semantics.\n2. Emit stable headers.\n3. Align 429 responses and Retry-After.\n4. Test boundary behavior.\n5. Document client expectations.
+1. Define quota window/remaining/reset semantics.
+2. Emit stable headers.
+3. Align 429 responses and Retry-After.
+4. Test boundary behavior.
+5. Document client expectations.
 
 ## Failure modes
 

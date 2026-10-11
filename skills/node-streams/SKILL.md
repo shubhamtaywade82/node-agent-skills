@@ -32,7 +32,12 @@ prefer pipeline-based composition; respect backpressure; propagate errors; close
 
 ## Implementation procedure
 
-1. Identify source/sink rates.\n2. Choose readable/writable/transform boundaries.\n3. Set bounded buffering deliberately.\n4. Compose with pipeline.\n5. Wire abort/error cleanup.\n6. Test slow consumers and partial failure.
+1. Identify source/sink rates.
+2. Choose readable/writable/transform boundaries.
+3. Set bounded buffering deliberately.
+4. Compose with pipeline.
+5. Wire abort/error cleanup.
+6. Test slow consumers and partial failure.
 
 ## Failure modes
 

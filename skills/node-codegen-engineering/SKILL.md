@@ -31,7 +31,13 @@ generator inputs are authoritative; generator versions are pinned; output is rep
 
 ## Implementation procedure
 
-1. Identify source.\n2. Select generator.\n3. Pin versions.\n4. Define output ownership.\n5. Add generation command.\n6. Run clean regeneration.\n7. Test generated API behavior.
+1. Identify source.
+2. Select generator.
+3. Pin versions.
+4. Define output ownership.
+5. Add generation command.
+6. Run clean regeneration.
+7. Test generated API behavior.
 
 ## Failure modes
 

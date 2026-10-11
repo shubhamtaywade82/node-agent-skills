@@ -31,7 +31,12 @@ labels describe bounded dimensions; IDs and arbitrary strings do not become labe
 
 ## Implementation procedure
 
-1. Inventory labels.\n2. Classify each dimension.\n3. Replace unbounded values with buckets/templates.\n4. Cap series budgets.\n5. Monitor cardinality.\n6. Test representative traffic.
+1. Inventory labels.
+2. Classify each dimension.
+3. Replace unbounded values with buckets/templates.
+4. Cap series budgets.
+5. Monitor cardinality.
+6. Test representative traffic.
 
 ## Failure modes
 

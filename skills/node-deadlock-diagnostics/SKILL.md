@@ -31,7 +31,13 @@ diagnosis uses database wait graphs/logs; fixes reduce lock overlap/order incons
 
 ## Implementation procedure
 
-1. Capture deadlock details.\n2. Reconstruct wait graph.\n3. Identify lock order.\n4. Shorten transactions.\n5. Align acquisition order.\n6. Add bounded retry.\n7. Verify concurrency tests.
+1. Capture deadlock details.
+2. Reconstruct wait graph.
+3. Identify lock order.
+4. Shorten transactions.
+5. Align acquisition order.
+6. Add bounded retry.
+7. Verify concurrency tests.
 
 ## Failure modes
 

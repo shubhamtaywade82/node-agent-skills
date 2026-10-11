@@ -31,7 +31,12 @@ the source tree is authoritative; packaged output is reproducible, complete, and
 
 ## Implementation procedure
 
-1. Define included paths.\n2. Exclude secrets/cache/build artifacts.\n3. Generate package.\n4. Hash/verify contents.\n5. Test unpacked discovery.\n6. Record version.
+1. Define included paths.
+2. Exclude secrets/cache/build artifacts.
+3. Generate package.
+4. Hash/verify contents.
+5. Test unpacked discovery.
+6. Record version.
 
 ## Failure modes
 

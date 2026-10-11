@@ -31,7 +31,11 @@ cache keys include all correctness inputs; untrusted branches cannot poison trus
 
 ## Implementation procedure
 
-1. Define key dimensions.\n2. Include lockfile/compiler/platform inputs.\n3. Separate trust domains.\n4. Validate cache hit artifacts.\n5. Test cold/warm builds.
+1. Define key dimensions.
+2. Include lockfile/compiler/platform inputs.
+3. Separate trust domains.
+4. Validate cache hit artifacts.
+5. Test cold/warm builds.
 
 ## Failure modes
 

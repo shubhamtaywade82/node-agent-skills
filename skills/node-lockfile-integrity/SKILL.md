@@ -31,7 +31,11 @@ the lockfile is a supply-chain artifact; CI must fail on unexpected drift; packa
 
 ## Implementation procedure
 
-1. Inspect packageManager/lockfile.\n2. Use immutable/frozen install.\n3. Review lockfile diff.\n4. Detect registry/source changes.\n5. Test clean install.
+1. Inspect packageManager/lockfile.
+2. Use immutable/frozen install.
+3. Review lockfile diff.
+4. Detect registry/source changes.
+5. Test clean install.
 
 ## Failure modes
 

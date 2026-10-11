@@ -32,7 +32,13 @@ search indexes are derived state; model freshness; isolate query syntax; protect
 
 ## Implementation procedure
 
-1. Define source of truth.\n2. Choose indexing trigger.\n3. Model document version/id.\n4. Design reindex and alias strategy.\n5. Bound query/filter/page sizes.\n6. Enforce authorization.\n7. Measure freshness.
+1. Define source of truth.
+2. Choose indexing trigger.
+3. Model document version/id.
+4. Design reindex and alias strategy.
+5. Bound query/filter/page sizes.
+6. Enforce authorization.
+7. Measure freshness.
 
 ## Failure modes
 

@@ -31,7 +31,11 @@ validators represent the selected representation; weak/strong semantics are deli
 
 ## Implementation procedure
 
-1. Define validator source.\n2. Generate stable representation validators.\n3. Evaluate If-None-Match before body serialization where possible.\n4. Handle HEAD.\n5. Test representation changes.
+1. Define validator source.
+2. Generate stable representation validators.
+3. Evaluate If-None-Match before body serialization where possible.
+4. Handle HEAD.
+5. Test representation changes.
 
 ## Failure modes
 

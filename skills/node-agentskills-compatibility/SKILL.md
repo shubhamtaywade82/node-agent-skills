@@ -31,7 +31,11 @@ compatibility is checked from documented filesystem/metadata contracts, not assu
 
 ## Implementation procedure
 
-1. Inspect skill directories and frontmatter.\n2. Validate names/descriptions.\n3. Verify discovery files.\n4. Check line limits.\n5. Test a minimal consumer.
+1. Inspect skill directories and frontmatter.
+2. Validate names/descriptions.
+3. Verify discovery files.
+4. Check line limits.
+5. Test a minimal consumer.
 
 ## Failure modes
 
