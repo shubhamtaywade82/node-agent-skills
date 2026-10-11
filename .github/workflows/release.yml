@@ -1,0 +1,46 @@
+name: Release
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    if: github.repository == 'shubhamtaywade82/node-agent-skills'
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - run: npm install -g @changesets/cli@latest
+      - name: Validate before release
+        run: |
+          npm run validate
+          npm test
+      - name: Create or consume Release PR
+        id: changesets
+        uses: changesets/action@v1
+        with:
+          publish: npx changeset publish
+          commit: "chore(release): version skills and pack"
+          title: "chore(release): version skills and pack"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Summary
+        if: always()
+        run: |
+          echo "### Release outcome" >> $GITHUB_STEP_SUMMARY
+          if [ -n "${{ steps.changesets.outputs.published }}" ]; then
+            echo "Published: ${{ steps.changesets.outputs.published }}" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "No release published; Release PR created or already up to date." >> $GITHUB_STEP_SUMMARY
+          fi
