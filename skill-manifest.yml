@@ -1001,6 +1001,30 @@ adapters:
   - name: node-package-manager-policy
     category: build
     triggers: [package manager policy, npm, pnpm, yarn, Corepack]
+  - name: node-llm-application-patterns
+    category: ai
+    triggers: [LLM, large language model, chat, summarization, extraction, classification, OpenAI, Anthropic, Claude, GPT, prompt, completion]
+  - name: node-rag-patterns
+    category: ai
+    triggers: [RAG, retrieval-augmented generation, vector store, embedding, Pinecone, Qdrant, pgvector, chunking, reranking, citation, hallucination]
+  - name: node-edge-runtime-foundations
+    category: runtime
+    triggers: [edge runtime, Cloudflare Workers, Vercel Edge, Deno Deploy, Bun, isolate, cold start, Web APIs, edge function]
+  - name: node-mcp-server-construction
+    category: ai
+    triggers: [MCP, Model Context Protocol, JSON-RPC, stdio, tool, resource, agent runtime, Claude Code, Cursor]
+  - name: node-llm-observability
+    category: ai
+    triggers: [LLM observability, Langfuse, Langsmith, Helicone, Braintrust, Phoenix, token usage, prompt regression, hallucination metric]
+  - name: node-llm-cost-engineering
+    category: ai
+    triggers: [LLM cost, token budget, model routing, response caching, cost cap, tenant quota, billing]
+  - name: node-tool-calling-patterns
+    category: ai
+    triggers: [tool calling, function calling, tool schema, zod, multi-step, parallel tool, prompt injection, agent loop]
+  - name: node-llm-streaming
+    category: ai
+    triggers: [LLM streaming, SSE, WebSocket, token streaming, abort signal, mid-stream error, backpressure, heartbeat]
 
   express:
     path: adapters/express/SKILL.md
