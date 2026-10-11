@@ -26,7 +26,6 @@ turning discovered security defects into permanent tests.
 tests reproduce the exploit at the narrowest boundary and remain independent of implementation details
 
 - Prefer explicit policies and deterministic evidence over defaults.
-- Preserve existing contracts unless the task explicitly changes them.
 - Keep failure handling bounded, observable, and reversible.
 
 ## Implementation procedure
@@ -53,3 +52,5 @@ Avoid:
 3. Run focused tests and full repository gates.
 4. Review the diff and residual risk.
 5. Report exactly what was verified.
+
+See references/agent-discipline.md for the shared lines that were removed from this section.

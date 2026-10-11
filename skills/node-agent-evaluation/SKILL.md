@@ -29,11 +29,6 @@ evaluate behavior and invariants, not prose style; include adversarial pressure;
 - Require strict corpus metadata validation for evaluation workflows; missing prompt, routing-signal, evidence, disambiguation, or invariant metadata is a corpus defect, not a scoring adjustment.
 - Track primary accuracy, adapter accuracy, and secondary violation rate separately so a good primary route cannot hide adapter or secondary-selection regressions.
 
-- Prefer the smallest design that makes ownership, failure, and observability explicit.
-- Detect exact dependency versions before using version-specific APIs.
-- Treat external input and resource state as untrusted runtime data.
-- Preserve existing contracts unless the task explicitly changes them.
-
 ## Implementation procedure
 
 1. Define target behavior.
@@ -49,8 +44,6 @@ evaluate behavior and invariants, not prose style; include adversarial pressure;
 Avoid:
 
 - golden answers copied verbatim; string-only tests; flaky environment dependencies; relaxing checks after failures.
-- Hidden coupling, unbounded resource use, or silent fallback.
-- Tests that prove implementation details instead of the observable contract.
 
 ## Verification
 
@@ -59,3 +52,5 @@ Avoid:
 3. Run focused tests, then the full repository test suite.
 4. Run lint/typecheck/build/deployment gates defined by the repository.
 5. Record assumptions, risks, and rollback implications.
+
+See references/agent-discipline.md for the shared lines that were removed from this section.

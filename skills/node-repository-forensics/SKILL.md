@@ -25,11 +25,6 @@ mapping an unfamiliar Node.js/TypeScript repository before changing it.
 
 treat checked-in files, lockfiles, CI, and package metadata as evidence; separate facts from hypotheses; preserve generated/configured boundaries
 
-- Prefer the smallest design that makes ownership, failure, and observability explicit.
-- Detect exact dependency versions before using version-specific APIs.
-- Treat external input and resource state as untrusted runtime data.
-- Preserve existing contracts unless the task explicitly changes them.
-
 ## Implementation procedure
 
 1. Inventory package manager and workspaces.
@@ -45,8 +40,6 @@ treat checked-in files, lockfiles, CI, and package metadata as evidence; separat
 Avoid:
 
 - guessing architecture from directory names; editing generated output; overlooking alternate packages; relying on stale README claims.
-- Hidden coupling, unbounded resource use, or silent fallback.
-- Tests that prove implementation details instead of the observable contract.
 
 ## Verification
 
@@ -55,3 +48,5 @@ Avoid:
 3. Run focused tests, then the full repository test suite.
 4. Run lint/typecheck/build/deployment gates defined by the repository.
 5. Record assumptions, risks, and rollback implications.
+
+See references/agent-discipline.md for the shared lines that were removed from this section.

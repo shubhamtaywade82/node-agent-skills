@@ -71,6 +71,9 @@ const requiredFiles = [
   "router/ROUTING.md",
   "router/ROUTING_CASES.yml",
   "docs/SKILL_CONTRACT.md",
+  "docs/RUNTIME_INTEGRATION.md",
+  "references/agent-discipline.md",
+  "CLAUDE.md",
 ];
 
 for (const file of requiredFiles) {

@@ -25,11 +25,6 @@ using Node streams for bounded-memory data processing and reliable I/O.
 
 prefer pipeline-based composition; respect backpressure; propagate errors; close resources; use AbortSignal where supported; do not buffer unbounded data
 
-- Prefer the smallest design that makes ownership, failure, and observability explicit.
-- Detect exact dependency versions before using version-specific APIs.
-- Treat external input and resource state as untrusted runtime data.
-- Preserve existing contracts unless the task explicitly changes them.
-
 ## Implementation procedure
 
 1. Identify source/sink rates.
@@ -44,8 +39,6 @@ prefer pipeline-based composition; respect backpressure; propagate errors; close
 Avoid:
 
 - read-all-into-memory; ignoring write backpressure; manual pipe chains with missing cleanup; double-ending streams.
-- Hidden coupling, unbounded resource use, or silent fallback.
-- Tests that prove implementation details instead of the observable contract.
 
 ## Verification
 
@@ -54,3 +47,5 @@ Avoid:
 3. Run focused tests, then the full repository test suite.
 4. Run lint/typecheck/build/deployment gates defined by the repository.
 5. Record assumptions, risks, and rollback implications.
+
+See references/agent-discipline.md for the shared lines that were removed from this section.
