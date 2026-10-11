@@ -8,7 +8,13 @@ The core is framework-neutral. The pack teaches agents to inspect first, identif
 ```bash
 npm test
 npm run validate
+node bin/skills.mjs route "add a Postgres transaction with an index" --repo .
+node lib/mcp-server.mjs  # stdio JSON-RPC, see docs/RUNTIME_INTEGRATION.md
 ```
+
+## Runtime integration
+
+This pack ships a zero-dependency runtime loader and MCP server. See `docs/RUNTIME_INTEGRATION.md` for three integration paths (MCP, CLI, programmatic) and the agent contract.
 
 ## Capability inventory
 
@@ -160,7 +166,7 @@ Adapters are conditional. Agents must detect the framework/library and installed
 
 ## Current capability line
 
-The reconciled capability line contains **330 core skills** and **81 adapters**. It combines runtime/database diagnostics, portable agent/skill-pack governance, HTTP/auth/observability, distribution/code-generation/database-runtime, and TypeScript/package diagnostics while retaining the current deterministic routing/evaluator hardening.
+The reconciled capability line contains **338 core skills** and **95 adapters**. It combines runtime/database diagnostics, portable agent/skill-pack governance, HTTP/auth/observability, distribution/code-generation/database-runtime, TypeScript/package diagnostics, LLM/edge/MCP patterns, and modern stack adapters while retaining the current deterministic routing/evaluator hardening.
 
 The agent workflow remains repository-first: inspect evidence, identify the owning boundary, load only required secondaries/adapters, implement within an explicit change boundary, and verify with reproducible evidence.
 
@@ -185,7 +191,7 @@ Agents route by boundary (see `router/ROUTING.md`, "Node and React cross-stack r
 Skill names do not collide: this pack prefixes every skill with `node-`. When `react-agent-skills` is not installed, `node-react-integration` still does the seam work and names the client-side follow-up and the react-agent-skills skill that owns it.
 
 ## Architecture
-`skills/` contains framework-neutral routed knowledge units. `skill-manifest.yml` is the registry and includes version-scoped adapter metadata. `router/` defines ownership and adapter selection. `scripts/validate.mjs` checks consistency. `test/` protects repository contracts. `evals/` contains behavioral pressure scenarios.
+`skills/` contains framework-neutral routed knowledge units. `skill-manifest.yml` is the registry and includes version-scoped adapter metadata. `router/` defines ownership and adapter selection. `lib/skill-loader.mjs` is the zero-dependency runtime loader (prompt routing, adapter detection, secondary resolution). `lib/mcp-server.mjs` is the MCP server (stdio, JSON-RPC 2.0) for AI coding agent integration. `bin/skills.mjs` is the CLI wrapper. `lib/routing-evaluator.mjs` is the deterministic routing regression harness. `scripts/validate.mjs` checks manifest consistency. `test/` protects repository contracts and exercises the runtime. `evals/` contains behavioral pressure scenarios.
 
 ## Agent routing model
 1. Inspect the repository and dependency manifests.
