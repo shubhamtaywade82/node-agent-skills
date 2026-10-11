@@ -1,0 +1,10 @@
+{
+  "changelog": false,
+  "access": "restricted",
+  "baseBranch": "main",
+  "updateInternalDependencies": false,
+  "privatePackages": {
+    "version": true,
+    "tag": false
+  }
+}

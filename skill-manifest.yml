@@ -7,1025 +7,1361 @@ skills:
   - name: node-architecture
     category: architecture
     triggers: [architecture, module boundary, dependency injection, modular monolith, ports and adapters]
+    version: 0.1.0
   - name: node-design-patterns
     category: architecture
     triggers: [design pattern, Strategy, Adapter, Facade, Factory, Command, Chain of Responsibility, Observer, State, Decorator, Builder, refactoring, coupling, composition]
+    version: 0.1.0
   - name: node-runtime-foundations
     category: runtime
     triggers: [event loop, ESM, CommonJS, package exports, process lifecycle, signals, startup, shutdown]
+    version: 0.1.0
   - name: node-async-concurrency
     category: runtime
     triggers: [Promise, concurrency, cancellation, AbortController, timeout, race condition, bounded concurrency]
+    version: 0.1.0
   - name: node-typescript-contracts
     category: typescript
     triggers: [TypeScript, strict, generics, discriminated union, tsconfig, public type]
+    version: 0.1.0
   - name: node-runtime-validation
     category: boundary
     triggers: [JSON, runtime validation, schema, external input, environment variables, queue payload]
+    version: 0.1.0
   - name: node-api-engineering
     category: api
     triggers: [HTTP, REST, OpenAPI, pagination, idempotency, API versioning]
+    version: 0.1.0
   - name: node-auth-security
     category: security
     triggers: [authentication, authorization, JWT, OAuth, OIDC, tenant isolation, rate limiting, SSRF]
+    version: 0.1.0
   - name: node-postgresql-persistence
     category: persistence
     triggers: [PostgreSQL, SQL, transaction, migration, index, locking, connection pool]
+    version: 0.1.0
   - name: node-background-jobs-reliability
     category: reliability
     triggers: [queue, worker, job, retry, backoff, dead letter, outbox, idempotency]
+    version: 0.1.0
   - name: node-observability
     category: operations
     triggers: [logging, metrics, tracing, OpenTelemetry, health check, audit]
+    version: 0.1.0
   - name: node-testing
     category: testing
     triggers: [unit test, integration test, API test, contract test, Testcontainers, fuzzing]
+    version: 0.1.0
   - name: node-performance
     category: performance
     triggers: [performance, profiling, memory, heap, event loop lag, backpressure, load]
+    version: 0.1.0
   - name: node-production-runtime
     category: operations
     triggers: [production, graceful shutdown, readiness, liveness, Docker, Kubernetes]
+    version: 0.1.0
   - name: node-external-integrations
     category: integrations
     triggers: [third-party API, HTTP client, webhook, timeout, retry, secret, external service]
+    version: 0.1.0
   - name: node-http-engineering
     category: api
     triggers: [HTTP lifecycle, middleware, request context, response lifecycle, error handling]
+    version: 0.1.0
   - name: node-api-versioning
     category: api
     triggers: [API versioning, compatibility, deprecation, migration, v1, v2]
+    version: 0.1.0
   - name: node-rest-api-design
     category: api
     triggers: [REST, resource modeling, status code, error envelope, endpoint design]
+    version: 0.1.0
   - name: node-pagination-filtering
     category: api
     triggers: [pagination, cursor, offset, filtering, sorting, list endpoint]
+    version: 0.1.0
   - name: node-idempotency
     category: reliability
     triggers: [idempotency key, duplicate request, retry-safe mutation, replay]
+    version: 0.1.0
   - name: node-openapi
     category: api
     triggers: [OpenAPI, Swagger, API schema, contract-first, schema drift]
+    version: 0.1.0
   - name: node-graphql
     category: api
     triggers: [GraphQL, resolver, schema, query cost, DataLoader, subscriptions]
+    version: 0.1.0
   - name: node-websockets
     category: api
     triggers: [WebSocket, WS, realtime, connection lifecycle, backpressure, reconnect]
+    version: 0.1.0
   - name: node-webhooks
     category: integrations
     triggers: [webhook, signature, raw body, replay, duplicate delivery]
-
+    version: 0.1.0
   - name: node-database-engineering
     category: persistence
     triggers: [database schema, SQL, constraints, indexes, tenant isolation, ORM]
+    version: 0.1.0
   - name: node-transactions
     category: persistence
     triggers: [transaction, isolation, locking, rollback, deadlock]
+    version: 0.1.0
   - name: node-migrations
     category: persistence
     triggers: [migration, schema change, expand contract, backfill, DDL]
+    version: 0.1.0
   - name: node-connection-pooling
     category: persistence
     triggers: [connection pool, pool exhaustion, database connections, max connections]
+    version: 0.1.0
   - name: node-redis
     category: infrastructure
     triggers: [Redis, node-redis, pipeline, transaction, Pub/Sub, client cache]
+    version: 0.1.0
   - name: node-caching
     category: infrastructure
     triggers: [cache, cache-aside, TTL, invalidation, stampede, stale data]
+    version: 0.1.0
   - name: node-queues
     category: reliability
     triggers: [queue, worker, background job, retry, dead letter, scheduling]
+    version: 0.1.0
   - name: node-message-brokers
     category: distributed
     triggers: [Kafka, broker, topic, partition, consumer group, offset, replay]
+    version: 0.1.0
   - name: node-outbox
     category: distributed
     triggers: [outbox, relay, event publication, durable event, replay]
+    version: 0.1.0
   - name: node-transactional-outbox
     category: distributed
     triggers: [transactional outbox, dual write, atomic event, event relay]
-
+    version: 0.1.0
   - name: node-retry-timeouts
     category: reliability
     triggers: [retry, timeout, deadline, backoff, jitter, cancellation]
+    version: 0.1.0
   - name: node-resilience
     category: reliability
     triggers: [resilience, degraded mode, fallback, dependency failure, capacity]
+    version: 0.1.0
   - name: node-circuit-breakers
     category: reliability
     triggers: [circuit breaker, open half-open closed, dependency protection]
+    version: 0.1.0
   - name: node-bulkheads
     category: reliability
     triggers: [bulkhead, concurrency isolation, capacity isolation, noisy neighbor]
+    version: 0.1.0
   - name: node-load-shedding
     category: reliability
     triggers: [load shedding, overload, admission control, priority traffic]
+    version: 0.1.0
   - name: node-backpressure
     category: performance
     triggers: [backpressure, stream pressure, slow consumer, bounded buffer]
+    version: 0.1.0
   - name: node-rate-limiting
     category: security
     triggers: [rate limit, quota, token bucket, tenant limit, abuse control]
+    version: 0.1.0
   - name: node-distributed-systems
     category: distributed
     triggers: [distributed system, partial failure, consistency, reconciliation]
+    version: 0.1.0
   - name: node-distributed-locks
     category: distributed
     triggers: [distributed lock, lease, fencing, leader, coordination]
+    version: 0.1.0
   - name: node-event-driven-architecture
     category: distributed
     triggers: [event-driven, domain event, integration event, event contract]
+    version: 0.1.0
   - name: node-zero-downtime
     category: production
     triggers: [zero downtime, readiness, drain, rolling deploy, graceful shutdown]
+    version: 0.1.0
   - name: node-database-migrations-production
     category: production
     triggers: [production migration, online DDL, expand contract, backfill, schema rollout]
+    version: 0.1.0
   - name: node-incident-engineering
     category: operations
     triggers: [incident, outage, mitigation, root cause, blast radius, runbook]
+    version: 0.1.0
   - name: node-runtime-diagnostics
     category: operations
     triggers: [event loop delay, heap, GC, CPU, memory leak, runtime diagnostics]
+    version: 0.1.0
   - name: node-release-engineering
     category: release
     triggers: [release, deployment, canary, artifact promotion, rollback, feature flag]
-
+    version: 0.1.0
   - name: node-configuration
     category: runtime
     triggers: [configuration, environment variables, config validation, startup settings, precedence]
+    version: 0.1.0
   - name: node-secrets
     category: security
     triggers: [secrets, credentials, token rotation, secret manager, redaction]
+    version: 0.1.0
   - name: node-security-hardening
     category: security
     triggers: [SSRF, prototype pollution, unsafe deserialization, child process, runtime hardening]
+    version: 0.1.0
   - name: node-supply-chain
     category: security
     triggers: [npm dependency, lockfile, provenance, install scripts, package audit, supply chain]
+    version: 0.1.0
   - name: node-package-tooling
     category: tooling
     triggers: [package.json, exports, engines, workspaces, npm scripts, publishing]
+    version: 0.1.0
   - name: node-build-engineering
     category: build
     triggers: [TypeScript build, project references, bundler, source maps, build cache, artifacts]
+    version: 0.1.0
   - name: node-contract-testing
     category: testing
     triggers: [contract testing, provider consumer, API compatibility, schema contract, integration contract]
+    version: 0.1.0
   - name: node-property-testing
     category: testing
     triggers: [property based testing, invariants, generated inputs, shrinking, counterexample]
+    version: 0.1.0
   - name: node-fuzz-testing
     category: testing
     triggers: [fuzzing, malformed input, parser fuzzing, crash detection, hang detection]
+    version: 0.1.0
   - name: node-schema-evolution
     category: distributed
     triggers: [schema evolution, backward compatibility, mixed versions, event schema, field removal]
+    version: 0.1.0
   - name: node-feature-flags
     category: release
     triggers: [feature flag, rollout, kill switch, tenant targeting, progressive delivery]
+    version: 0.1.0
   - name: node-containerization
     category: production
     triggers: [Docker, container image, multi-stage, non-root, container signals]
+    version: 0.1.0
   - name: node-kubernetes
     category: production
     triggers: [Kubernetes, probes, Deployment, resource limits, rolling update, termination]
+    version: 0.1.0
   - name: node-serverless
     category: production
     triggers: [serverless, function handler, cold start, invocation retry, stateless function]
+    version: 0.1.0
   - name: node-domain-modeling
     category: architecture
     triggers: [domain modeling, aggregates, value objects, business invariants]
+    version: 0.1.0
   - name: node-hexagonal-architecture
     category: architecture
     triggers: [hexagonal architecture, ports, adapters, dependency direction]
+    version: 0.1.0
   - name: node-dependency-injection
     category: architecture
     triggers: [dependency injection, composition root, lifecycle, test doubles]
+    version: 0.1.0
   - name: node-module-boundaries
     category: architecture
     triggers: [module boundaries, public API, dependency graph, circular dependency]
+    version: 0.1.0
   - name: node-integration-testing
     category: testing
     triggers: [integration testing, database integration, HTTP integration, real dependency]
+    version: 0.1.0
   - name: node-e2e-testing
     category: testing
     triggers: [end to end, workflow test, system test, backend E2E]
+    version: 0.1.0
   - name: node-testcontainers
     category: testing
     triggers: [Testcontainers, real service, disposable dependency, containerized test]
+    version: 0.1.0
   - name: node-load-testing
     category: testing
     triggers: [load test, throughput, latency, concurrency, capacity]
+    version: 0.1.0
   - name: node-api-client-engineering
     category: integrations
     triggers: [HTTP client, API client, deadline, retry, pagination]
+    version: 0.1.0
   - name: node-file-uploads
     category: api
     triggers: [file upload, multipart, streaming, content type, object storage]
+    version: 0.1.0
   - name: node-scheduling
     category: reliability
     triggers: [cron, scheduled job, timezone, recurrence, missed run]
+    version: 0.1.0
   - name: node-multi-tenancy
     category: security
     triggers: [tenant isolation, tenant id, row ownership, cross-tenant leakage]
+    version: 0.1.0
   - name: node-audit-logging
     category: security
     triggers: [audit log, actor, target, security event, compliance evidence]
+    version: 0.1.0
   - name: node-data-privacy
     category: security
     triggers: [personal data, PII, retention, deletion, minimization, redaction]
-
+    version: 0.1.0
   - name: node-repository-forensics
     category: engineering
     triggers: [repository forensics, codebase discovery, architecture mapping]
+    version: 0.1.0
   - name: node-debugging
     category: engineering
     triggers: [debugging, incident, regression, root cause, failure reproduction]
+    version: 0.1.0
   - name: node-code-review
     category: engineering
     triggers: [code review, PR review, security review, reliability review]
+    version: 0.1.0
   - name: node-refactoring
     category: engineering
     triggers: [refactoring, simplification, decoupling, rename, code smell]
+    version: 0.1.0
   - name: node-dependency-upgrades
     category: engineering
     triggers: [dependency upgrade, package upgrade, major version, migration]
+    version: 0.1.0
   - name: node-monorepo-engineering
     category: engineering
     triggers: [monorepo, workspace, package graph, task graph]
+    version: 0.1.0
   - name: node-cli-engineering
     category: tooling
     triggers: [CLI, command line, migration command, exit code, stdin]
+    version: 0.1.0
   - name: node-streams
     category: integrations
     triggers: [streams, pipeline, backpressure, large file, streaming]
+    version: 0.1.0
   - name: node-server-sent-events
     category: integrations
     triggers: [SSE, Server-Sent Events, EventSource, streaming API]
+    version: 0.1.0
   - name: node-object-storage
     category: integrations
     triggers: [S3, object storage, presigned URL, blob, multipart upload]
+    version: 0.1.0
   - name: node-email-delivery
     category: integrations
     triggers: [email, transactional email, provider, bounce, delivery]
+    version: 0.1.0
   - name: node-search-engineering
     category: integrations
     triggers: [search, indexing, OpenSearch, Elasticsearch, reindex]
+    version: 0.1.0
   - name: node-cryptography
     category: security
     triggers: [cryptography, encryption, signing, hashing, nonce, key rotation]
+    version: 0.1.0
   - name: node-agent-evaluation
     category: tooling
     triggers: [agent evaluation, evals, coding agent, benchmark, regression cases]
+    version: 0.1.0
   - name: node-documentation-engineering
     category: tooling
     triggers: [documentation, README, runbook, API docs, architecture docs]
+    version: 0.1.0
   - name: node-developer-experience
     category: engineering
     triggers: [developer experience, onboarding, local setup, CI feedback]
+    version: 0.1.0
   - name: node-cloud-events
     category: distributed
     triggers: [CloudEvents, event envelope, event metadata, integration event]
+    version: 0.1.0
   - name: node-saga-orchestration
     category: distributed
     triggers: [saga, orchestration, compensation, long-running workflow]
+    version: 0.1.0
   - name: node-grpc
     category: distributed
     triggers: [gRPC, RPC, protobuf, unary RPC, streaming RPC, deadlines]
+    version: 0.1.0
   - name: node-rpc-contracts
     category: distributed
     triggers: [RPC contracts, wire contract, cross-language, compatibility]
+    version: 0.1.0
   - name: node-api-gateway
     category: api
     triggers: [API gateway, proxy, fanout, downstream routing]
+    version: 0.1.0
   - name: node-service-mesh
     category: production
     triggers: [service mesh, sidecar, mTLS, proxy, traffic policy]
+    version: 0.1.0
   - name: node-message-delivery
     category: distributed
     triggers: [message delivery, acknowledgement, ordering, duplicates]
+    version: 0.1.0
   - name: node-schema-registry
     category: distributed
     triggers: [schema registry, compatibility mode, schema version]
+    version: 0.1.0
   - name: node-consumer-rebalancing
     category: distributed
     triggers: [consumer rebalance, partition assignment, offsets]
+    version: 0.1.0
   - name: node-authorization-models
     category: security
     triggers: [authorization, RBAC, ABAC, resource ownership, policy]
+    version: 0.1.0
   - name: node-threat-modeling
     category: security
     triggers: [threat model, trust boundary, abuse case, attack surface]
+    version: 0.1.0
   - name: node-secure-coding
     category: security
     triggers: [secure coding, command injection, path traversal, unsafe input]
+    version: 0.1.0
   - name: node-legacy-modernization
     category: engineering
     triggers: [legacy modernization, runtime upgrade, technical debt]
+    version: 0.1.0
   - name: node-change-impact-analysis
     category: engineering
     triggers: [change impact, dependency graph, consumers, compatibility]
+    version: 0.1.0
   - name: node-migration-assistant
     category: tooling
     triggers: [migration plan, upgrade plan, rollback, roll-forward]
+    version: 0.1.0
   - name: node-architecture-decision-records
     category: tooling
     triggers: [ADR, architecture decision, trade-offs, alternatives]
+    version: 0.1.0
   - name: node-test-data-management
     category: testing
     triggers: [test data, fixtures, factories, deterministic seed]
+    version: 0.1.0
   - name: node-flaky-test-engineering
     category: testing
     triggers: [flaky test, nondeterministic test, timing race]
+    version: 0.1.0
   - name: node-test-environment-engineering
     category: testing
     triggers: [test environment, CI parity, emulator, integration environment]
+    version: 0.1.0
   - name: node-api-deprecation
     category: api
     triggers: [API deprecation, sunset, compatibility window, consumer migration]
+    version: 0.1.0
   - name: node-cqrs
     category: architecture
     triggers: [CQRS, command side, query side, read model]
+    version: 0.1.0
   - name: node-read-models
     category: persistence
     triggers: [read model, projection, materialized view, freshness]
+    version: 0.1.0
   - name: node-event-sourcing
     category: distributed
     triggers: [event sourcing, event stream, replay, snapshot]
+    version: 0.1.0
   - name: node-optimistic-concurrency
     category: persistence
     triggers: [optimistic concurrency, version, ETag, compare and swap]
+    version: 0.1.0
   - name: node-data-reconciliation
     category: persistence
     triggers: [reconciliation, drift detection, repair, consistency]
+    version: 0.1.0
   - name: node-batch-processing
     category: reliability
     triggers: [batch processing, backfill, checkpoint, bulk job]
+    version: 0.1.0
   - name: node-data-import-export
     category: integrations
     triggers: [data import, data export, CSV, NDJSON, staging]
+    version: 0.1.0
   - name: node-database-read-replicas
     category: persistence
     triggers: [read replica, replication lag, primary, consistency]
+    version: 0.1.0
   - name: node-database-sharding
     category: persistence
     triggers: [database sharding, shard key, resharding, partition routing]
+    version: 0.1.0
   - name: node-data-archival
     category: persistence
     triggers: [data archival, cold storage, retention tier, restore]
+    version: 0.1.0
   - name: node-durable-workflows
     category: reliability
     triggers: [durable workflow, workflow state, long running job, deterministic workflow]
+    version: 0.1.0
   - name: node-outbound-webhooks
     category: integrations
     triggers: [outbound webhook, webhook delivery, signing, delivery retry]
+    version: 0.1.0
   - name: node-task-decomposition
     category: tooling
     triggers: [task decomposition, coding agent task, implementation slice]
+    version: 0.1.0
   - name: node-context-engineering
     category: tooling
     triggers: [context engineering, repository context, coding agent context]
+    version: 0.1.0
   - name: node-implementation-planning
     category: tooling
     triggers: [implementation plan, coding plan, backend plan]
+    version: 0.1.0
   - name: node-patch-validation
     category: tooling
     triggers: [patch validation, AI generated patch, diff validation]
+    version: 0.1.0
   - name: node-merge-conflict-resolution
     category: tooling
     triggers: [merge conflict, rebase conflict, conflict resolution, git]
+    version: 0.1.0
   - name: node-validation-triage
     category: tooling
     triggers: [CI failure, validation failure, test triage, failing check]
+    version: 0.1.0
   - name: node-review-feedback
     category: tooling
     triggers: [review feedback, PR feedback, requested changes, code review followup]
+    version: 0.1.0
   - name: node-disaster-recovery
     category: operations
     triggers: [disaster recovery, RTO, RPO, recovery exercise, service restoration]
+    version: 0.1.0
   - name: node-backup-restore
     category: operations
     triggers: [backup, restore, point in time recovery, retention, recovery test]
+    version: 0.1.0
   - name: node-chaos-engineering
     category: operations
     triggers: [chaos engineering, fault injection, resilience experiment, failure drill]
+    version: 0.1.0
   - name: node-capacity-planning
     category: performance
     triggers: [capacity planning, saturation, resource budget, scaling headroom]
+    version: 0.1.0
   - name: node-cost-aware-engineering
     category: operations
     triggers: [cloud cost, unit cost, cost optimization, infrastructure spend]
+    version: 0.1.0
   - name: node-multi-region
     category: production
     triggers: [multi-region, active active, active standby, regional failover]
+    version: 0.1.0
   - name: node-failover-engineering
     category: production
     triggers: [failover, split brain, leader election, recovery routing]
+    version: 0.1.0
   - name: node-graceful-degradation
     category: reliability
     triggers: [graceful degradation, fallback, degraded mode, optional dependency]
+    version: 0.1.0
   - name: node-time-engineering
     category: runtime
     triggers: [timezone, clock, timestamp, DST, time window]
+    version: 0.1.0
   - name: node-session-management
     category: security
     triggers: [session management, session revocation, refresh session, session rotation]
+    version: 0.1.0
   - name: node-cookie-security
     category: security
     triggers: [cookies, HttpOnly, Secure, SameSite, cookie scope]
+    version: 0.1.0
   - name: node-react-integration
     category: api
     triggers: [React client, React frontend, Node React integration, full-stack TypeScript, shared contracts package, BFF, Vite proxy, fetch credentials, CSRF token in fetch, problem details in forms, SSE to browser, WebSocket to React]
+    version: 0.1.0
   - name: node-cors-security
     category: security
     triggers: [CORS, cross origin, preflight, Access-Control-Allow-Origin]
+    version: 0.1.0
   - name: node-security-headers
     category: security
     triggers: [security headers, CSP, HSTS, X-Frame-Options, referrer policy]
+    version: 0.1.0
   - name: node-ci-pipeline-engineering
     category: release
     triggers: [CI pipeline, continuous integration, build pipeline, test pipeline]
+    version: 0.1.0
   - name: node-progressive-delivery
     category: release
     triggers: [canary, blue green, progressive rollout, staged deployment]
+    version: 0.1.0
   - name: node-infrastructure-as-code
     category: production
     triggers: [Terraform, IaC, infrastructure as code, state management]
+    version: 0.1.0
   - name: node-observability-validation
     category: operations
     triggers: [observability validation, telemetry verification, alert validation]
+    version: 0.1.0
   - name: node-runbook-engineering
     category: operations
     triggers: [runbook, operational procedure, incident runbook, maintenance procedure]
+    version: 0.1.0
   - name: node-sli-slo-engineering
     category: operations
     triggers: [SLI, SLO, reliability objective, good event, service level indicator]
+    version: 0.1.0
   - name: node-error-budget-engineering
     category: operations
     triggers: [error budget, burn rate, release policy, reliability budget]
+    version: 0.1.0
   - name: node-service-ownership
     category: operations
     triggers: [service ownership, dependency owner, escalation, accountable team]
+    version: 0.1.0
   - name: node-oncall-readiness
     category: operations
     triggers: [on-call, alert, runbook, paging, incident readiness]
+    version: 0.1.0
   - name: node-operational-readiness
     category: operations
     triggers: [operational readiness, production readiness, launch checklist]
+    version: 0.1.0
   - name: node-security-incident-response
     category: security
     triggers: [security incident, credential leak, containment, evidence]
+    version: 0.1.0
   - name: node-vulnerability-management
     category: security
     triggers: [vulnerability, security advisory, dependency CVE, remediation]
+    version: 0.1.0
   - name: node-auth-session-revocation
     category: security
     triggers: [session revocation, logout all, token revocation, password reset]
+    version: 0.1.0
   - name: node-oauth-client-security
     category: security
     triggers: [OAuth client, PKCE, state, redirect URI, token security]
+    version: 0.1.0
   - name: node-oidc-integration
     category: security
     triggers: [OIDC, OpenID Connect, issuer, nonce, ID token]
+    version: 0.1.0
   - name: node-mfa-engineering
     category: security
     triggers: [MFA, TOTP, WebAuthn, passkey, recovery codes]
+    version: 0.1.0
   - name: node-password-storage
     category: security
     triggers: [password hashing, password KDF, salt, rehash]
+    version: 0.1.0
   - name: node-user-enumeration-defense
     category: security
     triggers: [user enumeration, account discovery, password reset]
+    version: 0.1.0
   - name: node-native-test-runner
     category: testing
     triggers: [node:test, Node test runner, built-in tests]
+    version: 0.1.0
   - name: node-http-testing
     category: testing
     triggers: [HTTP testing, API integration test, real HTTP server]
+    version: 0.1.0
   - name: node-benchmark-engineering
     category: testing
     triggers: [benchmark, latency benchmark, throughput benchmark, performance regression]
+    version: 0.1.0
   - name: node-failure-injection-testing
     category: testing
     triggers: [failure injection, fault injection, timeout test, dependency failure]
+    version: 0.1.0
   - name: node-test-isolation-engineering
     category: testing
     triggers: [test isolation, parallel tests, shared state, test resources]
+    version: 0.1.0
   - name: node-api-compatibility
     category: api
     triggers: [API compatibility, breaking change, backward compatibility, consumer migration]
+    version: 0.1.0
   - name: node-api-contract-migration
     category: api
     triggers: [API migration, contract migration, version transition, deprecation migration]
+    version: 0.1.0
   - name: node-batch-api-design
     category: api
     triggers: [batch API, bulk request, partial success, batch endpoint]
+    version: 0.1.0
   - name: node-bulk-operations
     category: data
     triggers: [bulk operation, mass update, bulk delete, backfill mutation]
+    version: 0.1.0
   - name: node-resource-lifecycle
     category: domain
     triggers: [resource lifecycle, state transition, archive, delete lifecycle]
+    version: 0.1.0
   - name: node-data-retention
     category: data
     triggers: [data retention, deletion policy, expiry, retention schedule]
+    version: 0.1.0
   - name: node-data-lineage
     category: data
     triggers: [data lineage, provenance, transformation history, source tracking]
+    version: 0.1.0
   - name: node-data-quality
     category: data
     triggers: [data quality, data validation, data integrity, anomaly detection]
+    version: 0.1.0
   - name: node-data-masking
     category: security
     triggers: [data masking, PII masking, redaction, sanitized export]
+    version: 0.1.0
   - name: node-encryption-at-rest
     category: security
     triggers: [encryption at rest, field encryption, storage encryption]
+    version: 0.1.0
   - name: node-key-management
     category: security
     triggers: [key management, key rotation, KMS, encryption keys]
+    version: 0.1.0
   - name: node-message-ordering
     category: messaging
     triggers: [message ordering, event ordering, sequence, partition ordering]
+    version: 0.1.0
   - name: node-message-deduplication
     category: messaging
     triggers: [message deduplication, duplicate delivery, idempotent consumer]
+    version: 0.1.0
   - name: node-consumer-poison-message
     category: messaging
     triggers: [poison message, consumer retry, quarantine message]
+    version: 0.1.0
   - name: node-dead-letter-queues
     category: messaging
     triggers: [dead letter queue, DLQ, redrive, failed message]
+    version: 0.1.0
   - name: node-schema-validation-at-boundary
     category: contracts
     triggers: [runtime schema validation, boundary validation, untrusted input]
+    version: 0.1.0
   - name: node-runtime-type-safety
     category: contracts
     triggers: [runtime type safety, unknown data, type narrowing, runtime validation]
+    version: 0.1.0
   - name: node-package-resolution
     category: runtime
     triggers: [Node package resolution, ESM CJS, exports, module resolution, workspace dependency]
-
+    version: 0.1.0
   - name: node-permission-model
     category: security
     triggers: [Permission Model, --permission, allow-fs-read, allow-child-process]
+    version: 0.1.0
   - name: node-async-context-propagation
     category: runtime
     triggers: [AsyncLocalStorage, async context, context propagation, correlation]
+    version: 0.1.0
   - name: node-request-context
     category: runtime
     triggers: [request context, request scoped context, correlation ID, deadline context]
+    version: 0.1.0
   - name: node-abort-cancellation
     category: runtime
     triggers: [AbortSignal, cancellation, abort, deadline propagation]
+    version: 0.1.0
   - name: node-worker-threads
     category: runtime
     triggers: [worker_threads, CPU bound, worker pool, event loop]
+    version: 0.1.0
   - name: node-child-process-safety
     category: security
     triggers: [child_process, execFile, spawn, command injection, subprocess]
+    version: 0.1.0
   - name: node-http-body-limits
     category: api
     triggers: [HTTP body limit, request size, payload limit, parser limit]
+    version: 0.1.0
   - name: node-upload-security
     category: security
     triggers: [file upload security, MIME validation, magic bytes, quarantine]
+    version: 0.1.0
   - name: node-ssrf-defense
     category: security
     triggers: [SSRF, server side request forgery, URL fetch, egress allowlist]
+    version: 0.1.0
   - name: node-cache-key-security
     category: security
     triggers: [cache key security, authorization cache, cache collision]
+    version: 0.1.0
   - name: node-tenant-cache-isolation
     category: security
     triggers: [tenant cache isolation, cross tenant cache, shared cache]
+    version: 0.1.0
   - name: node-database-index-engineering
     category: persistence
     triggers: [database indexes, composite index, partial index, execution plan]
+    version: 0.1.0
   - name: node-query-performance
     category: performance
     triggers: [query performance, slow query, execution plan, N+1]
+    version: 0.1.0
   - name: node-lock-contention
     category: persistence
     triggers: [lock contention, deadlock, lock wait, serialization failure]
+    version: 0.1.0
   - name: node-connection-leak-detection
     category: persistence
     triggers: [connection leak, pool exhaustion, resource leak, connection checkout]
+    version: 0.1.0
   - name: node-transaction-retry
     category: persistence
     triggers: [transaction retry, serialization failure, deadlock retry, transient database error]
+    version: 0.1.0
   - name: node-health-check-engineering
     category: operations
     triggers: [health check, liveness, readiness, startup probe, dependency health]
+    version: 0.1.0
   - name: node-startup-readiness
     category: operations
     triggers: [startup readiness, initialization, readiness gate, startup sequence]
+    version: 0.1.0
   - name: node-config-drift-detection
     category: operations
     triggers: [configuration drift, effective config, drift detection, config fingerprint]
+    version: 0.1.0
   - name: node-generated-code-governance
     category: build
     triggers: [code generation, generated code, OpenAPI generation, protobuf generation, reproducible codegen]
+    version: 0.1.0
   - name: node-agent-preflight
     category: agent-governance
     triggers: [agent preflight, repository inspection, task planning, coding agent]
+    version: 0.1.0
   - name: node-agent-evidence-gathering
     category: agent-governance
     triggers: [evidence gathering, source of truth, repository evidence, coding agent]
+    version: 0.1.0
   - name: node-agent-change-safety
     category: agent-governance
     triggers: [change safety, blast radius, scoped change, coding agent]
+    version: 0.1.0
   - name: node-agent-verification-reporting
     category: agent-governance
     triggers: [verification report, tests run, residual risk, coding agent]
+    version: 0.1.0
   - name: node-agent-risk-escalation
     category: agent-governance
     triggers: [risk escalation, human approval, uncertainty, irreversible change]
+    version: 0.1.0
   - name: node-agent-rollback-planning
     category: agent-governance
     triggers: [rollback planning, migration rollback, recovery plan]
+    version: 0.1.0
   - name: node-agent-commit-hygiene
     category: agent-governance
     triggers: [commit hygiene, focused commits, staged diff, coding agent]
+    version: 0.1.0
   - name: node-agent-pr-preparation
     category: agent-governance
     triggers: [pull request preparation, PR readiness, base branch, CI]
+    version: 0.1.0
   - name: node-dns-engineering
     category: network
     triggers: [DNS, hostname resolution, resolver, TTL, IPv4, IPv6]
+    version: 0.1.0
   - name: node-tls-certificate-management
     category: security
     triggers: [TLS, certificates, trust store, certificate rotation]
+    version: 0.1.0
   - name: node-http-proxy-forwarding
     category: network
     triggers: [proxy, Forwarded, X-Forwarded-For, trusted proxy]
+    version: 0.1.0
   - name: node-http-timeouts
     category: network
     triggers: [HTTP timeout, connection timeout, header timeout, request deadline]
+    version: 0.1.0
   - name: node-http-keepalive
     category: network
     triggers: [HTTP keep alive, connection pooling, socket pool]
+    version: 0.1.0
   - name: node-webhook-ingress-security
     category: security
     triggers: [webhook security, signed webhook, replay, idempotency]
+    version: 0.1.0
   - name: node-request-signature-validation
     category: security
     triggers: [request signature, HMAC, signed request, raw body]
+    version: 0.1.0
   - name: node-replay-protection
     category: security
     triggers: [replay protection, nonce, timestamp, duplicate request]
+    version: 0.1.0
   - name: node-csrf-defense
     category: security
     triggers: [CSRF, cross site request forgery, browser session]
+    version: 0.1.0
   - name: node-open-redirect-defense
     category: security
     triggers: [open redirect, next parameter, redirect URL]
+    version: 0.1.0
   - name: node-request-smuggling-defense
     category: security
     triggers: [HTTP request smuggling, CL TE, message framing]
+    version: 0.1.0
   - name: node-header-normalization
     category: network
     triggers: [HTTP headers, duplicate headers, header normalization]
+    version: 0.1.0
 adapters:
 
   - name: node-file-system-safety
     category: runtime-security
     triggers: [file, system, safety]
+    version: 0.1.0
   - name: node-read-replica-routing
     category: persistence
     triggers: [read, replica, routing]
+    version: 0.1.0
   - name: node-index-engineering
     category: persistence
     triggers: [index, engineering]
+    version: 0.1.0
   - name: node-advisory-locks
     category: persistence
     triggers: [advisory, locks]
+    version: 0.1.0
   - name: node-cardinality-control
     category: observability
     triggers: [metric cardinality, labels, series explosion, route normalization]
+    version: 0.1.0
   - name: node-skill-pack-format
     category: tooling
     triggers: [Agent Skills, SKILL.md, skill format, frontmatter, progressive disclosure]
+    version: 0.1.0
   - name: node-skill-pack-compatibility
     category: tooling
     triggers: [agent compatibility, portable skills, vendor neutral skills]
+    version: 0.1.0
   - name: node-skill-pack-manifest-governance
     category: tooling
     triggers: [skill manifest, registry governance, manifest validation]
+    version: 0.1.0
   - name: node-skill-pack-routing-governance
     category: tooling
     triggers: [skill routing, primary skill, secondary skill, routing rules]
+    version: 0.1.0
   - name: node-skill-pack-evaluation-governance
     category: tooling
     triggers: [skill evaluations, eval cases, regression benchmark, eval governance]
+    version: 0.1.0
   - name: node-skill-pack-source-governance
     category: tooling
     triggers: [skill sources, documentation source, version scope, source governance]
+    version: 0.1.0
   - name: node-skill-pack-versioning
     category: tooling
     triggers: [skill pack versioning, semantic version, compatibility change]
+    version: 0.1.0
   - name: node-skill-pack-release
     category: release
     triggers: [skill pack release, release artifact, verified release]
+    version: 0.1.0
   - name: node-skill-pack-distribution
     category: tooling
     triggers: [skill pack distribution, pack export, filesystem distribution]
+    version: 0.1.0
   - name: node-skill-pack-installation
     category: tooling
     triggers: [skill pack installation, install skills, agent skills directory]
+    version: 0.1.0
   - name: node-agent-progress-tracking
     category: tooling
     triggers: [agent progress, task progress, coding agent state]
+    version: 0.1.0
   - name: node-agent-task-checkpointing
     category: tooling
     triggers: [agent checkpoint, resumable task, coding session checkpoint]
+    version: 0.1.0
   - name: node-agent-context-budgeting
     category: tooling
     triggers: [agent context budget, progressive disclosure, context minimization]
+    version: 0.1.0
   - name: node-agent-tool-selection
     category: tooling
     triggers: [agent tool selection, read only inspection, repository tools]
+    version: 0.1.0
   - name: node-agent-command-safety
     category: security
     triggers: [agent command safety, destructive command, shell safety]
+    version: 0.1.0
   - name: node-agent-output-contracts
     category: tooling
     triggers: [agent output contract, verification report, structured result]
+    version: 0.1.0
   - name: node-agent-handoff
     category: tooling
     triggers: [agent handoff, session handoff, coding task transfer]
+    version: 0.1.0
   - name: node-agent-recovery
     category: tooling
     triggers: [agent recovery, interrupted task, partial patch recovery]
+    version: 0.1.0
   - name: node-agent-multi-file-coordination
     category: tooling
     triggers: [multi file change, coding agent coordination, dependency order]
+    version: 0.1.0
   - name: node-agent-regression-prevention
     category: testing
     triggers: [regression prevention, coding agent regression, regression tests]
+    version: 0.1.0
   - name: node-module-resolution-diagnostics
     category: runtime
     triggers: [module resolution, ESM, CommonJS, package exports, ERR_MODULE_NOT_FOUND]
+    version: 0.1.0
   - name: node-package-manager-diagnostics
     category: tooling
     triggers: [npm, pnpm, package manager, workspace, install diagnostics]
+    version: 0.1.0
   - name: node-generated-code-review
     category: build
     triggers: [generated code review, generated diff, schema source, codegen]
+    version: 0.1.0
   - name: node-deprecation-management
     category: api
     triggers: [deprecation, migration path, compatibility window, API removal]
+    version: 0.1.0
   - name: node-backward-compatibility-testing
     category: testing
     triggers: [backward compatibility, compatibility matrix, contract testing, mixed version]
+    version: 0.1.0
   - name: node-runtime-upgrade-planning
     category: runtime
     triggers: [Node runtime upgrade, major version upgrade, runtime migration]
+    version: 0.1.0
   - name: node-temp-file-safety
     category: security
     triggers: [temporary files, temp directory, cleanup, secure temp]
+    version: 0.1.0
   - name: node-path-traversal-defense
     category: security
     triggers: [path traversal, dot dot, path containment, encoded path]
+    version: 0.1.0
   - name: node-runtime-feature-detection
     category: runtime
     triggers: [runtime feature detection, capability detection, Node version]
+    version: 0.1.0
   - name: node-process-supervision
     category: runtime
     triggers: [process supervision, SIGTERM, graceful shutdown, supervisor]
+    version: 0.1.0
   - name: node-memory-leak-diagnostics
     category: performance
     triggers: [memory leak, RSS growth, heap retention, GC]
+    version: 0.1.0
   - name: node-heap-diagnostics
     category: runtime
     triggers: [heap snapshot, heap statistics, memory diagnostics]
+    version: 0.1.0
   - name: node-event-loop-diagnostics
     category: performance
     triggers: [event loop lag, event loop utilization, blocking work]
+    version: 0.1.0
   - name: node-log-redaction
     category: security
     triggers: [log redaction, secrets in logs, sensitive headers]
+    version: 0.1.0
   - name: node-telemetry-sampling
     category: observability
     triggers: [telemetry sampling, trace sampling, log sampling]
+    version: 0.1.0
   - name: node-trace-context-propagation
     category: observability
     triggers: [trace context, traceparent, distributed tracing]
+    version: 0.1.0
   - name: node-query-plan-engineering
     category: persistence
     triggers: [EXPLAIN, query plan, execution plan, query optimization]
+    version: 0.1.0
   - name: node-postgres-locking
     category: persistence
     triggers: [PostgreSQL locks, SELECT FOR UPDATE, row lock]
+    version: 0.1.0
   - name: node-api-content-negotiation
     category: api
     triggers: [Accept header, Content-Type, content negotiation, Vary]
+    version: 0.1.0
   - name: node-http-cache-semantics
     category: api
     triggers: [Cache-Control, shared cache, private response, freshness]
+    version: 0.1.0
   - name: node-api-conditional-requests
     category: api
     triggers: [If-Match, If-None-Match, conditional request, precondition]
+    version: 0.1.0
   - name: node-lockfile-integrity
     category: security
     triggers: [lockfile integrity, frozen install, dependency lock]
+    version: 0.1.0
   - name: node-codegen-engineering
     category: build
     triggers: [code generation, generators, generated source]
+    version: 0.1.0
   - name: node-release-notes-engineering
     category: release
     triggers: [release notes, changelog, migration notes]
+    version: 0.1.0
   - name: node-maintenance-engineering
     category: release
     triggers: [dependency maintenance, runtime upgrade, framework upgrade]
+    version: 0.1.0
   - name: node-repository-health
     category: build
     triggers: [repository health, dependency drift, CI health, maintainability]
+    version: 0.1.0
   - name: node-filesystem-safety
     category: security
     triggers: [filesystem safety, file access, symlink, path containment]
+    version: 0.1.0
   - name: node-archive-extraction-safety
     category: security
     triggers: [archive extraction, zip slip, tar traversal, archive bomb]
+    version: 0.1.0
   - name: node-file-descriptor-lifecycle
     category: runtime
     triggers: [file descriptor leaks, handle cleanup, stream lifecycle]
+    version: 0.1.0
   - name: node-worker-crash-recovery
     category: runtime
     triggers: [worker crash, worker thread failure, background worker recovery]
+    version: 0.1.0
   - name: node-metric-cardinality-control
     category: observability
     triggers: [metric cardinality, label budget, high cardinality]
+    version: 0.1.0
   - name: node-etag-cache-validation
     category: api
     triggers: [ETag, If-None-Match, conditional GET, 304]
+    version: 0.1.0
   - name: node-rate-limit-headers
     category: api
     triggers: [rate limit headers, Retry-After, remaining, reset]
+    version: 0.1.0
   - name: node-authz-policy-testing
     category: security
     triggers: [authorization policy testing, RBAC, ABAC, default deny]
+    version: 0.1.0
   - name: node-access-control-auditing
     category: security
     triggers: [access control audit, privileged action audit, authorization audit]
+    version: 0.1.0
   - name: node-security-regression-testing
     category: security
     triggers: [security regression test, vulnerability regression, exploit test]
+    version: 0.1.0
   - name: node-agent-installation
     category: agent
     triggers: [agent installation, skill pack install, bootstrap coding agent]
+    version: 0.1.0
   - name: node-agentskills-compatibility
     category: agent
     triggers: [agent skills compatibility, skill metadata, Agent Skills format]
+    version: 0.1.0
   - name: node-skill-packaging
     category: agent
     triggers: [skill packaging, release archive, skill distribution]
+    version: 0.1.0
   - name: node-skill-discovery-contract
     category: agent
     triggers: [skill discovery, activation metadata, skill description]
+    version: 0.1.0
   - name: node-skill-routing-contract
     category: agent
     triggers: [skill routing, primary owner, secondary skill]
+    version: 0.1.0
   - name: node-skill-evaluation-discipline
     category: agent
     triggers: [skill evaluation, eval corpus, behavioral evaluation]
+    version: 0.1.0
   - name: node-skill-version-governance
     category: agent
     triggers: [skill versioning, compatibility, breaking skill change]
+    version: 0.1.0
   - name: node-skill-reference-governance
     category: agent
     triggers: [skill references, broken links, cross-skill dependency]
+    version: 0.1.0
   - name: node-generated-schema-contracts
     category: build
     triggers: [generated schema, OpenAPI codegen, protobuf codegen, runtime validation]
+    version: 0.1.0
   - name: node-generated-client-governance
     category: build
     triggers: [generated API client, client codegen, auth retry wrapper]
+    version: 0.1.0
   - name: node-generated-artifact-determinism
     category: build
     triggers: [deterministic codegen, reproducible generated artifacts]
+    version: 0.1.0
   - name: node-deprecation-planning
     category: release
     triggers: [deprecation plan, API deprecation, sunset]
+    version: 0.1.0
   - name: node-change-log-integrity
     category: release
     triggers: [changelog integrity, release metadata]
+    version: 0.1.0
   - name: node-database-advisory-locks
     category: persistence
     triggers: [advisory lock, PostgreSQL advisory lock, cooperative serialization]
+    version: 0.1.0
   - name: node-database-read-replica-routing
     category: persistence
     triggers: [read replica, replica lag, read routing, read-after-write]
+    version: 0.1.0
   - name: node-deadlock-diagnostics
     category: persistence
     triggers: [database deadlock, lock wait, wait graph]
+    version: 0.1.0
   - name: node-isolation-level-selection
     category: persistence
     triggers: [transaction isolation, serializable, repeatable read]
+    version: 0.1.0
   - name: node-signal-handling
     category: runtime
     triggers: [SIGTERM, SIGINT, signal handling, graceful shutdown]
+    version: 0.1.0
   - name: node-runtime-health-monitoring
     category: operations
     triggers: [runtime health, process health, event loop health, pool health]
+    version: 0.1.0
   - name: node-typescript-config-engineering
     category: typescript
     triggers: [tsconfig, TypeScript compiler options, strict mode, target]
+    version: 0.1.0
   - name: node-tsconfig-project-references
     category: typescript
     triggers: [project references, composite TypeScript projects, incremental build]
+    version: 0.1.0
   - name: node-typescript-module-resolution
     category: typescript
     triggers: [module resolution, moduleResolution, NodeNext, bundler resolution]
+    version: 0.1.0
   - name: node-esm-cjs-interoperability
     category: runtime
     triggers: [ESM CJS interop, import require, module interoperability]
+    version: 0.1.0
   - name: node-package-exports
     category: build
     triggers: [package exports, conditional exports, subpath exports]
+    version: 0.1.0
   - name: node-package-imports
     category: build
     triggers: [package imports, hash imports, internal aliases]
+    version: 0.1.0
   - name: node-package-self-reference
     category: build
     triggers: [package self reference, package-name import, exports]
+    version: 0.1.0
   - name: node-subpath-patterns
     category: build
     triggers: [package subpath patterns, wildcard exports]
+    version: 0.1.0
   - name: node-dual-package-hazards
     category: build
     triggers: [dual package hazard, ESM CJS dual package]
+    version: 0.1.0
   - name: node-npm-publishing
     category: release
     triggers: [npm publish, package tarball, release package]
+    version: 0.1.0
   - name: node-package-provenance
     category: security
     triggers: [npm provenance, trusted publishing, OIDC publish]
+    version: 0.1.0
   - name: node-typescript-declaration-publishing
     category: typescript
     triggers: [declaration files, d.ts publishing, types exports]
+    version: 0.1.0
   - name: node-dependency-confusion-defense
     category: security
     triggers: [dependency confusion, registry scope, private package]
+    version: 0.1.0
   - name: node-install-script-safety
     category: security
     triggers: [install scripts, lifecycle scripts, dependency install]
+    version: 0.1.0
   - name: node-postinstall-safety
     category: security
     triggers: [postinstall, native dependency install, remote binary]
+    version: 0.1.0
   - name: node-build-cache-integrity
     category: build
     triggers: [build cache, cache key, remote build cache]
+    version: 0.1.0
   - name: node-source-map-governance
     category: security
     triggers: [source maps, hidden source maps, source content]
+    version: 0.1.0
   - name: node-runtime-inspector-security
     category: security
     triggers: [Node inspector, debugger port, remote debugging]
+    version: 0.1.0
   - name: node-diagnostic-reports
     category: runtime
     triggers: [diagnostic report, Node report, crash diagnostics]
+    version: 0.1.0
   - name: node-startup-profiling
     category: performance
     triggers: [startup profiling, cold start, module loading]
+    version: 0.1.0
   - name: node-http2-engineering
     category: network
     triggers: [HTTP/2, http2, ALPN, stream concurrency]
+    version: 0.1.0
   - name: node-structured-cloning
     category: runtime
     triggers: [structured clone, worker message, transferable]
+    version: 0.1.0
   - name: node-package-manager-policy
     category: build
     triggers: [package manager policy, npm, pnpm, yarn, Corepack]
+    version: 0.1.0
   - name: node-llm-application-patterns
     category: ai
     triggers: [LLM, large language model, chat, summarization, extraction, classification, OpenAI, Anthropic, Claude, GPT, prompt, completion]
+    version: 0.1.0
   - name: node-rag-patterns
     category: ai
     triggers: [RAG, retrieval-augmented generation, vector store, embedding, Pinecone, Qdrant, pgvector, chunking, reranking, citation, hallucination]
+    version: 0.1.0
   - name: node-edge-runtime-foundations
     category: runtime
     triggers: [edge runtime, Cloudflare Workers, Vercel Edge, Deno Deploy, Bun, isolate, cold start, Web APIs, edge function]
+    version: 0.1.0
   - name: node-mcp-server-construction
     category: ai
     triggers: [MCP, Model Context Protocol, JSON-RPC, stdio, tool, resource, agent runtime, Claude Code, Cursor]
+    version: 0.1.0
   - name: node-llm-observability
     category: ai
     triggers: [LLM observability, Langfuse, Langsmith, Helicone, Braintrust, Phoenix, token usage, prompt regression, hallucination metric]
+    version: 0.1.0
   - name: node-llm-cost-engineering
     category: ai
     triggers: [LLM cost, token budget, model routing, response caching, cost cap, tenant quota, billing]
+    version: 0.1.0
   - name: node-tool-calling-patterns
     category: ai
     triggers: [tool calling, function calling, tool schema, zod, multi-step, parallel tool, prompt injection, agent loop]
+    version: 0.1.0
   - name: node-llm-streaming
     category: ai
     triggers: [LLM streaming, SSE, WebSocket, token streaming, abort signal, mid-stream error, backpressure, heartbeat]
-
+    version: 0.1.0
+  - name: node-skill-pack-per-skill-versioning
+    category: tooling
+    triggers: [per-skill semver, version field, changeset, semantic version, skill version, release workflow]
+    version: 0.1.0
   express:
     path: adapters/express/SKILL.md
     version_scope: 5.x

@@ -1389,3 +1389,7 @@
   - name: llm-token-stream
     primary: node-llm-streaming
     secondary: [node-http-engineering, node-async-concurrency, node-llm-observability]
+
+  - name: skill-pack-versioning
+    primary: node-skill-pack-per-skill-versioning
+    secondary: [node-skill-pack-versioning, node-testing]
