@@ -1357,3 +1357,35 @@
   - name: react-client-seam
     primary: node-react-integration
     secondary: [node-rest-api-design, node-csrf-defense, node-cors-security]
+
+  - name: llm-chat-feature
+    primary: node-llm-application-patterns
+    secondary: [node-llm-streaming, node-llm-observability, node-llm-cost-engineering]
+
+  - name: rag-knowledge-base
+    primary: node-rag-patterns
+    secondary: [node-llm-application-patterns, node-llm-observability]
+
+  - name: edge-deployment
+    primary: node-edge-runtime-foundations
+    secondary: [node-runtime-foundations, node-production-runtime]
+
+  - name: mcp-server-build
+    primary: node-mcp-server-construction
+    secondary: [node-api-engineering, node-testing]
+
+  - name: llm-tracing
+    primary: node-llm-observability
+    secondary: [node-observability, node-llm-cost-engineering]
+
+  - name: llm-cost-budget
+    primary: node-llm-cost-engineering
+    secondary: [node-llm-observability, node-llm-application-patterns]
+
+  - name: llm-tool-calling
+    primary: node-tool-calling-patterns
+    secondary: [node-llm-application-patterns, node-llm-observability]
+
+  - name: llm-token-stream
+    primary: node-llm-streaming
+    secondary: [node-http-engineering, node-async-concurrency, node-llm-observability]
