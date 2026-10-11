@@ -15,6 +15,7 @@
     "validate": "node scripts/validate.mjs",
     "pack:export": "node scripts/export-pack.mjs --output dist/node-agent-skills",
     "eval:routing": "node scripts/evaluate-routing.mjs",
+    "eval:llm-judge": "node scripts/eval-llm-judge.mjs",
     "skills": "node bin/skills.mjs",
     "mcp": "node lib/mcp-server.mjs"
   }
