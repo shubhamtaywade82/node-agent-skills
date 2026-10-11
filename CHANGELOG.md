@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.3.0 - 2026-10-11
+
+### Fixture repository (Wave 19)
+
+- Added `examples/ecommerce-api/` — a runnable Fastify + Postgres + BullMQ + zod + pino fixture demonstrating 11 skills end-to-end against real code.
+- Files: `package.json`, `migrations/001-init.sql`, `src/server.js`, `src/validation/schemas.js`, `src/persistence/orders.js`, `src/jobs/outbox-relay.js`, `src/routes/orders.js`, `src/observability/logger.js`, `test/orders.persistence.test.mjs`, `test/routes.validation.test.mjs`, `README.md`.
+- Added `examples/README.md` index.
+- Added `test/fixture_repository_contract.test.mjs` (6 tests) — verifies the skill loader detects the fixture's declared adapters and routes prompts to the correct primary.
+- Updated `package.json` `scripts.test` to `node --test test/*.test.mjs` to scope discovery to the pack's own tests (fixture tests have their own `npm test`).
+- Enhanced `.github/workflows/validate.yml` with two fixture smoke tests: adapter detection + prompt routing.
+- Added `docs/superpowers/plans/2026-10-11-node-agent-skills-wave19.md` retrospective plan.
+
 ## 0.2.0 - 2026-10-11
 
 ### Runtime layer (P0)

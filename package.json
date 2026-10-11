@@ -1,6 +1,6 @@
 {
   "name": "node-agent-skills",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
   "description": "Production-grade Node.js + TypeScript backend engineering skills for AI coding agents.",
   "type": "module",
@@ -11,7 +11,7 @@
     "skills": "bin/skills.mjs"
   },
   "scripts": {
-    "test": "node --test",
+    "test": "node --test test/*.test.mjs",
     "validate": "node scripts/validate.mjs",
     "pack:export": "node scripts/export-pack.mjs --output dist/node-agent-skills",
     "eval:routing": "node scripts/evaluate-routing.mjs",

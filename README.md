@@ -9,12 +9,17 @@ The core is framework-neutral. The pack teaches agents to inspect first, identif
 npm test
 npm run validate
 node bin/skills.mjs route "add a Postgres transaction with an index" --repo .
+node bin/skills.mjs detect-repo examples/ecommerce-api
 node lib/mcp-server.mjs  # stdio JSON-RPC, see docs/RUNTIME_INTEGRATION.md
 ```
 
 ## Runtime integration
 
 This pack ships a zero-dependency runtime loader and MCP server. See `docs/RUNTIME_INTEGRATION.md` for three integration paths (MCP, CLI, programmatic) and the agent contract.
+
+## Fixture repositories
+
+`examples/` contains runnable backends that demonstrate the skills against real code. See `examples/README.md` for the index. The first fixture is `examples/ecommerce-api/` — a Fastify + Postgres + BullMQ + zod + pino backend that exercises 11 skills end-to-end.
 
 ## Capability inventory
 
