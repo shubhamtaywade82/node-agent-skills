@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.4.0 - 2026-10-11
+
+### Wave 20 — remaining deferred items
+
+Completes every deferred item from the wave 18 plan.
+
+- **Per-skill semver + Changesets workflow** (Wave 20a): all 339 skills now carry a `version` field; `scripts/add-skill-versions.mjs` is idempotent; `.changeset/` config + `.github/workflows/release.yml` Release PR workflow; `test/per_skill_version_contract.test.mjs` (4 tests) enforces the version contract.
+- **Shared boilerplate extraction** (Wave 20b): `references/agent-discipline.md` holds canonical content for Repository inspection / Failure modes / Verification; `scripts/dedupe-boilerplate.mjs` removed 111 shared lines across 21 skill files; `scripts/export-pack.mjs` updated to include the reference file in pack exports; `test/agent_discipline_contract.test.mjs` (4 tests).
+- **Cloudflare Workers edge fixture** (Wave 20c): `examples/edge-worker/` demonstrates `node-edge-runtime-foundations`, `node-llm-streaming`, `node-distributed-locks`, `node-runtime-validation`, `node-async-concurrency`, `node-production-runtime` against the Workers runtime (Workers AI, KV, Durable Objects, cron). 11 handler tests + 6 fixture contract tests.
+- **Restored wave plans 5–14** (Wave 20d): converted the 10–26 line stub plans into ~58–66 line retrospective plans following the wave 2a/2b/2c engineering-discipline template. No code changes.
+- **LLM-as-judge harness** (Wave 20e): `lib/llm-judge.mjs` scores agent routing decisions by asking an LLM (via `z-ai-web-dev-sdk`, optional dep) to read the prompt + manifest and emit a routing decision; `scripts/eval-llm-judge.mjs` is the CLI; `test/llm_judge_contract.test.mjs` (13 tests) uses a mock ZAI client. The deterministic evaluator remains the CI default.
+
+### Numbers
+
+- Skills: 338 → 339 (+1: `node-skill-pack-per-skill-versioning`).
+- Adapters: 95 (unchanged).
+- Tests: 182 → 209 (+27 across all sub-waves).
+- Files in pack export: 535 → 539.
+- Examples directory: 1 → 2 fixtures.
+
 ## 0.3.0 - 2026-10-11
 
 ### Fixture repository (Wave 19)
