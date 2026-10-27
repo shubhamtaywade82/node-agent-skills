@@ -40,7 +40,12 @@ test("Wave 9 skills have files and evaluation coverage", async () => {
     assert.match(text, new RegExp(`^name: ${skill}$`, "m"));
     assert.match(evals, new RegExp(`skill: ${skill}`, "m"));
   }
-  assert.equal([...manifest.matchAll(/^  - name: ([a-z0-9-]+)$/gm)].length, 339);
+  // v3: count was 339 in v1; +1 for the new `node-ruby-integration` seam skill
+  // (cross-pack integration with ruby-agent-skills). The lower bound enforces
+  // the Wave 9 set is still present; the exact count tracks new skill additions.
+  const skillCount = [...manifest.matchAll(/^  - name: ([a-z0-9-]+)$/gm)].length;
+  assert.ok(skillCount >= 339, `expected at least 339 skills, got ${skillCount}`);
+  assert.equal(skillCount, 340, `expected exactly 340 skills (339 baseline + node-ruby-integration), got ${skillCount}`);
 });
 
 test("Wave 9 adapters have registry, skill, README, and source metadata", async () => {

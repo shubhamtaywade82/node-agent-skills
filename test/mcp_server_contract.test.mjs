@@ -40,7 +40,7 @@ test("initialize returns protocol version and server info", async () => {
   assert.equal(r.result.serverInfo.name, "node-agent-skills");
 });
 
-test("tools/list returns four tools", async () => {
+test("tools/list returns five tools", async () => {
   const { responses, err } = await callServer([
     rpc("initialize", {}, 1),
     rpc("tools/list", {}, 2),
@@ -49,7 +49,10 @@ test("tools/list returns four tools", async () => {
   const list = responses.find((r) => r.id === 2);
   assert.ok(list);
   const names = list.result.tools.map((t) => t.name).sort();
-  assert.deepEqual(names, ["get_skill", "list_adapters", "list_skills", "route_prompt"].sort());
+  assert.deepEqual(
+    names,
+    ["get_skill", "list_adapters", "list_skills", "route_cross_pack", "route_prompt"].sort(),
+  );
 });
 
 test("tools/call get_skill returns SKILL.md text", async () => {
