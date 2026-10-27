@@ -147,7 +147,10 @@ test("MCP server: full end-to-end RPC over stdio", async () => {
 
   // tools/list
   const toolNames = responses[1].result.tools.map((t) => t.name).sort();
-  assert.deepEqual(toolNames, ["get_skill", "list_adapters", "list_skills", "route_prompt"].sort());
+  assert.deepEqual(
+    toolNames,
+    ["get_skill", "list_adapters", "list_skills", "route_cross_pack", "route_prompt"].sort(),
+  );
 
   // route_prompt
   const routing = JSON.parse(responses[2].result.content[0].text);

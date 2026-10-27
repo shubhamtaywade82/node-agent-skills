@@ -4,7 +4,8 @@
  * skills CLI — thin command-line wrapper around lib/skill-loader.mjs.
  *
  * Commands:
- *   skills route "<prompt>" [--repo ./path/to/repo]
+ *   skills route "<prompt>" [--repo ./path/to/repo] [--file path/to/active/file]
+ *   skills cross-route "<prompt>" [--packs /path/a,/path/b] [--file path] [--repo path]
  *   skills list [--category persistence]
  *   skills adapters
  *   skills show <skill-name>
@@ -22,6 +23,7 @@ import {
   loadSkillText,
   routePrompt,
 } from "../lib/skill-loader.mjs";
+import { routeCrossPack } from "../lib/cross-pack-router.mjs";
 
 const ROOT = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
@@ -31,7 +33,13 @@ const ROOT = path.resolve(
 function usage() {
   return `usage: skills <command> [args]
 
-  route "<prompt>" [--repo path]   Route a prompt to a primary skill + secondaries + adapters
+  route "<prompt>" [--repo path] [--file path]
+                                   Route a prompt to a primary skill + secondaries + adapters.
+                                   --file boosts skills matching the file's language (v3).
+  cross-route "<prompt>" [--packs a,b] [--file path] [--repo path]
+                                   Route a prompt across this pack AND companion packs
+                                   (v3). Packs are discovered from --packs, the
+                                   AGENT_SKILLS_PACKS env var, and sibling directories.
   list [--category <cat>]          List skills (optionally filtered by category)
   adapters                         List all registered framework adapters
   show <skill-name>                Print the SKILL.md content for a skill
@@ -112,7 +120,27 @@ async function main() {
       return;
     }
     const repo = argument("--repo", null);
-    const result = await routePrompt(prompt, repo ? path.resolve(repo) : null);
+    const file = argument("--file", null);
+    const result = await routePrompt(prompt, repo ? path.resolve(repo) : null, {
+      activeFile: file,
+    });
+    process.stdout.write(JSON.stringify(result, null, 2) + "\n");
+    return;
+  }
+
+  if (command === "cross-route") {
+    const prompt = rest[0];
+    if (!prompt) {
+      process.stderr.write("error: prompt required\n");
+      process.exitCode = 2;
+      return;
+    }
+    const packs = argument("--packs", null);
+    const file = argument("--file", null);
+    const result = await routeCrossPack(prompt, {
+      packs: packs ? packs.split(",").map((entry) => entry.trim()).filter(Boolean) : undefined,
+      file: file ?? undefined,
+    });
     process.stdout.write(JSON.stringify(result, null, 2) + "\n");
     return;
   }
