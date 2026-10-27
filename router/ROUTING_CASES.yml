@@ -1358,6 +1358,10 @@
     primary: node-react-integration
     secondary: [node-rest-api-design, node-csrf-defense, node-cors-security]
 
+  - name: rails-backend-seam
+    primary: node-ruby-integration
+    secondary: [node-rest-api-design, node-runtime-validation, node-cors-security, node-csrf-defense]
+
   - name: llm-chat-feature
     primary: node-llm-application-patterns
     secondary: [node-llm-streaming, node-llm-observability, node-llm-cost-engineering]

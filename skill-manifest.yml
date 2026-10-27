@@ -1,8 +1,13 @@
+# v3 marker (additive). Existing v1 parsers ignore this key.
+# See docs/CROSS_PACK_SCHEMA.md for the full v3 contract.
+schema_version: 3
 version: 1
 pack:
   name: node-agent-skills
   language: TypeScript
   runtime: Node.js
+  homepage: https://github.com/shubhamtaywade82/node-agent-skills
+  license: MIT
 skills:
   - name: node-architecture
     category: architecture
@@ -580,6 +585,14 @@ skills:
     category: api
     triggers: [React client, React frontend, Node React integration, full-stack TypeScript, shared contracts package, BFF, Vite proxy, fetch credentials, CSRF token in fetch, problem details in forms, SSE to browser, WebSocket to React]
     version: 0.1.0
+    language: typescript
+    family: integration
+    path: skills/node-react-integration/SKILL.md
+    schema_version: 3
+    companion_owners:
+      - react-agent-skills/browser-authentication
+      - react-agent-skills/react-data-fetching
+      - react-agent-skills/react-forms-validation
   - name: node-cors-security
     category: security
     triggers: [CORS, cross origin, preflight, Access-Control-Allow-Origin]
@@ -912,7 +925,37 @@ skills:
     category: network
     triggers: [HTTP headers, duplicate headers, header normalization]
     version: 0.1.0
-adapters:
+  # v3 seam skill (additive). Owns the Node-to-Ruby backend boundary.
+  # See docs/CROSS_PACK_SCHEMA.md and router/ROUTING.md#node-and-ruby-cross-stack-routing.
+  - name: node-ruby-integration
+    category: integration
+    triggers: [Node to Rails, Node Rails, Node service calling Rails, Rails API consumed by Node, Node BFF for Rails, Node backend calling Rails, cross-stack Node Rails, monorepo Node Rails, BullMQ replacing Sidekiq, Express calling Rails, Fastify calling Rails, NestJS calling Rails, Hono calling Rails, Node to Rails handoff, Node consumer of Rails JSON]
+    version: 1.0.0
+    language: typescript
+    family: integration
+    path: skills/node-ruby-integration/SKILL.md
+    schema_version: 3
+    companion_owners:
+      - ruby-agent-skills/rails-node-integration
+      - ruby-agent-skills/rails-action-controller
+      - ruby-agent-skills/rails-active-record
+
+# v3 fix: previously this key was `adapters:` and was followed by BOTH a
+# YAML sequence (112 skill-shaped entries) AND a YAML mapping (95 adapter
+# metadata entries) under the same key. Standard YAML parsers reject this; the
+# pack only loaded because the line-regex parsers in lib/skill-loader.mjs and
+# scripts/validate.mjs match by line pattern, not by YAML section.
+#
+# v3 splits the two concerns into two top-level keys:
+#   - `adapter_skills:` (sequence) — skill-shaped entries that were misplaced
+#     under `adapters:`. Treated as ordinary skills by the line-regex parser.
+#   - `adapters:` (mapping) — the real adapter metadata (path/version_scope/
+#     source).
+#
+# Both the legacy line-regex parsers AND any v3-aware YAML parser (e.g. a
+# future cross-pack loader using js-yaml) now see a structurally valid file.
+# See docs/CROSS_PACK_SCHEMA.md for the v3 contract.
+adapter_skills:
 
   - name: node-file-system-safety
     category: runtime-security
@@ -1362,6 +1405,8 @@ adapters:
     category: tooling
     triggers: [per-skill semver, version field, changeset, semantic version, skill version, release workflow]
     version: 0.1.0
+
+adapters:
   express:
     path: adapters/express/SKILL.md
     version_scope: 5.x
@@ -1640,7 +1685,7 @@ adapters:
     source: https://www.apollographql.com/docs/apollo-server
   fastify-swagger:
     path: adapters/fastify-swagger/SKILL.md
-    version_scope: >=9.x (Fastify 5.x)
+    version_scope: 9.x+ for Fastify 5.x
     source: https://github.com/fastify/fastify-swagger
   fastify-multipart:
     path: adapters/fastify-multipart/SKILL.md
@@ -1742,3 +1787,46 @@ adapters:
     path: adapters/storybook/SKILL.md
     version_scope: current Storybook 8+
     source: https://storybook.js.org/docs
+
+# v3 cross-pack section (additive). Existing v1 parsers ignore this key.
+# See docs/CROSS_PACK_SCHEMA.md for the full contract.
+cross_pack:
+  schema_version: 3
+  companions:
+    - pack: ruby-agent-skills
+      repo: https://github.com/shubhamtaywade82/ruby-agent-skills
+      pinned_ref: v1.5.0
+      snapshot: data/cross-pack/ruby-agent-skills.snapshot.yml
+      seam_skill: node-ruby-integration
+      language: ruby
+    - pack: react-agent-skills
+      repo: https://github.com/shubhamtaywade82/react-agent-skills
+      pinned_ref: main
+      snapshot: data/cross-pack/react-agent-skills.snapshot.yml
+      seam_skill: node-react-integration
+      language: typescript
+  # node-agent-skills and ruby-agent-skills share ZERO skill names today
+  # (this pack prefixes every skill with `node-`). The registry below is
+  # empty by design; cross_pack.name_collisions is the machine-checkable
+  # surface that the v3 verifier compares against the actual set intersection.
+  name_collisions: []
+  seam_contracts:
+    - boundary: node-to-ruby-backend
+      primary_in_this_pack: node-ruby-integration
+      secondary_in_this_pack:
+        - node-rest-api-design
+        - node-postgresql-persistence
+        - node-runtime-validation
+      companion_pack: ruby-agent-skills
+      companion_side: ruby-agent-skills/skills/rails-node-integration
+      routing_doc: router/ROUTING.md#node-and-ruby-cross-stack-routing
+      eval_cases: evals/cases/api/rails-backend-seam.yml
+    - boundary: node-to-react-client
+      primary_in_this_pack: node-react-integration
+      secondary_in_this_pack:
+        - node-rest-api-design
+        - node-runtime-validation
+      companion_pack: react-agent-skills
+      companion_side: react-agent-skills/skills/browser-authentication
+      routing_doc: router/ROUTING.md#node-and-react-cross-stack-routing
+      eval_cases: evals/cases/api/react-client-seam.yml

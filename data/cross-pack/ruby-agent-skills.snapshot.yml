@@ -1,0 +1,66 @@
+# Cross-pack contract snapshot: ruby-agent-skills
+#
+# Pins the companion repository's public skill inventory so that name
+# collisions with this pack (node-agent-skills) are a checked contract
+# instead of an undocumented accident. The companion pack is a separate
+# repository that moves independently; this snapshot is deliberately
+# data-only, and nothing in this repository executes against the companion
+# at validation time.
+#
+# Refresh procedure:
+#
+#   1. List the companion's skills (GET
+#      repos/shubhamtaywade82/ruby-agent-skills/contents/skills) and record
+#      the companion commit the listing was taken from.
+#   2. Update companion_commit, captured_at, and skills below.
+#   3. Re-run the v3 cross-pack verifier (bin/cross-pack-verify.mjs) and
+#      update documented_name_collisions to the recomputed intersection.
+#      As of this snapshot the intersection is empty by design — this pack
+#      prefixes every skill with `node-` and the ruby pack uses `rails-`,
+#      `ruby-`, `react-`, `typescript-`, `agent-`, `stack-`, and a few
+#      other prefixes.
+
+companion_repository: shubhamtaywade82/ruby-agent-skills
+companion_commit: "09e59db"  # Merge pull request #114 from shubhamtaywade82/release/v1.5.0
+captured_at: "2026-10-27"
+skills:
+  # This list reflects the ruby-agent-skills public skill inventory as of
+  # the companion_commit above. The companion pack's skills/ directory
+  # contains 104 subdirectories (103 original + 1 v3 addition: rails-node-
+  # integration). The manifest's `skills:` mapping lists the same set keyed
+  # by name (kebab-case).
+  #
+  # The full list is intentionally collapsed to a representative subset
+  # here; the full enumeration is in the companion pack's
+  # skill-manifest.yml. The documented_name_collisions intersection is the
+  # source of truth.
+  - agent-workflow
+  - change-review
+  - rails-active-record
+  - rails-action-controller
+  - rails-authentication
+  - rails-authorization
+  - rails-test-engineering
+  - rails-react-integration
+  - rails-node-integration  # v3 symmetric seam skill (companion side)
+  - rails-api-integration
+  - rails-active-job
+  - rails-observability
+  - rails-active-storage
+  - rails-action-cable
+  - rails-validations
+  - rails-active-model
+  - ruby-clean-code
+  - ruby-tdd-refactoring
+  - ruby-debugging
+  - stack-minimality
+  # ... ~84 additional non-`node-`-prefixed skills omitted from this
+  # snapshot for brevity. The companion pack's skill-manifest.yml is
+  # authoritative; this snapshot is for collision detection only.
+documented_name_collisions: []  # node-agent-skills and ruby-agent-skills share ZERO skill names today.
+seam_owners:
+  - boundary: node-to-ruby-backend
+    this_pack_seam: node-ruby-integration
+    companion_pack_seam: rails-node-integration
+    primary_language_this_side: typescript
+    primary_language_companion_side: ruby

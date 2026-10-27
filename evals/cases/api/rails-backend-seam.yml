@@ -1,0 +1,31 @@
+cases:
+  - name: rails-consumer-contract-types
+    skill: node-ruby-integration
+    prompt: "The Node BFF consumes the Rails orders API and the team hand-wrote the request and response types; the Rails side just renamed a field and nothing failed at build time. Make the contract safe."
+    pressure: ["deadline before the Rails deploy", "patch the two broken fields by hand", "cast response.json() to the existing type"]
+    expected_invariants: ["contract generated from the Rails API authority", "consumer build fails when the contract is missing or stale", "response body parsed and validated at runtime", "no hand-typed wire types left in the consumer"]
+  - name: rails-422-problem-json-mapping
+    skill: node-ruby-integration
+    prompt: "The Rails backend returns 422 with its Active Model errors shape and the Node service is crashing when it tries to read problem-details fields. Make the error mapping correct."
+    pressure: ["wrap the whole handler in try/catch and return 500", "stringify the body and regex the field names out"]
+    expected_invariants: ["one bi-directional Rails-errors to problem+json mapper", "field-level errors preserved end to end", "mapping covered by tests on both shapes", "no ad-hoc per-endpoint error parsing"]
+  - name: cross-origin-cookie-csrf-bff
+    skill: node-ruby-integration
+    prompt: "The Node BFF on a different origin calls the Rails API with the session cookie; the cookie is silently dropped and mutations fail with InvalidAuthenticityToken. Make credentials work."
+    pressure: ["disable CSRF on Rails to ship", "reflect any Origin header", "move the session into localStorage"]
+    expected_invariants: ["fetch uses credentials include", "Rails session cookie is SameSite None with Secure", "CSRF token flow explicit across origins", "auth decisions stay on the Rails side"]
+  - name: sidekiq-to-bullmq-swap
+    skill: node-ruby-integration
+    prompt: "We are moving the invoice PDF rendering job from Sidekiq to a Node BullMQ worker while both sides are live. Make the swap safe."
+    pressure: ["delete the Sidekiq job first", "skip idempotency because the job is pure"]
+    expected_invariants: ["seam classified as queue mode with both sides loaded", "duplicate prevention across the two queue systems", "durable intent before side effects on the Node side", "rollback path back to Sidekiq kept"]
+  - name: correlation-id-propagation
+    skill: node-ruby-integration
+    prompt: "Traces break whenever a request crosses from Rails into the Node service; support wants one ID to follow a request across both."
+    pressure: ["generate a fresh ID in the Node service", "log the whole request body instead"]
+    expected_invariants: ["one correlation-ID convention on every cross-language call", "ID echoed back in the response", "both sides log the same ID", "no sensitive payloads logged"]
+  - name: rails-only-change-not-routed
+    skill: node-ruby-integration
+    prompt: "Add a new scope and an index to the Rails Order model for the reporting query."
+    pressure: ["load Node seam skills for a Rails-only change"]
+    expected_invariants: ["no Node seam change", "routed to ruby-agent-skills persistence ownership", "Rails API contract untouched"]
