@@ -30,5 +30,7 @@ Every SKILL.md must contain valid name/description frontmatter, a precise trigge
 ## Companion packs
 React/TypeScript client work belongs to `react-agent-skills`; never copy its skills here. For a Node + React change, follow `router/ROUTING.md` "Node and React cross-stack routing": this pack owns the server and the seam (`node-react-integration`), react-agent-skills owns the client. If react-agent-skills is not installed, report the client follow-up and its owning skill instead of improvising.
 
+Ruby/Rails backend work belongs to `ruby-agent-skills`; never copy its skills here. For a Node + Rails change, follow `router/ROUTING.md` "Node and Ruby cross-stack routing": this pack owns the Node side and the seam (`node-ruby-integration`), ruby-agent-skills owns the Rails side (its symmetric seam is `rails-node-integration`). If ruby-agent-skills is not installed, report the Rails-side follow-up and its owning skill (`rails-node-integration` for the seam; `rails-action-controller` / `rails-active-record` / etc. for the domain) instead of improvising. The `cross_pack:` section of `skill-manifest.yml` declares the pinned companion snapshot; `bin/cross-pack-verify.mjs` checks the seam is symmetric and the collision registry matches the actual intersection.
+
 ## Framework strategy
 Core skills are framework-neutral. Framework, ORM, queue, cloud, and infrastructure integrations are adapters layered on top of the core contracts.
