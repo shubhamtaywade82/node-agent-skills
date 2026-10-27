@@ -1,0 +1,49 @@
+# Cross-pack contract snapshot: react-agent-skills
+#
+# Pins the companion repository's public skill inventory so that name
+# collisions with this pack (node-agent-skills) are a checked contract
+# instead of an undocumented accident. The companion pack is a separate
+# repository that moves independently; this snapshot is deliberately
+# data-only, and nothing in this repository executes against the companion
+# at validation time.
+#
+# Refresh procedure:
+#
+#   1. List the companion's skills (GET
+#      repos/shubhamtaywade82/react-agent-skills/contents/skills) and record
+#      the companion commit the listing was taken from.
+#   2. Update companion_commit, captured_at, and skills below.
+#   3. Re-run bin/cross-pack-verify.mjs and update documented_name_collisions
+#      to the recomputed intersection.
+
+companion_repository: shubhamtaywade82/react-agent-skills
+companion_commit: "main"
+captured_at: "2026-10-27"
+skills:
+  # The companion pack's skills/ directory contains 128 subdirectories as of
+  # this snapshot (per the ruby-agent-skills pack's snapshot, captured at
+  # commit 9674abba1c255d24f5187847f8b4c8ccc1f21fd6 on 2026-10-09). The full
+  # enumeration is in the companion pack's skill-manifest.yml; this snapshot
+  # is for collision detection only.
+  - agent-workflow
+  - react-architecture
+  - react-component-engineering
+  - react-data-fetching
+  - react-testing-engineering
+  - typescript-core-engineering
+  - typescript-runtime-contracts
+  - typescript-type-design
+  - browser-authentication
+  - react-forms-validation
+  - frontend-realtime
+  - frontend-e2e
+  - react-error-resilience
+  - openapi-tooling
+  # ... ~113 additional non-`node-`-prefixed skills omitted for brevity.
+documented_name_collisions: []  # node-agent-skills and react-agent-skills share ZERO skill names today (this pack prefixes every skill with `node-`).
+seam_owners:
+  - boundary: node-to-react-client
+    this_pack_seam: node-react-integration
+    companion_pack_seam: browser-authentication
+    primary_language_this_side: typescript
+    primary_language_companion_side: typescript

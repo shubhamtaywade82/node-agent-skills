@@ -231,6 +231,33 @@ This pack owns the Node side of the Node ↔ React boundary, through `node-react
 
 Loading the frontend side: install `react-agent-skills` next to this pack (`npx skills add shubhamtaywade82/react-agent-skills`). When it is not installed, finish the server and seam work and report the client follow-up and the react-agent-skills skill that owns it.
 
+## Node and Ruby cross-stack routing
+
+This pack owns the Node side of the Node ↔ Ruby backend boundary, through `node-ruby-integration` (added in v3; see `docs/CROSS_PACK_SCHEMA.md`). The Ruby/Rails side is owned symmetrically by `ruby-agent-skills`'s `rails-node-integration` skill.
+- Route the integration mode (HTTP REST, JSON-RPC, shared Postgres, queue) to `node-ruby-integration`. The seam is the contract: request/response shapes, credentials, error envelope, observability headers.
+- Keep the server domain work with its owning Node skill. A change that only alters the wire contract is primary on that skill, with `node-ruby-integration` secondary so the Rails consumer's types and error mapper move with it.
+- A Rails-only change (controller, model, validation, Rails test) does not route to this pack.
+- Sidekiq ↔ BullMQ swaps cross the seam; primary `node-ruby-integration`, secondary `node-queue-engineering` on this side and `rails-active-job` on the Rails side.
+
+| Task | Primary | Secondary (this pack) | Rails side (ruby-agent-skills) |
+|---|---|---|---|
+| Node service calling a Rails REST endpoint (contract, types, error mapping) | node-ruby-integration | node-rest-api-design, node-runtime-validation | rails-node-integration, rails-action-controller |
+| Rails calling a Node BFF / Node service (HTTP, JSON-RPC) | node-ruby-integration | node-http-engineering | rails-node-integration, rails-action-controller |
+| Cross-origin cookies + CSRF between Node BFF and Rails API | node-ruby-integration | node-cors-security, node-csrf-defense, node-cookie-security | rails-node-integration, rails-authentication |
+| Rails 422 errors mapped into a Node problem+json envelope | node-ruby-integration | node-rest-api-design | rails-node-integration, rails-validations |
+| Choosing integration mode: HTTP vs shared Postgres vs queue | node-ruby-integration | node-postgresql-persistence, node-queue-engineering | rails-node-integration |
+| Shared Postgres: Node writes, Rails reads (or vice versa) | node-postgresql-persistence | node-ruby-integration | rails-active-record, rails-node-integration |
+| BullMQ replacing Sidekiq (or vice versa) | node-ruby-integration | node-queue-engineering | rails-active-job, rails-node-integration |
+| Correlation ID / trace propagation across Node ↔ Rails | node-ruby-integration | node-observability | rails-observability, rails-node-integration |
+| OpenAPI / JSON Schema generated from Rails, consumed by Node | node-ruby-integration | node-openapi, node-runtime-validation | rails-api-integration, rails-node-integration |
+| Rails-only change: controller, model, validation, Rails test | — (not this pack) | — | owning ruby-agent-skills skill |
+
+Loading the Rails side: install `ruby-agent-skills` next to this pack (`npx skills add shubhamtaywade82/ruby-agent-skills -a claude-code` or `bash bin/install --agent claude` from a checkout). When it is not installed, finish the Node side and the seam work, then report the Rails-side follow-up and the ruby-agent-skills skill that owns it (`rails-node-integration` for the seam; `rails-action-controller` / `rails-active-record` / etc. for the domain).
+
+### Cross-pack collision status
+
+`node-agent-skills` and `ruby-agent-skills` share **zero** skill name collisions today, because this pack prefixes every skill with `node-`. The collision registry in `skill-manifest.yml`'s `cross_pack.name_collisions` is `[]` for the Ruby companion (vs. `[]` for the React companion). Do not introduce a `node-`-prefixed skill name into `ruby-agent-skills` or a Rails-prefixed skill name into this pack — this collision-free property is load-bearing.
+
 ## Framework adapter selection
 
 After selecting the core owner, detect the actual framework from dependency manifests/imports before loading an adapter:
