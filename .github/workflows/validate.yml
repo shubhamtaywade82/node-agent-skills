@@ -30,12 +30,20 @@ jobs:
           node bin/skills.mjs route "add a Postgres transaction with an index" --repo .
           node bin/skills.mjs list --category persistence
           node bin/skills.mjs show node-architecture
+      - name: Cross-pack CLI smoke test (v3)
+        run: |
+          node bin/skills.mjs route "add a migration" --file src/order.ts
+          node bin/skills.mjs cross-route "add a migration for the orders table" --file app/models/order.rb
+          node bin/skills.mjs cross-route "add a migration for the orders table" --file src/order.ts
+      - name: Cross-pack manifest verification (v3)
+        run: node bin/cross-pack-verify.mjs
       - name: MCP server smoke test
         run: |
           printf '%s\n' \
             '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{}}' \
             '{"jsonrpc":"2.0","id":2,"method":"tools/list","params":{}}' \
             '{"jsonrpc":"2.0","id":3,"method":"tools/call","params":{"name":"list_skills","arguments":{"category":"ai"}}}' \
+            '{"jsonrpc":"2.0","id":4,"method":"tools/call","params":{"name":"route_cross_pack","arguments":{"prompt":"add a migration","file":"src/order.ts"}}}' \
             | node lib/mcp-server.mjs
       - name: Verify exported pack manifest
         run: |

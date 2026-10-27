@@ -9,13 +9,17 @@ The core is framework-neutral. The pack teaches agents to inspect first, identif
 npm test
 npm run validate
 node bin/skills.mjs route "add a Postgres transaction with an index" --repo .
+node bin/skills.mjs cross-route "add a migration" --file src/order.ts   # v3 cross-pack routing
 node bin/skills.mjs detect-repo examples/ecommerce-api
+node bin/cross-pack-verify.mjs                                            # v3 cross-pack contract
 node lib/mcp-server.mjs  # stdio JSON-RPC, see docs/RUNTIME_INTEGRATION.md
 ```
 
 ## Runtime integration
 
 This pack ships a zero-dependency runtime loader and MCP server. See `docs/RUNTIME_INTEGRATION.md` for three integration paths (MCP, CLI, programmatic) and the agent contract.
+
+**Cross-pack integration (v3)**: the manifest declares companion packs (`ruby-agent-skills`, `react-agent-skills`) with symmetric seam skills (`node-ruby-integration` ↔ `rails-node-integration`). `route_prompt` accepts a `file` argument for language-aware boosting; the `route_cross_pack` MCP tool and the `cross-route` CLI route a prompt across every installed pack. See `docs/CROSS_PACK_SCHEMA.md` and `docs/CLAUDE_CODE_INTEGRATION.md`.
 
 ## Fixture repositories
 
@@ -171,7 +175,7 @@ Adapters are conditional. Agents must detect the framework/library and installed
 
 ## Current capability line
 
-The reconciled capability line contains **338 core skills** and **95 adapters**. It combines runtime/database diagnostics, portable agent/skill-pack governance, HTTP/auth/observability, distribution/code-generation/database-runtime, TypeScript/package diagnostics, LLM/edge/MCP patterns, and modern stack adapters while retaining the current deterministic routing/evaluator hardening.
+The reconciled capability line contains **340 core skills** and **95 adapters** (cross-pack schema v3; see `docs/CROSS_PACK_SCHEMA.md`). It combines runtime/database diagnostics, portable agent/skill-pack governance, HTTP/auth/observability, distribution/code-generation/database-runtime, TypeScript/package diagnostics, LLM/edge/MCP patterns, and modern stack adapters while retaining the current deterministic routing/evaluator hardening.
 
 The agent workflow remains repository-first: inspect evidence, identify the owning boundary, load only required secondaries/adapters, implement within an explicit change boundary, and verify with reproducible evidence.
 

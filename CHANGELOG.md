@@ -1,5 +1,29 @@
 # Changelog
 
+## 0.5.0 - 2026-10-27
+
+### Cross-pack integration v3 (ruby-agent-skills ↔ node-agent-skills)
+
+Makes this pack and `ruby-agent-skills` work as one system for AI coding agents (Claude Code first), with zero breaking changes to the existing install/loader/CLI surface.
+
+- **Manifest schema v3 (additive)**: top-level `schema_version: 3`, extended `pack:` envelope (`homepage`, `license`), per-skill v3 fields (`family`, `language`, `path`, `schema_version`, `companion_owners`) on cross-pack-aware entries, and a new `cross_pack:` section declaring companions (`ruby-agent-skills` pinned at v1.5.0, `react-agent-skills`), an explicit name-collision registry (zero collisions with both, by design), and seam contracts.
+- **Structural fix**: the `adapters:` key previously carried BOTH a YAML sequence (112 skill-shaped entries) and a mapping (95 adapter metadata entries) under one key — structurally invalid YAML that only loaded because every parser was line-regex. Split into `adapter_skills:` (sequence) + `adapters:` (mapping); the file now parses with any standard YAML parser and all line-regex parsers are unchanged. Also fixed a pre-existing latent block-scalar bug (`version_scope: >=9.x (Fastify 5.x)` — an unquoted value starting with `>`).
+- **New seam skill**: `node-ruby-integration` (the Node side of the Node ↔ Rails boundary; symmetric mirror of `ruby-agent-skills`'s `rails-node-integration`), with a routing case and 6 eval cases (`evals/cases/api/rails-backend-seam.yml`); v3 fields also added to `node-react-integration`.
+- **Language-aware routing**: `routePrompt` accepts `activeFile`/`language` — matching-language skills are boosted (x2) and non-matching demoted (x0.5), so the same prompt routes to `ruby-agent-skills/rails-active-record` from `app/models/order.rb` and to `node-postgresql-persistence` from `src/order.ts`. Exposed via the `route --file` CLI flag and the `route_prompt` MCP tool's `file` argument.
+- **Cross-pack router**: new `lib/cross-pack-router.mjs` (`routeCrossPack`) routes a prompt across this pack AND companion packs (discovered from `--packs`, the `AGENT_SKILLS_PACKS` env var, or sibling directories), recommending the seam contract and surfacing companion owners. Exposed via the new `cross-route` CLI subcommand and the new `route_cross_pack` MCP tool (the server now exposes 5 tools; honors `NODE_AGENT_SKILLS_ROOT`).
+- **Shared parsers + schema validator**: new `lib/cross-pack-manifest.mjs` (pack envelope, scoped skill entries for both manifest forms, cross_pack section, snapshots, language maps) and `lib/v3-schema.mjs` (zero-dep structural validation), both wired into the rewritten `bin/cross-pack-verify.mjs`.
+- **Docs**: `docs/CROSS_PACK_SCHEMA.md` (the shared v3 spec, now with the implemented-capabilities table), `docs/CLAUDE_CODE_INTEGRATION.md` (Claude Code wiring for both packs), `CLAUDE.md` and `AGENTS.md` companion-packs sections, a "Node and Ruby cross-stack routing" section in `router/ROUTING.md`, and refreshed `docs/RUNTIME_INTEGRATION.md`.
+- **CI**: `validate.yml` gains cross-pack CLI + verifier + MCP smoke steps; new monthly `cross-pack-snapshot-check.yml` workflow tracks companion-snapshot freshness.
+- **Tests**: 209 → 232 (new: `v3_fields_contract` 13, `cross_pack_router` 5, `mcp_cross_pack` 5, plus the `runtime_integration`/`mcp_server_contract` tool-surface updates).
+
+### Numbers
+
+- Skills: 339 → 340 (+1: `node-ruby-integration`).
+- Adapters: 95 (unchanged).
+- Tests: 209 → 232 (+23 cross-pack/v3 coverage).
+- MCP tools: 4 → 5 (`route_cross_pack`).
+- CLI commands: 6 → 7 (`cross-route`).
+
 ## 0.4.0 - 2026-10-11
 
 ### Wave 20 — remaining deferred items

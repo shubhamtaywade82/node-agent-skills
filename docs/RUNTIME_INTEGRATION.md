@@ -4,14 +4,18 @@ This document explains how an AI coding agent runtime (Claude Code, Cursor, Clin
 
 ## Pack shape
 
-- `skill-manifest.yml` — registry of 330 skills (name, category, triggers) and 81 adapters (path, version_scope, source).
+- `skill-manifest.yml` — registry of 340 skills (name, category, triggers; v3 fields on cross-pack-aware entries) and 95 adapters (path, version_scope, source). Declares `schema_version: 3`, a `pack:` envelope, and a `cross_pack:` section (companions, name collisions, seam contracts) — see `docs/CROSS_PACK_SCHEMA.md`.
 - `skills/<name>/SKILL.md` — framework-neutral skill entrypoint. Each follows the contract in `docs/SKILL_CONTRACT.md`.
 - `adapters/<name>/SKILL.md` — framework/library translation layer. Loaded only after the runtime detects the package in the target repo.
 - `router/ROUTING_CASES.yml` — primary→secondary routing table.
-- `router/ROUTING.md` — human-readable routing map.
-- `lib/skill-loader.mjs` — zero-dependency runtime loader. Exports `routePrompt`, `listSkills`, `listAdapters`, `loadSkillText`, `detectAdapters`, `resolveSecondaries`.
+- `router/ROUTING.md` — human-readable routing map, including the "Node and Ruby cross-stack routing" section.
+- `lib/skill-loader.mjs` — zero-dependency runtime loader. Exports `routePrompt`, `listSkills`, `listAdapters`, `loadSkillText`, `detectAdapters`, `resolveSecondaries`. v3: `routePrompt` accepts `activeFile`/`language` options; `parseManifest` also returns the pack envelope and `cross_pack` section.
+- `lib/cross-pack-manifest.mjs` — v3 shared parsers (both manifest entry forms, cross_pack section, snapshots, language maps).
+- `lib/cross-pack-router.mjs` — v3 cross-pack router (`routeCrossPack`).
+- `lib/v3-schema.mjs` — v3 manifest structural validator.
 - `lib/mcp-server.mjs` — zero-dependency MCP server (JSON-RPC 2.0 over stdio).
-- `bin/skills.mjs` — CLI wrapper around the loader.
+- `bin/skills.mjs` — CLI wrapper around the loader (`route`, `cross-route`, `list`, `adapters`, `show`, `detect-repo`, `version`).
+- `bin/cross-pack-verify.mjs` — v3 cross-pack contract verifier.
 - `lib/routing-evaluator.mjs` — deterministic routing-accuracy harness for regression testing.
 
 ## Three integration paths
@@ -25,32 +29,47 @@ Add the server to the agent's MCP configuration (`.cursor/mcp.json`, `~/.claude/
   "mcpServers": {
     "node-agent-skills": {
       "command": "node",
-      "args": ["/absolute/path/to/node-agent-skills/lib/mcp-server.mjs"]
+      "args": ["/absolute/path/to/node-agent-skills/lib/mcp-server.mjs"],
+      "env": {
+        "NODE_AGENT_SKILLS_ROOT": "/absolute/path/to/node-agent-skills",
+        "AGENT_SKILLS_PACKS": "/absolute/path/to/ruby-agent-skills"
+      }
     }
   }
 }
 ```
 
-The server exposes four tools:
+`NODE_AGENT_SKILLS_ROOT` overrides the pack root (default: the server script's parent directory). `AGENT_SKILLS_PACKS` lists companion pack roots for cross-pack routing (sibling directories named after declared companions are discovered automatically).
+
+The server exposes five tools:
 
 | Tool | Input | Returns |
 |---|---|---|
-| `route_prompt` | `{prompt, repo?}` | `{primary, secondary, candidates, adapters}` |
+| `route_prompt` | `{prompt, repo?, file?}` | `{active_language, primary, secondary, candidates, adapters}` — `file` enables v3 language-aware boosting (matching skills x2, non-matching x0.5) |
+| `route_cross_pack` | `{prompt, file?, packs?}` | `{active_language, packs[], primary, candidates, seam, companion_owners}` — routes across this pack AND installed companions (v3) |
 | `get_skill` | `{name}` | SKILL.md text |
-| `list_skills` | `{category?}` | manifest slice |
+| `list_skills` | `{category?}` | manifest slice (v3 fields included) |
 | `list_adapters` | `{}` | adapter registry |
 
 Agent workflow:
-1. Receive task → call `route_prompt` with the task description and target repo path.
-2. For each returned `primary` + `secondary` skill name, call `get_skill`.
-3. For each returned adapter, call `get_skill` on the adapter path (returned `adapters[].path`).
-4. Apply the loaded SKILL.md procedures to the change.
+1. Receive task → call `route_prompt` with the task description and target repo path (pass the active file as `file` for language-aware boosting).
+2. For a task that may cross a language boundary (Node + Rails), call `route_cross_pack`; when the returned `seam.recommended` is true, load BOTH `seam.this_pack_seam` and `seam.companion_side`.
+3. For each returned `primary` + `secondary` skill name, call `get_skill`.
+4. For each returned adapter, call `get_skill` on the adapter path (returned `adapters[].path`).
+5. Apply the loaded SKILL.md procedures to the change.
 
 ### Path 2 — CLI (for scripted or non-MCP environments)
 
 ```bash
 # Route a prompt to a primary skill + secondaries + adapters detected in repo
 node bin/skills.mjs route "add a Postgres transaction with an index" --repo ./my-repo
+
+# Route with language awareness: --file boosts skills matching the file's language (v3)
+node bin/skills.mjs route "add a migration" --file src/order.ts
+
+# Route across this pack AND companion packs (v3)
+node bin/skills.mjs cross-route "the Node BFF calls the Rails orders API" --file src/bff.ts
+node bin/skills.mjs cross-route "add a migration" --packs /path/to/ruby-agent-skills
 
 # List all skills, optionally filtered by category
 node bin/skills.mjs list --category persistence
@@ -78,8 +97,9 @@ const skillText = await loadSkillText(routing.primary);
 2. The top-scoring skill becomes the `primary`.
 3. `secondary` skills are resolved from `router/ROUTING_CASES.yml` for that primary.
 4. `adapters` are detected by reading `dependencies`/`devDependencies`/`peerDependencies`/`optionalDependencies` of `<repoPath>/package.json` and matching against the adapter registry.
+5. (v3) When an active file or language is provided, matching-language skills are boosted (x2) and non-matching skills demoted (x0.5); when routing cross-pack, the same rule applies per pack and the seam contract is recommended for cross-stack tasks.
 
-Scoring is deliberately simple (token overlap) so the routing decision is explainable and deterministic. For higher-stakes routing, use the deterministic evaluator (`npm run eval:routing`) against your own decision JSONL.
+Scoring is deliberately simple (token overlap + v3 language adjustment) so the routing decision is explainable and deterministic. For higher-stakes routing, use the deterministic evaluator (`npm run eval:routing`) against your own decision JSONL.
 
 ## Agent contract
 
