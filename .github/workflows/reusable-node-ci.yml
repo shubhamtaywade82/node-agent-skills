@@ -1,0 +1,130 @@
+# Autonomous Engineering Platform - reusable Node CI.
+#
+# Called by ci.yml via `uses: ./.github/workflows/reusable-node-ci.yml`.
+# Structure:
+#   - test (matrix): fast per-version test suite.
+#   - full-validation: structural validation + pack export + skill loader
+#     + cross-pack CLI/verifier + MCP smoke on the primary Node version.
+#
+# The workflow is intentionally parameterised so it can be promoted to a
+# shared workflow library without changing the ci.yml call site.
+
+name: Reusable Node CI
+
+on:
+  workflow_call:
+    inputs:
+      node-versions:
+        description: JSON array of Node.js versions for the test matrix
+        type: string
+        default: ["20", "22", "24"]
+      primary-node:
+        description: Node.js version that runs the full validation suite
+        type: string
+        default: "24"
+      upload-artifacts:
+        description: Upload CI metadata artifacts
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: test (node-${{ matrix.node }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ${{ fromJSON(inputs.node-versions) }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Set up Node.js ${{ matrix.node }}
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+
+      - name: Test suite
+        run: npm test
+
+      - name: Record CI metadata
+        run: |
+          mkdir -p tmp
+          cat > tmp/ci-metadata.json <<JSON
+          {
+            "pack": "${GITHUB_REPOSITORY##*/}",
+            "node": "${{ matrix.node }}",
+            "sha": "${{ github.sha }}",
+            "ref": "${{ github.ref_name }}",
+            "run_id": "${{ github.run_id }}",
+            "run_attempt": "${{ github.run_attempt }}"
+          }
+          JSON
+
+      - name: Upload CI metadata
+        if: ${{ inputs.upload-artifacts }}
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: ci-metadata-node-${{ matrix.node }}-${{ github.run_id }}
+          path: tmp/ci-metadata.json
+          if-no-files-found: warn
+          retention-days: 14
+
+  full-validation:
+    name: full-validation
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Set up Node.js ${{ inputs.primary-node }}
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: ${{ inputs.primary-node }}
+          cache: npm
+
+      - name: Structural validation
+        run: npm run validate
+
+      - name: Test suite (primary version)
+        run: npm test
+
+      - name: Pack export smoke test
+        run: npm run pack:export
+
+      - name: Skill loader smoke test
+        run: |
+          node bin/skills.mjs route "add a Postgres transaction with an index" --repo .
+          node bin/skills.mjs list --category persistence
+          node bin/skills.mjs show node-architecture
+
+      - name: Cross-pack CLI smoke test (v3)
+        run: |
+          node bin/skills.mjs route "add a migration" --file src/order.ts
+          node bin/skills.mjs cross-route "add a migration for the orders table" --file app/models/order.rb
+          node bin/skills.mjs cross-route "add a migration for the orders table" --file src/order.ts
+
+      - name: Cross-pack manifest verification (v3)
+        run: node bin/cross-pack-verify.mjs
+
+      - name: MCP server smoke test (v3)
+        run: |
+          printf '%s\n' \
+            '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{}}' \
+            '{"jsonrpc":"2.0","id":2,"method":"tools/list","params":{}}' \
+            '{"jsonrpc":"2.0","id":3,"method":"tools/call","params":{"name":"list_skills","arguments":{"category":"ai"}}}' \
+            '{"jsonrpc":"2.0","id":4,"method":"tools/call","params":{"name":"route_cross_pack","arguments":{"prompt":"add a migration","file":"src/order.ts"}}}' \
+            | node lib/mcp-server.mjs
+
+      - name: Verify exported pack manifest
+        run: test -f dist/node-agent-skills/pack-manifest.json
