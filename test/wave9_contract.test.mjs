@@ -44,8 +44,8 @@ test("Wave 9 skills have files and evaluation coverage", async () => {
   // (cross-pack integration with ruby-agent-skills). The lower bound enforces
   // the Wave 9 set is still present; the exact count tracks new skill additions.
   const skillCount = [...manifest.matchAll(/^  - name: ([a-z0-9-]+)$/gm)].length;
-  assert.ok(skillCount >= 339, `expected at least 339 skills, got ${skillCount}`);
-  assert.equal(skillCount, 340, `expected exactly 340 skills (339 baseline + node-ruby-integration), got ${skillCount}`);
+  assert.ok(skillCount >= 338, `expected at least 339 skills, got ${skillCount}`);
+  assert.equal(skillCount, 338, `expected exactly 338 skills (two duplicate pairs merged into their surviving owners), got ${skillCount}`);
 });
 
 test("Wave 9 adapters have registry, skill, README, and source metadata", async () => {

@@ -206,8 +206,12 @@ function checkCompanionSymmetry(skillsRoot, crossPack, thisPack, errors, warning
       warnings.push(`companion ${companion.pack} manifest at ${companionManifestPath} has no cross_pack section — skipping symmetry`);
       continue;
     }
+    // Either side of a symmetric seam declares its own primary skill, so the
+    // mirror check matches on companion_side: the companion's contract must
+    // point back at THIS pack's seam skill (companions[].seam_skill).
     const mirror = (companionCrossPack.seam_contracts ?? []).find(
-      (seam) => seam.companion_pack === thisPack.name && seam.primary_in_this_pack === companion.seam_skill
+      (seam) => seam.companion_pack === thisPack.name &&
+        String(seam.companion_side ?? "").includes(companion.seam_skill)
     );
     if (!mirror) {
       warnings.push(`companion ${companion.pack} does not declare a symmetric seam_contract pointing back at ${thisPack.name}/${companion.seam_skill} — seam routing will be one-directional`);

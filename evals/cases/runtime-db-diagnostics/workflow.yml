@@ -1,6 +1,6 @@
 cases:
   - name: file-system-safety
-    skill: node-file-system-safety
+    skill: node-filesystem-safety
     prompt: "Review or implement a production Node.js backend change involving  file system safety."
     pressure: ["existing conventions", "failure path", "security boundary", "resource limits"]
     expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
@@ -96,7 +96,7 @@ cases:
     expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
 
   - name: advisory-locks
-    skill: node-advisory-locks
+    skill: node-database-advisory-locks
     prompt: "Review or implement a production Node.js backend change involving  advisory locks."
     pressure: ["existing conventions", "failure path", "security boundary", "resource limits"]
     expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]

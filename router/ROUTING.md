@@ -221,7 +221,7 @@ This pack owns the Node side of the Node ↔ React boundary, through `node-react
 |---|---|---|---|
 | React code calling a Node endpoint (fetch, response types, error handling) | node-react-integration | node-rest-api-design, node-schema-validation-at-boundary | typescript-api-contracts, typescript-runtime-contracts, react-data-fetching |
 | React form showing server validation errors | node-react-integration | node-schema-validation-at-boundary | react-forms-validation, react-testing-engineering |
-| Browser fetch rejected by CORS, CSRF, or a missing session cookie | node-react-integration | node-cors-security, node-csrf-defense, node-cookie-security | browser-authentication, frontend-networking |
+| Browser fetch rejected by CORS, CSRF, or a missing session cookie | node-react-integration | node-cors-security, node-csrf-defense, node-cookie-security | react-node-integration (seam), browser-authentication, frontend-networking |
 | Same-origin proxy, cross-origin API, or BFF topology | node-react-integration | node-http-proxy-forwarding, node-cors-security | react-architecture |
 | Shared schema/types package in a Node + React monorepo | node-react-integration | node-monorepo-engineering, node-package-exports | typescript-api-contracts, frontend-monorepo |
 | Generated TypeScript client from the server OpenAPI document | node-react-integration | node-openapi | openapi-tooling, typescript-runtime-contracts |
