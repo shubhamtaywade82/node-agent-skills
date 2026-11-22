@@ -957,10 +957,6 @@ skills:
 # See docs/CROSS_PACK_SCHEMA.md for the v3 contract.
 adapter_skills:
 
-  - name: node-file-system-safety
-    category: runtime-security
-    triggers: [file, system, safety]
-    version: 0.1.0
   - name: node-read-replica-routing
     category: persistence
     triggers: [read, replica, routing]
@@ -968,10 +964,6 @@ adapter_skills:
   - name: node-index-engineering
     category: persistence
     triggers: [index, engineering]
-    version: 0.1.0
-  - name: node-advisory-locks
-    category: persistence
-    triggers: [advisory, locks]
     version: 0.1.0
   - name: node-cardinality-control
     category: observability
@@ -1163,7 +1155,7 @@ adapter_skills:
     version: 0.1.0
   - name: node-filesystem-safety
     category: security
-    triggers: [filesystem safety, file access, symlink, path containment]
+    triggers: [filesystem safety, file system safety, file access, symlink, path containment, path traversal, uploads, file paths from users]
     version: 0.1.0
   - name: node-archive-extraction-safety
     category: security
@@ -1255,7 +1247,7 @@ adapter_skills:
     version: 0.1.0
   - name: node-database-advisory-locks
     category: persistence
-    triggers: [advisory lock, PostgreSQL advisory lock, cooperative serialization]
+    triggers: [advisory lock, advisory locks, PostgreSQL advisory lock, cooperative serialization, cross-row coordination]
     version: 0.1.0
   - name: node-database-read-replica-routing
     category: persistence
@@ -1827,6 +1819,6 @@ cross_pack:
         - node-rest-api-design
         - node-runtime-validation
       companion_pack: react-agent-skills
-      companion_side: react-agent-skills/skills/browser-authentication
+      companion_side: react-agent-skills/skills/react-node-integration
       routing_doc: router/ROUTING.md#node-and-react-cross-stack-routing
       eval_cases: evals/cases/api/react-client-seam.yml

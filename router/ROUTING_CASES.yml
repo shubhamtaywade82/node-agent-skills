@@ -943,7 +943,7 @@
     secondary: [node-data-retention,node-data-masking]
 
   - name: file-system-safety
-    primary: node-file-system-safety
+    primary: node-filesystem-safety
     secondary: [node-testing, node-observability]
 
   - name: temp-file-safety
@@ -1007,7 +1007,7 @@
     secondary: [node-testing, node-observability]
 
   - name: advisory-locks
-    primary: node-advisory-locks
+    primary: node-database-advisory-locks
     secondary: [node-testing, node-observability]
 
   - name: api-content-negotiation

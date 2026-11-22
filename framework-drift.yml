@@ -1,0 +1,58 @@
+# Removed/deprecated Node.js and TypeScript APIs that skill TypeScript/JavaScript
+# code fences must not recommend. Mirrors the ruby-agent-skills
+# framework-drift.yml contract: each entry needs framework (nodejs|typescript),
+# status, version, symbol, match, example, replacement, source_url (HTTPS
+# official docs), and source_section. Write `match` in YAML single quotes with
+# single backslashes ('\bfoo\b'); doubling them makes the regex require a
+# literal backslash. `example` is a line the regex must match. Quote any value
+# containing " #" or ": " so YAML does not truncate it.
+version: 1
+policy:
+  scan_roots:
+    - skills
+    - adapters
+  languages:
+    - typescript
+    - javascript
+  default_framework: nodejs
+entries:
+  node-new-buffer:
+    framework: nodejs
+    status: deprecated
+    version: "10"
+    symbol: "new Buffer(...)"
+    match: '\bnew\s+Buffer\s*\('
+    example: 'const buf = new Buffer(input)'
+    replacement: Buffer.from() / Buffer.alloc()
+    source_url: https://nodejs.org/api/deprecations.html#DEP0005
+    source_section: DEP0005 new Buffer()
+  node-fs-exists-callback:
+    framework: nodejs
+    status: deprecated
+    version: "1.0"
+    symbol: fs.exists(path, callback)
+    match: '\bfs\.exists\s*\('
+    example: 'fs.exists(path, (exists) => {})'
+    replacement: fs.stat() / fs.promises.access()
+    source_url: https://nodejs.org/api/fs.html#fsexistspath-callback
+    source_section: Legacy API fs.exists
+  node-url-parse:
+    framework: nodejs
+    status: deprecated
+    version: "11"
+    symbol: url.parse(urlString)
+    match: '\burl\.parse\s*\('
+    example: 'const parsed = url.parse(input)'
+    replacement: new URL(input)
+    source_url: https://nodejs.org/api/url.html#legacy-url-api
+    source_section: Legacy URL API
+  typescript-tslint:
+    framework: typescript
+    status: deprecated
+    version: "6.1"
+    symbol: TSLint
+    match: '\btslint\b'
+    example: 'npm install tslint'
+    replacement: typescript-eslint (ESLint with @typescript-eslint)
+    source_url: https://palantir.github.io/tslint/
+    source_section: deprecation notice
