@@ -1,6 +1,6 @@
 ---
 name: node-transactional-outbox
-description: Use when a database mutation and its outgoing event must be committed atomically, especially for event-driven services, integrations, and cross-process workflows.
+description: Use when a database mutation and its outgoing event must be committed atomically — event relays, durable event publication, and replay after process or broker failure.
 ---
 
 # Transactional Outbox
@@ -26,6 +26,7 @@ Inspect transaction ownership, outbox schema, unique event IDs, relay mechanism,
 | Duplicate | Relay retries may publish the same event more than once; consumers must deduplicate. |
 | Ordering | Use aggregate/key ordering only when relay/broker can preserve the required sequence. |
 | Failure | A failed relay blocks delivery, not the already committed business transaction. |
+| Cleanup | Retain enough published history for replay and audit while bounding table growth; never delete unsent rows. |
 
 ## Implementation procedure
 1. Define event contract and durable ID.
@@ -41,6 +42,8 @@ Inspect transaction ownership, outbox schema, unique event IDs, relay mechanism,
 - Relay deletes the record before durable acknowledgement.
 - Consumer assumes exactly-once delivery.
 - Schema migration makes the event unreadable by an older consumer.
+- Multiple relay workers share no claim/lease protocol — the same outbox row is published by two workers with no dedupe key.
+- Cleanup policy deletes rows on a timer without checking delivery state, dropping undelivered events.
 
 ## Verification
-Test transaction rollback, DB commit plus process crash, relay duplication, broker outage, lease expiry, consumer replay, and mixed-version event schemas.
+Test transaction rollback, DB commit plus process crash, relay duplication, broker outage, lease expiry, consumer replay, mixed-version event schemas, concurrent relay workers racing on the same row, and cleanup against pending/undelivered rows.
