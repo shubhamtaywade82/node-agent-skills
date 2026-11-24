@@ -148,11 +148,11 @@
 
   - name: rolling-deploy
     primary: node-zero-downtime
-    secondary: [node-production-runtime, node-database-migrations-production]
+    secondary: [node-production-runtime, node-migrations]
 
   - name: large-production-ddl
-    primary: node-database-migrations-production
-    secondary: [node-migrations, node-zero-downtime]
+    primary: node-migrations
+    secondary: [node-zero-downtime]
 
   - name: production-incident
     primary: node-incident-engineering
@@ -164,11 +164,11 @@
 
   - name: staged-backend-release
     primary: node-release-engineering
-    secondary: [node-zero-downtime, node-database-migrations-production]
+    secondary: [node-zero-downtime, node-migrations]
 
   - name: retry-through-queue
     primary: node-retry-timeouts
-    secondary: [node-idempotency, node-queues, node-outbox]
+    secondary: [node-idempotency, node-queues, node-transactional-outbox]
 
   - name: shutdown-with-inflight-work
     primary: node-zero-downtime
@@ -363,8 +363,8 @@
     secondary: [node-repository-forensics, node-module-boundaries]
 
   - name: migration-plan
-    primary: node-migration-assistant
-    secondary: [node-dependency-upgrades, node-database-migrations-production]
+    primary: node-migrations
+    secondary: [node-dependency-upgrades]
 
   - name: architecture-decision
     primary: node-architecture-decision-records
@@ -883,8 +883,8 @@
     secondary: [node-caching,node-connection-pooling]
 
   - name: outbox-pattern
-    primary: node-outbox
-    secondary: [node-transactional-outbox,node-event-driven-architecture]
+    primary: node-transactional-outbox
+    secondary: [node-event-driven-architecture]
 
   - name: domain-modeling
     primary: node-domain-modeling
@@ -991,7 +991,7 @@
     secondary: [node-testing, node-observability]
 
   - name: read-replica-routing
-    primary: node-read-replica-routing
+    primary: node-database-read-replicas
     secondary: [node-testing, node-observability]
 
   - name: query-plan-engineering
@@ -1023,11 +1023,11 @@
     secondary: [node-testing, node-observability]
 
   - name: skill-pack-format
-    primary: node-skill-pack-format
+    primary: node-skill-packaging
     secondary: [node-testing, node-repository-forensics]
 
   - name: skill-pack-compatibility
-    primary: node-skill-pack-compatibility
+    primary: node-skill-pack-installation
     secondary: [node-testing, node-repository-forensics]
 
   - name: skill-pack-manifest-governance
@@ -1035,27 +1035,27 @@
     secondary: [node-testing, node-repository-forensics]
 
   - name: skill-pack-routing-governance
-    primary: node-skill-pack-routing-governance
+    primary: node-skill-pack-manifest-governance
     secondary: [node-testing, node-repository-forensics]
 
   - name: skill-pack-evaluation-governance
-    primary: node-skill-pack-evaluation-governance
+    primary: node-skill-pack-manifest-governance
     secondary: [node-testing, node-repository-forensics]
 
   - name: skill-pack-source-governance
-    primary: node-skill-pack-source-governance
+    primary: node-skill-packaging
     secondary: [node-testing, node-repository-forensics]
 
   - name: skill-pack-versioning
-    primary: node-skill-pack-versioning
+    primary: node-skill-pack-manifest-governance
     secondary: [node-testing, node-repository-forensics]
 
   - name: skill-pack-release
-    primary: node-skill-pack-release
+    primary: node-skill-packaging
     secondary: [node-testing, node-repository-forensics]
 
   - name: skill-pack-distribution
-    primary: node-skill-pack-distribution
+    primary: node-skill-pack-installation
     secondary: [node-testing, node-repository-forensics]
 
   - name: skill-pack-installation
@@ -1135,7 +1135,7 @@
     secondary: [node-testing, node-observability]
 
   - name: deprecation-management
-    primary: node-deprecation-management
+    primary: node-api-deprecation
     secondary: [node-testing, node-observability]
 
   - name: backward-compatibility-testing
@@ -1231,7 +1231,7 @@
     secondary: [node-testing, node-observability]
 
   - name: deprecation-planning
-    primary: node-deprecation-planning
+    primary: node-api-deprecation
     secondary: [node-testing, node-observability]
 
   - name: change-log-integrity
@@ -1242,9 +1242,6 @@
     primary: node-database-advisory-locks
     secondary: [node-testing, node-observability]
 
-  - name: database-read-replica-routing
-    primary: node-database-read-replica-routing
-    secondary: [node-testing, node-observability]
 
   - name: deadlock-diagnostics
     primary: node-deadlock-diagnostics
@@ -1395,5 +1392,5 @@
     secondary: [node-http-engineering, node-async-concurrency, node-llm-observability]
 
   - name: skill-pack-versioning
-    primary: node-skill-pack-per-skill-versioning
-    secondary: [node-skill-pack-versioning, node-testing]
+    primary: node-skill-pack-manifest-governance
+    secondary: [node-testing]
