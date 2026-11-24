@@ -7,7 +7,15 @@ description: Use when designing or changing Node.js unit, integration, API, cont
 
 ## Purpose
 
-Tests prove behavior, not implementation. They must catch regressions, document intent, and survive refactors. Tests that mock the system under test prove nothing.
+Tests prove behavior, not implementation. They must catch regressions, document intent, and survive refactors. Tests that mock the system under test prove nothing. Every repo needs a deliberate layer mix: fast deterministic units, real-dependency integration tests at the persistence and boundary layer, contract tests at the API seam, and a handful of true end-to-end flows — the mix is the strategy, and each layer answers a different failure class.
+
+## Boundary with related skills
+
+- Use `node-integration-testing` for the integration-layer strategy (Testcontainers composition, shared fixtures, suite budgeting) in depth.
+- Use `node-test-data-management` for factory design, seeding, and tenant isolation of test data.
+- Use `node-flaky-test-engineering` for diagnosing and eliminating intermittent failures.
+- Use `node-test-environment-engineering` for CI matrix, parallelization, and environment parity.
+- Use `node-release-engineering` for the gates a change must pass before shipping.
 
 ## Activate when
 
@@ -55,6 +63,40 @@ Tests prove behavior, not implementation. They must catch regressions, document 
 5. Use factories for test data: `buildOrder()` returns a valid random order; override fields per test.
 6. For property tests: define the invariant (`parse(serialize(x)) === x`); generate random inputs; run ≥ 1000 cases.
 7. For contract tests: write the OpenAPI definition; assert every endpoint matches it; assert every consumer-side call uses the schema.
+
+**Reference example** — a real-dependency integration test with a factory, fake timers, and isolation:
+
+```ts
+import { test, beforeEach } from "node:test";
+import assert from "node:assert/strict";
+import { randomUUID } from "node:crypto";
+
+// Factory: valid random data; overrides per test. No shared hard-coded fixtures.
+const buildOrder = (over: Partial<Order> = {}): Order => ({
+  id: randomUUID(),
+  tenantId: randomUUID(),               // tenant isolation is per-test, not a shared "test user"
+  status: "open",
+  items: [{ sku: "SKU-1", qty: 1 }],
+  placedAt: new Date("2026-01-01T00:00:00Z"),
+  ...over,
+});
+
+test("placing an order reserves stock and emits an outbox row", async (t) => {
+  const db = await startPostgres(t);           // Testcontainers: real Postgres, migrations applied
+  const svc = new OrderService(db);
+  await db.exec("INSERT INTO stock (sku, qty) VALUES ('SKU-1', 10)");
+
+  const order = buildOrder({ items: [{ sku: "SKU-1", qty: 3 }] });
+  await svc.place(order);
+
+  const row = await db.one("SELECT * FROM outbox WHERE aggregate_id = $1", [order.id]);
+  assert.equal(row?.event_type, "order.placed");
+  assert.equal(await db.scalar("SELECT qty FROM stock WHERE sku = 'SKU-1'"), 7); // 10 seeded - 3 reserved
+  assert.notEqual(row?.published_at, null);
+});
+```
+
+The example carries the whole discipline: a real database (not a mock of the persistence layer), a factory producing isolated valid data, one behavior per test stated as given/when/then, and an assertion on the observable outcome (stock reserved, outbox row written) rather than on internal calls.
 
 ## Failure modes
 
