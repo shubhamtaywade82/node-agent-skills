@@ -38,8 +38,8 @@ Survivors were enriched to the band depth baseline; manifest triggers, routing c
 
 ## Cross-pack pinning
 
-`cross_pack.companions` pins `react-agent-skills` to `main`. Pin to an immutable tag (matching the ruby pin at `v1.5.0`) before the next release, then record the resolved snapshot hashes.
+- [x] `cross_pack.companions` pins `react-agent-skills` to the immutable tag **`v0.1.0`** (the companion's first tagged release, cut at `eb7758f` after RELEASE.md-gated verification); the snapshot records the tagged commit. Observed follow-up: ruby-agent-skills has since released `v1.6.0` while this pack pins `v1.5.0` — evaluate the bump in a separate ownership decision. Future react releases: bump the pin deliberately per release, refreshing the snapshot to the tagged commit.
 
 ## Scheduled recheck
 
-- [x] react-agent-skills merged its production-readiness branch (squashed `6868b6a` via PR #23, then enrichment PRs #24/#25): `bin/cross-pack-verify.mjs --companions ..` passes with the node-to-react-client seam symmetric on both sides (`react-agent-skills/skills/react-node-integration`), and the companion snapshot tracks post-enrichment react main (`5f96069`; inventory unchanged by enrichment). Still open: the immutable-tag pin (see "Cross-pack pinning") — once react cuts its next release, re-run the verifier against the tag and record the resolved hashes.
+- [x] react-agent-skills merged its production-readiness branch (squashed `6868b6a` via PR #23, then enrichment PRs #24/#25): `bin/cross-pack-verify.mjs --companions ..` passes with the node-to-react-client seam symmetric on both sides (`react-agent-skills/skills/react-node-integration`), and the companion snapshot tracks post-enrichment react main (`5f96069`; inventory unchanged by enrichment). Resolved by the immutable-tag pin (see "Cross-pack pinning"): the verifier now runs against `v0.1.0` and the snapshot records the tagged commit (`eb7758f`).
