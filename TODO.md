@@ -8,15 +8,17 @@
 - [x] `TODO.md` added.
 - [x] The node-to-react seam contract now points at the symmetric client-side seam skill `react-agent-skills/skills/react-node-integration` (previously pointed at `browser-authentication` as a stand-in).
 
-## Consolidation candidates (require an ownership decision before removal)
+## Consolidation candidates (RESOLVED 2026-11-24)
 
-The `adapter_skills:` registry historically registered near-duplicate skills alongside the main `skills:` registry. Two confirmed pairs were merged in the production-readiness pass. The following clusters overlap and need a human review before any merge:
+The `adapter_skills:` registry historically registered near-duplicate skills alongside the main `skills:` registry. Ownership decisions were made on issue #42 and executed: 16 skills retired, 338 → 322.
 
-- Read replicas: `node-read-replica-routing`, `node-database-read-replica-routing`, `node-database-read-replicas` (an earlier note listed a fourth name, `node-read-replicas`; no such skill exists in `skills/` or either manifest registry).
-- Outbox: `node-outbox`, `node-transactional-outbox`.
-- Deprecation: `node-deprecation-management`, `node-deprecation-planning`, `node-api-deprecation`.
-- Migrations: `node-migrations`, `node-migration-assistant`, `node-database-migrations-production`.
-- Skill-pack governance: twelve `node-skill-pack*` skills (eleven `node-skill-pack-*` plus `node-skill-packaging`, all registered under `adapter_skills:`). Consider consolidating to two or three routing skills and moving process detail into `AGENTS.md` and `bin/` scripts, matching the ruby-agent-skills pattern (zero separate governance skills).
+- Read replicas → owner `node-database-read-replicas`; retired `node-read-replica-routing`, `node-database-read-replica-routing`; `read-replica-routing` + `database-read-replica-routing` cases collapsed into one.
+- Outbox → owner `node-transactional-outbox`; retired `node-outbox`.
+- Deprecation → owner `node-api-deprecation`; retired `node-deprecation-management`, `node-deprecation-planning`.
+- Migrations → owner `node-migrations`; retired `node-migration-assistant`, `node-database-migrations-production` (production-runbook mechanics folded in).
+- Skill-pack governance (12 → 3): author side `node-skill-packaging` (absorbed format, source-governance, release), consumer side `node-skill-pack-installation` (absorbed compatibility, distribution), governance side `node-skill-pack-manifest-governance` (absorbed versioning, per-skill-versioning, routing-governance, evaluation-governance).
+
+Survivors were enriched to the band depth baseline; manifest triggers, routing cases, eval corpora, and wave-contract count assertions were re-pointed in the same change.
 
 ## Missing infrastructure (create before benchmark campaigns)
 
@@ -29,7 +31,8 @@ The `adapter_skills:` registry historically registered near-duplicate skills alo
 
 - [x] Highest-traffic routing targets enriched (production-readiness increment 2): `node-build-engineering` (26 routing cases), `node-repository-forensics` (22), `node-retry-timeouts` (9), `node-zero-downtime` (8), `node-idempotency` (7), `node-database-engineering` (6), `node-transactions` (6), `node-integration-testing` (6) — each now carries purpose, boundary-with-related-skills, decision tables, a complete reference example, failure modes, checklists, and source foundations.
 - [x] Second band enriched (production-readiness increment 3, PR #40): `node-migrations` (5 routing cases), `node-event-driven-architecture` (5), `node-rest-api-design` (5), `node-openapi` (4) — same depth baseline, plus a refreshed react companion snapshot (`5f96069`).
-- The remaining ~326 skills are ~2 KB scaffolds. Continue enriching in routing-case-frequency order. `node-testing` (251 references) and `node-observability` (203) lead the raw counts because they are universal secondaries (listed in nearly every routing case); both are still ~80-line scaffolds, so treat them as a deliberate next-band decision: enrich them as always-loaded infrastructure, or keep them lean because they load everywhere. Next routing-demand band after that call: `node-runtime-validation` (15), `node-auth-security` (9), `node-production-runtime` (8), `node-http-engineering` (7), `node-async-concurrency` (7), then the 6× cluster (`node-external-integrations`, `node-typescript-contracts`, `node-architecture`, `node-llm-observability`). Keep each skill under 500 lines; move deep knowledge into skill-local `references/` one level deep.
+- [x] Consolidation survivors enriched (issue #42 execution): `node-database-read-replicas`, `node-transactional-outbox`, `node-api-deprecation`, `node-migrations`, `node-skill-packaging`, `node-skill-pack-installation`, `node-skill-pack-manifest-governance` — each absorbed the retired scaffolds' distinctive guidance at the band depth baseline.
+- The remaining ~303 skills are ~2 KB scaffolds. Continue enriching in routing-case-frequency order. `node-testing` (251 references) and `node-observability` (203) lead the raw counts because they are universal secondaries (listed in nearly every routing case); both are still ~80-line scaffolds, so treat them as a deliberate next-band decision: enrich them as always-loaded infrastructure, or keep them lean because they load everywhere. Next routing-demand band after that call: `node-runtime-validation` (15), `node-auth-security` (9), `node-production-runtime` (8), `node-http-engineering` (7), `node-async-concurrency` (7), then the 6× cluster (`node-external-integrations`, `node-typescript-contracts`, `node-architecture`, `node-llm-observability`). Keep each skill under 500 lines; move deep knowledge into skill-local `references/` one level deep.
 
 ## Cross-pack pinning
 
