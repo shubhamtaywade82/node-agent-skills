@@ -102,7 +102,7 @@ cases:
     expected_invariants: ["bounded behavior", "reproducibility", "observable correctness", "tests prove the contract"]
 
   - name: deprecation-management
-    skill: node-deprecation-management
+    skill: node-api-deprecation
     prompt: "Review or implement a production Node.js change involving  deprecation management."
     pressure: ["existing repository conventions", "failure path", "resource or security boundary", "verification evidence"]
     expected_invariants: ["bounded behavior", "reproducibility", "observable correctness", "tests prove the contract"]
