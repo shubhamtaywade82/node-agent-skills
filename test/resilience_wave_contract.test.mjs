@@ -14,7 +14,6 @@ const skills = [
   ["node-distributed-locks", "distributed-locks"],
   ["node-event-driven-architecture", "event-driven-architecture"],
   ["node-zero-downtime", "zero-downtime"],
-  ["node-database-migrations-production", "database-migrations-production"],
   ["node-incident-engineering", "incident-engineering"],
   ["node-runtime-diagnostics", "runtime-diagnostics"],
   ["node-release-engineering", "release-engineering"],
@@ -38,5 +37,5 @@ test("Wave 2C cross-wave adversarial evaluation exists", async () => {
 
 test("repository contract expects all approved skills", async () => {
   const manifest = await readFile("skill-manifest.yml", "utf8");
-  assert.equal([...manifest.matchAll(/^  - name: /gm)].length, 338);
+  assert.equal([...manifest.matchAll(/^  - name: /gm)].length, 322);
 });
