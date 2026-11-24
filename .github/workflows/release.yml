@@ -5,6 +5,13 @@ on:
     branches: ["main"]
   workflow_dispatch:
 
+# One Release run per main commit; a superseded run (push landed mid-run)
+# is cancelled instead of racing it — two changesets/action runs against
+# the same Release PR would otherwise race on the version commit.
+concurrency:
+  group: release-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
 permissions:
   contents: write
   pull-requests: write
@@ -12,6 +19,9 @@ permissions:
 jobs:
   release:
     runs-on: ubuntu-latest
+    # The changesets step includes `npm ci` and the full validate+test gate;
+    # a hung step must fail loudly (and rerunnable) rather than stall for 6h.
+    timeout-minutes: 30
     if: github.repository == 'shubhamtaywade82/node-agent-skills'
     steps:
       - uses: actions/checkout@v7
