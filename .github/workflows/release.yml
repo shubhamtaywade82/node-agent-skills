@@ -21,7 +21,7 @@ jobs:
         with:
           node-version: 24
           package-manager-cache: false
-      - run: npm install -g @changesets/cli@latest
+      - run: npm ci
       - name: Validate before release
         run: |
           npm run validate
