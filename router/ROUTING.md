@@ -28,7 +28,7 @@ Route by the dominant backend boundary first. Framework adapters are a translati
 | caching | node-caching | node-redis, node-performance |
 | background jobs | node-queues | node-background-jobs-reliability, node-async-concurrency |
 | message broker | node-message-brokers | node-background-jobs-reliability, node-observability |
-| outbox | node-outbox | node-transactional-outbox, node-transactions |
+| outbox | node-transactional-outbox | node-transactions |
 | transactional outbox | node-transactional-outbox | node-transactions, node-message-brokers |
 | jobs/queues | node-background-jobs-reliability | node-async-concurrency, node-observability |
 | telemetry | node-observability | node-production-runtime |
@@ -46,11 +46,11 @@ Route by the dominant backend boundary first. Framework adapters are a translati
 | distributed system | node-distributed-systems | node-idempotency, node-observability |
 | distributed lock | node-distributed-locks | node-database-engineering, node-redis |
 | event-driven architecture | node-event-driven-architecture | node-message-brokers, node-transactional-outbox |
-| zero downtime | node-zero-downtime | node-production-runtime, node-database-migrations-production |
-| production DB migration | node-database-migrations-production | node-migrations, node-zero-downtime |
+| zero downtime | node-zero-downtime | node-production-runtime, node-migrations |
+| production DB migration | node-migrations | node-zero-downtime |
 | incident response | node-incident-engineering | node-observability, node-runtime-diagnostics |
 | runtime diagnosis | node-runtime-diagnostics | node-performance, node-observability |
-| release engineering | node-release-engineering | node-zero-downtime, node-database-migrations-production |
+| release engineering | node-release-engineering | node-zero-downtime, node-migrations |
 
 | repository discovery | node-repository-forensics | node-architecture, node-module-boundaries |
 | debugging/incident diagnosis | node-debugging | node-observability, node-runtime-diagnostics |
@@ -83,7 +83,7 @@ Route by the dominant backend boundary first. Framework adapters are a translati
 | secure coding | node-secure-coding | node-security-hardening, node-runtime-validation |
 | legacy modernization | node-legacy-modernization | node-dependency-upgrades, node-refactoring |
 | change impact analysis | node-change-impact-analysis | node-repository-forensics, node-module-boundaries |
-| migration planning | node-migration-assistant | node-dependency-upgrades, node-database-migrations-production |
+| migration planning | node-migrations | node-dependency-upgrades |
 | ADR | node-architecture-decision-records | node-architecture, node-documentation-engineering |
 | test data | node-test-data-management | node-testing, node-integration-testing |
 | flaky tests | node-flaky-test-engineering | node-testing, node-test-environment-engineering |
@@ -352,7 +352,7 @@ Wave 13 makes previously secondary-only foundational capabilities explicit routi
 | external integrations | node-external-integrations | node-api-client-engineering, node-retry-timeouts |
 | database transactions | node-transactions | node-postgresql-persistence, node-optimistic-concurrency |
 | Redis | node-redis | node-caching, node-connection-pooling |
-| outbox | node-outbox | node-transactional-outbox, node-event-driven-architecture |
+| outbox | node-transactional-outbox | node-event-driven-architecture |
 | domain modeling | node-domain-modeling | node-architecture, node-cqrs |
 | hexagonal architecture | node-hexagonal-architecture | node-domain-modeling, node-dependency-injection |
 | dependency injection | node-dependency-injection | node-module-boundaries, node-architecture |
