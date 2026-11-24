@@ -17,13 +17,14 @@
 #      to the recomputed intersection.
 
 companion_repository: shubhamtaywade82/react-agent-skills
-companion_commit: "6868b6a67bb3fa99e98785a07646f0692ba30aa6"
+companion_commit: "5f96069222cd08b2816b89f0fdd70ffdb4f9fdf1"
 captured_at: "2026-11-24"
 skills:
   # The companion pack's skills/ directory contains 129 subdirectories as of
   # this snapshot (captured from the companion's main branch after its
-  # production-readiness merge, which added the two client-side seam skills
-  # react-rails-integration and react-node-integration). The full enumeration
+  # production-readiness and skill-depth-enrichment merges; the inventory is
+  # unchanged by enrichment — the seam skills remain react-rails-integration
+  # and react-node-integration). The full enumeration
   # is in the companion pack's skill-manifest.yml; this snapshot is for
   # collision detection only.
   - agent-workflow
