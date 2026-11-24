@@ -20,7 +20,7 @@ A deploy is safe only when old and new processes can coexist and active work has
 
 - Use `node-zero-downtime` for the process lifecycle around deploys.
 - Use `node-release-engineering` for the artifact/rollback pipeline around it.
-- Use `node-database-migrations-production` for expand/contract schema sequencing during rolling deploys.
+- Use `node-migrations` for expand/contract schema sequencing during rolling deploys.
 - Use `node-background-jobs-reliability` for job-drain semantics specifically.
 
 ## Repository inspection
