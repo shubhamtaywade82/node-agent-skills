@@ -92,7 +92,7 @@ test("routePrompt default behavior is unchanged (no active language)", async () 
 
 test("parseSkillEntries parses the node manifest's sequence form", () => {
   const skills = parseSkillEntries(manifestText);
-  assert.equal(skills.length, 338); // 228 skills + 110 adapter_skills
+  assert.equal(skills.length, 322); // 224 skills + 98 adapter_skills
   const seam = skills.find((skill) => skill.name === "node-ruby-integration");
   assert.equal(seam.language, "typescript");
   assert.equal(seam.path, "skills/node-ruby-integration/SKILL.md");
