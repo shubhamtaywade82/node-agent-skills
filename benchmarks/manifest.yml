@@ -1,0 +1,33 @@
+# Benchmark campaign registry. See benchmarks/README.md for the contract.
+#
+# Each campaign entry pins a campaign to an executable fixture and the corpus
+# it derives from. Nothing here is executed by CI; CI runs only the Validate
+# workflow (evals + smoke tests). A recorded campaign lands in
+# agent-recordings/ with its provenance fields filled, and the matching entry
+# below records: version, source corpus, fixture, execution controls, and the
+# recording set it produced.
+schema_version: 1
+
+# Executable fixture seams available for campaigns. These are validated by the
+# Validate workflow's smoke tests (adapter detection + routing + pack export),
+# which is what makes them legitimate benchmark fixtures.
+fixtures:
+  - name: ecommerce-api
+    path: examples/ecommerce-api
+    language: typescript
+    adapters: [bullmq, fastify, ioredis, pg, pino, zod]
+  - name: edge-worker
+    path: examples/edge-worker
+    language: typescript
+    adapters: [vitest, zod]
+
+# No recorded campaigns yet. Entries follow the recording-set format in
+# agent-recordings/README.md:
+# campaigns:
+#   - name: routing-regression-v1
+#     version: 1
+#     corpus: evals/ (revision <sha>)
+#     fixture: ecommerce-api
+#     execution_controls: { model: ..., temperature: ..., tool_mode: ... }
+#     recording_set: agent-recordings/<set-name>
+campaigns: []

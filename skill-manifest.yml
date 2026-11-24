@@ -1723,7 +1723,7 @@ cross_pack:
   companions:
     - pack: ruby-agent-skills
       repo: https://github.com/shubhamtaywade82/ruby-agent-skills
-      pinned_ref: v1.5.0
+      pinned_ref: v1.6.0
       snapshot: data/cross-pack/ruby-agent-skills.snapshot.yml
       seam_skill: node-ruby-integration
       language: ruby

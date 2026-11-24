@@ -151,6 +151,7 @@ For changes to the skill repository itself:
 - preserve one owning skill for a framework capability unless repository evidence justifies a new boundary; before adding a near-duplicate skill, check whether the domain is already owned;
 - register every new skill in `skill-manifest.yml` and make the canonical validator execute every repository test;
 - keep each `SKILL.md` within the size gate by moving deep knowledge into skill-local `references/` one level deep;
+- implementation-pattern guidance lives in the top-level `references/` directory (e.g. `references/agent-discipline.md`), NOT in a `patterns/` directory — the companion packs (ruby-agent-skills, react-agent-skills) name the equivalent surface `patterns/`; this deviation is intentional, documented here, and is not a completeness gap. Cross-pack tooling that expects `patterns/` on every pack must treat the directory name as pack-specific;
 - resolve current Node.js LTS behavior from the supported runtime version before adding triggers or guidance;
 - do not claim repository completeness from counts alone; verify executable registration, routing, evaluation coverage, and regression tests.
 
