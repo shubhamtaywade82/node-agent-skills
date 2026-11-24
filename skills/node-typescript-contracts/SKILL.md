@@ -9,6 +9,13 @@ description: Use when designing or changing TypeScript strict types, generics, d
 
 Use TypeScript types to make illegal states unrepresentable. Public type surface is a contract; runtime truth is separate from compile-time types. This skill owns the boundary between "the code compiles" and "the code is correct."
 
+## Boundary with related skills
+
+- Use `node-runtime-validation` for the runtime counterpart: types do not validate — schemas parse at boundaries and the type is derived (`z.infer`), never hand-written.
+- Use `node-rest-api-design` and `node-openapi` when the type surface doubles as the wire contract.
+- Use `node-build-engineering` for `tsconfig` project references, declaration emit, and `package.json` `exports` wiring.
+- Use `node-architecture` when the problem is the module boundary itself rather than the type surface it exposes.
+
 ## Activate when
 
 - Tightening `tsconfig` strictness, changing `moduleResolution`, `verbatimModuleSyntax`, or `noUncheckedIndexedAccess`.
@@ -54,6 +61,41 @@ Use TypeScript types to make illegal states unrepresentable. Public type surface
 5. Add a type test: `expectTypeOf<...>` (vitest) or `// @ts-expect-error` lines that confirm the type rejects invalid shapes.
 6. Run `tsc --noEmit` across the project and across all `tsconfig.*.json` files.
 7. Run `tsc --emitDeclarationOnly` for published packages; inspect the emitted `.d.ts` for the public surface you intended.
+
+**Reference example** — the contract mechanisms in one module: schema-derived wire types, a discriminated union for domain state, branded IDs, and an exhaustive switch that turns "new variant added" into a compile error:
+
+```ts
+import { z } from "zod";
+
+// 1. Wire contract: the schema is the source of truth; the type is derived, never hand-written.
+const CreateOrder = z.object({ sku: z.string().min(1), qty: z.number().int().positive() });
+export type CreateOrder = z.infer<typeof CreateOrder>;
+
+// 2. Branded IDs: OrderId and ReceiptId are both strings but cannot be swapped.
+export type OrderId = string & { readonly __brand: "OrderId" };
+export type ReceiptId = string & { readonly __brand: "ReceiptId" };
+
+// 3. Domain state: a discriminated union — illegal states (paid without a receipt) unrepresentable.
+export type Order =
+  | { kind: "pending"; placedAt: Date }
+  | { kind: "paid"; paidAt: Date; receiptId: ReceiptId }
+  | { kind: "refunded"; refundedAt: Date; of: ReceiptId };
+
+// 4. Exhaustive handling: adding a variant breaks `tsc --noEmit` here, not production.
+export function isClosed(order: Order): boolean {
+  switch (order.kind) {
+    case "pending": return false;
+    case "paid": return false;
+    case "refunded": return true;
+    default: {
+      const _exhaustive: never = order;   // `Order` gained a variant? CI fails on this line.
+      throw new Error(`unhandled order kind: ${JSON.stringify(_exhaustive)}`);
+    }
+  }
+}
+```
+
+The four mechanisms compose: the schema keeps runtime truth and compile truth from drifting, the union makes invalid states unrepresentable, the brands stop ID confusion at compile time, and the `never` check makes future variants loud.
 
 ## Failure modes
 
