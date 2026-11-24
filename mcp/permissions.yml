@@ -1,0 +1,53 @@
+# MCP capability policy for this pack's MCP server (lib/mcp-server.mjs).
+# Tool names are classified explicitly from the server's tools/list response
+# (see mcp/README.md); server-provided descriptions and annotations are never
+# security policy. Fail-closed: a tool absent from the classifications below
+# is denied.
+schema_version: 1
+
+defaults:
+  unknown_tool: deny
+  production: deny
+  isolated_capabilities:
+    - test_execution
+    - debugger_control
+    - arbitrary_code_execution
+    - shell_execution
+    - dependency_write
+    - filesystem_write
+    - database_write
+    - external_network
+    - database_admin_write
+    - browser_automation_write
+    - version_control_write
+    - external_context_fetch
+
+# This pack's server is a read-only routing surface: it reads the manifest,
+# router, and skill files from the installed pack and returns routing
+# decisions. No tool it exposes can mutate state, so every classification is
+# a read capability. Write-capable tools (campaign runner, recording writer)
+# must be classified here with a write/isolated capability BEFORE the server
+# exposes them.
+capability_aliases:
+  pack_routing:
+    - metadata_read
+    - source_read
+
+profiles:
+  pack-read:
+    allow:
+      - metadata_read
+      - source_read
+    require_approval: []
+
+# Keys must match the server key in the consuming project's mcpServers object.
+# The tool set below mirrors lib/mcp-server.mjs exactly (five tools, verified
+# against its tools/list handler).
+servers:
+  node-agent-skills:
+    tools:
+      get_skill: source_read          # returns one SKILL.md's content
+      route_prompt: source_read       # returns a routing decision derived from pack content
+      route_cross_pack: source_read   # returns a cross-pack routing decision
+      list_skills: metadata_read      # enumerates the manifest inventory
+      list_adapters: metadata_read    # enumerates the adapter inventory
