@@ -17,14 +17,15 @@
 #      to the recomputed intersection.
 
 companion_repository: shubhamtaywade82/react-agent-skills
-companion_commit: "main"
-captured_at: "2026-10-27"
+companion_commit: "6868b6a67bb3fa99e98785a07646f0692ba30aa6"
+captured_at: "2026-11-24"
 skills:
-  # The companion pack's skills/ directory contains 128 subdirectories as of
-  # this snapshot (per the ruby-agent-skills pack's snapshot, captured at
-  # commit 9674abba1c255d24f5187847f8b4c8ccc1f21fd6 on 2026-10-09). The full
-  # enumeration is in the companion pack's skill-manifest.yml; this snapshot
-  # is for collision detection only.
+  # The companion pack's skills/ directory contains 129 subdirectories as of
+  # this snapshot (captured from the companion's main branch after its
+  # production-readiness merge, which added the two client-side seam skills
+  # react-rails-integration and react-node-integration). The full enumeration
+  # is in the companion pack's skill-manifest.yml; this snapshot is for
+  # collision detection only.
   - agent-workflow
   - react-architecture
   - react-component-engineering
@@ -39,11 +40,13 @@ skills:
   - frontend-e2e
   - react-error-resilience
   - openapi-tooling
+  - react-rails-integration
+  - react-node-integration
   # ... ~113 additional non-`node-`-prefixed skills omitted for brevity.
 documented_name_collisions: []  # node-agent-skills and react-agent-skills share ZERO skill names today (this pack prefixes every skill with `node-`).
 seam_owners:
   - boundary: node-to-react-client
     this_pack_seam: node-react-integration
-    companion_pack_seam: browser-authentication
+    companion_pack_seam: react-node-integration
     primary_language_this_side: typescript
     primary_language_companion_side: typescript
