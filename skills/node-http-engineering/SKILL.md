@@ -7,7 +7,15 @@ description: Use when designing or changing HTTP server request lifecycles, midd
 
 ## Purpose
 
-Keep HTTP transport mechanics separate from application semantics. Define one request lifecycle, one error contract, bounded resource use, and explicit ownership of middleware/context.
+Keep HTTP transport mechanics separate from application semantics: one request lifecycle, one error contract, bounded resource use, and explicit ownership of middleware and request context. Framework objects (`req`, `res`) stop at the boundary — domain code sees typed DTOs and returns results, and exactly one place maps outcomes back to status codes, headers, and the public error envelope. That single mapping is what makes clients able to predict error shapes across every route.
+
+## Boundary with related skills
+
+- Use `node-runtime-validation` for the parse step inside the lifecycle (validated input, 400/422 mapping).
+- Use `node-auth-security` for the authn/authz middleware slots in the composition root.
+- Use `node-openapi` when the routes' request/response contracts double as the published schema.
+- Use `node-observability` for the correlation (`request_id`, trace propagation) the lifecycle emits.
+- Use `node-production-runtime` for `server.close()` drain semantics and the surrounding process lifecycle.
 
 ## Activate when
 
@@ -54,6 +62,43 @@ Keep HTTP transport mechanics separate from application semantics. Define one re
 5. Map known failures to safe public errors and unknown failures to generic 5xx. Never leak stack traces.
 6. Ensure request-scoped resources are released on success, failure, abort, and shutdown.
 7. Add a focused HTTP test plus negative/abort coverage. Assert observable responses, not middleware call order.
+
+**Reference example** — request context via `AsyncLocalStorage`, and the single error-to-envelope mapping:
+
+```ts
+import { AsyncLocalStorage } from "node:async_hooks";
+import { randomUUID } from "node:crypto";
+
+// Request context: set once by middleware, readable anywhere downstream WITHOUT threading parameters.
+export const requestContext = new AsyncLocalStorage<{ requestId: string; principal?: Principal }>();
+
+app.use((req, res, next) => {
+  const requestId = (req.headers["x-request-id"] as string) ?? randomUUID();
+  res.setHeader("X-Request-Id", requestId);
+  requestContext.run({ requestId }, next);
+});
+
+// Domain service: pure, framework-free, throws typed errors — knows nothing about HTTP.
+export async function cancelOrder(input: CancelOrderInput): Promise<Order> {
+  const order = await ordersRepo.find(input.orderId);
+  if (!order) throw new NotFoundError("order", input.orderId);          // domain failure class
+  if (order.status === "shipped") throw new ConflictError("order already shipped");
+  return ordersRepo.cancel(input.orderId);
+}
+
+// THE mapping: exactly one place converts error classes to the public envelope.
+const errorHandler: ErrorRequestHandler = (err, req, res, _next) => {
+  const requestId = requestContext.getStore()?.requestId;
+  if (err instanceof NotFoundError) res.status(404).json({ error: "not_found", requestId });
+  else if (err instanceof ConflictError) res.status(409).json({ error: "conflict", message: err.message, requestId });
+  else if (err instanceof ValidationError) res.status(400).json({ error: "invalid_input", issues: err.issues, requestId });
+  else { req.log.error({ err, requestId }, "unhandled");                 // unknown: logged with context…
+    res.status(500).json({ error: "internal_error", requestId });        // …returned as a generic 500, no stack
+  }
+};
+```
+
+The pattern to recognize: domain code throws typed errors and never touches `res`; one handler maps classes to statuses; every envelope carries the correlation ID so logs, traces, and the client's error report join on one ID.
 
 ## Failure modes
 
