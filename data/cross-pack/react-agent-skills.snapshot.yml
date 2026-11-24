@@ -17,13 +17,14 @@
 #      to the recomputed intersection.
 
 companion_repository: shubhamtaywade82/react-agent-skills
-companion_commit: "a7e8cc5c3ed2d2c810dc6d5461632606bdc9d955"
+companion_commit: "eb7758ffcd2df8fc0c41a476fe1c5b41a8740b0c"  # = tag v0.1.0, the pinned ref
 captured_at: "2026-11-24"
 skills:
   # The companion pack's skills/ directory contains 129 subdirectories as of
   # this snapshot (captured from the companion's main branch after its
   # production-readiness, skill-depth-enrichment, band-3 (4x tier), and band-4 (3x tier)
-  # merges; the inventory is unchanged by enrichment — the seam skills remain react-rails-integration
+  # merges; the inventory is unchanged by enrichment. The snapshot now tracks the
+  # pinned tag (v0.1.0) instead of the companion's moving main branch. — the seam skills remain react-rails-integration
   # and react-node-integration). The full enumeration
   # is in the companion pack's skill-manifest.yml; this snapshot is for
   # collision detection only.
