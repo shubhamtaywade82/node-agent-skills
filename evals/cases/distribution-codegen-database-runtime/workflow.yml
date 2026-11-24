@@ -84,7 +84,7 @@ cases:
     expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
 
   - name: deprecation-planning
-    skill: node-deprecation-planning
+    skill: node-api-deprecation
     prompt: "Implement or review a production Node.js change involving deprecation planning."
     pressure: ["existing repository conventions", "failure path", "compatibility boundary", "resource limits"]
     expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
@@ -102,7 +102,7 @@ cases:
     expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
 
   - name: database-read-replica-routing
-    skill: node-database-read-replica-routing
+    skill: node-database-read-replicas
     prompt: "Implement or review a production Node.js change involving database read replica routing."
     pressure: ["existing repository conventions", "failure path", "compatibility boundary", "resource limits"]
     expected_invariants: ["explicit ownership", "bounded behavior", "observable outcome", "tests prove the contract"]
