@@ -49,23 +49,27 @@ jobs:
       # Gate: only the squash-merged Release PR commit carries this headline,
       # so feature/infra merges (same version, untagged) never get tagged at
       # the wrong tree. Idempotent: an existing tag short-circuits.
+      # Anchor: everything reads and tags $GITHUB_SHA (the pushed commit),
+      # NEVER the local HEAD — the changesets action leaves the checkout on
+      # the release branch after it updates the Release PR, and tagging HEAD
+      # would anchor the tag to a commit not on main (observed in run #21).
       - name: Tag immutable release
         run: |
-          HEADLINE=$(git log -1 --pretty=%s)
+          HEADLINE=$(git log -1 --pretty=%s "$GITHUB_SHA")
           case "$HEADLINE" in
             "chore(release): version skills and pack"*) ;;
             *) echo "not a release commit ($HEADLINE); skipping tag"; exit 0 ;;
           esac
-          VERSION=$(node -p "require('./package.json').version")
+          VERSION=$(git show "$GITHUB_SHA":package.json | node -p "JSON.parse(require('fs').readFileSync(0,'utf8')).version")
           if git rev-parse -q --verify "refs/tags/v${VERSION}" >/dev/null; then
             echo "v${VERSION} already tagged; skipping"
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git tag -a "v${VERSION}" -m "node-agent-skills v${VERSION}"
+          git tag -a "v${VERSION}" -m "node-agent-skills v${VERSION}" "$GITHUB_SHA"
           git push origin "v${VERSION}"
-          gh release create "v${VERSION}" --title "node-agent-skills v${VERSION}" --generate-notes --verify-tag
+          gh release create "v${VERSION}" --title "node-agent-skills v${VERSION}" --generate-notes --verify-tag --latest
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Summary
