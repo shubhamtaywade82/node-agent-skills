@@ -9,6 +9,13 @@ description: Use when observing LLM calls in production: tracing, token usage, c
 
 LLM observability is distinct from general backend observability. Each LLM call has prompt + completion + tokens + cost + latency + a chain of tool calls + a probabilistic output. Without dedicated instrumentation, you are blind to hallucination, prompt regression, and cost overruns.
 
+## Boundary with related skills
+
+- Use `node-observability` for the general tracing/metrics stack (propagation, histograms, alerting) this skill extends with GenAI spans.
+- Use `node-llm-cost-engineering` for token budgets and model routing — cost decisions, not their instrumentation.
+- Use `node-llm-application-patterns` for the application structure whose calls this skill instruments.
+- Use `node-runtime-validation` to validate model output before it is logged as "verified" or acted on.
+
 ## Activate when
 
 - Adding observability to an LLM-backed feature.
@@ -52,6 +59,39 @@ LLM observability is distinct from general backend observability. Each LLM call 
 5. Add alerts: cost > budget, latency > SLO, error rate > threshold, hallucination rate > threshold.
 6. Add a prompt regression test: golden outputs on a fixed prompt; diff when prompt changes.
 7. Add PII redaction before logging prompts.
+
+**Reference example** — one GenAI span per LLM call carrying model, token usage, and cost as attributes (the OpenTelemetry GenAI semconv fields), so traces, cost roll-ups, and latency SLOs all derive from the same span:
+
+```ts
+import { trace, type Span } from "@opentelemetry/api";
+
+const tracer = trace.getTracer("llm");
+
+export async function withLlmSpan<T>(
+  feature: string,
+  model: string,
+  call: (span: Span) => Promise<T>,
+): Promise<T> {
+  return tracer.startActiveSpan(`llm.${feature}`, async (span) => {
+    span.setAttribute("gen_ai.request.model", model);
+    try {
+      const out = await call(span);
+      const usage = usageOf(out);                                   // { prompt, completion } from the SDK
+      span.setAttribute("gen_ai.usage.prompt_tokens", usage.prompt);
+      span.setAttribute("gen_ai.usage.completion_tokens", usage.completion);
+      span.setAttribute("llm.cost_usd", costOf(model, usage));      // price x tokens, recorded per call
+      return out;
+    } catch (err) {
+      span.recordException(err as Error);   // errors always sample at 100%; latency SLO derives from this span
+      throw err;
+    } finally {
+      span.end();
+    }
+  });
+}
+```
+
+Because the attributes ride the span, the trace tree nests LLM calls under the request that caused them, the daily cost roll-up is `sum(llm.cost_usd) by tenant`, and the p99 alert reads the same span — three consumers, one instrumentation point.
 
 ## Failure modes
 
