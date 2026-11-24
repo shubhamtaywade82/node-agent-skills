@@ -7,7 +7,14 @@ description: Use when designing or changing Node.js logging, metrics, tracing, O
 
 ## Purpose
 
-Observability is the difference between "we know it failed" and "we know why it failed." Logs, metrics, traces, and health checks are first-class engineering artifacts, not afterthoughts.
+Observability is the difference between "we know it failed" and "we know why it failed." Logs, metrics, traces, and health checks are first-class engineering artifacts, not afterthoughts. The design rule is correlation: every signal must join on the same identifiers (`trace_id`, `request_id`, `route`), so one incident can be traced across logs, metrics, dashboards, and the trace waterfall without human guesswork.
+
+## Boundary with related skills
+
+- Use `node-llm-observability` for LLM-specific signals (token usage, prompt/response tracing, model latency and cost).
+- Use `node-runtime-diagnostics` for process-level forensics (heap, event-loop lag, CPU profiles) when something is already wrong.
+- Use `node-release-engineering` for deploy markers and canary comparison in dashboards.
+- Use `node-production-runtime` for the runtime configuration (log level, sampling, exporters) per environment.
 
 ## Activate when
 
@@ -55,6 +62,40 @@ Observability is the difference between "we know it failed" and "we know why it 
 6. Wire health checks: `/healthz` returns 200 if the process is running; `/readyz` returns 200 only after dependencies are reachable.
 7. Wire audit logging: a separate logger that writes to a separate destination (file, table, service) with append-only semantics.
 8. Test under load: confirm logs are structured, metrics are exported, traces are propagated, health checks reflect dependency state.
+
+**Reference example** — correlated request logging with redaction, and the `/healthz` vs `/readyz` split:
+
+```ts
+import pino from "pino";
+import { randomUUID } from "node:crypto";
+
+// One logger, startup-configured: JSON in prod, level from env, redaction paths explicit.
+export const log = pino({
+  level: process.env.LOG_LEVEL ?? "info",
+  redact: { paths: ["req.headers.authorization", "req.body.password", "*.token", "*.email"], censor: "[redacted]" },
+});
+
+// Middleware: every log line inside the request carries the same correlation IDs.
+app.use((req, res, next) => {
+  const requestId = (req.headers["x-request-id"] as string) ?? randomUUID();
+  res.setHeader("x-request-id", requestId);
+  (req as any).log = log.child({ request_id: requestId, route: req.route?.path ?? "unmatched", method: req.method });
+  (req as any).log.info({ url: req.url }, "request.start");
+  res.on("finish", () =>
+    (req as any).log.info({ status: res.statusCode, duration_ms: Date.now() - (req as any).start }, "request.end"));
+  (req as any).start = Date.now();
+  next();
+});
+
+// Liveness vs readiness are DIFFERENT questions with different answers.
+app.get("/healthz", (_req, res) => res.status(200).json({ status: "ok" }));   // process is up. Never checks deps.
+app.get("/readyz", async (_req, res) => {                                     // deps reachable. Gates traffic.
+  const dbOk = await db.ping().then(() => true, () => false);
+  res.status(dbOk ? 200 : 503).json({ db: dbOk });
+});
+```
+
+The example carries the discipline: structured JSON with `request_id`/`route` correlation on every line, redaction declared as paths (not hope), and the liveness/readiness split — `/healthz` answers "should the process be restarted", `/readyz` answers "should this pod receive traffic"; conflating them kills traffic during rolling deploys.
 
 ## Failure modes
 
