@@ -27,7 +27,8 @@ The `adapter_skills:` registry historically registered near-duplicate skills alo
 
 ## Skill depth
 
-Most `SKILL.md` files are ~2 KB scaffolds. Enrich toward the ruby-agent-skills baseline (~4–5 KB with code examples, decision trees, and source citations), starting with the highest-traffic routing targets. Keep each skill under 500 lines; move deep knowledge into skill-local `references/` one level deep.
+- [x] Highest-traffic routing targets enriched (production-readiness increment 2): `node-build-engineering` (26 routing cases), `node-repository-forensics` (22), `node-retry-timeouts` (9), `node-zero-downtime` (8), `node-idempotency` (7), `node-database-engineering` (6), `node-transactions` (6), `node-integration-testing` (6) — each now carries purpose, boundary-with-related-skills, decision tables, a complete reference example, failure modes, checklists, and source foundations.
+- The remaining ~330 skills are ~2 KB scaffolds. Continue enriching in routing-case-frequency order (next band: `node-migrations`, `node-event-driven-architecture`, `node-rest-api-design`, `node-openapi`, and the 5–6× cluster). Keep each skill under 500 lines; move deep knowledge into skill-local `references/` one level deep.
 
 ## Cross-pack pinning
 
