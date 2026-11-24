@@ -1729,7 +1729,7 @@ cross_pack:
       language: ruby
     - pack: react-agent-skills
       repo: https://github.com/shubhamtaywade82/react-agent-skills
-      pinned_ref: main
+      pinned_ref: v0.1.0
       snapshot: data/cross-pack/react-agent-skills.snapshot.yml
       seam_skill: node-react-integration
       language: typescript
