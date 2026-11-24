@@ -7,7 +7,15 @@ description: Use when designing or changing authentication, authorization, JWT, 
 
 ## Purpose
 
-Authentication establishes identity. Authorization establishes permission. Confusing them is the single most common Node backend security defect. This skill owns the boundary where untrusted network identity becomes trusted application principal.
+Authentication establishes identity. Authorization establishes permission. Confusing them is the single most common Node backend security defect. This skill owns the boundary where untrusted network identity becomes trusted application principal — and where every permission decision is enforced once, at a boundary, against the data layer, not sprinkled through handlers where one omission is an open endpoint.
+
+## Boundary with related skills
+
+- Use `node-session-management` for the session lifecycle contract in depth (rotation, revocation lists, device sessions).
+- Use `node-rate-limiting` for the limiter implementation detail (algorithms, stores, keying) — this skill owns the policy placement.
+- Use `node-runtime-validation` for validating the credential inputs themselves (validated input is still not authorized input).
+- Use `node-http-engineering` for the transport boundary the auth middleware sits in.
+- Use `node-database-advisory-locks` when credential rotation or lockout state needs concurrency control.
 
 ## Activate when
 
@@ -57,6 +65,37 @@ Authentication establishes identity. Authorization establishes permission. Confu
 6. For rate limiting: pick the policy (per-IP, per-user, per-tenant) and the limit. Document the lockout escape hatch (CAPTCHA, admin unlock, time-based).
 7. For password storage: pick the algorithm and parameters. Write a test that confirms a password can be verified after a restart.
 8. Verify the threat model with a negative test per defense: forged token → rejected; revoked session → rejected; cross-tenant read → empty.
+
+**Reference example** — authn at the boundary middleware, authz as one policy function per resource, tenant scoping in the data layer:
+
+```ts
+// 1. AuthN: boundary middleware — the ONLY place identity is established.
+const authn = async (req: Request, res: Response, next: NextFunction) => {
+  const token = req.cookies.session;                       // HttpOnly cookie, never a header-only JWT
+  const principal = await verifySession(token);            // checks revocation list + expiry
+  if (!principal) return next(new HttpError(401, "unauthenticated"));
+  (req as AuthedRequest).principal = principal;            // trusted from here inward
+  next();
+};
+
+// 2. AuthZ: ONE policy function per resource type — handlers call it, they don't improvise.
+type OrderPolicy = (principal: Principal, order: OrderRow) => boolean;
+const canReadOrder: OrderPolicy = (p, order) => p.tenantId === order.tenantId;  // tenant + role in one place
+
+// 3. Tenant isolation in the data layer: RLS assumption made explicit and testable.
+export async function getOrder(db: TenantDb, orderId: string): Promise<OrderRow | null> {
+  // TenantDb sets `SET LOCAL app.tenant_id` per transaction (Postgres RLS enforces the filter),
+  // so even a raw-SQL query cannot cross tenants — isolation is not handler discipline.
+  return db.oneOrNone<OrderRow>("SELECT * FROM orders WHERE id = $1", [orderId]);
+}
+
+// Negative tests carry the threat model:
+//   forged token            -> 401
+//   cross-tenant order read -> 404 (not 403: don't leak existence)
+//   revoked-refresh reuse   -> all sessions for that user revoked
+```
+
+The shape to recognize: identity is established once at the boundary, permission is one auditable function per resource, and tenant isolation is structural (RLS) so a forgotten `WHERE` clause cannot leak data.
 
 ## Failure modes
 
