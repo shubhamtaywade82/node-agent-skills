@@ -45,6 +45,29 @@ jobs:
           title: "chore(release): version skills and pack"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # Cut the immutable v-tag + GitHub Release exactly when a release lands.
+      # Gate: only the squash-merged Release PR commit carries this headline,
+      # so feature/infra merges (same version, untagged) never get tagged at
+      # the wrong tree. Idempotent: an existing tag short-circuits.
+      - name: Tag immutable release
+        run: |
+          HEADLINE=$(git log -1 --pretty=%s)
+          case "$HEADLINE" in
+            "chore(release): version skills and pack"*) ;;
+            *) echo "not a release commit ($HEADLINE); skipping tag"; exit 0 ;;
+          esac
+          VERSION=$(node -p "require('./package.json').version")
+          if git rev-parse -q --verify "refs/tags/v${VERSION}" >/dev/null; then
+            echo "v${VERSION} already tagged; skipping"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git tag -a "v${VERSION}" -m "node-agent-skills v${VERSION}"
+          git push origin "v${VERSION}"
+          gh release create "v${VERSION}" --title "node-agent-skills v${VERSION}" --generate-notes --verify-tag
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Summary
         if: always()
         run: |
