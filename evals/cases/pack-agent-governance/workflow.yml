@@ -1,13 +1,13 @@
 cases:
   - name: skill-pack-format
-    skill: node-skill-pack-format
-    prompt: "Use node-skill-pack-format to carry out or review a production backend-agent workflow."
+    skill: node-skill-packaging
+    prompt: "Use node-skill-packaging (governing format) to carry out or review a production backend-agent workflow."
     pressure: ["repository evidence", "scope control", "failure path", "verification"]
     expected_invariants: ["source-of-truth preserved", "bounded scope", "deterministic verification", "no fabricated completion"]
 
   - name: skill-pack-compatibility
-    skill: node-skill-pack-compatibility
-    prompt: "Use node-skill-pack-compatibility to carry out or review a production backend-agent workflow."
+    skill: node-skill-pack-installation
+    prompt: "Use node-skill-pack-installation (governing compatibility) to carry out or review a production backend-agent workflow."
     pressure: ["repository evidence", "scope control", "failure path", "verification"]
     expected_invariants: ["source-of-truth preserved", "bounded scope", "deterministic verification", "no fabricated completion"]
 
@@ -18,38 +18,38 @@ cases:
     expected_invariants: ["source-of-truth preserved", "bounded scope", "deterministic verification", "no fabricated completion"]
 
   - name: skill-pack-routing-governance
-    skill: node-skill-pack-routing-governance
-    prompt: "Use node-skill-pack-routing-governance to carry out or review a production backend-agent workflow."
+    skill: node-skill-pack-manifest-governance
+    prompt: "Use node-skill-pack-manifest-governance (governing routing-governance) to carry out or review a production backend-agent workflow."
     pressure: ["repository evidence", "scope control", "failure path", "verification"]
     expected_invariants: ["source-of-truth preserved", "bounded scope", "deterministic verification", "no fabricated completion"]
 
   - name: skill-pack-evaluation-governance
-    skill: node-skill-pack-evaluation-governance
-    prompt: "Use node-skill-pack-evaluation-governance to carry out or review a production backend-agent workflow."
+    skill: node-skill-pack-manifest-governance
+    prompt: "Use node-skill-pack-manifest-governance (governing evaluation-governance) to carry out or review a production backend-agent workflow."
     pressure: ["repository evidence", "scope control", "failure path", "verification"]
     expected_invariants: ["source-of-truth preserved", "bounded scope", "deterministic verification", "no fabricated completion"]
 
   - name: skill-pack-source-governance
-    skill: node-skill-pack-source-governance
-    prompt: "Use node-skill-pack-source-governance to carry out or review a production backend-agent workflow."
+    skill: node-skill-packaging
+    prompt: "Use node-skill-packaging (governing source-governance) to carry out or review a production backend-agent workflow."
     pressure: ["repository evidence", "scope control", "failure path", "verification"]
     expected_invariants: ["source-of-truth preserved", "bounded scope", "deterministic verification", "no fabricated completion"]
 
   - name: skill-pack-versioning
-    skill: node-skill-pack-versioning
-    prompt: "Use node-skill-pack-versioning to carry out or review a production backend-agent workflow."
+    skill: node-skill-pack-manifest-governance
+    prompt: "Use node-skill-pack-manifest-governance (governing versioning) to carry out or review a production backend-agent workflow."
     pressure: ["repository evidence", "scope control", "failure path", "verification"]
     expected_invariants: ["source-of-truth preserved", "bounded scope", "deterministic verification", "no fabricated completion"]
 
   - name: skill-pack-release
-    skill: node-skill-pack-release
-    prompt: "Use node-skill-pack-release to carry out or review a production backend-agent workflow."
+    skill: node-skill-packaging
+    prompt: "Use node-skill-packaging (governing release) to carry out or review a production backend-agent workflow."
     pressure: ["repository evidence", "scope control", "failure path", "verification"]
     expected_invariants: ["source-of-truth preserved", "bounded scope", "deterministic verification", "no fabricated completion"]
 
   - name: skill-pack-distribution
-    skill: node-skill-pack-distribution
-    prompt: "Use node-skill-pack-distribution to carry out or review a production backend-agent workflow."
+    skill: node-skill-pack-installation
+    prompt: "Use node-skill-pack-installation (governing distribution) to carry out or review a production backend-agent workflow."
     pressure: ["repository evidence", "scope control", "failure path", "verification"]
     expected_invariants: ["source-of-truth preserved", "bounded scope", "deterministic verification", "no fabricated completion"]
 
