@@ -17,7 +17,6 @@ const skills = [
   "node-secure-coding",
   "node-legacy-modernization",
   "node-change-impact-analysis",
-  "node-migration-assistant",
   "node-architecture-decision-records",
   "node-test-data-management",
   "node-flaky-test-engineering",
@@ -47,7 +46,7 @@ test("Wave 6 skills have files and evaluation coverage", async () => {
     assert.match(text, new RegExp(`^name: ${skill}$`, "m"));
     assert.match(evals, new RegExp(`skill: ${skill}`, "m"));
   }
-  assert.equal([...manifest.matchAll(/^  - name: ([a-z0-9-]+)$/gm)].length, 338);
+  assert.equal([...manifest.matchAll(/^  - name: ([a-z0-9-]+)$/gm)].length, 322);
 });
 
 test("Wave 6 adapters have registry, skill, README, and source metadata", async () => {
