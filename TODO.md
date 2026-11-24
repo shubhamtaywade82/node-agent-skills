@@ -12,11 +12,11 @@
 
 The `adapter_skills:` registry historically registered near-duplicate skills alongside the main `skills:` registry. Two confirmed pairs were merged in the production-readiness pass. The following clusters overlap and need a human review before any merge:
 
-- Read replicas: `node-read-replica-routing`, `node-database-read-replica-routing`, `node-read-replicas`, `node-database-read-replicas`.
+- Read replicas: `node-read-replica-routing`, `node-database-read-replica-routing`, `node-database-read-replicas` (an earlier note listed a fourth name, `node-read-replicas`; no such skill exists in `skills/` or either manifest registry).
 - Outbox: `node-outbox`, `node-transactional-outbox`.
 - Deprecation: `node-deprecation-management`, `node-deprecation-planning`, `node-api-deprecation`.
 - Migrations: `node-migrations`, `node-migration-assistant`, `node-database-migrations-production`.
-- Skill-pack governance: thirteen `node-skill-pack-*` skills. Consider consolidating to two or three routing skills and moving process detail into `AGENTS.md` and `bin/` scripts, matching the ruby-agent-skills pattern (zero separate governance skills).
+- Skill-pack governance: twelve `node-skill-pack*` skills (eleven `node-skill-pack-*` plus `node-skill-packaging`, all registered under `adapter_skills:`). Consider consolidating to two or three routing skills and moving process detail into `AGENTS.md` and `bin/` scripts, matching the ruby-agent-skills pattern (zero separate governance skills).
 
 ## Missing infrastructure (create before benchmark campaigns)
 
