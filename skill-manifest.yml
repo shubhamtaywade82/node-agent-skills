@@ -115,7 +115,7 @@ skills:
     version: 0.1.0
   - name: node-migrations
     category: persistence
-    triggers: [migration, schema change, expand contract, backfill, DDL]
+    triggers: [migration, schema change, expand contract, backfill, DDL, production migration, online DDL, schema rollout, migration plan, upgrade plan]
     version: 0.1.0
   - name: node-connection-pooling
     category: persistence
@@ -137,13 +137,9 @@ skills:
     category: distributed
     triggers: [Kafka, broker, topic, partition, consumer group, offset, replay]
     version: 0.1.0
-  - name: node-outbox
-    category: distributed
-    triggers: [outbox, relay, event publication, durable event, replay]
-    version: 0.1.0
   - name: node-transactional-outbox
     category: distributed
-    triggers: [transactional outbox, dual write, atomic event, event relay]
+    triggers: [transactional outbox, dual write, atomic event, event relay, outbox, relay, event publication, durable event, replay]
     version: 0.1.0
   - name: node-retry-timeouts
     category: reliability
@@ -188,10 +184,6 @@ skills:
   - name: node-zero-downtime
     category: production
     triggers: [zero downtime, readiness, drain, rolling deploy, graceful shutdown]
-    version: 0.1.0
-  - name: node-database-migrations-production
-    category: production
-    triggers: [production migration, online DDL, expand contract, backfill, schema rollout]
     version: 0.1.0
   - name: node-incident-engineering
     category: operations
@@ -437,10 +429,6 @@ skills:
     category: engineering
     triggers: [change impact, dependency graph, consumers, compatibility]
     version: 0.1.0
-  - name: node-migration-assistant
-    category: tooling
-    triggers: [migration plan, upgrade plan, rollback, roll-forward]
-    version: 0.1.0
   - name: node-architecture-decision-records
     category: tooling
     triggers: [ADR, architecture decision, trade-offs, alternatives]
@@ -459,7 +447,7 @@ skills:
     version: 0.1.0
   - name: node-api-deprecation
     category: api
-    triggers: [API deprecation, sunset, compatibility window, consumer migration]
+    triggers: [API deprecation, sunset, compatibility window, consumer migration, deprecation, migration path, deprecation plan, API removal]
     version: 0.1.0
   - name: node-cqrs
     category: architecture
@@ -491,7 +479,7 @@ skills:
     version: 0.1.0
   - name: node-database-read-replicas
     category: persistence
-    triggers: [read replica, replication lag, primary, consistency]
+    triggers: [read replica, replication lag, primary, consistency, read routing, read-after-write, replica topology]
     version: 0.1.0
   - name: node-database-sharding
     category: persistence
@@ -957,10 +945,6 @@ skills:
 # See docs/CROSS_PACK_SCHEMA.md for the v3 contract.
 adapter_skills:
 
-  - name: node-read-replica-routing
-    category: persistence
-    triggers: [read, replica, routing]
-    version: 0.1.0
   - name: node-index-engineering
     category: persistence
     triggers: [index, engineering]
@@ -969,45 +953,13 @@ adapter_skills:
     category: observability
     triggers: [metric cardinality, labels, series explosion, route normalization]
     version: 0.1.0
-  - name: node-skill-pack-format
-    category: tooling
-    triggers: [Agent Skills, SKILL.md, skill format, frontmatter, progressive disclosure]
-    version: 0.1.0
-  - name: node-skill-pack-compatibility
-    category: tooling
-    triggers: [agent compatibility, portable skills, vendor neutral skills]
-    version: 0.1.0
   - name: node-skill-pack-manifest-governance
     category: tooling
-    triggers: [skill manifest, registry governance, manifest validation]
-    version: 0.1.0
-  - name: node-skill-pack-routing-governance
-    category: tooling
-    triggers: [skill routing, primary skill, secondary skill, routing rules]
-    version: 0.1.0
-  - name: node-skill-pack-evaluation-governance
-    category: tooling
-    triggers: [skill evaluations, eval cases, regression benchmark, eval governance]
-    version: 0.1.0
-  - name: node-skill-pack-source-governance
-    category: tooling
-    triggers: [skill sources, documentation source, version scope, source governance]
-    version: 0.1.0
-  - name: node-skill-pack-versioning
-    category: tooling
-    triggers: [skill pack versioning, semantic version, compatibility change]
-    version: 0.1.0
-  - name: node-skill-pack-release
-    category: release
-    triggers: [skill pack release, release artifact, verified release]
-    version: 0.1.0
-  - name: node-skill-pack-distribution
-    category: tooling
-    triggers: [skill pack distribution, pack export, filesystem distribution]
+    triggers: [skill manifest, registry governance, manifest validation, skill routing governance, eval governance, semantic version, per-skill version, compatibility change]
     version: 0.1.0
   - name: node-skill-pack-installation
     category: tooling
-    triggers: [skill pack installation, install skills, agent skills directory]
+    triggers: [skill pack installation, install skills, agent skills directory, agent compatibility, portable skills, vendor neutral skills, pack distribution, pack export]
     version: 0.1.0
   - name: node-agent-progress-tracking
     category: tooling
@@ -1060,10 +1012,6 @@ adapter_skills:
   - name: node-generated-code-review
     category: build
     triggers: [generated code review, generated diff, schema source, codegen]
-    version: 0.1.0
-  - name: node-deprecation-management
-    category: api
-    triggers: [deprecation, migration path, compatibility window, API removal]
     version: 0.1.0
   - name: node-backward-compatibility-testing
     category: testing
@@ -1203,7 +1151,7 @@ adapter_skills:
     version: 0.1.0
   - name: node-skill-packaging
     category: agent
-    triggers: [skill packaging, release archive, skill distribution]
+    triggers: [skill packaging, release archive, skill distribution, skill format, SKILL.md, frontmatter, progressive disclosure, source governance, pack release, release artifact]
     version: 0.1.0
   - name: node-skill-discovery-contract
     category: agent
@@ -1237,10 +1185,6 @@ adapter_skills:
     category: build
     triggers: [deterministic codegen, reproducible generated artifacts]
     version: 0.1.0
-  - name: node-deprecation-planning
-    category: release
-    triggers: [deprecation plan, API deprecation, sunset]
-    version: 0.1.0
   - name: node-change-log-integrity
     category: release
     triggers: [changelog integrity, release metadata]
@@ -1248,10 +1192,6 @@ adapter_skills:
   - name: node-database-advisory-locks
     category: persistence
     triggers: [advisory lock, advisory locks, PostgreSQL advisory lock, cooperative serialization, cross-row coordination]
-    version: 0.1.0
-  - name: node-database-read-replica-routing
-    category: persistence
-    triggers: [read replica, replica lag, read routing, read-after-write]
     version: 0.1.0
   - name: node-deadlock-diagnostics
     category: persistence
@@ -1392,10 +1332,6 @@ adapter_skills:
   - name: node-llm-streaming
     category: ai
     triggers: [LLM streaming, SSE, WebSocket, token streaming, abort signal, mid-stream error, backpressure, heartbeat]
-    version: 0.1.0
-  - name: node-skill-pack-per-skill-versioning
-    category: tooling
-    triggers: [per-skill semver, version field, changeset, semantic version, skill version, release workflow]
     version: 0.1.0
 
 adapters:
