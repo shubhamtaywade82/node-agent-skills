@@ -21,7 +21,7 @@ Make TypeScript builds deterministic, debuggable, and aligned with package/runti
 - Use `node-build-engineering` for the compile/bundle/emit pipeline itself.
 - Use `typescript-package-publishing` (react pack) / repository packaging conventions when the question is the published package's public surface.
 - Use `node-repository-forensics` first to map what actually builds and what is generated.
-- Use `node-skill-pack-format` only for skill-pack authoring, not application builds.
+- Use `node-skill-packaging` only for skill-pack authoring, not application builds.
 
 ## Repository inspection
 

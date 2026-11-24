@@ -11,7 +11,6 @@ const skills = [
   ["node-caching", "caching"],
   ["node-queues", "queues"],
   ["node-message-brokers", "message-brokers"],
-  ["node-outbox", "outbox"],
   ["node-transactional-outbox", "transactional-outbox"],
 ];
 

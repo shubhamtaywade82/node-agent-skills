@@ -9,7 +9,7 @@ const manifest = await readFile(path.join(ROOT, "skill-manifest.yml"), "utf8");
 
 test("every registered skill has a version field", () => {
   const skills = [...manifest.matchAll(/^  - name: ([a-z0-9-]+)$/gm)].map((m) => m[1]);
-  assert.equal(skills.length, 338);
+  assert.equal(skills.length, 322);
   const versions = [...manifest.matchAll(/^    version: (\d+\.\d+\.\d+)$/gm)];
   assert.equal(versions.length, skills.length, "every skill must have a version field");
   for (const match of versions) {

@@ -72,7 +72,7 @@ cases:
     expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
 
   - name: read-replica-routing
-    skill: node-read-replica-routing
+    skill: node-database-read-replicas
     prompt: "Review or implement a production Node.js backend change involving  read replica routing."
     pressure: ["existing conventions", "failure path", "security boundary", "resource limits"]
     expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]

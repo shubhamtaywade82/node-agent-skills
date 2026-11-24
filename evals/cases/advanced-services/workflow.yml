@@ -72,7 +72,7 @@ cases:
     expected_invariants: ["explicit ownership", "bounded failure", "observable behavior", "tests prove the contract"]
 
   - name: migration-assistant
-    skill: node-migration-assistant
+    skill: node-migrations
     prompt: "Implement or review a production Node.js backend change involving  migration assistant."
     pressure: ["existing conventions", "failure path", "compatibility", "security"]
     expected_invariants: ["explicit ownership", "bounded failure", "observable behavior", "tests prove the contract"]

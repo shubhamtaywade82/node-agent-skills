@@ -44,20 +44,20 @@ cases:
     prompt: "Investigate a production data migration request whose rollback authority and retention policy are absent from repository evidence and whose execution could be irreversible."
     pressure: ["existing conventions", "failure path", "security boundary", "resource limits"]
     routing_signals: ["irreversible","human decision","authority","production data","policy conflict"]
-    negative_signals: ["node-migration-assistant","node-agent-rollback-planning"]
+    negative_signals: ["node-migrations","node-agent-rollback-planning"]
     evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
     disambiguation: "Escalate the minimum unresolved decision without performing the destructive action."
-    must_not_select: ["node-migration-assistant","node-agent-rollback-planning"]
+    must_not_select: ["node-migrations","node-agent-rollback-planning"]
     expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
   - name: agent-rollback-planning
     skill: node-agent-rollback-planning
     prompt: "Plan recovery for a database schema rollout that writes a new state shape while old application instances may remain live during deployment."
     pressure: ["existing conventions", "failure path", "security boundary", "resource limits"]
     routing_signals: ["roll-forward","state","mixed versions","expand contract","recovery trigger"]
-    negative_signals: ["node-migrations","node-database-migrations-production"]
+    negative_signals: ["node-migrations","node-zero-downtime"]
     evidence: ["package/dependency configuration", "owning implementation", "focused tests", "failure-path behavior"]
     disambiguation: "Account for durable state and mixed-version compatibility rather than only reverting Git."
-    must_not_select: ["node-migrations","node-database-migrations-production"]
+    must_not_select: ["node-migrations","node-zero-downtime"]
     expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
   - name: agent-commit-hygiene
     skill: node-agent-commit-hygiene
@@ -320,7 +320,7 @@ cases:
     must_not_select: ["node-caching","node-connection-pooling"]
     expected_invariants: ["explicit ownership", "bounded resources", "observable behavior", "tests prove the contract"]
   - name: outbox-pattern
-    skill: node-outbox
+    skill: node-transactional-outbox
     prompt: "Publish a domain event after a database transaction without creating a dual-write gap between durable state and event delivery."
     pressure: ["cross-skill ambiguity", "failure path", "security boundary", "resource limits"]
     routing_signals: ["outbox record","dual write","event relay","durable publication"]

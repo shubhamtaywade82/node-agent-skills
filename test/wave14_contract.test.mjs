@@ -19,10 +19,8 @@ const skills = [
   "node-generated-artifact-determinism",
   "node-release-notes-engineering",
   "node-maintenance-engineering",
-  "node-deprecation-planning",
   "node-change-log-integrity",
   "node-database-advisory-locks",
-  "node-database-read-replica-routing",
   "node-query-plan-engineering",
   "node-postgres-locking",
   "node-deadlock-diagnostics",
@@ -41,7 +39,7 @@ test("Wave 14 skills have files and evaluation coverage", async () => {
     assert.match(text, new RegExp("^name: " + skill + "$", "m"));
     assert.match(evals, new RegExp("skill: " + skill, "m"));
   }
-  assert.equal([...manifest.matchAll(/^  - name: ([a-z0-9-]+)$/gm)].length, 338);
+  assert.equal([...manifest.matchAll(/^  - name: ([a-z0-9-]+)$/gm)].length, 322);
 });
 
 test("Wave 14 adapters have registry, skill, README, and source metadata", async () => {
