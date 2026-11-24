@@ -1,6 +1,6 @@
 ---
 name: node-migrations
-description: Use when changing production database schemas, writing migrations, backfilling data, removing columns, or coordinating schema changes across multiple application versions.
+description: Use when changing production database schemas, writing migrations, backfilling data, removing columns, planning a schema or dependency rollout, or coordinating changes across mixed application versions under live traffic.
 license: MIT
 ---
 
@@ -15,13 +15,14 @@ Treat migrations as compatibility work, not merely schema editing. Production de
 - Adding, removing, or renaming columns, indexes, constraints, tables, or enum values.
 - Backfilling existing rows.
 - Deploying schema changes with zero or low downtime requirements.
+- Planning a non-schema migration (framework, package, runtime, API) that needs ordered, reversible steps.
 
 ## Boundary with related skills
 
-- Use `node-migrations` for schema change sequencing and rollout compatibility.
-- Use `node-database-migrations-production` for the production runbook mechanics (monitoring, lock timeouts, checkpoints) in this pack.
+- Use `node-migrations` for schema change sequencing, production runbook mechanics (lock estimation, observability, operator controls), and migration planning.
 - Use `node-zero-downtime` for the process lifecycle of the deploy surrounding the migration.
 - Use `node-transactions` for backfill batching semantics.
+- Use `node-api-deprecation` when the migration retires a public surface rather than schema.
 
 ## Repository inspection
 
@@ -36,6 +37,11 @@ Inspect migration tooling (Knex/Drizzle/Prisma/node-pg-migrate), deploy order, r
 | Backfill | Batch large backfills; avoid holding long locks. |
 | Indexes | Use online/concurrent mechanisms where database/version supports them and traffic requires them. |
 | Defaults | Verify database-specific rewrite and lock behavior before rollout. |
+| Locks | Estimate lock duration and conflict impact before execution; observe lock waits during rollout. |
+| Rehearsal | Run the migration against a production-scale snapshot before production; small datasets hide lock and timing behavior. |
+| Operator controls | Define pause, resume, checkpoint, and roll-forward/repair procedures before production execution. |
+| Replicas | Schema expansion must not break existing replicas — old binaries may need to start against the expanded schema. |
+| Destruction | Remove old columns/data only after telemetry proves no consumer (code, queries, dashboards, reports) uses them. |
 | Rollback | Prefer roll-forward-compatible recovery; do not assume arbitrary DDL rollback is safe. |
 
 Change classification determines the path:
@@ -111,6 +117,8 @@ CREATE INDEX CONCURRENTLY idx_orders_status ON orders (status);
 -- Failure leaves an INVALID index: check pg_index.indisvalid before relying on it.
 ```
 
+**Non-schema migrations** — the same sequencing discipline covers framework, package, runtime, and API migrations: enumerate preconditions, define a compatibility window in which old and new coexist, order steps so each is independently deployable, and distinguish rollback (undo an applied step) from roll-forward (fix by continuing) when a step is irreversible. Write the plan as ordered, checkable steps before touching code — a migration plan that only exists in someone's head cannot be paused, resumed, or reviewed.
+
 ## Failure modes
 
 - Rename breaks old binaries during mixed-version deploys — a single `ALTER TABLE ... RENAME` deployed with the new app while old app instances still reference the old name.
@@ -120,10 +128,14 @@ CREATE INDEX CONCURRENTLY idx_orders_status ON orders (status);
 - Multiple deploys race to apply incompatible migrations — two CI pipelines merging conflicting migration numbers; enforce sequential application and a single migration lock table.
 - `CREATE INDEX` (non-concurrent) on a hot table timing out or queuing all writes behind it.
 - Failed `CREATE INDEX CONCURRENTLY` leaving an invalid index that silently never serves queries.
+- DDL queues behind a long-running transaction and blocks user traffic — no lock-wait observability, so the blockage is discovered from user reports.
+- A migration fails halfway with no checkpoint — resume requires guessing which rows already moved.
+- Old replicas cannot start against the expanded schema after a partial rollout.
+- Production cleanup removes data an unobserved consumer (report, dashboard, offline job) still reads.
 
 ## Verification
 
-Test migration ordering against old/new app versions, lock impact, resume/retry behavior, partial backfill, and cleanup. Concretely: (a) run old app + migration 1 → old app still functions (reads user_name, writes both); (b) kill the backfill mid-run → restart resumes from checkpoint with zero double-work; (c) mixed-version test — new app reads display_name while migration 2 is partially complete; (d) pg_dump/index audit confirms the concurrent index is valid; (e) deploy the contract migration with an old-version instance still running → it fails the readiness gate (by design, before production).
+Test migration ordering against old/new app versions, lock impact, resume/retry behavior, partial backfill, and cleanup. Concretely: (a) run old app + migration 1 → old app still functions (reads user_name, writes both); (b) kill the backfill mid-run → restart resumes from checkpoint with zero double-work; (c) mixed-version test — new app reads display_name while migration 2 is partially complete; (d) pg_dump/index audit confirms the concurrent index is valid; (e) deploy the contract migration with an old-version instance still running → it fails the readiness gate (by design, before production); (f) rehearsal on a production-scale snapshot exercises lock waits and timing that small datasets hide; (g) pause/resume the migration runner mid-flight and verify operator controls work as documented.
 
 ## Sources
 
