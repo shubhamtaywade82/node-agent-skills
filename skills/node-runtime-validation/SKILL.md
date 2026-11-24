@@ -7,7 +7,15 @@ description: Use when validating untrusted JSON, external input, environment var
 
 ## Purpose
 
-TypeScript types do not validate runtime data. JSON, env vars, queue payloads, webhook bodies, and external API responses are all `unknown` until proven otherwise. This skill owns the boundary where untrusted bytes become typed values.
+TypeScript types do not validate runtime data. JSON, env vars, queue payloads, webhook bodies, and external API responses are all `unknown` until proven otherwise. This skill owns the boundary where untrusted bytes become typed values: one deliberate parse per source, schema-derived types, bounded inputs, and failures that name the field without leaking the schema.
+
+## Boundary with related skills
+
+- Use `node-http-engineering` for the transport contract around the boundary (error envelope, status mapping, body limits).
+- Use `node-auth-security` when the input decides identity or permission — validated input is not authorized input.
+- Use `node-openapi` when the validation schema must double as the published API contract.
+- Use `node-webhooks` for the webhook-specific envelope: raw-body preservation before parsing, signature verification before schema parsing.
+- Use `node-external-integrations` for validating third-party responses at the egress/ingress seam.
 
 ## Activate when
 
@@ -51,6 +59,46 @@ TypeScript types do not validate runtime data. JSON, env vars, queue payloads, w
 5. Validate at the boundary; on failure, return a stable error envelope with a correlation ID.
 6. For env vars: validate at startup, fail fast, log the missing/invalid variable name (not its value if sensitive).
 7. Add a property-based test that feeds the schema random inputs and confirms rejection within the bound.
+
+**Reference example** — startup env validation (fail fast) and a webhook body boundary (strict, bounded):
+
+```ts
+import { z } from "zod";
+
+// 1. Environment: validated once at startup; the server refuses to boot misconfigured.
+const Env = z.object({
+  PORT: z.coerce.number().int().min(1).max(65535),
+  DATABASE_URL: z.string().url(),
+  FEATURE_FLAGS: z.string().default("").transform((s) => new Set(s.split(",").filter(Boolean))),
+});
+const parsed = Env.safeParse(process.env);
+if (!parsed.success) {
+  console.error("Invalid environment", parsed.error.issues.map((i) => i.path.join("."))); // names, not values
+  process.exit(1);
+}
+export const env = parsed.data;   // the only trusted configuration object in the process
+
+// 2. Webhook body: strict (unknown keys rejected), bounded (DoS-safe), compiled once.
+const webhookSchema = z
+  .object({
+    eventId: z.string().uuid(),
+    occurredAt: z.string().datetime(),                      // real ISO-8601, not any string
+    payload: z.record(z.string(), z.unknown()),             // opaque, but bounded below
+  })
+  .strict()                                                 // unknown keys are a contract violation
+  .refine((b) => JSON.stringify(b.payload).length <= 64 * 1024, { message: "payload too large" });
+type WebhookBody = z.infer<typeof webhookSchema>;           // the type IS the schema — no drift
+
+export function parseWebhook(rawBody: Buffer): WebhookBody {
+  const result = webhookSchema.safeParse(JSON.parse(rawBody.toString("utf8")));
+  if (!result.success) {
+    throw new ValidationError(400, result.error.issues.map((i) => `${i.path.join(".")}: ${i.message}`).join("; "));
+  }
+  return result.data;
+}
+```
+
+Both examples follow the same discipline: parse (not cast) at one named boundary, `strict()` where the producer is known, bounds on size, errors that name fields without echoing the schema, and the type derived from the schema so drift is impossible.
 
 ## Failure modes
 

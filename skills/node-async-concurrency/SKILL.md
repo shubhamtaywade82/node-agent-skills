@@ -7,7 +7,15 @@ description: Use when designing or changing Node.js Promise concurrency, cancell
 
 ## Purpose
 
-Treat async work as failure-prone and resource-bounded. The event loop is single-threaded; unbounded concurrency is the single most common cause of latency spikes, memory pressure, and cascading failures in Node backends.
+Treat async work as failure-prone and resource-bounded. The event loop is single-threaded; unbounded concurrency is the single most common cause of latency spikes, memory pressure, and cascading failures in Node backends. The discipline is threefold: every fan-out is bounded by a documented number, every async operation carries an `AbortSignal` tied to its caller's deadline, and shared mutable state is guarded by atomic mechanisms (DB constraints, compare-and-swap) — never by promise ordering.
+
+## Boundary with related skills
+
+- Use `node-production-runtime` for the process lifecycle that drains in-flight async work at shutdown.
+- Use `node-background-jobs-reliability` for queue-side concurrency (worker counts, backpressure, retries).
+- Use `node-worker-threads` for CPU-bound offloading with pool sizing.
+- Use `node-idempotency` for the safe-retry contract that bounded retries depend on.
+- Use `node-external-integrations` for downstream client pool/dispatcher configuration.
 
 ## Activate when
 
@@ -50,6 +58,45 @@ Treat async work as failure-prone and resource-bounded. The event loop is single
 5. Implement the deadline: derive from the caller's deadline; if none, set one explicitly.
 6. Test under saturation: feed the pipeline N+1 items where N is the bound; confirm the (N+1)th waits.
 7. Test cancellation: abort mid-flight; confirm resources are released, no leaked sockets.
+
+**Reference example** — bounded fan-out with deadline propagation to every downstream call:
+
+```ts
+import pLimit from "p-limit";
+
+// ONE end-to-end deadline per request; child timeouts derive from it, never exceed it.
+async function fetchAllPrices(skus: string[], opts: { signal: AbortSignal; deadlineMs: number }) {
+  const limit = pLimit(8);                                    // bound: 8 concurrent — tuned to the downstream
+                                                              // rate limit, not "whatever Promise.all does"
+  const childTimeout = Math.min(5_000, opts.deadlineMs);      // derived from the deadline, ≤ it
+  const results = await Promise.allSettled(
+    skus.map((sku) =>
+      limit(async () => {
+        const perCall = AbortSignal.any([opts.signal, AbortSignal.timeout(childTimeout)]);
+        const res = await fetch(`${PRICE_API}/${encodeURIComponent(sku)}`, { signal: perCall });
+        if (!res.ok) throw new Error(`price fetch failed: ${res.status}`);
+        return { sku, price: await res.json() } as const;
+      }),
+    ),
+  );
+
+  const ok = results.filter((r) => r.status === "fulfilled").map((r) => r.value);
+  const failed = results.filter((r) => r.status === "rejected").length;
+  if (failed === results.length && results.length > 0) throw new Error("all price lookups failed");
+  return { prices: ok, degraded: failed > 0 };                // partial success is a modeled outcome
+}
+
+// Caller: one deadline, threaded signal — client disconnect cancels everything below.
+app.get("/prices", async (req, res) => {
+  const out = await fetchAllPrices(String(req.query.skus).split(","), {
+    signal: req.abortSignal,                                  // request-scoped abort
+    deadlineMs: 8_000,
+  });
+  res.status(out.degraded ? 207 : 200).send(out);
+});
+```
+
+Every rule is visible: the bound is a number with a reason, the child timeout derives from the request deadline, `AbortSignal.any` composes caller-cancel with per-call timeout, `allSettled` models partial success instead of fail-fast, and a total failure is a thrown, typed outcome.
 
 ## Failure modes
 

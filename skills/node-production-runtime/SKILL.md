@@ -7,7 +7,15 @@ description: Use when designing or changing Node.js production runtime: graceful
 
 ## Purpose
 
-A Node process in production is supervised, signal-driven, and observable. Startup, readiness, liveness, and shutdown are explicit lifecycle phases. Skipping any phase causes rolling-deploy failures, alert storms, and data loss.
+A Node process in production is supervised, signal-driven, and observable. Startup, readiness, liveness, and shutdown are explicit lifecycle phases with owners: the supervisor owns restarts, the probe system owns traffic gating, and the process owns draining. Skipping any phase causes rolling-deploy failures, alert storms, and data loss — the classic signature is the deploy that 500s exactly during pod rotation.
+
+## Boundary with related skills
+
+- Use `node-observability` for the log/metric/trace wiring the lifecycle phases emit.
+- Use `node-http-engineering` for `server.close()` semantics, timeouts, and the drain contract at the transport layer.
+- Use `node-zero-downtime` for the deploy-side choreography (rolling order, migration gating) this skill's shutdown serves.
+- Use `node-async-concurrency` for the bounded drain of in-flight async work during shutdown.
+- Use `node-worker-threads` when worker lifecycle must join the shutdown sequence.
 
 ## Activate when
 
@@ -55,6 +63,39 @@ A Node process in production is supervised, signal-driven, and observable. Start
 5. Write the Dockerfile: multi-stage, non-root, minimal base, `.dockerignore` configured.
 6. Write the K8s manifest: `livenessProbe` to `/healthz`, `readinessProbe` to `/readyz`, `preStop: sleep 5`, `terminationGracePeriodSeconds` ≥ shutdown duration, resource requests and limits.
 7. Add a lifecycle test: start the process, hit `/readyz`, send SIGTERM, confirm exit within grace period.
+
+**Reference example** — the shutdown sequence as code, with a deadline per phase:
+
+```ts
+const server = fastify({ logger: true });
+let shuttingDown = false;
+
+// Readiness flips FIRST: the LB/K8s stops sending traffic before anything else moves.
+app.get("/readyz", (_req, reply) => {
+  if (shuttingDown) return reply.code(503).send({ ready: false });
+  return reply.code(depsHealthy() ? 200 : 503).send({ ready: !shuttingDown });
+});
+
+async function shutdown(signal: string) {
+  if (shuttingDown) return;
+  shuttingDown = true;
+  server.log.info({ signal }, "shutdown.start");
+
+  await withDeadline(server.close(), 10_000);        // (a) stop accepting, drain in-flight (≤10s)
+  await withDeadline(pool.end(), 5_000);             // (b) close DB pool
+  await withDeadline(redis.quit(), 2_000);           // (c) close queue/cache clients
+  server.log.flush();                                // (d) flush logs — last writes survive exit
+  process.exit(0);
+}
+const withDeadline = (p: Promise<unknown>, ms: number) =>
+  Promise.race([p, new Promise((_, rej) => setTimeout(() => rej(new Error("shutdown deadline")), ms))]);
+
+process.on("SIGTERM", () => void shutdown("SIGTERM"));
+process.on("SIGINT", () => void shutdown("SIGINT"));
+process.on("uncaughtException", (err) => { server.log.error(err); process.exit(1); }); // log + exit; supervisor restarts
+```
+
+Every phase has a deadline shorter than `terminationGracePeriodSeconds`, readiness flips before draining, and resources close in dependency order (HTTP → DB → cache → logs). The lifecycle test asserts: `readyz` goes 503 immediately, in-flight requests complete, exit lands inside the grace period.
 
 ## Failure modes
 
