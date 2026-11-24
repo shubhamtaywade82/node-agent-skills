@@ -9,6 +9,14 @@ description: Use when designing or changing Node.js third-party API clients, out
 
 External services are unreliable by default. Treat them as failure-prone: bounded timeouts, explicit retries with idempotency, circuit breakers, and observability that distinguishes "we failed" from "they failed."
 
+## Boundary with related skills
+
+- Use `node-runtime-validation` to validate the third-party response at the ingress seam — the downstream's schema is untrusted input too.
+- Use `node-idempotency` and `node-retry-timeouts` for the retry/idempotency mechanics this skill's table references; this skill owns the per-downstream policy, those own the mechanics.
+- Use `node-transactional-outbox` for the outbound webhook delivery path (outbox row + relay worker + DLQ).
+- Use `node-async-concurrency` for bounding in-flight calls and fan-out with deadline propagation.
+- Use `node-observability` for the metric/trace conventions (per-downstream latency, circuit state, retry counts).
+
 ## Activate when
 
 - Adding or changing an outbound HTTP client (Stripe, SendGrid, Resend, Twilio, Algolia, GitHub, internal services).
@@ -55,6 +63,46 @@ External services are unreliable by default. Treat them as failure-prone: bounde
 7. Add observability: per-downstream latency histogram, error rate, circuit state, retry count.
 8. For webhook delivery: write to outbox in the same DB transaction as the change; relay worker delivers with retry + DLQ.
 9. Test under failure: kill the downstream; confirm circuit opens, fallback engages, request completes (or fails clearly).
+
+**Reference example** — one outbound call with an explicit deadline, classified outcomes, trace propagation, and a validated response (the whole decision table in one wrapper):
+
+```ts
+import { request } from "undici";
+
+type Outcome<T> =
+  | { kind: "ok"; value: T }
+  | { kind: "retryable"; afterMs: number }   // 5xx, network error, 429 — back off, then retry
+  | { kind: "fatal"; reason: string };       // 4xx (except 429) — caller's bug, never retried
+
+export async function callDownstream<T>(
+  url: string,
+  init: { method: string; body?: string; idempotencyKey?: string },
+  parse: (raw: unknown) => T,                // the response is untrusted input too — validate it
+  deadlineMs = 5_000,
+): Promise<Outcome<T>> {
+  try {
+    const { statusCode, headers, body } = await request(url, {
+      method: init.method,
+      body: init.body,
+      headers: {
+        ...(init.idempotencyKey ? { "Idempotency-Key": init.idempotencyKey } : {}),
+        traceparent: currentTraceparent(),              // propagate trace context across the seam
+      },
+      headersTimeout: deadlineMs,                       // explicit deadline — never the default infinity
+      bodyTimeout: deadlineMs,
+    });
+    if (statusCode === 429) return { kind: "retryable", afterMs: Number(headers["retry-after"] ?? 1) * 1000 };
+    if (statusCode >= 500) return { kind: "retryable", afterMs: backoffWithJitter() };
+    if (statusCode >= 400) return { kind: "fatal", reason: `downstream responded ${statusCode}` };
+    return { kind: "ok", value: parse(await body.json()) };
+  } catch (err) {
+    metrics.increment(`downstream.error{host=${hostOf(url)}}`);   // "they failed" is visible as its own series
+    return { kind: "retryable", afterMs: backoffWithJitter() };   // network errors are retryable, classified once here
+  }
+}
+```
+
+Every policy from the table is pinned in code: the deadline is explicit, the error classification happens once (not per call site), the idempotency key rides on the retry, the response is parsed through a validator, and downstream failures surface as their own metric series — "they failed" never masquerades as "we failed".
 
 ## Failure modes
 
