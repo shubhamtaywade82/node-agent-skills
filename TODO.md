@@ -20,12 +20,12 @@ The `adapter_skills:` registry historically registered near-duplicate skills alo
 
 Survivors were enriched to the band depth baseline; manifest triggers, routing cases, eval corpora, and wave-contract count assertions were re-pointed in the same change.
 
-## Missing infrastructure (create before benchmark campaigns)
+## Missing infrastructure (RESOLVED 2026-11-24)
 
-- `benchmarks/` — no benchmark fixtures or campaign harness exists yet.
-- `mcp/` — no MCP server definitions (compare ruby-agent-skills, which ships MCP tooling).
-- `agent-recordings/` — no recorded agent runs for regression comparison.
-- `patterns/` — implementation-pattern guidance currently lives in `references/`; either rename for cross-pack consistency or document the deviation in `AGENTS.md`.
+- [x] `benchmarks/` — campaign registry added: `benchmarks/README.md` (harness contract per the AGENTS.md benchmark-integrity rules) + `benchmarks/manifest.yml` (schema; executable fixture seams pinned to `examples/`, which the Validate smoke tests already exercise; `campaigns:` empty until a real campaign is recorded — no fabricated results).
+- [x] `mcp/` — server definitions added: `mcp/README.md` + `mcp/permissions.yml`, a fail-closed capability policy classifying the five read-only tools the pack's MCP server (`lib/mcp-server.mjs`) actually exposes (`get_skill`, `route_prompt`, `route_cross_pack`, `list_skills`, `list_adapters`), following the cross-pack policy schema (schema_version 1, as ruby-agent-skills ships).
+- [x] `agent-recordings/` — recording format contract added (`agent-recordings/README.md`): per-set layout with `baseline/` vs `skills/` recordings, the `recording.json` provenance schema (context fingerprints, agent identity), mirroring ruby-agent-skills' recorded-campaign format. No fabricated recordings; the directory fills when a campaign runs.
+- [x] `patterns/` — deviation documented in AGENTS.md ("Repository completeness changes"): pattern guidance lives in `references/` in this pack by design; cross-pack tooling must treat the directory name as pack-specific.
 
 ## Skill depth
 
@@ -39,7 +39,9 @@ Survivors were enriched to the band depth baseline; manifest triggers, routing c
 
 ## Cross-pack pinning
 
-- [x] `cross_pack.companions` pins `react-agent-skills` to the immutable tag **`v0.1.0`** (the companion's first tagged release, cut at `eb7758f` after RELEASE.md-gated verification); the snapshot records the tagged commit. Observed follow-up: ruby-agent-skills has since released `v1.6.0` while this pack pins `v1.5.0` — evaluate the bump in a separate ownership decision. Future react releases: bump the pin deliberately per release, refreshing the snapshot to the tagged commit.
+- [x] `cross_pack.companions` pins `react-agent-skills` to the immutable tag **`v0.1.0`** (the companion's first tagged release, cut at `eb7758f` after RELEASE.md-gated verification); the snapshot records the tagged commit.
+- [x] ruby-agent-skills pin evaluated and bumped **`v1.5.0` → `v1.6.0`** (2026-11-24): inventory unchanged between the two tags (104 skills, zero `node-`-prefixed, collision intersection still empty); snapshot refreshed to the tagged commit `ad6701a` (the MCP-ecosystem release — its `mcp/permissions.yml` companion profiles are the reason to pin this tag rather than stay on v1.5.0). The v3 verifier passes with the refreshed snapshot.
+- [x] First immutable tag automation: the Release workflow now cuts the `v<version>` tag + GitHub Release exactly when a Release PR merges (headline-gated, idempotent) — companions can pin this pack on an immutable tag from the next release onward.
 
 ## Scheduled recheck
 
