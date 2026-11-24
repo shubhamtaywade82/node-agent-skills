@@ -9,6 +9,14 @@ description: Use when designing or changing Node.js backend module boundaries, d
 
 Design boundaries around ownership and dependency direction rather than framework folder names. The architecture layer is the longest-lived decision in a Node.js backend; getting it wrong produces the coupling, hidden cycles, and "service-layer dumping ground" patterns that take years to undo. This skill is the first one to load when you introduce a subsystem, move domain behavior, or add ports/adapters/dependency injection.
 
+## Boundary with related skills
+
+- Use `node-rest-api-design` for the HTTP shape on top of a module contract; this skill owns the boundary, that owns the transport contract.
+- Use `node-database-engineering` for the persistence adapter behind a repository port.
+- Use `node-event-driven-architecture` when the integration between boundaries is events, not calls.
+- Use `node-build-engineering` for the mechanical enforcement (tsconfig project references, workspace boundaries) of the dependency direction this skill defines.
+- Use `node-testing` for boundary tests that exercise the public contract without leaking internal types.
+
 ## Activate when
 
 - A new subsystem or bounded context is being introduced.
@@ -51,6 +59,32 @@ Before restructuring, gather evidence in this order:
 5. Wire dependencies in the composition root. Domain modules take dependencies as constructor parameters, never import infrastructure directly.
 6. Add boundary tests that exercise the public contract without leaking internal types.
 7. Run typecheck, the focused boundary tests, the full test suite, and import/cycle checks.
+
+**Reference example** — port + adapter + composition root, the three pieces that make the dependency direction real (domain imports the port; only the composition root touches both sides):
+
+```ts
+// domain/ports.ts — the boundary contract. No framework, ORM, or SDK types.
+export interface PaymentGateway {
+  charge(order: Order, card: CardToken): Promise<{ receiptId: string }>;
+}
+
+// domain/place-order.ts — depends on the port, not on Stripe.
+export function makePlaceOrder(gateway: PaymentGateway, repo: OrderRepository) {
+  return async (cmd: PlaceOrder): Promise<Order> => {
+    const order = Order.place(cmd);                    // domain behavior stays in the domain
+    const { receiptId } = await gateway.charge(order, cmd.card);
+    return repo.save(order.paid(receiptId));
+  };
+}
+
+// infra/stripe-gateway.ts — the adapter. Knows Stripe; nobody in domain/ knows it exists.
+export class StripeGateway implements PaymentGateway { /* Stripe SDK details */ }
+
+// composition-root.ts — the ONE module allowed to import both sides and wire them.
+export const placeOrder = makePlaceOrder(new StripeGateway(env.STRIPE_KEY), new PgOrderRepository(pool));
+```
+
+The test seam falls out for free: a boundary test passes an in-memory `PaymentGateway` and exercises `placeOrder` through its public contract — no framework types, no Stripe, no database.
 
 ## Failure modes
 
